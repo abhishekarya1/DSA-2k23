@@ -12,7 +12,7 @@
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
 	- scan again to verify majority status
-	- incase of two elements (`n/3`), use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, in decrement case, decrement both
+	- incase of two elements (`n/3`), check numbers before count zero condition, also use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, else in decrement case, decrement both
 	
 ### 2-D Matrix
 - Search an element in 2D matrix: start from top-right or bottom-left corner
