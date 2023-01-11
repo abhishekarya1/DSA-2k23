@@ -1,0 +1,1 @@
+- Pattern 22: iterate on each element and replace with `(n - Nearest distance from any edge)`
