@@ -1,0 +1,21 @@
+- Find one missing and one repeated numbers in an array:
+  - Hashtable approach
+  - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
+  - XOR approach - `n ^ ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position
+- Print Max continuous subarray: Kadane's algorithm - update `start_index` on negative sum case, on new maxSum case update `end_index`
+- Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): 
+- Stock Buy and Sell:
+  - Can only sell single time: maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
+  - Can sell multiple times: Valley peak approach: accumulate profit if `arr[i] < arr[i+1]`
+- Next Permutation: find first NON-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end
+- Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
+	- only one element can occur more than `n/2` times, two elements can occur more than `n/3` times
+	- increment count if `maj_element == curr_element`, decrement otherwise, on `count == 0` set `maj_element = curr_element` and `count = 1`
+	- scan again to verify majority status
+	- incase of two elements (`n/3`), use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, in decrement case, decrement both
+	
+### 2-D Matrix
+- Search an element in 2D matrix: start from top-right or bottom-left corner
+- Rotate Matrix by 90 degrees: transpose, and swap `col1` and `col2`
+- Set Matrix Zeros: use `arr[0][0]` as indicator for `row1`, and variable `C` as indicator for `col1`, start building ans array from `arr[n-1][n-1]`
+- Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`
