@@ -10,7 +10,7 @@
 - Next Permutation: find first NON-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
-	- increment count if `maj_element == curr_element`, decrement otherwise, on `count == 0` set `maj_element = curr_element` and `count = 1`
+	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
 	- scan again to verify majority status
 	- incase of two elements (`n/3`), use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, in decrement case, decrement both
 	
