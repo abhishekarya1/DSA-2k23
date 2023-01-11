@@ -7,7 +7,7 @@
 - Stock Buy and Sell:
   - Can only sell single time: maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
   - Can sell multiple times: Valley peak approach: accumulate profit if `arr[i] < arr[i+1]`
-- Next Permutation: find first NON-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end
+- Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
