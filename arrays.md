@@ -16,7 +16,7 @@
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
 	- scan again to verify majority status
 	- incase of two elements (`n/3`), check numbers before count zero condition, also use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, else in decrement case, decrement both
-- 3-Sum Problem: Modify two pointer sorted array approach for 2-Sum, for every pair `arr[low], initially low=0` and `arr[high], always arr[n-1]`, do two pointer in this range and find `target-(arr[low]+arr[high])`
+- 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
 	- incase duplicates are there, only consider last among the chain
 	- time complexity: `O(n^2)`
 - Largest subarray with 0 sum: on a new sum, put index and sum value in hashmap, if we see the sum again, subtract current index and index from hashmap to get the range 
