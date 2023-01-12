@@ -2,9 +2,9 @@
 - Traversal: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element)
 
 ---
-- Deleting a node in a SLL: use 3 pointers, `prev curr next`, save `next`, point `curr->next = prev`, update `prev` and `curr`, return new head i.e. the last `prev` value
+- Deleting a node in a SLL: use 3 pointers, `prev curr next`
 - Delete node to which pointer is given: copy data of next node to current
-- Reverse a SLL: Iterative (use 3-pointer approach) & Recursive
+- Reverse a SLL: Iterative (use 3-pointer approach) & Recursive: save `next`, point `curr->next = prev`, update `prev` and `curr`, return new head i.e. the last `prev` value
 - Reverse a DLL: swap links and return new head
 - Find middle of a LL: Hare & Tortoise approach
   - `while(fast && fast->next)`
