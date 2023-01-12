@@ -3,17 +3,27 @@
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
   - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position
 - Print Max continuous subarray: Kadane's algorithm - update `start_index` on negative sum case, on new maxSum case update `end_index`
-- Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): 
+- Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): take 3 pointers `i=0` `j=0` `k=n-1`, `i` is our "main" pointer (_always increments_)
+	- on `0` swap `arr[i]` and `arr[j]`, increment both (sending `0` to `i`, it is guranteed that element coming from `i` will be `1`)
+	- on `1` increment `i` (not touching `1`)
+	- on `2` swap `arr[i]` and `arr[k]`, only decrement `k` (bcoz no guarantee that element coming from `arr[k]` isn't `2`) (sending `2` to `k`)
 - Stock Buy and Sell:
-  - Can only sell single time: maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
-  - Can sell multiple times: Valley peak approach: accumulate profit if `arr[i] < arr[i+1]`
+  - Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
+  - Valley peak approach: accumulate profit if `arr[i] < arr[i+1]`
 - Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
 	- scan again to verify majority status
 	- incase of two elements (`n/3`), check numbers before count zero condition, also use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, else in decrement case, decrement both
-	
+- 3-Sum Problem: Modify two pointer sorted array approach for 2-Sum, for every pair `arr[low], initially low=0` and `arr[high], always arr[n-1]`, do two pointer in this range and find `target-(arr[low]+arr[high])`
+	- incase duplicates are there, only consider last among the chain
+	- time complexity: `O(n^2)`
+- Largest subarray with 0 sum: on a new sum, put index and sum value in hashmap, if we see the sum again, subtract current index and index from hashmap to get the range 
+- Merge two sorted arrays in O(1) space:
+	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
+	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
+
 ### 2-D Matrix
 - Search an element in 2D matrix: start from top-right or bottom-left corner
 - Rotate Matrix by 90 degrees: transpose, and swap `col1` and `col2`
