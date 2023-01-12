@@ -1,0 +1,20 @@
+- Base Case: `if(head == NULL || head -> next == NULL)`
+- Traversal: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element)
+
+---
+- Deleting a node in a SLL: use 3 pointers, `prev curr next`
+- Delete node to which pointer is given: copy data of next node to current
+- Reverse a SLL: Iterative (use 3-pointer approach) & Recursive
+- Reverse a DLL: swap links and return new head
+- Find middle of a LL: Hare & Tortoise approach
+  - `while(fast && fast->next)`
+- Kth node from the last: give headstart of K steps to `pointer_two`
+- Detect loop (Floyd's cycle): Hare & Tortoise approach
+- Find the starting point in LL: `x y` algebraic way, move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node
+- Length of loop: same approach as above
+- Check if LL is palindrome or not: goto mid, reverse the right half, compare one-by-one
+- Segregate odd and even nodes in LL: track `oddHead evenHead oddEnd evenEnd` and attach nodes from original LL like Legos
+- Find intersection point of two LL: 
+ - calc size diff of LL from both heads (`diff`), move by `diff` steps in the long one, traverse simultaneously in the smaller LL, where they meet is the common point
+ - start traversing from `h1` and on end circle back to `h2` and vice-versa, after 2 taversals it is guranteed that you will stop at `NULL` (common point) or the answer node before that
+ 
