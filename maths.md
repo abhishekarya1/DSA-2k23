@@ -1,5 +1,6 @@
 - Leap Year:
   - div by `4`, if a `100` year, it should be div by `400`
+  - Ex: `1900` isn't leap, despite being div by `4`
 - Prime Number: https://hashdefine.netlify.app/maths
 - Sieve of Eratosthenes: Loop `i -> 2 to sqrt(n), i++`, loop `j -> i*i to n, j+=i` and untick elements
   - Time - `O(n log logn)`
