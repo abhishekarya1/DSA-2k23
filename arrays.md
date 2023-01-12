@@ -27,5 +27,5 @@
 ### 2-D Matrix
 - Search an element in 2D matrix: start from top-right or bottom-left corner
 - Rotate Matrix by 90 degrees: transpose, and swap `col1` and `col2`
-- Set Matrix Zeros: use `arr[0][0]` as indicator for `row1`, and variable `C` as indicator for `col1`, start building ans array from `arr[n-1][n-1]`
+- Set Matrix Zeros: use `arr[0][0]` as indicator for `row1`, and variable `C` as indicator for `col1`, start building answer matrix from `arr[n-1][n-1]`, treat `col1` separately, both during building reference and answer matrix
 - Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`
