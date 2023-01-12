@@ -1,0 +1,14 @@
+- Leap Year:
+  - div by `4`, if a `100` year, it should be div by `400`
+- Prime Number: https://hashdefine.netlify.app/maths
+- Sieve of Eratosthenes: Loop `i -> 2 to sqrt(n), i++`, loop `j -> i*i to n, j+=i` and untick elements
+  - Time - `O(n log logn)`
+- Divisors: https://hashdefine.netlify.app/maths
+- Binary Power: https://cp-algorithms.com/algebra/binary-exp.html
+- Euclidean Algorithm: https://cp-algorithms.com/algebra/euclid-algorithm.html
+- Fibonacci Numbers:
+  - Recursion
+  - Iterative that keeps track of only last two elements 
+  - Binet's Formula
+  - Memoisation using array
+- 
