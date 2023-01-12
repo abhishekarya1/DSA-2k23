@@ -1,1 +1,4 @@
 - Pattern 22: iterate on each element and replace with `(n - minimum distance from any of the 4 edges)`
+- Pascal's Triangle: 
+  - use jagged arrays
+  - use `nCr` recursive approach
