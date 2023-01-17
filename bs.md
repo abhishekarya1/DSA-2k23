@@ -14,7 +14,7 @@ mid = floor(low+(high-low))/2;   // avoids overflow
     - set `low` to `mid` to move to one half (ex - finding root)
     - `low` and `high` will converge to the same element eventually 
 ---
-- Upper Bound/Lower Bound: keep moving towards right/left with `mid + 1` or `mid - 1`, pointer will always land at element, `low` (upper bound) or `low - 1` (lower bound)
+- Upper Bound/Lower Bound: keep moving towards right/left with `mid + 1` or `mid - 1`, pointer will always land at element, `low` (upper bound) or `low - 1` (lower bound). Handle special cases of non-existent bounds 
 - Search Insert Position: insert position will be upper bound only
 - Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), keep going to the sorted array if it lies in its range, else goto the other half, after finding pivot, check left half and right half manually for sort property (Time = `O(n)`)
 - Find the first or last occurrence of a given number in a sorted array: keep moving left and find leftmost occurance, then reset and keep moving right and find rightmost occurance
