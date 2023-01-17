@@ -15,7 +15,7 @@ mid = floor(low+(high-low))/2;   // avoids overflow
     - `low` and `high` will converge to the same element eventualy (ex - find lower/upper bound)
 ---
 - Upper Bound/Lower Bound: keep moving towards right/left
-- Search Insert Position: insert position will be lower bound only
+- Search Insert Position: insert position will be upper bound only
 - Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), keep going to the sorted array if it lies in its range, else goto the other half, after finding pivot, check left half and right half manually for sort property (Time = `O(n)`)
 - Find the first or last occurrence of a given number in a sorted array: keep moving left and find leftmost occurance, then reset and keep moving right and find rightmost occurance
 - Count occurrences of a number in a sorted array with duplicates: Do same as above and count will be `rightmost_index - leftmost_index`
@@ -28,11 +28,11 @@ mid = floor(low+(high-low))/2;   // avoids overflow
 - Find Kth element of two sorted arrays: 
   - count approach; mimic merge and count till K
   - cutpoints approach, `k = m + n`, take `m` elements from one and `n` from the other (https://takeuforward.org/data-structure/k-th-element-of-two-sorted-arrays)
-
+    - do BS on the smaller array only, compare `l1 r2 l2 r1`
 ---
 - Root of a number using BS: Time = `O(N * log(M x 10^d))`
 ```cpp
-double epsilon = 1e-5;   // upto 5 digits after decimal
+double eps = 1e-5;   // upto 5 digits after decimal
 
 while( (high - low) > eps ){
 
