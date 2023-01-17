@@ -1,0 +1,1 @@
+- refer Samsung notes
