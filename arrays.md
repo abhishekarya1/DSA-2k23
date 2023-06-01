@@ -3,7 +3,7 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
   - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
-- Max subarray with sum K - generate all subarrays (2 loops), using 2 loops, two pointer approach
+- Max subarray with sum K - generate all subarrays (3 loops), using 2 loops, two pointer approach
 - Print Max continuous subarray: Kadane's algorithm - update `start_index` on negative sum case, on new maxSum case update `end_index`
 - Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): take 3 pointers `i=0` `j=0` `k=n-1`, `i` is our "main" pointer (_always increments_)
 	- on `0` swap `arr[i]` and `arr[j]`, increment both (sending `0` to `i`, it is guranteed that element coming from `i` will be `1`)
