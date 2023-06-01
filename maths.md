@@ -9,9 +9,9 @@
 - Euclidean Algorithm: https://cp-algorithms.com/algebra/euclid-algorithm.html
 - Fibonacci Numbers:
   - Recursion
-  - Iterative that keeps track of only last two elements 
-  - Binet's Formula
   - Memoisation using array
+  - Binet's Formula
+  - Iterative that keeps track of only last two elements (space optimized)
 
 ---
 - Shuffle the Array (such that all permutations are equally likely): https://youtu.be/hSZARPLUSDM

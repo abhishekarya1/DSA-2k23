@@ -1,3 +1,4 @@
+Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!)
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
