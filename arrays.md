@@ -5,10 +5,10 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
   - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
 - Max subarray with sum K - generate all subarrays (3 loops), using 2 loops, two pointer approach
 - Print Max continuous subarray: Kadane's algorithm - update `start_index` on negative sum case, on new maxSum case update `end_index`
-- Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): take 3 pointers `i=0` `j=0` `k=n-1`, `i` is our "main" pointer (_always increments_)
-	- on `0` swap `arr[i]` and `arr[j]`, increment both (sending `0` to `i`, it is guranteed that element coming from `i` will be `1`)
-	- on `1` increment `i` (not touching `1`)
-	- on `2` swap `arr[i]` and `arr[k]`, only decrement `k` (bcoz no guarantee that element coming from `arr[k]` isn't `2`) (sending `2` to `k`)
+- Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): take 3 pointers `lo=0` `mid=0` `hi=n-1`, `mid` is our "main" pointer
+	- on `0` swap `arr[lo]` and `arr[mid]`, increment both (sending `0` to `lo`, it is guranteed that element coming from `mid` will be `1`)
+	- on `1` increment `mid` (not touching `1`)
+	- on `2` swap `arr[mid]` and `arr[hi]`, only decrement `hi` (bcoz no guarantee that element coming from `arr[hi]` isn't `2`) (sending `2` to `hi`)
 - Stock Buy and Sell:
   - Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
   - Valley peak approach: accumulate profit if `arr[i] < arr[i+1]`
