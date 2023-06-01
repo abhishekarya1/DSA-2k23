@@ -6,7 +6,11 @@
   - Time - `O(n log logn)`
 - Divisors: https://hashdefine.netlify.app/maths
 - Binary Power: https://cp-algorithms.com/algebra/binary-exp.html
+  - halving then squaring
+  - squaring then halving
+  - for floating-point numbers and negative powers  
 - Euclidean Algorithm: https://cp-algorithms.com/algebra/euclid-algorithm.html
+  - for floating-point numbers
 - Fibonacci Numbers:
   - Recursion
   - Iterative that keeps track of only last two elements 
