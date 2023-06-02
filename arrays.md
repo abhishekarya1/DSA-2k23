@@ -3,7 +3,6 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
   - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
-- Max subarray with sum K - generate all subarrays (3 loops), using 2 loops, two pointer approach
 - Print Max continuous subarray: Kadane's algorithm - update `start_index` on negative sum case, on new maxSum case update `end_index`
 - Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): take 3 pointers `lo=0` `mid=0` `hi=n-1`, `mid` is our "main" pointer; while `mid <= hi` do
 	- on `0` swap `arr[lo]` and `arr[mid]`, increment both (sending `0` to `lo`, it is guranteed that element coming from `lo` will be `1`)
@@ -19,15 +18,17 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
 	- scan again to verify majority status
 	- incase of two elements (`n/3`), check numbers before count zero condition, also use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, else in decrement case, decrement both
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
-	- incase duplicates are there, only consider last among the chain
+	- incase duplicates are there, only consider last among the chain (edge case)
 	- time complexity: `O(n^2)`
-- Largest subarray with 0 sum: on a new sum, put index and sum value in hashmap, if we see the sum again, subtract current index and index from hashmap to get the range 
+- Longest subarray with give sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach
+- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach
+- Count subarray with given XOR K: maintain a map `<prefixXor, cnt>`, count of `xr^k` is the no. of subarrays (_answer_) till `xr`, incrememnt `xr` freq cnt in map and proceed
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
 
 ### 2-D Matrix
 - Search an element in 2D matrix: start from top-right or bottom-left corner
-- Rotate Matrix by 90 degrees: transpose, and swap `col1` and `col2`
+- Rotate Matrix by 90 degrees: transpose, and swap `col1` and `col2` (aka reverse all rows)
 - Set Matrix Zeros: use `arr[0][0]` as indicator for `row1`, and variable `C` as indicator for `col1`, start building answer matrix from `arr[n-1][n-1]`, treat `col1` separately, both during building reference and answer matrix
 - Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`

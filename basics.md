@@ -1,4 +1,4 @@
 - Pattern 22: total colums = rows = `2*n - 1`, iterate on each element and replace with `(n - minimum distance from any of the 4 edges)`
 - Pascal's Triangle: 
-  - use jagged arrays
+  - use jagged array for each row (https://leetcode.com/problems/pascals-triangle/solutions/727318/c-simple-solution-0-ms-beats-100-00/)
   - use `nCr` recursive approach
