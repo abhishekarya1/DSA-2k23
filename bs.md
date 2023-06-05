@@ -24,15 +24,15 @@ Keep `arr[mid] = k` condition on the direction we want to move in to skip duplic
 Ceil is nothing but Lower Bound itself.
 
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
-- Search Insert Position: insert position is lower/upper bound only, depends on where question wants use to insert if element is already present in array
+- Search Insert Position: insert position is lower/upper bound only, depends on where question wants us to insert if element is already present in array
 - Find the first or last occurrence of a given number in a sorted array: CANNOT be solved using lower/upper bound or floor/ceil bcoz they guarantee a valid index as output and don't return `-1` if element is not found in array
-  - Find first position: on `arr[mid] == k` store `ans = mid` and move leftwards (`high = mid - 1`), rest is same as normal BS
-  - Find last position: on `arr[mid] == k` store `ans = mid` and move rightwards (`low = mid + 1`), rest is same as normal BS
+  - Find first position: on `arr[mid] == k` store `ans = mid` and reduce search space to left array only (`high = mid - 1`), rest is same as in normal BS
+  - Find last position: on `arr[mid] == k` store `ans = mid` and reduce search space to right array only (`low = mid + 1`), rest is same as in normal BS
 - Count occurrences of a number in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`; we can use lower and upper bounds if presence of the number is guaranteed
   - if element is not guaranteed to be present: find any occurance of it using BS (if not found return `-1`), either check `idx == -1` then occurance is `0`, or if a valid `idx` linearly scan its left half and right half for more occurances (time = `O(n)`)
 ---
 - Search in rotated sorted array (no duplicates) - goto the sorted half only if in range, otherwise goto the other half
-- Search in rotated sorted array (duplicates present) - check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
+- Search in rotated sorted array (duplicates present) - if `arr[mid] == k` isn't true, check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
 --- 
 - Find minimum in Rotated Sorted Array: leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum of it, and go to the other part
 - Find out how many times has an array been rotated: answer will be the index of the minimum or maximum element
