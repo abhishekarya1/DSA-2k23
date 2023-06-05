@@ -14,8 +14,10 @@ mid = floor(low+(high-low))/2;   // avoids overflow
     - set `low` to `mid` to move to one half (ex - finding root)
     - `low` and `high` will converge to the same element eventually 
 ---
-- Upper Bound/Lower Bound: if target is `4`, `low` and `high` will eventually converge at `[3 5]` and two steps more, we'll have our upper bound at `low` and lower bound at `high`. Handle special cases of non-existent bounds 
-- Search Insert Position: insert position will be upper bound only
+- Lower Bound: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself
+- Upper Bound: upper bound of `x` is the smallest index `i` such that `arr[i] > x`.  Ex - in `[2 4 5]`, upper bound of `3` is `4` and upper bound of `4` is `5`
+- Smallest/Greatest number relative to `x`: if target is `4`, `low` and `high` will eventually converge at `[3 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Handle special case when duplicates are present
+- Search Insert Position: insert position is upper bound only
 - Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), keep going to the sorted array if it lies in its range, else goto the other half, after finding pivot, check left half and right half manually for sort property (Time = `O(n)`)
 - Find the first or last occurrence of a given number in a sorted array: keep moving left and find leftmost occurance, then reset and keep moving right and find rightmost occurance
 - Count occurrences of a number in a sorted array with duplicates: Do same as above and count will be `rightmost_index - leftmost_index`
