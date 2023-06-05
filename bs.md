@@ -37,7 +37,8 @@ Ceil is nothing but Lower Bound itself.
 - Find minimum in Rotated Sorted Array: leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum of it, and go to the other part
 - Find out how many times has an array been rotated: answer will be the index of the minimum or maximum element
 - Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), after finding the pivot, check sorted property of left half and right half manually (time = `O(n)`)
-- Find peak element: Keep moving in the direction of the greater element and if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value
+---
+- Find peak element: check peak smong `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself
 - Single element in a Sorted Array: goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Both the stated pairs need to be same value, otherwise go leftwards if they aren't. Handle edge case of array having only 1 element .
 - Find Kth element of two sorted arrays: 
   - count approach; mimic merge and count till K
