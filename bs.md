@@ -26,6 +26,8 @@ Ceil is nothing but Lower Bound itself.
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
 - Search Insert Position: insert position is lower/upper bound only, depends on where question wants use to insert if element is already present in array
 - Find the first or last occurrence of a given number in a sorted array: CANNOT be solved using lower/upper bound or floor/ceil bcoz they guarantee a valid index as output and don't return `-1` if element is not found in array
+  - Find first position: on `arr[mid] == k` store `ans = mid` and move leftwards (`high = mid - 1`)
+  - Find last position: on `arr[mid] == k` store `ans = mid` and move rightwards (`low = mid + 1`)
 - Count occurrences of a number in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`; we can use lower bound and ceil if presence of the number is guaranteed
 ---
 - Search in rotated sorted array (no duplicates) - goto the sorted half only if in range, otherwise goto the other half
