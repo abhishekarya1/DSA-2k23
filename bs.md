@@ -21,13 +21,15 @@ Keep `arr[mid] = k` condition on the direction we want to move in to skip duplic
 
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
 - Search Insert Position: insert position is upper bound only
-- Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), keep going to the sorted array if it lies in its range, else goto the other half, after finding pivot, check left half and right half manually for sort property (Time = `O(n)`)
 - Find the first or last occurrence of a given number in a sorted array: find leftmost occurance using lower bound, find rightmost occurance using ceil
   - Count occurrences of a number in a sorted array with duplicates: do same as above and count will be `rightmost_index - leftmost_index`
+
+---
+- Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), keep going to the sorted array if it lies in its range, else goto the other half, after finding pivot, check left half and right half manually for sort property (Time = `O(n)`)
 - Find peak element: Keep moving in the direction of the greater element and if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value
-- Search in rotated sorted array (no duplicates) - goto the sorted half only if in range, othewrwise goto the other half
+- Search in rotated sorted array (no duplicates) - goto the sorted half only if in range, otherwise goto the other half
 - Search in rotated sorted array (duplicates present) - check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
-- Find minimum in Rotated Sorted Array: leftmost element (`arr[low]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum, goto the other part
+- Find minimum in Rotated Sorted Array: leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum of it, and go to the other part
 - Find out how many times has an array been rotated: answer will be the index of the minimum or maximum element
 - Single element in a Sorted Array: goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Both the stated pairs need to be same value, otherwise go leftwards if they aren't. Handle edge case of array having only 1 element .
 - Find Kth element of two sorted arrays: 
