@@ -28,7 +28,8 @@ Ceil is nothing but Lower Bound itself.
 - Find the first or last occurrence of a given number in a sorted array: CANNOT be solved using lower/upper bound or floor/ceil bcoz they guarantee a valid index as output and don't return `-1` if element is not found in array
   - Find first position: on `arr[mid] == k` store `ans = mid` and move leftwards (`high = mid - 1`), rest is same as normal BS
   - Find last position: on `arr[mid] == k` store `ans = mid` and move rightwards (`low = mid + 1`), rest is same as normal BS
-- Count occurrences of a number in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`; we can use lower bound and ceil if presence of the number is guaranteed
+- Count occurrences of a number in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`; we can use lower and upper bounds if presence of the number is guaranteed
+  - if element is not guaranteed to be present: find any occurance of it using BS (if not found return `-1`), either check `idx == -1` then occurance is `0`, or if a valid `idx` linearly scan its left half and right half for more occurances (time = `O(n)`)
 ---
 - Search in rotated sorted array (no duplicates) - goto the sorted half only if in range, otherwise goto the other half
 - Search in rotated sorted array (duplicates present) - check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
