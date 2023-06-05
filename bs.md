@@ -22,8 +22,8 @@ Keep `arr[mid] = k` condition on the direction we want to move in to skip duplic
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
 - Search Insert Position: insert position is upper bound only
 - Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), keep going to the sorted array if it lies in its range, else goto the other half, after finding pivot, check left half and right half manually for sort property (Time = `O(n)`)
-- Find the first or last occurrence of a given number in a sorted array: keep moving left and find leftmost occurance, then reset and keep moving right and find rightmost occurance
-- Count occurrences of a number in a sorted array with duplicates: Do same as above and count will be `rightmost_index - leftmost_index`
+- Find the first or last occurrence of a given number in a sorted array: find leftmost occurance using lower bound, find rightmost occurance using ceil
+  - Count occurrences of a number in a sorted array with duplicates: do same as above and count will be `rightmost_index - leftmost_index`
 - Find peak element: Keep moving in the direction of the greater element and if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value
 - Search in rotated sorted array (no duplicates) - goto the sorted half if in range, else goto the other half
 - Search in rotated sorted array (duplicates present) - check condition `arr[mid] == arr[0] && arr[mid] == arr[n-1]` and if true do `low++; high--;`, rest is the same as above
