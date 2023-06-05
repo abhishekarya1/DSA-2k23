@@ -20,7 +20,7 @@ mid = floor(low+(high-low))/2;   // avoids overflow
 Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In lower bound we move leftwards in duplicates, in upper bound we move rightwards in duplicates. `low` will always end up at the answer.
 
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
-- Search Insert Position: insert position is upper bound only
+- Search Insert Position: insert position is lower bound only
 - Find the first or last occurrence of a given number in a sorted array: find leftmost occurance using lower bound, find rightmost occurance using ceil
   - Count occurrences of a number in a sorted array with duplicates: do same as above and count will be `rightmost_index - leftmost_index`
 ---
