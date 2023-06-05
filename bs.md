@@ -25,8 +25,8 @@ Keep `arr[mid] = k` condition on the direction we want to move in to skip duplic
 - Find the first or last occurrence of a given number in a sorted array: find leftmost occurance using lower bound, find rightmost occurance using ceil
   - Count occurrences of a number in a sorted array with duplicates: do same as above and count will be `rightmost_index - leftmost_index`
 - Find peak element: Keep moving in the direction of the greater element and if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value
-- Search in rotated sorted array (no duplicates) - goto the sorted half if in range, else goto the other half
-- Search in rotated sorted array (duplicates present) - check condition `arr[mid] == arr[0] && arr[mid] == arr[n-1]` and if true do `low++; high--;`, rest is the same as above
+- Search in rotated sorted array (no duplicates) - goto the sorted half only if in range, othewrwise goto the other half
+- Search in rotated sorted array (duplicates present) - check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
 - Find minimum in Rotated Sorted Array: leftmost element (`arr[low]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum, goto the other part
 - Find out how many times has an array been rotated: answer will be the index of the minimum or maximum element
 - Single element in a Sorted Array: goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Both the stated pairs need to be same value, otherwise go leftwards if they aren't. Handle edge case of array having only 1 element .
