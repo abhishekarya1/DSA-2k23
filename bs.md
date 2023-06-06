@@ -51,10 +51,12 @@ double eps = 1e-5;   // upto 5 digits after decimal
 
 while( (high - low) > eps ){
 
-  double mid = (low + high) / 2.0; 
+  double mid = (low + high) / 2.0;
   
-  // set low = mid 
+  // set low = mid
   // or high = mid
   
 }
+
+return low;
 ```
