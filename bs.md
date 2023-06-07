@@ -96,8 +96,8 @@ while (low < high)    // change#1
             low = mid + 1;
     }
     
-    //low and high point to the same element at this pointn (since low == high)
+    //low and high point to the same element at this point (since low == high)
     
-    return high;   // can return either low or high as they point to the same element
+    return high;   // we can return either low or high as they point to the same element
 ```
 
