@@ -60,3 +60,44 @@ while( (high - low) > eps ){
 
 return low;
 ```
+
+--- 
+
+Two ways of writing BS (where we are converging to an element and not finding a target k):
+```cpp
+// Lower Bound
+
+while (low <= high)    // point#1
+    {
+        int mid = low + (high - low) / 2;
+
+        if (k <= arr[mid])
+            high = mid;   // point#2
+        else
+            low = mid + 1;
+    }
+    
+    // low and high have crossed each other at this point
+   
+    return low;   // low points to answer element, and high is the answer's left neighbour
+```
+
+Below covers the corner case when there is only a single element in array. Ex - peak element finding.
+```cpp
+// Lower Bound (alt way)
+
+while (low < high)    // change#1
+    {
+        int mid = low + (high - low) / 2;
+
+        if (k <= arr[mid])
+            high = mid;   // change#2
+        else
+            low = mid + 1;
+    }
+    
+    //low and high point to the same element at this pointn (since low == high)
+    
+    return high;   // can return either low or high as they point to the same element
+```
+
