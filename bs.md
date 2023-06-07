@@ -102,6 +102,6 @@ while (low < high)    // change#1
     return high;   // we can return either low or high as they point to the same element
 ```
 ---
-- Kth Missing Positive Number: answer will always be `a = elements present till arr[i]` summed to `b = missing elements till arr[i]`
-  - 2 liner `O(n)` solution: https://leetcode.com/problems/kth-missing-positive-number/solutions/1004517/c-2-liner-simplest-o-n-time-o-1-space-faster-than-99/comments/1399607
+- Kth Missing Positive Number: find out `no. of elements missing till current element = arr[i]-(i+1)`, answer will always be `no. of elements present that are strictly less than arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time
+  - Two-liner `O(n)` solution: https://leetcode.com/problems/kth-missing-positive-number/solutions/1004517/c-2-liner-simplest-o-n-time-o-1-space-faster-than-99/comments/1399607
   - Normal `O(n)` and BS based on it (take care of `high` in BS solution)
