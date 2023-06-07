@@ -44,6 +44,7 @@ Ceil is nothing but Lower Bound itself.
   - count approach; mimic merge and count till K
   - cutpoints approach, `k = m + n`, take `m` elements from one and `n` from the other (https://takeuforward.org/data-structure/k-th-element-of-two-sorted-arrays)
     - do BS on the smaller array only, compare `l1 r2 l2 r1`
+- Median of two sorted arrays: use cutpoints approach above, take care of cuts and median condition in case total elements are even or odd
 ---
 - Root of a number using BS: Time = `O(N * log(M x 10^d))`
 ```cpp
@@ -100,4 +101,7 @@ while (low < high)    // change#1
     
     return high;   // we can return either low or high as they point to the same element
 ```
-
+---
+- Kth Missing Positive Number: answer will always be `a = elements present till arr[i]` summed to `b = missing elements till arr[i]`
+  - 2 liner `O(n)` solution: https://leetcode.com/problems/kth-missing-positive-number/solutions/1004517/c-2-liner-simplest-o-n-time-o-1-space-faster-than-99/comments/1399607
+  - Normal `O(n)` and BS based on it (take care of `high` in BS solution)
