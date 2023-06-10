@@ -6,13 +6,14 @@
 - Delete node to which pointer is given: copy data of next node to current
 - Reverse a SLL: Iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
   - Recursive way: propagates returned `head` from the base case
-- Reverse a DLL: swap links and return new head
+- Reverse a DLL: swap links and return new head at the end i.e. `prev`
 - Find middle of a LL: Hare & Tortoise approach
   - `while(fast && fast->next)`
-- Kth node from the last: give headstart of K steps to `pointer_two`
-- Detect loop (Floyd's cycle): Hare & Tortoise approach
+- Kth node from the last: give headstart of K steps to `ptr2`, move both `ptr1` and `ptr2` one step at a time
+- Detect loop (Floyd's cycle): Hare & Tortoise approach with Fast and Slow pointers
 - Find the starting point in LL: `x y` algebraic way, move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node
-- Length of loop: same approach as above
+- Length of the loop: find cycle start point, count till it is encountered again
+
 - Check if LL is palindrome or not: goto mid, reverse the right half, compare one-by-one
 - Segregate odd and even nodes in LL: track `oddHead evenHead oddEnd evenEnd` and attach nodes from original LL like Legos
 - Find intersection point of two LL: 
