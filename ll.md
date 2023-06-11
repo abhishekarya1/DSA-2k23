@@ -13,7 +13,7 @@
 - Find the starting point in LL: `x y` algebraic way, move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node
 - Length of the loop: find cycle start point, count till it is encountered again
 - kth node from the last: give headstart of `k-1` steps to `ptr2`, move both `ptr1` and `ptr2` one step at a time
-- 
+ 
 ---
 - Check if LL is palindrome or not: goto mid, reverse the right half, compare one-by-one
 - Segregate odd and even nodes in LL: track `oddHead evenHead oddEnd evenEnd` and attach nodes from original LL like Legos
