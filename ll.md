@@ -18,7 +18,7 @@
 - Check if LL is palindrome or not: goto mid, reverse the right half, compare one-by-one
 - Segregate odd and even nodes in LL: track `oddHead evenHead oddEnd evenEnd` and attach nodes from original LL like Legos
 - Delete Nth node from the last: goto n+1th node from the last and change links to nth node, corner case is when n is equal to list's size e.g. `list = [1, 2] and n = 2`, in this case when we goto n+1th node from last, ahead pointer will be `NULL` and we can return `head -> next` as new head
-- Delete middle element: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this on `slow -> next == NULL` set `head -> next == NULL` and return head
+- Delete middle element: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this when slow is on mid and `slow -> next == NULL` set `head -> next == NULL` and return head
 - Find intersection point of two LL:
   - calc size diff of LL from both heads (`diff`), move by `diff` steps in the long one, traverse simultaneously in the smaller LL, where they meet is the common point
   - start traversing from `h1` and on end circle back to `h2` and vice-versa, after 2 taversals it is guranteed that you will stop at `NULL` (common point) or the answer node before that
