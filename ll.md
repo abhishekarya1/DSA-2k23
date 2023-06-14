@@ -31,7 +31,7 @@
 - Merge sorted LL - take a dummyHead node and keep pointing it to lesser value node
 - Add 1 to a number represented by LL: reverse LL and while carry is more than 0, keep adding, add node at last if carry remains
 - Reverse LL in groups of k: 
-  - Iterative way: to reverse k nodes, k-1 links are reversed
+  - Iterative way: to reverse k nodes, k-1 links are reversed, use modified iterative 3-pointer reverse and start at `dummyNode` (important)
   - Recursive way: reverse first k nodes and let recursion do for the rest of the list 
 
 --- 
