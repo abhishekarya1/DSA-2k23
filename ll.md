@@ -23,4 +23,17 @@
   - Naive: for every node in `listA` check every node of `listB` 
   - Better: calc size diff of LL from both heads (`diff`), move by `diff` steps in the longer one, traverse simultaneously in the smaller LL, where they meet is the common point
   - Optimal: start traversing from `h1` and on end circle back to `h2` and vice-versa, after 2 taversals it is guranteed that you will stop at either `NULL` (common point) or the answer node
- 
+
+---
+
+- Segragate odd and even nodes & segragate 0s, 1s and 2s - attach nodes like Lego bricks
+- Sort Linked list: use either bubble sort ans swap node data, or use merge sort for LL
+- Merge sorted LL - take a dummyHead node and keep pointing it to lesser value node
+- Add 1 to a number represented by LL: reverse LL and while carry is more than 0, keep adding, add node at last if carry remains
+- Reverse LL in groups of k: 
+  - Iterative way: to reverse k nodes, k-1 links are reversed
+  - Recursive way: reverse first k nodes and let recursion do for the rest of the list 
+
+--- 
+- Find pairs with given sum in DLL: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
+- Delete nodes of a DLL: take care of edge cases - deletion of first node, deletion of last node
