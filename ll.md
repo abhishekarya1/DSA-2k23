@@ -32,7 +32,7 @@
 - Add 1 to a number represented by LL: reverse LL and while carry is more than 0, keep adding, add node at last if carry remains
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, k-1 links are reversed, use modified iterative 3-pointer reverse and start at `dummyNode` (important)
-  - Recursive way: reverse first k nodes and let recursion do for the rest of the list 
+  - Recursive way: reverse first k nodes and let recursion do for the rest of the list. Base case: `when(lengthOfLL < k)` then no reversal to be done
 
 --- 
 - Find pairs with given sum in DLL: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
