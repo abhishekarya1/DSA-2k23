@@ -33,3 +33,42 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
 - Rotate Matrix by 90 degrees: transpose, and swap `col1` and `col2` (aka reverse all rows)
 - Set Matrix Zeros: use `arr[0][0]` as indicator for `row1`, and variable `C` as indicator for `col1`, start building answer matrix from `arr[n-1][n-1]`, treat `col1` separately, both during building reference and answer matrix
 - Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`
+
+
+--- 
+- ahead and behind pointers .aka. one pointer always moving trick [STABLE]
+```cpp
+int i = 0, j = 0, n = arr.size();
+while(i < n){
+	if(arr[j] != arr[i]){	// increment j only when we want to insert
+		j++;
+		swap(arr[i], arr[j]);
+	}
+	
+	i++;	// always increment i
+}
+
+return j+1;	// j points to 1 element rightwards to our ans list
+```
+- low and high pointer trick [NOT STABLE]
+```cpp
+int low = 0, high = nums.size() - 1;
+
+while(low <= high){
+
+        // we need to move 0 to high
+        if(nums[low] == 0){
+        	swap(nums[low], nums[high]);
+        	high--;
+	}
+
+        // else just move ahead, we don't have a 0 at low
+        else
+        	low++;
+}
+```
+
+Related Questions:
+- https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+- Segragate 0s and 1s
+- https://leetcode.com/problems/move-zeroes/ (LC sol requires stable way)
