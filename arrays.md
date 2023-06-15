@@ -15,7 +15,7 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
 	- on `2` swap `arr[mid]` and `arr[hi]`, only decrement `hi` (bcoz no guarantee that element coming from `arr[hi]` isn't `2`) (sending `2` to `hi`)
 - Stock Buy and Sell:
   - Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
-  - Valley peak approach: accumulate profit if `arr[i] < arr[i+1]`
+
 - Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
