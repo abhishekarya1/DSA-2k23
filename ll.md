@@ -33,6 +33,8 @@
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, k-1 links are reversed, use modified iterative 3-pointer reverse and start at `dummyNode` (important)
   - Recursive way: reverse first k nodes and let recursion do for the rest of the list. Base case: `when(lengthOfLL < k)` then no reversal to be done
+- Rotate a LL: make it circular and break
+- Flattenning of a LL: recur till last and when coming back form pairs and merge sorted sublists like normal
 
 --- 
 - Find pairs with given sum in DLL: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
