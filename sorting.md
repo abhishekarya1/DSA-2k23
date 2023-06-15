@@ -1,7 +1,7 @@
 - Selection Sort (Greedy)
 - Bubble Sort (+ adaptive optimization + recursive)
 - Insertion Sort
-- Merge Sort (Divide & Conquer)
+- Merge Sort (Divide & Conquer) - always use tight bounds to avoid confusion while merging `while(i <= mid && j <= high)`, all sort method calls will be tight bound too `mergeSort(arr, 0, n-1)`
 - Quick Sort (Divide & Conquer)
 
 ### Terminology
