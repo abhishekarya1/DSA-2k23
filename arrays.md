@@ -8,6 +8,11 @@
 
 - Print Max continuous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
 
+- Rearrange alternate positve and negatives:
+  - if stability is not required, segregate and place in `O(n)` time and space
+  - if stability is required and positive and negative elements are equal: place in `res` array by filling even and odd indexes
+  - if stability is required and positive and negative elements are not equal: use two arrays to place positive and negatives, put elements alternatingly in the original array, and after smaller aray is copied fully put remaining of the other array
+
 - Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): take 3 pointers `lo=0` `mid=0` `hi=n-1`, `mid` is our "main" pointer; while `mid <= hi` do
 	- on `0` swap `arr[lo]` and `arr[mid]`, increment both (sending `0` to `lo`, it is guranteed that element coming from `lo` will be `1`)
 	- on `1` increment `mid` (not touching `1`)
