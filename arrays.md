@@ -3,6 +3,10 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
   - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
+
+- Kadane's Algorithm: make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
+	- Modify kadane's algo to keep track of start and end of max sum subarray 
+
 - Print Max continuous subarray: Kadane's algorithm - update `start_index` on negative sum case, on new maxSum case update `end_index`
 
 - Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): take 3 pointers `lo=0` `mid=0` `hi=n-1`, `mid` is our "main" pointer; while `mid <= hi` do
