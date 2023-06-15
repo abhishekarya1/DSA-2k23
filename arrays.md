@@ -7,7 +7,7 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
 - Kadane's Algorithm: make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
 	- Modify kadane's algo to keep track of start and end of max sum subarray 
 
-- Print Max continuous subarray: Kadane's algorithm - update `start_index` on negative sum case, on new maxSum case update `end_index`
+- Print Max continuous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
 
 - Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm): take 3 pointers `lo=0` `mid=0` `hi=n-1`, `mid` is our "main" pointer; while `mid <= hi` do
 	- on `0` swap `arr[lo]` and `arr[mid]`, increment both (sending `0` to `lo`, it is guranteed that element coming from `lo` will be `1`)
