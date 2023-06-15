@@ -15,7 +15,7 @@
 - Stock Buy and Sell:
   - Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
 
-- Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end
+- Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `1 2 3` and next permutation is reverse sort of it `1 2 3`
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
