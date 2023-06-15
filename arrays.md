@@ -1,4 +1,3 @@
-Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is not STABLE though!
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
@@ -38,8 +37,10 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
 - Set Matrix Zeros: use `arr[0][0]` as indicator for `row1`, and variable `C` as indicator for `col1`, start building answer matrix from `arr[n-1][n-1]`, treat `col1` separately, both during building reference and answer matrix
 - Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`
 
-
 --- 
+
+Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is not STABLE though!
+
 - ahead and behind pointers .aka. one pointer always moving trick [STABLE]
 ```cpp
 int i = 0, j = 0, n = arr.size();
