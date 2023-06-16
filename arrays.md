@@ -38,9 +38,9 @@
 
 ### 2-D Matrix
 - Search an element in 2D matrix: start from top-right or bottom-left corner
-- Rotate Matrix by 90 degrees: transpose, and swap `col1` and `col2` (aka reverse all rows)
-- Set Matrix Zeros: use `arr[0][0]` as indicator for `row1`, and variable `C` as indicator for `col1`, start building answer matrix from `arr[n-1][n-1]`, treat `col1` separately, both during building reference and answer matrix
-- Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`
+- Rotate Matrix by 90 degrees: transpose, and swap cols (aka reverse all rows)
+- Set Matrix Zeros: use variable `col` as indicator for `col0`, start biulding reference matrix from `0, 0` and start building answer matrix from `arr[m-1][n-1]`, treat `col0` separately, both during building reference and answer matrix
+- Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column. Pointers have to be placed very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
 
 --- 
 
