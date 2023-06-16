@@ -30,8 +30,8 @@
 	- incase duplicates are there, only consider last among the chain (edge case)
 	- time complexity: `O(n^2)`
 - Longest subarray with give sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach
-- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach
-- Count subarray with given XOR K: maintain a map `<prefixXor, cnt>`, count of `xr^k` is the no. of subarrays (_answer_) till `xr`, incrememnt `xr` freq cnt in map and proceed
+- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = 1` (sum 0 seen 1 time even before array traversal starts)
+- Count subarray with given XOR K: same as count subarray with given sum k
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
