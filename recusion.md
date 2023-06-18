@@ -1,8 +1,8 @@
 - refer Samsung notes
 
 Two templates:
-1. Pick/NotPick - subsequences, permutations
-2. FOR loop - combinations, there is no base case as such, not-pick step is absent
+1. Pick/NotPick - subsequences
+2. FOR loop - permutations & combinations, there is no base case as such, not-pick step is absent
 
 Base cases: In Pick/NotPick it is `i == arr.size()`. In FOR loop approach base case isn't required since FOR loop range takes care of array traversal bounds
 
