@@ -12,4 +12,4 @@ Sort condition: `if(i > p && arr[i] == arr[i - 1]) continue;`.
 
 We can further optimize the FOR loop using `if(arr[i] > target) break;` (if current element can't be part of the answer then remaining array can't be too; since array is sorted).
 
-Min Stack: retrieves minimum element in `O(1)` time. If we have a new minimum push `2*element - min` into the stack, it is guaranteed that the value we are pushing is less than old minimum and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point and then modify minimum accordingly.
+Min Stack: retrieves minimum element in `O(1)` time. If we have a new minimum push `2*element - min` into the stack, it is guaranteed that the value we are pushing is less than element we are pushing (also our new minimum) and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point and then modify minimum accordingly.
