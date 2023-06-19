@@ -8,11 +8,13 @@
 
 [Linked List](/ll.md)
 
-[Recursion](/recursion.md)
-
 [Bit Manipulation](/bit.md)
 
 [Maths](/maths.md)
+
+[Recursion](/recursion.md)
+
+[Stacks and Queues](/stack_queue.md)
 
 [Greedy Algorithms](/greedy.md)
 
