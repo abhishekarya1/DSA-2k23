@@ -32,3 +32,4 @@
 **Infix to Prefix**: reverse prefix expression, we're making it "nearly-postfix" by converting `(` to `)` and vice-versa, convert this using `infixToPostfix()` and store in `resultString`, reverse `resultString` again
 
 ### Monotonic Stack
+Next Greater ELement: we are creating a monotonic stack here, where top element will always be the smalllest in the stack. Traverse the array from the right, and if top is greater than current, top is NGE, else pop out elments till we reach NGE (or empty) in the stack. Popping elments will make sure that current is the smallest in the stack, on pushing it is the top and stack remains monotonic.
