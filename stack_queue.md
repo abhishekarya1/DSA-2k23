@@ -32,4 +32,13 @@
 **Infix to Prefix**: reverse prefix expression, we're making it "nearly-postfix" by converting `(` to `)` and vice-versa, convert this using `infixToPostfix()` and store in `resultString`, reverse `resultString` again
 
 ### Monotonic Stack
-Next Greater ELement: we are creating a monotonic stack here and keep the top as NGE at all times, also the top element will always be the smalllest in the stack. Traverse the array from the right, and if top is greater than current, top is NGE, else pop out elments till we reach NGE (or empty) in the stack. Popping elments will make sure that current is the smallest in the stack, on pushing it is the top and stack remains monotonic.
+**Next Greater Element**: we are creating a monotonic stack here and keep the top as NGE at all times, also the top element will always be the smalllest in the stack. Traverse the array from the right, and if top is greater than current, top is NGE, else pop out elments till we reach NGE (or empty) in the stack. Popping elments will make sure that current is the smallest in the stack, on pushing it is the top and stack remains monotonic.
+
+Smart way to code the same - run while loop for pops first, if stack is not empty we have our NGE otherwise push element onto the stack
+
+**Trapping Rain Water**:
+  - water at i = minimum of (maximum at left and right) - level of i  --  time = `O(n^2)`
+  - we can precompute and store leftMax and rightMax in two separate arrays -- time = `O(n)`, space = `O(2n)`
+  - two pointer approach:
+    - increment left pointer only when there is a greater element on the right pointer, and track leftMax, this way we can find water stored at i only using leftMax since we've reached i only because there is a greater element on the right and we don't even need it to calc water stored at i as `ans += leftMax - arr[i]`. Do the same for right pointer.
+    - if we've reached here that means there is a greater element on the right i.e. `arr[hi]` and we don't need to use it for calc. Also `leftMax >= arr[lo]` at this point and all lows below this one had a greater element on the right, that's why `lo++` happened and we've reached this position
