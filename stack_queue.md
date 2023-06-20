@@ -36,6 +36,8 @@
 
 Smart way to code the same - run while loop for pops first, if stack is not empty we have our NGE otherwise push element onto the stack
 
+Apply to circular array (NGE 2) - do the same and find NGE from i = 2n-1 to 0 and use `i%n` to access elements, put in another `ans` array only when `i<n`
+
 **Trapping Rain Water**:
   - water at i = minimum of (maximum at left and right) - level of i  --  time = `O(n^2)`
   - we can precompute and store leftMax and rightMax in two separate arrays -- time = `O(n)`, space = `O(2n)`
