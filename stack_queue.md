@@ -48,3 +48,5 @@ Apply to circular array (NGE 2) - do the same and find NGE from i = 2n-1 to 0 an
 **Subarray minimum and maximum**: find all NGE, PGE, NLE, PLE for an element and store in pre-compute arrays (optimization). Then use combinatorics formual `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min/max. To calc elements on the left/right from/to PLE, etc... requires deatiled and careful index handling.
 
 **Remove k digits to make minimum number**: if the number's digits are monotonic, we can decide which to remove. We always remove left digit (most significant) but it has to be greater too. so we traverse from left to right and remove element from stack if an inversion is encountered. Edge cases - duplicates, `01200`, increasing sequence `1234` (remove last k digits from it at last)
+
+**LRU Cache**: use DLL and `unordered_map<key, Node*>`. Use two dummy nodes `(-1, -1)` as `head` and `tail` and keep queue nodes between them to avoid writing lots of `NULL` check conditions.
