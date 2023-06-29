@@ -11,9 +11,11 @@ Types:
 - Strict BT: all nodes have either 0 or 2 children
 - Complete BT: all nodes have 0 or 2 children and leaf node level has all nodes as left as possible
 
-In a strict binary tree - e = i + 1
+In a strict binary tree - e = i + 1 where e = leaf nodes, and i = non-leaf nodes
 
-Catalan Number (`T(n)`): gives total no. of unique trees possible for `n` nodes. Two forms - using combination and recursive. For labelled (`T(n)*n!`) and unlabelled nodes (`T(n)`).
+Catalan Number (`T(n)`): gives total no. of unique trees possible for `n` nodes, some are original and others are mirror images. For labelled (`T(n)*n!`) and unlabelled nodes (`T(n)`). Written in two forms - using combination or recursive.
+
+Reading traversals using finger placement around nodes - left = preOrder, bottom = inOrder, right = postOrder
 
 Traversals:
 - preOrder - iterative uses 1 stack
