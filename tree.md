@@ -7,7 +7,7 @@ Representations:
 - Recursive using struct/class
 
 Types:
-- Full BT: all nodes have 2 children except leaf nodes
+- Full BT: all nodes have exactly 2 children except leaf nodes
 - Strict BT: all nodes have either 0 or 2 children
 - Complete BT: all nodes have 0 or 2 children and leaf node level has all nodes as left as possible
 
