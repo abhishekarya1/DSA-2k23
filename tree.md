@@ -1,4 +1,6 @@
-No. of nodes on `i`th level, no. of levels if has total `n` nodes
+No. of nodes on `i`th level, no. of levels if tree has total `n` nodes - work out formulas with `log2` and `2^n` based on indexing of root is 0 or 1
+
+Observation - No. of nodes on each level follow GP - `1 + 2 + 4 + 8 + 16 ...` with common ratio 2
 
 Max/Min height possible with `n` nodes - min will always be full BT, max will be degenerate tree (equivalent to a LL)
 
