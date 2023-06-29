@@ -20,8 +20,9 @@ Catalan Number (`T(n)`): gives total no. of unique trees possible for `n` nodes,
 Reading traversals using finger placement around nodes - left = preOrder, bottom = inOrder, right = postOrder
 
 Traversals:
-- preOrder - iterative uses 1 stack
-- inOrder - iterative uses 1 stack
-- postOrder - iterative uses 2 stack, or 1 stack
+- preOrder - iterative uses 1 stack (print root and put right then left in stack - strategic)
+- inOrder - iterative uses 1 stack (go as left as possible for non NULL nodes, for NULL nodes (leaf) print top of stack and go rightwards) - `while(true)` way is used here and traversal using stack is not possible here unlike preOrder and postOrder
+- postOrder - iterative uses 2 stack (postOrder is nearly reverse of preOrder, second stack is for reversal) (put root in stack2, then push left then right in stack1)
+  - using 1 stack
 - levelOrder - uses a deque
 - preOrder, inOrder, postOrder in a single traversal of a tree
