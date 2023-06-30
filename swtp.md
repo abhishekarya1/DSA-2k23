@@ -13,9 +13,32 @@
   - https://leetcode.com/problems/fruit-into-baskets/
 
 
-**Dynamic Sliding Window Templates**: we need only 2 types of fruit in our SW
+**Dynamic Sliding Window Templates**: we need only 2 types of fruit in our SW (all templates are equivalent)
 
 Template#1:
+```cpp
+int totalFruit(vector<int> &fruits){
+
+    unordered_map<int, int> mp;
+
+    int j = 0, ans = 0;
+    for (int i = 0; i < fruits.size(); i++){
+        mp[fruits[i]]++;
+
+        while (mp.size() > 2){
+            mp[fruits[j]]--;
+            if (mp[fruits[j]] == 0)
+                mp.erase(fruits[j]);
+            j++;
+        }
+
+        ans = max(ans, i - j + 1);
+    }
+    return ans;
+}
+```
+
+Template#2:
 ```cpp
 int totalFruit(vector<int> &fruits){
 
@@ -39,7 +62,7 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
-Template#2:
+Template#3:
 ```cpp
 int totalFruit(vector<int> &fruits){
 
