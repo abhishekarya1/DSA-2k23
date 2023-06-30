@@ -25,4 +25,4 @@ Traversals:
 - postOrder - iterative uses 2 stack (postOrder is nearly reverse of preOrder, second stack is for reversal) (put root in stack2, then push left then right in stack1)
   - using 1 stack - similar to inOrder traversal but requires another `while` loop inside logic to print root(s)
 - levelOrder - uses a queue, put a `for` loop inside to track level
-- preOrder, inOrder, postOrder in a single traversal of a tree - `stack<pair<TreeNode*, int>>` while stack is not empty, visit1 (add to preOrder list) and go left, visit2 (add to postOrder list and go right), otherwise add to inOrder list and go nowhere
+- preOrder, inOrder, postOrder in a single traversal of a tree - `stack<pair<TreeNode*, int>>` while stack is not empty, on visit 1 (add to preOrder list) and go left, on visit 2 (add to postOrder list and go right), otherwise (visit 3) add to inOrder list and go nowhere
