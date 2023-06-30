@@ -12,3 +12,54 @@
   - https://leetcode.com/problems/max-consecutive-ones-iii/
   - https://leetcode.com/problems/fruit-into-baskets/
 
+
+**Dynamic Sliding Window Templates**: we need only 2 types of fruit in our SW
+
+Template#1:
+```cpp
+int totalFruit(vector<int> &fruits){
+
+    unordered_map<int, int> mp;
+
+    int j = 0, ans = 0;
+    for (int i = 0; i < fruits.size(); i++){
+        mp[fruits[i]]++;
+
+        if (mp.size() <= 2)
+            ans = max(ans, i - j + 1);
+
+        while (mp.size() > 2){
+            mp[fruits[j]]--;
+            if (mp[fruits[j]] == 0)
+                mp.erase(fruits[j]);
+            j++;
+        }
+    }
+    return ans;
+}
+```
+
+Template#2:
+```cpp
+int totalFruit(vector<int> &fruits){
+
+    unordered_map<int, int> mp;
+
+    int j = 0, ans = 0;
+    for (int i = 0; i < fruits.size(); i++){
+        mp[fruits[i]]++;
+
+        if (mp.size() <= 2)
+            ans = max(ans, i - j + 1);
+
+        else{
+            mp[fruits[j]]--;
+            if (mp[fruits[j]] == 0)
+                mp.erase(fruits[j]);
+            j++;
+        }
+    }
+
+    return ans;
+}
+```
