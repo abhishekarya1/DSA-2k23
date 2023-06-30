@@ -11,6 +11,7 @@
   - https://leetcode.com/problems/longest-substring-without-repeating-characters/
   - https://leetcode.com/problems/max-consecutive-ones-iii/
   - https://leetcode.com/problems/fruit-into-baskets/
+  - https://leetcode.com/problems/longest-repeating-character-replacement/
 
 
 **Dynamic Sliding Window Templates**: we need only 2 types of fruit in our SW (all templates are equivalent)
