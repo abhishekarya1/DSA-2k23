@@ -16,7 +16,7 @@
 
 **Dynamic Sliding Window Templates**: we need only 2 types of fruit in our SW (all templates are equivalent)
 
-In `while` loop templates, `j` can go out of bounds. So `if-else` is better.
+In `while` loop templates, `j` can go out of bounds in some problems where we it might not be straightforward to calculate loop variable (like in Longest Repeating Character Replacement). So `if-else` template is suited better.
 
 Template#1: calculating ans in the same step
 ```cpp
