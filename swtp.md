@@ -65,7 +65,7 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
-Template#2: if-else stepping, no while loop
+Template#2: if-else stepping, no while loop. calc ans in next step
 ```cpp
 int totalFruit(vector<int> &fruits){
 
@@ -90,7 +90,7 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
-Template#3: **BEST** using if instead of while loop, simpler code
+Template#3: **BEST** using if instead of while loop, simpler code, calc ans in same step
 ```cpp
 int totalFruit(vector<int> &fruits){
 
