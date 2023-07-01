@@ -16,7 +16,9 @@
 
 **Dynamic Sliding Window Templates**: we need only 2 types of fruit in our SW (all templates are equivalent)
 
-Template#1:
+In `while` loop templates, `j` can go out of bounds. So `if-else` is better.
+
+Template#1: calculating ans in the same step
 ```cpp
 int totalFruit(vector<int> &fruits){
 
@@ -39,7 +41,7 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
-Template#2:
+Template#1A: calculating ans in the next step
 ```cpp
 int totalFruit(vector<int> &fruits){
 
@@ -63,7 +65,7 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
-Template#3:
+Template#2: if-else stepping, no while loop
 ```cpp
 int totalFruit(vector<int> &fruits){
 
@@ -84,6 +86,29 @@ int totalFruit(vector<int> &fruits){
         }
     }
 
+    return ans;
+}
+```
+
+Template#3: **BEST** using if instead of while loop, simpler code
+```cpp
+int totalFruit(vector<int> &fruits){
+
+    unordered_map<int, int> mp;
+
+    int j = 0, ans = 0;
+    for (int i = 0; i < fruits.size(); i++){
+        mp[fruits[i]]++;
+
+        if (mp.size() > 2){
+            mp[fruits[j]]--;
+            if (mp[fruits[j]] == 0)
+                mp.erase(fruits[j]);
+            j++;
+        }
+
+        ans = max(ans, i - j + 1);
+    }
     return ans;
 }
 ```
