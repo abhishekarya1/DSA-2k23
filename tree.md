@@ -31,5 +31,5 @@ Reading traversals using finger placement around nodes - left = preOrder, bottom
 - Height of a BT: `return 1 + max(leftHeight, rightHeight)` for root
 
 In below problems we don't use height method (that'll increase recursive method call levels) rather we modify height method to calc:
-- isBalanced: `abs(leftHeight - rightHeight) < 1` for every node
+- isBalanced: `abs(leftHeight - rightHeight) < 1` for every node, use `-1` to cascade failure in a normal height method
 - Diameter of a BT: `leftHeight + rightHeight` (notice there is no `+ 1` while calc diameter because its path, not nodes), in normal height method track `maxDiameter` for every node
