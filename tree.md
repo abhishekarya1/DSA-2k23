@@ -28,8 +28,8 @@ Reading traversals using finger placement around nodes - left = preOrder, bottom
 - preOrder, inOrder, postOrder in a single traversal of a tree - `stack<pair<TreeNode*, int>>` while stack is not empty, on visit 1 (add to preOrder list) and go left, on visit 2 (add to postOrder list and go right), otherwise (visit 3) add to inOrder list and go nowhere
 
 ### Medium Problems
-- Height of a BT: `return 1 + leftHeight + rightHeight` for root
+- Height of a BT: `return 1 + max(leftHeight, rightHeight)` for root
 
 In below problems we don't use height method (that'll increase recursive method call levels) rather we modify height method to calc:
 - isBalanced: `abs(leftHeight - rightHeight) < 1` for every node
-- Diameter of a BT: `leftHeight + rightHeight` (notice there is no `+ 1`), track `maxDiameter` for every node
+- Diameter of a BT: `leftHeight + rightHeight` (notice there is no `+ 1` while calc diameter), in normal height method track `maxDiameter` for every node
