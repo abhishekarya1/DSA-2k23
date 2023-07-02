@@ -1,9 +1,9 @@
-- usually subarray problems
+- usually subarray/runlength problems
   - brute = 2 loops
-  - better = 2 loops
-  - optimal = 1 loop with usually additional space complexity for set or map 
+  - better = 2 loops (some logic trimmed)
+  - optimal = 1 loop
 
-1. Window size is fixed `K`
+1. Window size is fixed `K`: maintain window size by moving 1 step on both `i` and `j`
   - https://leetcode.com/problems/sliding-window-maximum/
   
 2. Window size is not fixed (dynamic)
@@ -13,8 +13,13 @@
   - https://leetcode.com/problems/fruit-into-baskets/
   - https://leetcode.com/problems/longest-repeating-character-replacement/
 
+3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K
+- https://www.geeksforgeeks.org/count-number-of-substrings-with-exactly-k-distinct-characters/
+- https://leetcode.com/problems/binary-subarrays-with-sum/
+- https://takeuforward.org/arrays/count-subarray-sum-equals-k/ (can be solved with preSum map of counts too)
 
-**Dynamic Sliding Window Templates**: we need only 2 types of fruit in our SW (all templates are equivalent)
+### Dynamic Sliding Window Templates 
+we need only 2 types of fruit in our SW (all templates are equivalent)
 
 In `while` loop templates, `j` can go out of bounds in some problems where we it might not be straightforward to calculate loop variable (like in Longest Repeating Character Replacement). So `if-else` template is suited better.
 
@@ -114,8 +119,3 @@ int totalFruit(vector<int> &fruits){
     return ans;
 }
 ```
-
-**No. of subarrays/substrings with exactly K**: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K
-- https://www.geeksforgeeks.org/count-number-of-substrings-with-exactly-k-distinct-characters/
-- https://leetcode.com/problems/binary-subarrays-with-sum/
-- https://takeuforward.org/arrays/count-subarray-sum-equals-k/ (can be solved with preSum map of counts too)
