@@ -18,6 +18,8 @@
 
 In `while` loop templates, `j` can go out of bounds in some problems where we it might not be straightforward to calculate loop variable (like in Longest Repeating Character Replacement). So `if-else` template is suited better.
 
+For subarray problems where we need to calc valid for every step, `while` loop template is better.
+
 Template#1: calculating ans in the same step
 ```cpp
 int totalFruit(vector<int> &fruits){
@@ -65,7 +67,7 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
-Template#2: if-else stepping, no while loop. calc ans in next step
+Template#2: if-else stepping, no while loop. calc ans in next step (eventually gets the ans, may not be in current step)
 ```cpp
 int totalFruit(vector<int> &fruits){
 
@@ -90,7 +92,7 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
-Template#3: **BEST** using if instead of while loop, simpler code, calc ans in same step
+Template#3: **BEST** using if instead of while loop, calc ans in same step (eventually gets the ans, may not be in current step)
 ```cpp
 int totalFruit(vector<int> &fruits){
 
@@ -112,3 +114,8 @@ int totalFruit(vector<int> &fruits){
     return ans;
 }
 ```
+
+**No. of subarrays/substrings with exactly K**: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K
+- https://www.geeksforgeeks.org/count-number-of-substrings-with-exactly-k-distinct-characters/
+- https://leetcode.com/problems/binary-subarrays-with-sum/
+- https://takeuforward.org/arrays/count-subarray-sum-equals-k/ (can be solved with preSum map of counts too)
