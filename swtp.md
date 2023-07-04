@@ -18,7 +18,7 @@
 - https://leetcode.com/problems/binary-subarrays-with-sum/
 - https://takeuforward.org/arrays/count-subarray-sum-equals-k/ (can be solved with preSum map of counts too)
 - https://leetcode.com/problems/count-number-of-nice-subarrays/
-- https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/ (AT LEAST approach)
+- https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/ (AT LEAST approach): we do `n - i` here because consider `abc|bca`, valid substring is on the left of `|` and substrings possible with that (atleast) are `abc`, `abcb`, `abcbc`, `abcbca` i.e. `1 + length of valid substring` a.k.a `n - i`.
 
 ### Dynamic Sliding Window Templates 
 we need only 2 types of fruit in our SW (all templates are equivalent)
