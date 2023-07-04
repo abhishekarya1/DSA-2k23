@@ -13,11 +13,12 @@
   - https://leetcode.com/problems/fruit-into-baskets/
   - https://leetcode.com/problems/longest-repeating-character-replacement/
 
-3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K, exclusively use `while` loop templates in this type of problems
+3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K, exclusively use `while` loop templates in this type of problems. Sliding window approach gives AT MOST answers.
 - https://www.geeksforgeeks.org/count-number-of-substrings-with-exactly-k-distinct-characters/
 - https://leetcode.com/problems/binary-subarrays-with-sum/
 - https://takeuforward.org/arrays/count-subarray-sum-equals-k/ (can be solved with preSum map of counts too)
 - https://leetcode.com/problems/count-number-of-nice-subarrays/
+- https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/ (AT LEAST approach)
 
 ### Dynamic Sliding Window Templates 
 we need only 2 types of fruit in our SW (all templates are equivalent)
