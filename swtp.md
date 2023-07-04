@@ -17,6 +17,7 @@
 - https://www.geeksforgeeks.org/count-number-of-substrings-with-exactly-k-distinct-characters/
 - https://leetcode.com/problems/binary-subarrays-with-sum/
 - https://takeuforward.org/arrays/count-subarray-sum-equals-k/ (can be solved with preSum map of counts too)
+- https://leetcode.com/problems/count-number-of-nice-subarrays/
 
 ### Dynamic Sliding Window Templates 
 we need only 2 types of fruit in our SW (all templates are equivalent)
