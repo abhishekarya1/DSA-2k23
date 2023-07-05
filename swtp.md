@@ -5,6 +5,7 @@
 
 1. Window size is fixed `K`: maintain window size by moving 1 step on both `i` and `j`
   - https://leetcode.com/problems/sliding-window-maximum/
+  - https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
   
 2. Window size is not fixed (dynamic)
   - https://takeuforward.org/data-structure/longest-subarray-with-given-sum-k/ (Solution 4)
