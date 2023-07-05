@@ -124,3 +124,25 @@ int totalFruit(vector<int> &fruits){
     return ans;
 }
 ```
+
+### Fixed Size Window Templates
+**Template#1**: Loop till `k` elements from the start and go from there one step at a time
+
+**Template#2**:
+```cpp
+int maxScore(vector<int>& cardPoints, int k) {
+      int n = cardPoints.size(), sum = 0, ans = 0;
+      for(int i = 0; i < n; i++) {
+
+          sum += cardPoints[i];
+
+          // after window size is reached, it will be maintained
+          if(i - j + 1 == k) {
+              ans = max(ans, sum);    // track max
+              sum -= cardPoints[j];
+              j++;
+          }
+      }
+      return ans;
+}
+```
