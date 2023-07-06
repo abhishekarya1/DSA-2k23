@@ -1,5 +1,5 @@
 - usually subarray/runlength problems
-  - brute = 2 loops
+  - brute = 3 loops or 2 loops
   - better = 2 loops (some logic trimmed)
   - optimal = 1 loop
 
@@ -14,14 +14,19 @@
   - https://leetcode.com/problems/fruit-into-baskets/
   - https://leetcode.com/problems/longest-repeating-character-replacement/
 
-3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K, exclusively use `while` loop templates in this type of problems. Sliding window approach gives AT MOST answers.
+3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K, exclusively use `while` loop templates in this type of problems. Sliding window approach gives AT MOST answers. We calc for every step wheather or not ans is `< k` or `= k` since it is needed for correct ans of no. of subarrays.
 - https://www.geeksforgeeks.org/count-number-of-substrings-with-exactly-k-distinct-characters/
 - https://leetcode.com/problems/binary-subarrays-with-sum/
 - https://takeuforward.org/arrays/count-subarray-sum-equals-k/ (can be solved with preSum map of counts too)
 - https://leetcode.com/problems/count-number-of-nice-subarrays/
 - https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/ (AT LEAST approach): we do `n - i` here because consider `abc|bca`, valid substring is on the left of `|` and substrings possible with that (atleast) are `abc`, `abcb`, `abcbc`, `abcbca` i.e. `1 + remaining chars in string` a.k.a `n - i`.
 
-### Dynamic Sliding Window Templates 
+4. Longest subarray/substring with exactly K: we can use the AT MOST template used to count subarrays above, but only track max when condition is `== k`.
+- https://www.geeksforgeeks.org/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
+
+Since we're tracking maxLen, why should it even matter that we are skipping calc for `< k` cases? It mattered in subarray number calculation, but here we're supposed to find the maximum length of the subarray. There can be a case when there are never k (say `k = 3`) distinct characters in the whole array `str = [aaabbaaa]` in which case the final ans (`maxLen`) will be `len(str)` which is not correct.
+
+### Dynamic Sliding Window Templates
 we need only 2 types of fruit in our SW (all templates are equivalent)
 
 In `while` loop templates, `j` can go out of bounds in some problems where we it might not be straightforward to calculate loop variable (like in Longest Repeating Character Replacement). So `if-else` template is suited better. USE THIS WHEN ANSWER CAN BE EVENTUALLY REACHED (MAXIMUM TRACKING PROBLEMS), and needn't be immediate. 
