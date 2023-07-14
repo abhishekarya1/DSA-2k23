@@ -34,3 +34,11 @@ In below problems we don't use normal height method (that'll increase recursive 
 - isBalanced: `abs(leftHeight - rightHeight) < 1` for every node, use `-1` to cascade failure in a normal height method
 - Diameter: `leftHeight + rightHeight` (notice there is no `+ 1` while calc diameter because its path, not nodes), in normal height method track `maxDiameter` for every node
 - Maximum Path Sum: track max for sum `sum = max(sum, curr -> val + leftSum + rightSum)`, return value of the modified height method will be `curr->val + max(leftSum, rightSum)` (non-curving point nodes)
+
+### Views and Traversals
+- Zig-Zag Traversal - use modified level-order traversal. `int idx = leftToRightFlag ? i : (queueSize - 1 - i)`
+- Boundary Traversal - leftSide non-leaves, all leaves, rightSide non-leaves
+- Vertical Order Traversal - `queue<TreeNode*, pair<int, int>>` to store nodes for level order traversal, `map<int, pair<int, multiset<int>>>`. We can use anyOrder traversal to do it.
+- Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
+- Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
+- Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view
