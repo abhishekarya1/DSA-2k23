@@ -7,6 +7,13 @@ Represented by:
 - heap
 - BST
 
+Standard Operations:
+- getMax/getMin (equivalent to peek)
+- extractMax/extractMin
+- insert
+- delete
+- decrease (modify a key's value in-place)
+
 _Ref_: https://www.geeksforgeeks.org/priority-queue-set-1-introduction/
 
 ### Heaps
@@ -44,3 +51,17 @@ void minHeapify(int i){
 **Time Complexity**: Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`.
 
 _Ref_: https://www.geeksforgeeks.org/binary-heap/
+
+### C++ STL
+Top element is greatest by default in the Max Heap in C++.
+```cpp
+priority_queue <int> pq;       // Max Heap
+
+priority_queue <int, vector<int>, greater<int>> pq;       // Min Heap
+```
+
+Java is vice-versa.
+
+## Problems
+- Kth Largest/Smallest: for Kth largest use maxHeap and remove top `k-1` elements, vice-versa for Kth smallest.
+       - alternatively, we can use Min Heap for the Kth largest element, push elements into it, and never let it become size `> k`
