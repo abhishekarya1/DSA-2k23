@@ -11,19 +11,19 @@ Standard Operations:
 - getMax/getMin (equivalent to peek)
 - extractMax/extractMin
 - insert
-- delete
+- delete (make it INT_MIN using decrease and extractMin)
 - decrease (modify a key's value in-place)
 
 _Ref_: https://www.geeksforgeeks.org/priority-queue-set-1-introduction/
 
 ### Heaps
-Must be Complete Binary Tree (to represent using Arrays and not to waste space) ans follow heap property (see below).
+Must be Complete Binary Tree (to represent using Arrays and not to waste space) and follow heap property (see below).
 
 Types: 
 - Max Heap (root is greater than both left and right)
 - Min Heap (root is lesser than both left and right)
 
-Upon insertion, travel upwards to verify if heap property is satisfied for each parent node, otherwise swap to make it so
+Upon insertion, new node is inserted at the end of CBT. Travel upwards to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
 while (i != 0 && heapArr[parent(i)] > heapArr[i]){
        swap(heapArr[i], heapArr[parent(i)]);
@@ -48,9 +48,26 @@ void minHeapify(int i){
 }
 ```
 
-**Time Complexity**: Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`.
-
 _Ref_: https://www.geeksforgeeks.org/binary-heap/
+
+### Time Complexity
+```cpp
+Get - O(1); constant time access
+
+Heapify - O(log n); traverses entire height of the tree which is log n
+
+Extract - O(log n); calls heapify afterwards
+
+Insertion - O(log n)
+
+Deletion - O(log n); calls heapify afterwards
+
+Decrease - O(log n); calls heapify afterwards
+
+Build a heap with n elements: O(n log n); on every element insertion there will be a heapify
+```
+
+Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`.
 
 ### C++ STL
 Top element is greatest by default in the Max Heap in C++.
