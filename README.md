@@ -21,3 +21,5 @@
 [Greedy Algorithms](/greedy.md)
 
 [Trees](/tree.md)
+
+[Heaps](/heaps.md)
