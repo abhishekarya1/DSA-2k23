@@ -64,4 +64,5 @@ In Java, collection Priority Queue is by default a Min Heap.
 
 ## Problems
 - Kth Largest/Smallest: for Kth largest use maxHeap and remove top `k-1` elements, vice-versa for Kth smallest.
-       - alternatively, we can use Min Heap for the Kth largest element, push elements into it, and never let it become size `> k`
+  - alternatively, we can use Min Heap for the Kth largest element, push elements into it, and never let it become size `> k`
+  
