@@ -83,3 +83,4 @@ In Java, collection Priority Queue is by default a Min Heap.
 - Kth Largest/Smallest: for Kth largest use maxHeap and remove top `k-1` elements, vice-versa for Kth smallest. TC = `O(n logn + (k-1) log n)`
   - alternatively, we can use Min Heap for the Kth largest element, push elements into it, and never let it become size `> k`. TC = `O(k + (n-k) log k)`
 - sort K (nearly sorted) sorted array: `O(n log k)`; sort only k elements from i (till `i + k`th position) to get element at `i`, use Min Heap and get top (min element) for every `i`, and move window by one to the right each step
+- Merge K sorted Lists: Brute = sort `O(n log n)`, Optimized = use Min Heap to sort only k heads of all LL at a time `O(n log k)`
