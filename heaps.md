@@ -60,7 +60,7 @@ priority_queue <int> pq;       // Max Heap
 priority_queue <int, vector<int>, greater<int>> pq;       // Min Heap
 ```
 
-Java is vice-versa.
+In Java, collection Priority Queue is by default a Min Heap.
 
 ## Problems
 - Kth Largest/Smallest: for Kth largest use maxHeap and remove top `k-1` elements, vice-versa for Kth smallest.
