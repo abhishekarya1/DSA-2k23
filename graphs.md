@@ -51,7 +51,7 @@ while(!q.empty){
 	q.pop();
 	bfs.push_back(currNode);
 
-	// traverse all its unvisited neighbours and mark them as visited
+	// enqueue all its unvisited neighbours and mark them as visited
 	for(auto it: adjList[currNode]){
 		if(visited[it] == false){
 			visited[it] = true;
