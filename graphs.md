@@ -22,3 +22,61 @@ Adjacency: two nodes are adjacent only when they are connected by an edge.
 - **Adjacency List**: for every node, store all its neighbours in a corresponding list. Use an array of vectors - `vector<int> adjList[n]`. SC = `O(2 * E)` for undirected graphs. Much more space efficient than matrix.
 
 For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in adjacency matrix. In adjacency list, use `vector<pair<int, int>> adjList[n]` wehere pair's second element denotes weight of the edge.
+
+
+### Techniques
+- use a visited array with graphs to make sure all un-connected components are covered.
+```cpp
+// n nodes, 1-indexed
+for(int i = 1; i <= n; i++){
+	if(visited[i] == false){
+		traversal(i);
+	}
+}
+
+// inside traversal() method, mark all visited as "true"
+```
+- **BFS**: TC = `O(V + E)` (we visit all vertex and all edges), SC =`O(3 * V)` (queue, visited array, adjList)
+```cpp
+queue<int> q;
+vector<int> bfs; 
+
+// push the initial starting node and mark it as visited
+q.push(0); 
+visited[0] = true;
+
+while(!q.empty){
+	int currNode = q.front();
+	q.pop();
+	bfs.push_back(currNode);
+
+	// traverse all its unvisited neighbours and mark them as visited
+	for(auto it: adjList[currNode]){
+		if(visited[it] == false){
+			visited[it] = true;
+			q.push(it);
+		}
+	}
+}
+
+return bfs;
+```
+
+- **DFS**: TC = `O(V + E)` (we visit all vertex and all edges), SC =`O(3 * V)` (queue, visited array, adjList)
+```cpp
+void depthFirstSearch(int currNode, vector<int> adjList[], bool visited[], vector<int> &dfs) {
+	// mark current as visited and push to ans
+	visited[currNode] = true; 
+	dfs.push_back(node);
+	
+	// traverse all its neighbours
+	for(auto it : adjList[currNode]) {
+	// if the neighbour is not visited, go for it
+		if(visited[it] == false){
+			depthFirstSearch(it, adjList, visited, dfs);
+		}
+	}
+}
+```
+
+_Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-ove/
