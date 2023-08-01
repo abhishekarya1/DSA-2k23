@@ -1,4 +1,4 @@
-A graph is a non-linear data structure comprised of a set of vertices `V` and a set of edges `E`.
+A graph `G(V,E)` is a non-linear data structure comprised of a set of vertices `V` and a set of edges `E`.
 
 ## Terminology
 - Node/Vertex - labelled or unlabelled
@@ -13,7 +13,12 @@ A graph is a non-linear data structure comprised of a set of vertices `V` and a 
 
 ## Properties
 - Degree of a graph is twice the number of edges, since each edge connects two nodes: `deg(G) = 2 * nEdges`
-- A graph can have any number of cycles, even zero.
-- A Tree is nothing but an acyclic graph (can be interpreted as directed or undirected). Linked List and Heaps are also special cases of a graph. 
+- A Tree is nothing but an acyclic graph (can be interpreted as directed or undirected). Linked List and Heaps are also special cases of a graph.
 
-_Ref_: https://medium.com/free-code-camp/i-dont-understand-graph-theory-1c96572a1401#0cd4
+## Representations
+Adjacency: two nodes are adjacent only when they are connected by an edge.
+
+- **Adjacency Matrix**: matrix of size `N x N` (`N` is number of nodes). Mark existing edge using `1` in the matrix coordinates. SC = `O(N^2)`.
+- **Adjacency List**: for every node, store all its neighbours in a corresponding list. Use an array of vectors - `vector<int> adjList[n]`. SC = `O(2 * E)` for undirected graphs. Much more space efficient than matrix.
+
+For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in adjacency matrix. In adjacency list, use `vector<pair<int, int>> adjList[n]` wehere pair's second element denotes weight of the edge.
