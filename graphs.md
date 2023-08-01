@@ -24,7 +24,7 @@ Adjacency: two nodes are adjacent only when they are connected by an edge.
 For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in adjacency matrix. In adjacency list, use `vector<pair<int, int>> adjList[n]` wehere pair's second element denotes weight of the edge.
 
 
-### Techniques
+## Techniques
 - use a visited array with graphs to make sure all un-connected components are covered.
 ```cpp
 // n nodes, 1-indexed
