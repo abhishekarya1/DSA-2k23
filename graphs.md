@@ -34,7 +34,7 @@ if(visited[i] == false){
 	}
 }
 
-// inside traversal() method, mark all visited as "true"
+// inside or before traversal() method, mark visited node as "true"
 ```
 
 - **BFS**: TC = `O(V + E)` (we visit all vertex and all edges), SC =`O(3 * V)` (queue, visited array, adjList)
