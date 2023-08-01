@@ -23,3 +23,5 @@
 [Trees](/tree.md)
 
 [Heaps](/heaps.md)
+
+[Graphs](/graphs.md)
