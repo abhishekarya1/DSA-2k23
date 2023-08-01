@@ -25,7 +25,7 @@ For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in ad
 
 
 ## Techniques
-- use a visited array with graphs to make sure all un-connected components are covered.
+- use a visited array with graphs to make sure that already visited nodes aren't visited again, since graphs usually have multiple cycles.
 ```cpp
 // n nodes, 1-indexed
 for(int i = 1; i <= n; i++){
