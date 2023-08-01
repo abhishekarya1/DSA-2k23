@@ -12,7 +12,7 @@ A graph `G(V,E)` is a non-linear data structure comprised of a set of vertices `
 - Finite Graph - number of nodes are finite.
 
 ## Properties
-- Degree of a graph is twice the number of edges, since each edge connects two nodes: `deg(G) = 2 * nEdges`
+- Degree of a graph is twice the number of edges, since each edge connects two nodes: `deg(G) = 2 * E`
 - A Tree is nothing but an acyclic graph (can be interpreted as directed or undirected). Linked List and Heaps are also special cases of a graph.
 
 ## Representations
