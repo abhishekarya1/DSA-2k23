@@ -89,5 +89,5 @@ void depthFirstSearch(int currNode, vector<int> adjList[], bool visited[], vecto
 _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-ove/
 
 ### Techniques
-- **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and look for islands (connected components), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`.
-- **Rotten Oranges**: keep level of BFS i.e. time info with the coordinate pair `pair<pair<int, int>, int>`, in BFS simulation - rot and update time + 1 (upon enqueue)
+- **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and look for islands (connected components), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`
+- **Rotten Oranges**: store all rotten (start points) in queue beforehand, keep level of BFS i.e. time info with the coordinate pair `pair<pair<int, int>, int>`, in BFS simulation - rot and update time + 1
