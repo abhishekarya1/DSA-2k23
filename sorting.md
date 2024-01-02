@@ -6,12 +6,12 @@
 
 ### Terminology
 **stable** - order of elements is maintained
-	- stable: bubble, insertion, merge
-	- unstable: selection, quick, heap
+- stable: bubble, insertion, merge
+- unstable: selection, quick, heap
 
 **in-place** - `O(1)` space
-	- bubble, insertion, selection, quick
-	- not in-place: merge, counting
+- bubble, insertion, selection, quick
+- not in-place: merge, counting
  
 **adaptive** - if list is sorted, sort process must not proceed. Ex - optimized bubble sort, insertion
 
@@ -24,3 +24,6 @@
 **index based sorts** - count, radix
 
 Mathematical worst-case of any possible comparison-based sort is `O(n logn)`.
+
+### Interesting Facts
+- C++ `sort()` uses a hybrid sort called "Intro Sort" which is a combination of Insertion Sort, Merge Sort, and Heap Sort.
