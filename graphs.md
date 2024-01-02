@@ -49,13 +49,13 @@ while(!q.empty){
 	int currNode = q.front();
 	q.pop();
 
-	// mark current node as visited and add to traversal ans
-	visited[currNode] = true;
+	// add to traversal ans
 	bfs.push_back(currNode);
 
-	// enqueue all its unvisited neighbours
+	// enqueue all its unvisited neighbours and mark as visited (upon enqueue)
 	for(auto it: adjList[currNode]){
 		if(visited[it] == false){
+			visited[currNode] = true;
 			q.push(it);
 		}
 	}
@@ -64,10 +64,14 @@ while(!q.empty){
 return bfs;
 ```
 
+**IMPORTANT**: In BFS, mark visited upon enqueue as we may end up with duplicate entries in the queue if there is a cycle (a neighbour is connected to another of our neighbour). In DFS, mark visited upon dequeue as we don't visit any neighbours just go to depth instantly.
+
+_Ref_: https://stackoverflow.com/questions/25990706/breadth-first-search-the-timing-of-checking-visitation-status
+
 - **DFS**: TC = `O(V + E)` (we visit all vertex and all edges), SC =`O(3 * V)` (queue, visited array, adjList)
 ```cpp
 void depthFirstSearch(int currNode, vector<int> adjList[], bool visited[], vector<int> &dfs) {
-	// mark current as visited and add to traversal ans
+	// mark current as visited (upon dequeue) and add to traversal ans
 	visited[currNode] = true; 
 	dfs.push_back(node);
 	
@@ -84,4 +88,5 @@ void depthFirstSearch(int currNode, vector<int> adjList[], bool visited[], vecto
 _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-ove/
 
 ### Techniques
-- **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and look for islands (connected components), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`
+- **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and look for islands (connected components), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`.
+- **Rotten Oranges**: keep time `t` info with the coordinate pair, on BFS simulation rot and update time + 1 (upon enqueue)
