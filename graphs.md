@@ -25,8 +25,7 @@ For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in ad
 
 
 ## Techniques
-- use a visited array with graphs to make sure that already visited nodes aren't visited again, since graphs usually have multiple cycles.
-- this also takes care of traversing any unconnected components
+- use a visited array with graphs to make sure that already visited nodes aren't visited again, since graphs usually have multiple cycles. This also takes care of traversing any unconnected components.
 ```cpp
 // n nodes, 1-indexed
 for(int i = 1; i <= n; i++){
@@ -43,19 +42,20 @@ if(visited[i] == false){
 queue<int> q;
 vector<int> bfs; 
 
-// push the initial starting node and mark it as visited
-q.push(0); 
-visited[0] = true;
+// push the initial starting node
+q.push(0);
 
 while(!q.empty){
 	int currNode = q.front();
 	q.pop();
+
+	// mark current node as visited and add to traversal ans
+	visited[currNode] = true;
 	bfs.push_back(currNode);
 
-	// enqueue all its unvisited neighbours and mark them as visited
+	// enqueue all its unvisited neighbours
 	for(auto it: adjList[currNode]){
 		if(visited[it] == false){
-			visited[it] = true;
 			q.push(it);
 		}
 	}
@@ -67,7 +67,7 @@ return bfs;
 - **DFS**: TC = `O(V + E)` (we visit all vertex and all edges), SC =`O(3 * V)` (queue, visited array, adjList)
 ```cpp
 void depthFirstSearch(int currNode, vector<int> adjList[], bool visited[], vector<int> &dfs) {
-	// mark current as visited and push to ans
+	// mark current as visited and add to traversal ans
 	visited[currNode] = true; 
 	dfs.push_back(node);
 	
