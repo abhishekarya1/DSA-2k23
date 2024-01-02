@@ -29,7 +29,7 @@ For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in ad
 ```cpp
 // n nodes, 1-indexed
 for(int i = 1; i <= n; i++){
-if(visited[i] == false){
+	if(visited[i] == false){
 		traversal(i);
 	}
 }
