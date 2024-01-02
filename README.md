@@ -2,6 +2,8 @@
 
 [Basics](/basics.md)
 
+[Sorting](/sorting.md)
+
 [Arrays](/arrays.md)
 
 [Binary Search](/bs.md)
