@@ -24,7 +24,7 @@ Adjacency: two nodes are adjacent only when they are connected by an edge.
 For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in adjacency matrix. In adjacency list, use `vector<pair<int, int>> adjList[n]` wehere pair's second element denotes weight of the edge.
 
 
-## Techniques
+## Traversals
 - use a visited array with graphs to make sure that already visited nodes aren't visited again, since graphs usually have multiple cycles. This also takes care of traversing any unconnected components.
 ```cpp
 // n nodes, 1-indexed
@@ -82,3 +82,6 @@ void depthFirstSearch(int currNode, vector<int> adjList[], bool visited[], vecto
 ```
 
 _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-ove/
+
+### Techniques
+- **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and look for islands (connected components), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`
