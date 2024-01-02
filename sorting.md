@@ -26,4 +26,4 @@
 Mathematical worst-case of any possible comparison-based sort is `O(n logn)`.
 
 ### Interesting Facts
-- C++ `sort()` uses a hybrid sort called "Intro Sort" which is a combination of Insertion Sort, Merge Sort, and Heap Sort.
+- C++ `sort()` uses a hybrid sort called "Intro Sort" which is a combination of Insertion Sort, Quick Sort, and Heap Sort.
