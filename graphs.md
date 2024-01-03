@@ -94,3 +94,4 @@ _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-o
 - **Detect Cycle** - keep parent info in node, and use:
 	- BFS: if node is already visited and its not our parent
  	- DFS: same as above, and we also need to propagate till start of the call stack if we find a cycle   
+- **Nearest 0/1 in Matrix**: keep visArr, distArr to avoid modifications to given matrix and it also helps avoid unnecessary confusion. To find dist from 0, mark all starting points (0) as visited and do BFS from all of them keeping `step` info inside a node and copying that to distArr
