@@ -89,11 +89,11 @@ void depthFirstSearch(int currNode, vector<int> adjList[], bool visited[], vecto
 _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-ove/
 
 ### Techniques
-- **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and look for islands (connected components), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`
+- **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and traverse entire island (connected component), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`, recolor and enqueue neighbours
 - **Rotten Oranges**: store all rotten (start points) in queue beforehand, keep level of BFS i.e. `time` info with the coordinate pair `pair<pair<int, int>, int>`, in BFS simulation enqueue - rot and update `time + 1`
 - **Detect Cycle** - keep parent info in node, and use:
 	- BFS: if node is already visited and its not our parent
  	- DFS: same as above, and we also need to propagate till start of the call stack if we find a cycle   
-- **Nearest 0/1 in Matrix**: keep `visArr[][]`, `distArr[][]` to avoid modifications to given matrix. To find dist from `0`, mark all starting points (`0`) as visited and do BFS from all of them keeping `step` info inside a node and copying that to distArr. Note that step increment (going to a neighbour - enqueue) is for both `0` and `1` (if unvisited ofc) so we update `distArr[i][j] = step` upon dequeue.
+- **Nearest 0/1 in Matrix**: keep `visArr[][]`, `distArr[][]` to avoid modifications to given matrix. To find dist from `0`, mark all starting points (`0`) as visited and do BFS from all of them keeping `step` info inside a node and copying that to distArr. Note that in for loop of BFS, enqueue (going to a neighbour) and step increment is only for unvisited `1`s (as all `0`s are marked visited beforehand).
 
 **NOTE**: its often not required to keep a `visited[][]` array in the problems above as we can directly modify the given matrix and keep track of modification (visited) state (using color or freshness values). As a rule of thumb, always keep a visited array and avoid mutating the given matrix as it will lead to unnecessary confusion. Ex - case where `initColor = newColor = 0`, we won't know if we've recolored a cell or not since in both the cases its `0` and we'll get TLE.
