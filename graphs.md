@@ -90,8 +90,8 @@ _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-o
 
 ### Techniques
 - **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and look for islands (connected components), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`
-- **Rotten Oranges**: store all rotten (start points) in queue beforehand, keep level of BFS i.e. time info with the coordinate pair `pair<pair<int, int>, int>`, in BFS simulation - rot and update time + 1
+- **Rotten Oranges**: store all rotten (start points) in queue beforehand, keep level of BFS i.e. `time` info with the coordinate pair `pair<pair<int, int>, int>`, in BFS simulation - rot and update `time + 1`
 - **Detect Cycle** - keep parent info in node, and use:
 	- BFS: if node is already visited and its not our parent
  	- DFS: same as above, and we also need to propagate till start of the call stack if we find a cycle   
-- **Nearest 0/1 in Matrix**: keep visArr, distArr to avoid modifications to given matrix and it also helps avoid unnecessary confusion. To find dist from 0, mark all starting points (0) as visited and do BFS from all of them keeping `step` info inside a node and copying that to distArr
+- **Nearest 0/1 in Matrix**: keep `visArr[][]`, `distArr[][]` to avoid modifications to given matrix and it also helps avoid unnecessary confusion. To find dist from `0`, mark all starting points (`0`) as visited and do BFS from all of them keeping `step` info inside a node and copying that to distArr. Note that step increment (going to a neighbour - enqueue) is for both `0` and `1` (if unvisited ofc) so we update `distArr[i][j]` on dequeue only.
