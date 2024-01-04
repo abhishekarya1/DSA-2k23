@@ -29,7 +29,7 @@
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
 	- incase duplicates are there, only consider last among the chain (edge case)
 	- time complexity: `O(n^2)`
-- Longest subarray with give sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach
+- Longest subarray with give sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach (only this approach won't work if negatives are present in the array)
 - Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = 1` (sum 0 seen 1 time even before array traversal starts)
 - Count subarray with given XOR K: same as count subarray with given sum k
 - Merge two sorted arrays in O(1) space:
