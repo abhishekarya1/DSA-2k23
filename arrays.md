@@ -50,15 +50,13 @@ Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (se
 ```cpp
 int i = 0, j = 0, n = arr.size();
 while(i < n){
-	if(arr[j] != arr[i]){	// increment j only when we want to insert
-		j++;
+	if(arr[i] != 0){	// moving 0s to end
 		swap(arr[i], arr[j]);
+		j++;		// increment j only on insert
 	}
 	
 	i++;	// always increment i
 }
-
-return j+1;	// j points to 1 element rightwards to our ans list
 ```
 - low and high pointer trick [NOT STABLE]
 ```cpp
