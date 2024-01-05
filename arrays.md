@@ -20,7 +20,8 @@
    
 **NOTE**: Two pointer approach with `low` and `high` had condition `while(low < high)` but Dutch-National Algo has `while(mid <= high)`, why the `<=`? Because value of the last element of the separation (`low == high`) won't matter, it can be either of `0` or `1` and separation will still be valid. But with three-partitions, it can be `0` in cases like `[1, 0, 2]` (`mid = high = 1`) and we do need to process `0` and place it appropriately.
 - Stock Buy and Sell:
-  - Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
+  - Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
+  - Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. Use valley-peak approach: calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
 
 - Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `1 2 3` and next permutation is reverse sort of it `1 2 3`
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
