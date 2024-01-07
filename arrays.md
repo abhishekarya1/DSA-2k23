@@ -1,3 +1,4 @@
+- Union of two sorted arrays: always take minimum of the two and check with equality with the last inserted element so that we don't insert duplicates
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
@@ -6,7 +7,7 @@
 - Kadane's Algorithm: make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
 	- Modify kadane's algo to keep track of start and end of max sum subarray 
 
-- Print Max continuous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
+- Print max sum contiguous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
 
 - Rearrange alternate positve and negatives:
   - if stability is not required, segregate and place in `O(n)` time and `O(1)` space using swaps
@@ -23,7 +24,7 @@
   - Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
   - Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. Use valley-peak approach: calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
 
-- Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `1 2 3` and next permutation is reverse sort of it `1 2 3`
+- Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
