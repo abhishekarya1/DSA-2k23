@@ -1,4 +1,5 @@
-- Union of two sorted arrays: always take minimum of the two and check with equality with the last inserted element so that we don't insert duplicates
+- Union of two sorted arrays: always take minimum of the two and check with equality with the last inserted element so that we don't insert duplicates `O(m+n)`
+
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
@@ -33,9 +34,9 @@
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
 	- incase duplicates are there, only consider last among the chain (edge case)
 	- time complexity: `O(n^2)`
-- Longest subarray with give sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach (only this approach won't work if negatives are present in the array)
+- Longest subarray with give sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach (only this approach won't work if negatives are present in the array), if negatives aren't present optimal approach is sliding window like
 - Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = 1` (sum 0 seen 1 time even before array traversal starts)
-- Count subarray with given XOR K: same as count subarray with given sum k
+- Count subarrays with given sum K (or xor k): quadratic approach with two loops and a while loop, `O(nlogn)` approach on sorted array with pairwise comparisons, `prefixSum` map approach (optimal)
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
