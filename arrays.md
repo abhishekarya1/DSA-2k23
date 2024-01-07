@@ -5,8 +5,9 @@
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
   - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
 
-- Kadane's Algorithm: make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
-	- Modify kadane's algo to keep track of start and end of max sum subarray 
+- Kadane's Algorithm (subarray having max sum): make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
+	- Modify kadane's algo to keep track of start and end of max sum subarray
+   	- brute force (cubic) approach, better (qudratic) approach, kadane's algo (linear)
 
 - Print max sum contiguous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
 
@@ -26,6 +27,17 @@
   - Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. Use valley-peak approach: calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
 
 - Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`
+	- **LOGIC**: split will have smaller elements on left side and greater on right side (find counter-inversion), bring smallest from right half to left side (find greater and swap), need smallest possible permutation as next so we sort (reverse)
+
+- Longest subarray with given sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach (only this approach won't work if negatives are present in the array), if negatives aren't present optimal approach will be a sliding window
+- Count subarrays with given sum K (or xor K): , `prefixSum` map approach (optimal)
+- Longest consecutive sequence in an array: array can be unsorted
+	- `O(n^2)` quadratic approach with two loops and a while loop to iterate till we keep finding `+1` elements
+	- `Onlogn` sort and do pairwise adjacent comparison and calc run length max consecutive
+ 	- use a `set<>` and do linear traversal, if `element - 1` is not present in set, set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`
+
+- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = 1` (sum 0 seen 1 time even before array traversal starts)
+
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
@@ -34,9 +46,6 @@
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
 	- incase duplicates are there, only consider last among the chain (edge case)
 	- time complexity: `O(n^2)`
-- Longest subarray with give sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach (only this approach won't work if negatives are present in the array), if negatives aren't present optimal approach is sliding window like
-- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = 1` (sum 0 seen 1 time even before array traversal starts)
-- Count subarrays with given sum K (or xor k): quadratic approach with two loops and a while loop, `O(nlogn)` approach on sorted array with pairwise comparisons, `prefixSum` map approach (optimal)
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
