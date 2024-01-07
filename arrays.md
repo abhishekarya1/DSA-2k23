@@ -58,7 +58,8 @@
 
 --- 
 
-Two ways of two-pointer: https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is not STABLE though!
+### Two ways of two-pointer
+https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is not STABLE though!
 
 - ahead and behind pointers .aka. one pointer always moving trick [STABLE]
 ```cpp
@@ -94,3 +95,9 @@ Related Questions:
 - https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 - Segragate 0s and 1s
 - https://leetcode.com/problems/move-zeroes/ (LC sol requires stable way)
+
+### Subarray problems 
+Can be solved in following ways:
+- generate all subarrays (cubic)
+- calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
+- solution involving space like `prefixSum` map (optimal)
