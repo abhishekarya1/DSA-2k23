@@ -112,3 +112,5 @@ A graph is bipartite if the nodes can be partitioned into two disjoint sets `A` 
 - **Detect Cycle in a Directed Graph**: keep a `pathVis[]` array too along with `vis[]` array, mark both on dfs traversal
 	- upon returning after completing a dfs call for all neighbours of a node `i`, reset `pathVis[i]`, but keep it marked as visited in `vis[]`
  	- there is a cycle `if(vis[i] == true && pathVis[i] == true)`, else its fine
+
+`pathVis[]` array indicates node's visit status only for the current path we're traversing, therefore upon completing traversal for a node we reset it
