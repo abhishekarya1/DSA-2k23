@@ -106,6 +106,6 @@ _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-o
 	- BFS: if node is already visited and its not our parent
  	- DFS: same as above, and we also need to propagate `bool dfs()` call's return value till start of the call stack if and when we find a cycle
 
-A graph is bipartite if the nodes can be partitioned into two independent sets `A` and `B` such that every edge in the graph connects a node in set `A` and a node in set `B`.
+A graph is bipartite if the nodes can be partitioned into two disjoint sets `A` and `B` such that every edge in the graph connects a node in set `A` and a node in set `B`. Apart from the mathematical definition, to verify if a graph is bipartite, standard way is to check if it is "2-colorable" (chromatic number = 2) as described below.
 
 - **Check Bipartite** - graph can only not be bipartite if it has a cycle, non-cycle graphs are always bipartite. If we can color nodes alternatingly and color all nodes successfully, then it is bipartite. Approach - do dfs/bfs traversal and color nodes alternatingly, on finding an already visited node check its color, if its alternate, then fine, otherwise not bipartite. No need to check for parent here like cycle detection since parent is expected to have alt color and its fine.
