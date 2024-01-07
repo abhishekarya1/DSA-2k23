@@ -109,3 +109,6 @@ _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-o
 A graph is bipartite if the nodes can be partitioned into two disjoint sets `A` and `B` such that every edge in the graph connects a node in set `A` and a node in set `B`. Apart from the mathematical definition, to verify if a graph is bipartite, standard way is to check if it is "2-colorable" (chromatic number = 2) as described below.
 
 - **Check Bipartite** - graph can only not be bipartite if it has a cycle, non-cycle graphs are always bipartite. If we can color nodes alternatingly and color all nodes successfully, then it is bipartite. Approach - do dfs/bfs traversal and color nodes alternatingly, on finding an already visited node check its color, if its alternate, then fine, otherwise not bipartite. No need to check for parent here like cycle detection since parent is expected to have alt color and its fine.
+- **Detect Cycle in a Directed Graph**: keep a `pathVis[]` array too along with `vis[]` array, mark both on dfs traversal
+	- upon returning after completing a dfs call for all neighbours of a node `i`, reset `pathVis[i]`, but keep it marked as visited in `vis[]`
+ 	- there is a cycle `if(vis[i] == true && pathVis[i] == true)`, else its fine
