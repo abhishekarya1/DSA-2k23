@@ -30,11 +30,11 @@
 	- **LOGIC**: split will have smaller elements on left side and greater on right side (find counter-inversion), bring smallest from right half to left side (find greater and swap), need smallest possible permutation as next so we sort (reverse)
 
 - Longest subarray with given sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach (only this approach won't work if negatives are present in the array), if negatives aren't present optimal approach will be a sliding window
-- Count subarrays with given sum K (or xor K): , `prefixSum` map approach (optimal)
+- Count subarrays with given sum K (or xor K): brute force cubic approach, better qudratic approach, `prefixSum[sum] = count` map approach (optimal)
 - Longest consecutive sequence in an array: array can be unsorted
-	- `O(n^2)` quadratic approach with two loops and a while loop to iterate till we keep finding `+1` elements
-	- `Onlogn` sort and do pairwise adjacent comparison and calc run length max consecutive
- 	- use a `set<>` and do linear traversal, if `element - 1` is not present in set, set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`
+	- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
+	- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
+ 	- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
 
 - Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = 1` (sum 0 seen 1 time even before array traversal starts)
 
