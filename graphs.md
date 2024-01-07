@@ -88,14 +88,24 @@ void depthFirstSearch(int currNode, vector<int> adjList[], bool visited[], vecto
 
 _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-ove/
 
-### Techniques
+## Techniques
+### BFS/DFS and Cycle Detection
 - **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and traverse entire island (connected component), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`, recolor and enqueue neighbours
 - **Rotten Oranges**: store all rotten (start points) in queue beforehand, keep level of BFS i.e. `time` info with the coordinate pair `pair<pair<int, int>, int>`, in BFS simulation enqueue - rot and update `time + 1`
-- **Detect Cycle** - keep parent info in node, and use:
-	- BFS: if node is already visited and its not our parent
- 	- DFS: same as above, and we also need to propagate till start of the call stack if we find a cycle   
 - **Nearest 0/1 in Matrix**: keep `visArr[][]`, `distArr[][]` to avoid modifications to given matrix. To find dist from `0`, mark all starting points (`0`) as visited and do BFS from all of them keeping `step` info inside a node and copying that to distArr. Note that in for loop of BFS, enqueue (going to a neighbour) and step increment is only for unvisited `1`s (as all `0`s were marked visited beforehand).
 
 **INSIGHT**: BFS progresses for all starting points in order one level at a time! All starting points (level 0) are executed first (FIFO) and then their respective neighbours (level 1) are added to queue. Therefore we can't have cases where one point traverses lots of steps (say 4) and store it in corresponding `dist[][]` cell while a `0` cell is its immediate neighbour in the above problem.
 
 **NOTE**: its often not required to keep a `visited[][]` array in the problems above as we can directly modify the given matrix and keep track of modification (visited) state (using color or freshness values). As a rule of thumb, always keep a visited array and avoid mutating the given matrix as it will lead to unnecessary confusion. Ex - case where `initColor = newColor = 0`, we won't know if we've recolored a cell or not since in both the cases its `0` and we'll get TLE.
+
+- **Surrounded Regions**: to find `0` surrounded by `1`, do BFS or DFS (desc below) and any univisited `0`s after all traversals are surrounded regions
+	- in BFS, put all `0`s on any of the four boundaries in quque and mark them as visited, then do BFS
+ 	- in DFS, do DFS for all `0`s on any of the four boundaries
+
+- **Detect Cycle** - keep parent info in node, and use:
+	- BFS: if node is already visited and its not our parent
+ 	- DFS: same as above, and we also need to propagate `bool dfs()` call's return value till start of the call stack if and when we find a cycle
+
+A graph is bipartite if the nodes can be partitioned into two independent sets `A` and `B` such that every edge in the graph connects a node in set `A` and a node in set `B`.
+
+- **Check Bipartite** - graph can only not be bipartite if it has a cycle, non-cycle graphs are always bipartite. If we can color nodes alternatingly and color all nodes successfully, then it is bipartite. Approach - do dfs/bfs traversal and color nodes alternatingly, on finding an already visited node check its color, if its alternate, then fine, otherwise not bipartite. No need to check for parent here like cycle detection since parent is expected to have alt color and its fine.
