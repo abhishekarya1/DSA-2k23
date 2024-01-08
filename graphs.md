@@ -114,8 +114,6 @@ Detecting cycle in directed graph:
 - DFS - use `pathVis[]` array
 - BFS - Kahn's Algorithm (topo sort application)
 
-- **NOTE**: for all problems involving `BFS on Directed Graph`, Kahn's Algorithm is used. Ex - detect cycle in DAG, topo sort with BFS.
-
 **Detect Cycle in a Directed Graph (DFS)**: keep a `pathVis[]` array too along with `vis[]` array, mark both on dfs traversal
 - upon returning after completing a dfs call for all neighbours of a node `i`, reset `pathVis[i]`, but keep it marked as visited in `vis[]`
 - there is a cycle `if(vis[i] == true && pathVis[i] == true)`, else its fine
@@ -152,3 +150,7 @@ Step-3: do BFS and upon visit put in topo array,
 	and if indegree of neighbour becomes 0 enqueue it
 Step-4: compare topo array size == n, if not equal no sorting is possible
 ```
+
+- **NOTE**: for all problems involving `BFS on Directed Graph`, Kahn's Algorithm is used. Ex - detect cycle in directed graph, topo sort with BFS.
+
+![](https://i.imgur.com/xiZiGeg.png)
