@@ -135,7 +135,7 @@ Topo sort - linear ordering of vertices such that for every directed edge `u-v`,
 
 Techniques to calc topo sort:
 - with DFS + stack (can't detect cycles, input must be a DAG)
- - with BFS (Kahn's Algorithm) (robust)
+ - with BFS (Kahn's Algorithm) (works on directed cyclic graphs too)
 
 Applications:
 - detect cycle in directed graph using BFS
