@@ -147,6 +147,8 @@ Applications:
 ```txt
 Step-1: calc indegree of all nodes and store in indeg[n] array
 Step-2: enqueue all indeg[i] == 0
-Step-3: do BFS and upon visit put in topo array, for neighbours, reduce indegree of neighbour (simulating removal of currNode from graph since we put it in topo) and if indegree of neighbour becomes 0 enqueue it
+Step-3: do BFS and upon visit put in topo array,
+	for neighbours, reduce indegree of neighbour (simulating removal of currNode from graph since we put it in topo)
+	and if indegree of neighbour becomes 0 enqueue it
 Step-4: compare topo array size == n, if not equal no sorting is possible
 ```
