@@ -154,3 +154,5 @@ Step-4: compare topo array size == n, if not equal no sorting is possible
 - **NOTE**: for all problems involving `BFS on Directed Graph`, Kahn's Algorithm is used. Ex - detect cycle in directed graph, topo sort with BFS.
 
 ![](https://i.imgur.com/xiZiGeg.png)
+
+**Eventual Safe States (BFS)** - topo sort using Kahn's algo stops just before a cycle starts, we can use this but Kahn's algo works on indegrees and terminal nodes can only be identified with their outdegree. Reverse every edge in the graph and then terminal nodes will have indegree as 0, we can then do Kahn's for these terminal nodes and whichever node we can reach will be safe (normal topo sort traversal). We will be stopped just before a cycle and those nodes won't be part of topo sort list and won't be safe either so it works out.
