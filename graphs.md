@@ -135,7 +135,7 @@ Topo sort - linear ordering of vertices such that for every directed edge `u-v`,
 
 Techniques to calc topo sort:
 - with DFS + stack (can't detect cycles, input must be a DAG)
- - with BFS (Kahn's Algorithm) (works on directed cyclic graphs too)
+- with BFS (Kahn's Algorithm) (works on directed cyclic graphs too)
 
 Applications:
 - detect cycle in directed graph using BFS
@@ -151,8 +151,65 @@ Step-3: do BFS and upon visit put in topo array,
 Step-4: compare topo array size == n, if not equal no sorting is possible
 ```
 
+First technique yet that doesn't involve a visited array `vis[]`, it isn't required since we're enqueue only `indeg = 0` nodes as soon as they become one.
+
+```cpp
+// enqueue indeg[i] == 0 nodes
+
+while(!q.empty()){
+	int node = q.front();
+	q.pop();
+
+	// notice we add to topo sort here in BFS!
+	topo.push_back(node);		
+
+	for(int e : adjList[node]){
+		indeg[e]--;
+		if(indeg[e] == 0) q.push(e);
+	}
+}
+
+// check topo.size() == n here  
+```
+
 - **NOTE**: for all problems involving `BFS on Directed Graph`, Kahn's Algorithm Topo Sort is used. Ex - detect cycle in directed graph, find topo sort, eventual safe state.
 
 ![](https://i.imgur.com/xiZiGeg.png)
 
 **Eventual Safe States (BFS)** - topo sort using Kahn's algo stops just before a cycle starts, we can use this phenomena but Kahn's algo works on indegrees and terminal nodes can only be identified with their outdegree. Reverse every edge in the graph and then terminal nodes will have indegree as 0, we can then do Kahn's for these terminal nodes and whichever node we can reach will be safe (normal topo sort traversal). We will be stopped just before a cycle and those nodes won't be part of topo sort list and won't be safe either so it works out.
+
+### Shortest Path
+Relaxing the edges - populate `dist[]` using minimum distance logic shown below:
+```cpp
+if(dist[node] + wt < dist[neighbour]){
+	dist[neighbour] = dist[node] + wt;
+	q.push({dist[neighbour], neighbour});	// for Dijkstra's algorithm (PQ enqueue)
+}
+```
+We're always given a source node in these problems as cost to goto source node is always zero (`0`).
+
+**Shortest path in DAG**: find topo sort using `DFS + stack` and populate `dist[]` using minimum distance logic for topo sort nodes in order (keep popping stack and process)
+
+Unconnected components? keep popping till we reach source node. Distance to travel to unconnected components will remain infinity (`INT_MAX`).
+
+**Shortest path in undirected graph with unit weight**: do a simple BFS and populate `dist[]` using minimum distance logic, we can reduce code by just keeping `<node, steps>` as a node and `vis[]` since the first time we visit a node, that'll be the shortest distance if all edges have unit (`1`) weight, so its just a normal BFS traversal with step increments like 0/1 matrix problem.
+
+**Shortest path using Dijkstra's Algorithm**: 
+- greedy approach, we choose miniumum edge weight among all the neighbours and visit it
+- TC = `O(E * log V)`
+- doesn't work on graphs that have a negative weight
+- use min-heap (`priority_queue`) with nodes as `<dist, node>`
+
+`priority_queue` gives us minimum distance neighbour for each node _early on_, with `queue` we can achieve the same output but we'll traverse for all nodes and writing to `dist[]` only if a lesser distance is found for a neighbour (leading to more TC).
+
+TC analysis of Dijkstra's algorithm:
+```txt
+V * (log(heap_size) + E * log(heap_size))
+V * (log(hs) + (V - 1) * log(hs))		:since every node can have max V-1 neighbours (edges)
+V * V * (log(hs)
+V * V * log(V * V)		:since each node can at max put all its neighbours in PQ - (V*(V-1)) ~ V*V (full mesh graph)
+V * V * 2 * log(V)
+E * log(V)		:since V*V is total edges (E) (full mesh graph)
+```
+
+- **INSIGHT**: visited array `vis[]` isn't required in shortest distance problems as when we visit a node (say with cost `2`), to come back we will require another `2` cost and that `4` weight isn't lesser than previous cost `0` if we started at source node.
