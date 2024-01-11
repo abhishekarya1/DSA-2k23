@@ -56,7 +56,7 @@ Keep `arr[mid] = k` condition on the direction we want to move in to skip duplic
 
 [Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
-Ceil is nothing but Lower Bound itself.
+Ceil is nothing but Lower Bound, also if element is present then `floor = element = ceil`
 
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
 - Search Insert Position: insert position is lower/upper bound only, depends on where question wants us to insert if element is already present in array
