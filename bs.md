@@ -35,6 +35,8 @@ return -1;
 
 **NOTICE**: after breaking out of the `while` loop, the `low` and `high` values differ, this is important to find lower and upper bounds since we return `low` there.
 
+[Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on above two templates of BS.
+
 - Two ways to goto other half:
   - add or subtract `1` to `mid` (find k, lower_bound, upper_bound, BS on array)
   - set `mid` to `high`/`low` (finding root, BS on search space)
