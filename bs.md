@@ -54,6 +54,8 @@ Note that Lower bound is equal to Upper bound if element `x` is not present in t
 
 Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In lower bound we move leftwards in duplicates, in upper bound we move rightwards in duplicates. `low` will always end up at the answer.
 
+[Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
+
 Ceil is nothing but Lower Bound itself.
 
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
