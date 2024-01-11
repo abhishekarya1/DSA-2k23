@@ -63,8 +63,9 @@ Ceil is nothing but Lower Bound, also if element is present then `floor = elemen
 - Find the first or last occurrence of a given number in a sorted array: CANNOT be solved using lower/upper bound or floor/ceil bcoz they guarantee a valid index as output and don't return `-1` if element is not found in array
   - Find first position: on `arr[mid] == k` store `ans = mid` and reduce search space to left array only (`high = mid - 1`), rest is same as in normal BS
   - Find last position: on `arr[mid] == k` store `ans = mid` and reduce search space to right array only (`low = mid + 1`), rest is same as in normal BS
-- Count occurrences of a number in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`; we can use lower and upper bounds if presence of the number is guaranteed
-  - if element is not guaranteed to be present: find any occurance of it using BS (if not found return `-1`), either check `idx == -1` then occurance is `0`, or if a valid `idx` linearly scan its left half and right half for more occurances (time = `O(n)`)
+- Count occurrences of a number in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`
+  - use previous approach to find leftmost and righmost indexes
+  - another way but linear TC: find any occurance of it using BS (if not found return `-1`), either check `idx == -1` then occurance is `0`, or if a valid `idx` linearly scan its left half and right half for more occurances (time = `O(n)`)
 ---
 - Search in rotated sorted array (no duplicates) - goto the sorted half only if in range, otherwise goto the other half
 - Search in rotated sorted array (duplicates present) - if `arr[mid] == k` is true then we've found our element, otherwise check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
