@@ -4,9 +4,40 @@ mid = floor(low+high)/2;
 mid = floor(low+(high-low))/2;   // avoids overflow
 ```
 
+Two templates of writing BS (they output the exact same thing and differ by interval close `[]` vs `[)`):
+```cpp
+int low = 0, high = arr.size() - 1;
+
+while(low <= high){
+  int mid = low + (high - low) / 2;
+
+  if(k == arr[mid]) return mid;
+  else if(k > arr[mid]) low = mid + 1;
+  else high = mid - 1;
+}
+
+return -1;
+```
+
+```cpp
+int low = 0, high = arr.size();
+
+while(low < high){
+  int mid = low + (high - low) / 2;
+
+  if(k == arr[mid]) return mid;
+  else if(k > arr[mid]) low = mid + 1;
+  else high = mid;
+}
+
+return -1;
+```
+
+**NOTICE**: after breaking out of the `while` loop, the `low` and `high` values differ, this is important to find lower and upper bounds since we return `low` there.
+
 - Two ways to goto other half:
-  - add or subtract `1` to `mid`
-  - set `mid` to `high`/`low`
+  - add or subtract `1` to `mid` (find k, lower_bound, upper_bound, BS on array)
+  - set `mid` to `high`/`low` (finding root, BS on search space)
 
 - Two ways to check value at mid:
   - when you know what you're looking for: check `mid` and skip it when moving to the other half
@@ -17,7 +48,7 @@ mid = floor(low+(high-low))/2;   // avoids overflow
 - Lower Bound: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself
 - Upper Bound: upper bound of `x` is the smallest index `i` such that `arr[i] > x`.  Ex - in `[2 4 5]`, upper bound of `3` is `4` and upper bound of `4` is `5`
 
-Note that Lower bound is equal to Upper bound if element `x` is not present in the array. 
+Note that Lower bound is equal to Upper bound if element `x` is not present in the array.
 
 Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In lower bound we move leftwards in duplicates, in upper bound we move rightwards in duplicates. `low` will always end up at the answer.
 
@@ -60,46 +91,6 @@ while( (high - low) > eps ){
 }
 
 return low;
-```
-
---- 
-
-Two ways of writing BS (where we are converging to an element and not finding a target k):
-```cpp
-// Lower Bound
-
-while (low <= high)    // point#1
-    {
-        int mid = low + (high - low) / 2;
-
-        if (k <= arr[mid])
-            high = mid;   // point#2
-        else
-            low = mid + 1;
-    }
-    
-    // low and high have crossed each other at this point
-   
-    return low;   // low points to answer element, and high is the answer's left neighbour
-```
-
-Below covers the corner case when there is only a single element in array. Ex - peak element finding.
-```cpp
-// Lower Bound (alt way)
-
-while (low < high)    // change#1
-    {
-        int mid = low + (high - low) / 2;
-
-        if (k <= arr[mid])
-            high = mid;   // change#2
-        else
-            low = mid + 1;
-    }
-    
-    //low and high point to the same element at this point (since low == high)
-    
-    return high;   // we can return either low or high as they point to the same element
 ```
 ---
 - Kth Missing Positive Number: find out `no. of elements missing till current element = arr[i]-(i+1)`, answer will always be `no. of elements present that are strictly less than arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time
