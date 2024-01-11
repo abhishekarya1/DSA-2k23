@@ -56,6 +56,8 @@ Keep `arr[mid] = k` condition on the direction we want to move in to skip duplic
 
 [Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
+LB, UB, floor, ceil - Striver's strategy of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach.
+
 Ceil is nothing but Lower Bound, also if element is present then `floor = element = ceil`
 
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
