@@ -213,3 +213,7 @@ E * log(V)		:since V*V is total edges (E) (full mesh graph)
 ```
 
 - **INSIGHT**: visited array `vis[]` isn't required in shortest distance problems as when we visit a node (say with cost `2`), to come back we will require another `2` cost and that `4` weight isn't lesser than previous cost `0` if we started at source node.
+
+**Shortest Path in a Binary Maze (0/1 Grid)**: we don't really need to use Dikstra's here since for each node all 8 edges are equal as they're unit weight (`1`). Use normal Q instead of PQ and update `dist[][]`. This problem is identical to "Shortest path in undirected graph with unit weight" described above, but on 2D grid so `m * n` nodes with each `node = <row, col>`. The first time we visit a node, that is its shortest distance.
+
+**Path with Minimum Effort**: Track max of current path inside the queue node `node = <effortSoFar, <row, col>>`, and on every new max `newEffort > effortSoFar` encountered, update dist array and enqueue neighbour node if its a new min for a neighbour node `heights[nRow][nCol]` on `newEffort < dist[nRow][nCol]`. [My LC solution](https://leetcode.com/problems/path-with-minimum-effort/solutions/4553588/simple-dijkstra-s-using-min-heap-approach-c-concise-well-commented-self-explanatory/)
