@@ -37,14 +37,10 @@ return -1;
 
 [Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on above two templates of BS.
 
-- Two ways to goto other half:
-  - add or subtract `1` to `mid` (find k, lower_bound, upper_bound, BS on array)
-  - set `mid` to `high`/`low` (finding root, BS on search space)
-
 - Two ways to check value at mid:
-  - when you know what you're looking for: check `mid` and skip it when moving to the other half
+  - when you know what you're looking for: check `mid` and skip it when moving to the other half by add or subtract `1` to `mid (find k, lower_bound, upper_bound, BS on array)
   - when we aren't looking for a specific value:
-    - set `low` to `mid` to move to one half (ex - finding root)
+    - set `low` to `mid` to move to one half (ex - finding float root)
     - `low` and `high` will converge to the same element eventually 
 ---
 - Lower Bound: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself
