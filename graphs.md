@@ -218,7 +218,7 @@ E * log(V)		:since V*V is total edges (E) (full mesh graph)
 
 **Path with Minimum Effort**: Track max of current path inside the queue node `node = <effortSoFar, <row, col>>`, and on every new max `newEffort > effortSoFar` encountered, update dist array and enqueue neighbour node if its a new min for a neighbour node `heights[nRow][nCol]` on `newEffort < dist[nRow][nCol]`. [My LC solution](https://leetcode.com/problems/path-with-minimum-effort/solutions/4553588/simple-dijkstra-s-using-min-heap-approach-c-concise-well-commented-self-explanatory/)
 
-Often we use Q with Dijkstra and save on that extra `log(V)` TC of heap insertion and deletion. But when do we NOT use PQ in Dijsktra?
+Often we use Q with Dijkstra (becomes simple BFS then) and save on that extra `log(V)` TC of heap insertion and deletion. But when do we NOT use PQ in Dijsktra?
 - When we notice that parameter we're using to minimize with min-heap `node = {parameter, {row, col}}` (can be cost or steps) is always increasing by a fixed amount for every neighbour (like unit weights) then there is not point in choosing minimum for going to a neighbour as they're all equal, we're better off using a normal queue since all nodes can be inserted in queue in any order (FIFO and not Min-first). In these kind of problems, the first time we visit a node, that'll be its minmum distance so we can ditch either the dist[] array or steps info in node since they will be same value everytime.
 
 Minimum distance logic can also be written either way then: `dist[currNode] + cost < dist[neighbourNode]` instead of Dijkstr's standard current path checking `currNode.costSoFar + cost < dist[neighbourNode]`
