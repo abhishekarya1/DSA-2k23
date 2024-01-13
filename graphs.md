@@ -202,6 +202,33 @@ Unconnected components? keep popping till we reach source node. Distance to trav
 
 `priority_queue` gives us minimum distance neighbour for each node _early on_, with `queue` we can achieve the same output but we'll traverse for all nodes and writing to `dist[]` only if a lesser distance is found for a neighbour (leading to more TC).
 
+```cpp
+int src = 0;
+pq.push({0, src});
+dist[src] = 0;
+
+while(!pq.empty()){
+	auto node = pq.top();
+	pq.pop();
+	int currNode = node.second;
+	int costSoFar = node.first;
+
+	// check all neighbours
+	for(auto e : graph[currNode]){
+		int nNode = e[0];
+                int edgeWt = e[1];
+
+                // relax edge - calc new cost and update if apt
+                if(costSoFar + edgeWt < dist[nNode]){
+                    dist[nNode] = costSoFar + edgeWt;
+                    pq.push({costSoFar + edgeWt, nNode});
+                }
+	}
+}
+
+return dist[dest];
+```
+
 TC analysis of Dijkstra's algorithm:
 ```txt
 V * (log(heap_size) + E * log(heap_size))
