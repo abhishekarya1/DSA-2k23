@@ -84,7 +84,7 @@ Ceil is nothing but Lower Bound, also if element is present then `floor = elemen
     - do BS on the smaller array only, compare `l1 r2 l2 r1`
 - Median of two sorted arrays: use cutpoints approach above, take care of cuts and median condition in case total elements are even or odd
 ---
-- Root of a number using BS: Time = `O(N * log(M x 10^d))`
+- Root of any number (can be float) using BS: Time = `O(N * log(M x 10^d))`
 ```cpp
 double eps = 1e-5;   // upto 5 digits after decimal
 
@@ -101,5 +101,5 @@ return low;
 ```
 ---
 - Kth Missing Positive Number: find out `no. of elements missing till current element = arr[i]-(i+1)`, answer will always be `no. of elements present that are strictly less than arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time
-  - Two-liner `O(n)` solution: https://leetcode.com/problems/kth-missing-positive-number/solutions/1004517/c-2-liner-simplest-o-n-time-o-1-space-faster-than-99/comments/1399607
-  - Normal `O(n)` and BS based on it (take care of `high` in BS solution)
+  - Shifting k `O(n)` solution: https://leetcode.com/problems/kth-missing-positive-number/solutions/1004517/c-2-liner-simplest-o-n-time-o-1-space-faster-than-99/comments/1399607
+  - In BS solution we search on that `arr[i]-(i+1)` space and check it on every `mid` and move accordingly, on `==` condition we have exactly `k` missing elements in left of `mid` and our ans lies just below `arr[mid]` (i.e. `i+k`) so we can move in any direction and `low` will eventually converge (on smallest `i` such that `arr[i]-(i+1) >= k`), then return `low + k` on loop break
