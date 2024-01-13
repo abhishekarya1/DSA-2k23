@@ -19,7 +19,7 @@ A graph `G(V,E)` is a non-linear data structure comprised of a set of vertices `
 Adjacency: two nodes are adjacent only when they are connected by an edge.
 
 - **Adjacency Matrix**: matrix of size `N x N` (`N` is number of nodes). Mark existing edge using `1` in the matrix coordinates. SC = `O(N^2)`.
-- **Adjacency List**: for every node, store all its neighbours in a corresponding list. Use an array of vectors - `vector<int> adjList[n]`. SC = `O(2 * E)` for undirected graphs. Much more space efficient than matrix.
+- **Adjacency List**: for every node, store all its neighbours in a corresponding list and worst case there can be `V` unconnected components. Use an array of vectors - `vector<int> adjList[n]`. SC = `O(2 * E + V)` for undirected graphs. Much more space efficient than matrix.
 
 For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in adjacency matrix. In adjacency list, use `vector<pair<int, int>> adjList[n]` wehere pair's second element denotes weight of the edge.
 
@@ -218,13 +218,11 @@ E * log(V)		:since V*V is total edges (E) (full mesh graph)
 
 **Path with Minimum Effort**: Track max of current path inside the queue node `node = <effortSoFar, <row, col>>`, and on every new max `newEffort > effortSoFar` encountered, update dist array and enqueue neighbour node if its a new min for a neighbour node `heights[nRow][nCol]` on `newEffort < dist[nRow][nCol]`. [My LC solution](https://leetcode.com/problems/path-with-minimum-effort/solutions/4553588/simple-dijkstra-s-using-min-heap-approach-c-concise-well-commented-self-explanatory/)
 
-We can take early exit in the above question (Pure Dijkstra) on visiting a dest node. This is so because when we visit a node in Dijkstra's we're sure that that node is the smallest parameter (cost or effort) in the queue since its Min-Heap (PQ) and nodes aren't processed in insertion order (FIFO) like in simple BFS. We can't take early exits in simple BFS (with variable weight edges) since a node can be visited via another path again with lesser cost. This can't happen in Dijkstra.
-
 Often we use Q with Dijkstra (becomes simple BFS then) and save on that extra `log(V)` TC of heap insertion and deletion. But when do we NOT use PQ in Dijsktra (simple BFS suffices)?
-- When we notice that parameter we're using to minimize with min-heap `node = {parameter, {row, col}}` (can be cost or steps) is always increasing by a fixed amount for every neighbour (like unit weights) then there is not point in choosing minimum for going to a neighbour as they're all equal, we're better off using a normal queue since all nodes can be inserted in queue in any order (FIFO or Min-first). 
+- When we notice that parameter we're using to minimize with min-heap `node = {parameter, {row, col}}` (can be cost or steps) is always increasing by a **fixed amount** for every neighbour (like unit weights) then there is no point in choosing minimum for going to a neighbour as they're all equal, we're better off using a normal queue since all nodes can be inserted in queue in any order (FIFO or Min-first).
 
 Edge relax logic can also be written either way in such equal weight edges: `dist[currNode] + cost < dist[neighbourNode]` instead of Dijkstra's standard current path checking `currNode.costSoFar + cost < dist[neighbourNode]`.
 
 In conclusion: Dijkstra is nothing different, its just modified version of BFS for variable weighted edges.
 
-**Cheapest Flights Within K Stops**: build a graph first, and then enqueue src `node = {stops, {currNode, costSoFar}}`, cap `stops <= k`, and we can use Q here instead of PQ since parameter i.e. `stops` always increment by `1` when visiting a neighbour - so simple BFS. We can't take early exit now since dest node can be visited **again** via another path within `k` with lesser cost.
+**Cheapest Flights Within K Stops**: build a graph first, and then enqueue src `node = {stops, {currNode, costSoFar}}`, cap `stops <= k`, and we can use Q here instead of PQ since parameter i.e. `stops` always increments by `1` when visiting a neighbour - so simple BFS. Can't take any early exit since dest node can be visited **again** via another path within `k` with lesser cost so `return dist[dest]` after everything is done.
