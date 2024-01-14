@@ -213,6 +213,9 @@ while(!pq.empty()){
 	int currNode = node.second;
 	int costSoFar = node.first;
 
+        // early exit (optional)
+        if(currNode == dst) return dist[dst];
+
 	// check all neighbours
 	for(auto e : graph[currNode]){
 		int nNode = e[0];
@@ -226,7 +229,7 @@ while(!pq.empty()){
 	}
 }
 
-return dist[dest];
+return dist[dst];
 ```
 
 TC analysis of Dijkstra's algorithm:
