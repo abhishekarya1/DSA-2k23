@@ -195,7 +195,7 @@ Unconnected components? keep popping till we reach source node. Distance to trav
 **Shortest path in undirected graph with unit weight**: do a simple BFS and populate `dist[]` using minimum distance logic, we can reduce code by just keeping `<node, steps>` as a node and `vis[]` since the first time we visit a node, that'll be the shortest distance if all edges have unit (`1`) weight, so its just a normal BFS traversal with step increments like 0/1 matrix problem.
 
 **Shortest path using Dijkstra's Algorithm**: 
-- greedy approach, we choose miniumum edge weight among all the neighbours and visit it
+- greedy approach based on BFS, we choose miniumum edge weight among all the neighbours and visit it first
 - TC = `O(E * log V)`
 - doesn't work on graphs that have a negative weight
 - use min-heap (`priority_queue`) with nodes as `<dist, node>`
@@ -241,15 +241,21 @@ E * log(V)		:since V*V is total edges (E) (full mesh graph)
 
 - **INSIGHT**: visited array `vis[]` isn't required in shortest distance problems as when we visit a node (say with cost `2`), to come back we will require another `2` cost and that `4` weight isn't lesser than previous cost `0` if we started at source node.
 
-**Shortest Path in a Binary Maze (0/1 Grid)**: we don't really need to use Dikstra's here since for each node all 8 edges are equal as they're unit weight (`1`). Use normal Q instead of PQ and update `dist[][]`. This problem is identical to "Shortest path in undirected graph with unit weight" described above, but on 2D grid so `m * n` nodes with each `node = <row, col>`. The first time we visit a node, that'll be its minmum distance so we can ditch either the dist[] array (use vis[] instead) or steps info in node since they will always be the same value.
+**Shortest Path in a Binary Maze (0/1 Grid)**: we don't really need to use Dikstra's here since for each node all edges of the graph are equal (unit weight). Use normal Q instead of PQ and update `dist[][]`. This problem is identical to "Shortest path in undirected graph with unit weight" described above, but on 2D grid so `m * n` nodes with each `node = <row, col>`. The first time we visit a node, that'll be its minmum distance so we can ditch either the dist[] array (use vis[] instead) or steps info in node since they will always be the same value.
+
+LEARNING: All edges of graph having the same weight is equivalent to undiercted graph and we can use simple BFS to find shortest path in it. Edge relax logic can also be written either way in such equal weight edges: `dist[currNode] + cost < dist[neighbourNode]` instead of Dijkstra's standard current path checking `currNode.costSoFar + cost < dist[neighbourNode]`.
 
 **Path with Minimum Effort**: Track max of current path inside the queue node `node = <effortSoFar, <row, col>>`, and on every new max `newEffort > effortSoFar` encountered, update dist array and enqueue neighbour node if its a new min for a neighbour node `heights[nRow][nCol]` on `newEffort < dist[nRow][nCol]`. [My LC solution](https://leetcode.com/problems/path-with-minimum-effort/solutions/4553588/simple-dijkstra-s-using-min-heap-approach-c-concise-well-commented-self-explanatory/)
+
+LEARNING: Early Exit in Dijkstra is possible unlike simple BFS shortest path - upon dequeue of `dst` node we can break and return `dist[dst]` as in Dikstra we never change `dist[]` of (ergo enqueue) an already popped off node till the end. This is because we reached that node with the minimum distance possible greedily and whatever nodes are remaining in the queue even if they touch dst node again to modify distance it will be more since it was min-heap and we already picked min. [Ref](https://stackoverflow.com/questions/23906530/dijkstras-end-condition) 
+
+Contrary to the above, its possible in shortest path simple BFS to enqueue a node twice since it can be enqueued again with a shorter distance as in example below:
+
+![](https://i.imgur.com/pLkKlwO.png)
 
 Often we use Q with Dijkstra (becomes simple BFS then) and save on that extra `log(V)` TC of heap insertion and deletion. But when do we NOT use PQ in Dijsktra (simple BFS suffices)?
 - When we notice that parameter we're using to minimize with min-heap `node = {parameter, {row, col}}` (can be cost or steps) is always increasing by a **fixed amount** for every neighbour (like unit weights) then there is no point in choosing minimum for going to a neighbour as they're all equal, we're better off using a normal queue since all nodes can be inserted in queue in any order (FIFO or Min-first).
 
-Edge relax logic can also be written either way in such equal weight edges: `dist[currNode] + cost < dist[neighbourNode]` instead of Dijkstra's standard current path checking `currNode.costSoFar + cost < dist[neighbourNode]`.
-
-In conclusion: Dijkstra is nothing different, its just modified version of BFS for variable weighted edges.
-
 **Cheapest Flights Within K Stops**: build a graph first, and then enqueue src `node = {stops, {currNode, costSoFar}}`, cap `stops <= k`, and we can use Q here instead of PQ since parameter i.e. `stops` always increments by `1` when visiting a neighbour - so simple BFS. Can't take any early exit since dest node can be visited **again** via another path within `k` with lesser cost so `return dist[dest]` after everything is done.
+
+Why didn't we use Disjkstra with `node = {costSoFar, {currNode, stops}}`? Since we're minimizing on distance, whenever we visit intermediate nodes (non-dest) we try to store minimum distance for it but optimal path may not be miminum till that point, we want overall distance till `dest` node as shortest but optimizing distance for intermediate path nodes can be wrongful as we can exhaust `k` paths trying to chase mins on every neighbour and not reach `dest` at all. We should've minimized for `k` and not distance.
