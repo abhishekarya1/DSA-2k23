@@ -249,7 +249,7 @@ LEARNING: All edges of graph having the same weight is equivalent to undiercted 
 
 LEARNING: Early Exit in Dijkstra is possible unlike simple BFS shortest path - upon dequeue of `dst` node we can break and return `dist[dst]` as in Dikstra we never change `dist[]` of (ergo enqueue) an already popped off node till the end. This is because we reached that node with the minimum distance possible greedily and whatever nodes are remaining in the queue even if they touch dst node again to modify distance it will be more since it was min-heap and we already picked min. [Ref](https://stackoverflow.com/questions/23906530/dijkstras-end-condition) 
 
-Contrary to the above, its possible in shortest path simple BFS to enqueue a node twice since it can be enqueued again with a shorter distance as in example below:
+Contrary to the above, its possible in shortest path simple BFS to dequeue a node twice since it can be enqueued again with a shorter distance as in example below:
 
 ![](https://i.imgur.com/pLkKlwO.png)
 
