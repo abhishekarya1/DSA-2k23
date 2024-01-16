@@ -46,8 +46,10 @@
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
 	- incase duplicates are there, only consider first/last among the chain
 	- time complexity: `O(n^2)`
-- 4-Sum Problem: fix two pointers `i` and `j` at left, right or at indexes `i` and `j = i + 1 till j < n` and search for `target-arr[i]` in the rest of the array using another two pointers.
-	- incase duplicates are there, only consider first/last among the chain
+- 4-Sum Problem:  or at indexes `i` and `j = i + 1 till j < n` .
+	- strategy-1: fix two pointers `i` and `j` at `0`, `n - 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and dec `j till j >= 0`
+	- strategy-2: fix two pointers `i` and `j` at `0`, `1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j = i + 1 till j < n`
+  	- incase duplicates are there, only consider first/last among the chain
 	- time complexity: `O(n^3)`
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
