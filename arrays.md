@@ -44,11 +44,15 @@
 	- scan again to verify majority status
 	- incase of two elements (`n/3`), check numbers before count zero condition, also use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, else in decrement case, decrement both
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
-	- incase duplicates are there, only consider last among the chain (edge case)
+	- incase duplicates are there, only consider first/last among the chain
 	- time complexity: `O(n^2)`
+- 4-Sum Problem: fix two pointers `i` and `j` at left, right or at indexes `i` and `j = i + 1 till j < n` and search for `target-arr[i]` in the rest of the array using another two pointers.
+	- incase duplicates are there, only consider first/last among the chain
+	- time complexity: `O(n^3)`
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
+- Count Inversions / Reverse Pairs - linear solution is applicable to sorted array, but we can do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them and return at the end
 
 ### 2-D Matrix
 - Search an element in 2D matrix: start from top-right or bottom-left corner
