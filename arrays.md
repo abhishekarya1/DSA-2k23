@@ -47,7 +47,7 @@
 	- incase duplicates are there, only consider first/last among the chain
 	- time complexity: `O(n^2)`
 - 4-Sum Problem:
-	- strategy-1: fix two pointers `i = 0` and `j = n - 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and dec `j`
+	- strategy-1: fix two pointers `i = 0` and `j = n - 1` and search for `target-arr[i]` in the rest of the array (till `j > i`) using another two pointers, nested loops to inc `i` and dec `j`
 	- strategy-2: fix two pointers `i = 0` and `j = i + 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j`
   	- incase duplicates are there, only consider first/last among the chain
 	- time complexity: `O(n^3)`
