@@ -275,6 +275,8 @@ LIMITATION of Dijkstra: Why didn't we use Dijkstra with `node = {costSoFar, {cur
 - worst case is a linked list where relaxation only happens for last edge of each iteration
 - to use for undirected graph, we make two diff direction directed edges between two nodes with same weight
 
+The Bellman-Ford algorithm requires `N-1` iterations to guarantee that all the shortest paths from the source to all other vertices are found. This is because the longest possible shortest path in a graph with `N` vertices is of length `N-1`.
+
 **Summary of Shortest Path Algorithms**:
 |  Algorithm	|  TC
 |---	|---
