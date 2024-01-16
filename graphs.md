@@ -259,7 +259,7 @@ Contrary to the above, its possible in shortest path simple BFS to dequeue a nod
 Often we use Q with Dijkstra (becomes simple BFS then) and save on that extra `log(V)` TC of heap insertion and deletion. But when do we NOT use PQ in Dijsktra (simple BFS suffices)?
 - When we notice that parameter we're using to minimize with min-heap `node = {parameter, {row, col}}` (can be cost or steps) is always increasing by a **fixed amount** for every neighbour (like unit weights) then there is no point in choosing minimum for going to a neighbour as they're all equal, we're better off using a normal queue since all nodes can be inserted in queue in any order (FIFO or Min-first).
 
-Remember Dijkstra is just optimized BFS so doing BFS when we don't have monotonically increasing edges weights, we'll do worse TC with a Q in that case - `O(V*V)` as we'll encounter min multiple times and then enqueue/dequeue it accordingly everytime. But in Dijkstra, we never change min dist of an already dequeued node.
+Remember Dijkstra is just optimized BFS so doing BFS when we don't have monotonically increasing edges weights, we'll do worse TC with a Q in that case - `O(E*V)` as we'll encounter min multiple times and then enqueue/dequeue it accordingly everytime. But in Dijkstra, we never change min dist of an already dequeued node, all previously enqueued copies of it don't lead to relaxation as we already wrote min to dist array.
 
 **Cheapest Flights Within K Stops**: build a graph first, and then enqueue src `node = {stops, {currNode, costSoFar}}`, cap `stops <= k`, and we can use Q here instead of PQ since parameter i.e. `stops` always increments by `1` when visiting a neighbour - so simple BFS. Can't take any early exit since dest node can be visited **again** via another path within `k` with lesser cost so `return dist[dest]` after everything is done.
 
@@ -268,18 +268,18 @@ Why didn't we use Dijkstra with `node = {costSoFar, {currNode, stops}}`? Since w
 **Number Of Ways To Reach End With Shortest Distance**: use Dijkstra with `ways[]` array with `ways[src] = 1`, on finding a new min while doing edge relaxation `ways[nNode] = ways[curNode]`, and on finding equal edge `ways[nNode] = ways[nNode] + ways[curNode]`. This works out because on a new min we replace `ways[nNode]` and then increment from there.
 
 **Bellman-Ford Algorithm**: 
-- can work on negative edge weights and even negative cycles
-- can work on unordered edges too
+- can work on negative edge weights and even negative cycles (no TLE here)
+- can work directly on unordered edges without even building a graph first
 - all edges gets relaxed in `V - 1` iterations, if `V`th iteration still relaxes an edge, this means there is a negative cycle
 - TC = `O(V * E)` relaxing `E` edges in `V - 1` iterations
 - worst case is a linked list where relaxation only happens for last edge of each iteration
-- to use for undirected graph if we make two-way edges between two nodes with same weight
+- to use for undirected graph, we make two diff direction directed edges between two nodes with same weight
 
 **Summary of Shortest Path Algorithms**:
 |  Algorithm	|  TC
 |---	|---
 |  BFS	|  `O(V + E)`
-|  Dijkstra (Q)	| `O(E * V)` 	
-|  Dijkstra (PQ) | `O(E * log V)` 	
+|  Dijkstra (PQ) | `O(E * log V)`
+|  Dijkstra (Q)	| `O(E * V)`
 |  Bellman-Ford	|  `O(E * V)`
 |  Floyd-Warshall |  
