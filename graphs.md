@@ -284,6 +284,8 @@ The Bellman-Ford algorithm requires `N-1` iterations to guarantee that all the s
 - at any point if it is relaxed such that `mat[i][i] < 0`, this indicates negative cycle is present as it should always be the case that `mat[i][i] = 0`
 - to use on UG, every edge can be made into 2 edges of same weight facing opposite direction (DG)
 
+If we use Dijkstra (src to all nodes) to calc multi-source multi-dest shortest paths, we have TC = `V * (E * log V)`, doing Dijkstra for every node `V` to get shortest path till every other node.
+
 **Summary of Shortest Path Algorithms**:
 |  Algorithm	|  TC  | Paradigm | Features
 |---	|--- |---|---
@@ -306,3 +308,10 @@ Multiple MST are possible for a graph and no formula can output number of possib
 - `node = {wt, {node, parent}}` - node and parent pair is added to MST list on finding a min edge between them
 
 Since we're not marking nodes visited on touching from neighbour (as done in BFS) but rather on actually visiting, this may cause a case where a node is enqueued multiple times from neighbouring nodes (e.g. three node cycle). This can happen even when we're checking for visited status before enqueuing (since marking is done later). To mitigate this, upon reaching a node we check if it has already been visited and drop it in that case, otherwise process its neighbours and enqueue its neighbours if they're not visited.
+
+Time Complexity Analysis:
+```txt
+explore every edge and for every edge pick minimum among them using PQ
+E * log (heap_size)
+E * log E
+```
