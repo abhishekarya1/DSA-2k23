@@ -277,11 +277,32 @@ LIMITATION of Dijkstra: Why didn't we use Dijkstra with `node = {costSoFar, {cur
 
 The Bellman-Ford algorithm requires `N-1` iterations to guarantee that all the shortest paths from the source to all other vertices are found. This is because the longest possible shortest path in a graph with `N` vertices is of length `N-1`.
 
+**Floyd–Warshall Algorithm**: calc shortest path from every node to every node, via every node. It is brute-force approach that has cubic TC.
+- can work on negative edge weights and even negative cycles (no TLE here)
+- AM is modified in-place or a new Cost Matrix is made that contains every node to every node minimum distance
+- go from node `i` to node `j` via node `k`, do `mat[i][j] = min(mat[i][j], mat[i][k] + mat[k][j])`, and keep lesser distance
+- at any point if it is relaxed such that `mat[i][i] < 0`, this indicates negative cycle is present as it should always be the case that `mat[i][i] = 0`
+- to use on UG, every edge can be made into 2 edges of same weight facing opposite direction (DG)
+
 **Summary of Shortest Path Algorithms**:
-|  Algorithm	|  TC
-|---	|---
-|  BFS	|  `O(V + E)`
-|  Dijkstra (PQ) | `O(E * log V)`
-|  Dijkstra (Q)	| `O(E * V)`
-|  Bellman-Ford	|  `O(E * V)`
-|  Floyd-Warshall |  
+|  Algorithm	|  TC  | Paradigm | Features
+|---	|--- |---|---
+|  BFS	|  `O(V + E)` | Systematic | Very Fast, works on both UG and DG
+|  Dijkstra (PQ) | `O(E * log V)` | Greedy | Fast, no negatives, fails `shortest within k` problem
+|  Dijkstra (Q)	| `O(E * V)` | Greedy | Unoptimized Dijkstra (bad, identify and avoid using ever)
+|  Bellman-Ford	|  `O(E * V)` | DP | Negative weights and cycles
+|  Floyd-Warshall |  `O(V*3)` | Brute-Force | Multi-source to multi-dest, negative weights and cycles
+
+### Minimum Spanning Tree (MST)
+A spanning tree is a tree in which we have `N` nodes (i.e. All the nodes present in the original graph) and `N-1` edges and all nodes are reachable from each other. If the sum of all edges is minimum possible it is an MST.
+
+Multiple MST are possible for a graph and no formula can output number of possible MST since we don't have connected or not info without edges.
+
+**Prim's Algorithm**:
+- greedy to build MST or just get MST sum
+- start at a arbitrary node and pick minimum edge to connect neighbours (using Min-heap PQ)
+- use `vis[]` but mark visited on actually reaching the node (unlike BFS) rather than touching from a neighbour
+- track and inc `sum` as sum of all edges of MST
+- `node = {wt, {node, parent}}` - node and parent pair is added to MST list on finding a min edge between them
+
+Since we're not marking nodes visited on touching from neighbour (as done in BFS) but rather on actually visiting, this may cause a case where a node is enqueued from multiple nodes. To mitigate this, upon visiting a node we check if it has already been visited and drop it in that case. Otherwise process its neighbours and enqueue its neighbours if they're not visited.
