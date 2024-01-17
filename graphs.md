@@ -305,4 +305,4 @@ Multiple MST are possible for a graph and no formula can output number of possib
 - track and inc `sum` as sum of all edges of MST
 - `node = {wt, {node, parent}}` - node and parent pair is added to MST list on finding a min edge between them
 
-Since we're not marking nodes visited on touching from neighbour (as done in BFS) but rather on actually visiting, this may cause a case where a node is enqueued from multiple nodes. To mitigate this, upon visiting a node we check if it has already been visited and drop it in that case. Otherwise process its neighbours and enqueue its neighbours if they're not visited.
+Since we're not marking nodes visited on touching from neighbour (as done in BFS) but rather on actually visiting, this may cause a case where a node is enqueued multiple times from neighbouring nodes (e.g. three node cycle). This can happen even when we're checking for visited status before enqueuing (since marking is done later). To mitigate this, upon reaching a node we check if it has already been visited and drop it in that case, otherwise process its neighbours and enqueue its neighbours if they're not visited.
