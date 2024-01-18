@@ -315,3 +315,17 @@ explore every edge and for every edge pick minimum among them using PQ
 E * log (heap_size)
 E * log E
 ```
+
+**Disjoint Set**: data structure that can Union or Find in constant time `O(4a) => O(1)`
+- find is `findUltimateParent(u)` and union is `union(u, v)` (Union by Rank or Union by Size)
+- Find: we can tell in constant time if two nodes are connected (part of the same component) or not - if they have same ultimate parent or diff ones
+- Union: for an edge `u-v`, we can also add a node `v` to set of node `u` or vice-versa (by Rank or Size), this addition is done by modifying ultimate parent of a node and modifying its rank/size accordingly
+
+Implementation - use `rank[n]` or `size[n]` and `parent[n]` where `n` is the total number of nodes (`0` indexed), init as `parent[i] = i`, `rank[i] = 0`
+- on `findUPar(u)` **compress path** using backtracking for all intermediate nodes (avoiding `log N` (height of tree) time each time to find ultimate parent
+- union by rank, add smaller rank to larger one (to maintain upper bound) with no modification to rank, otherwise if `rank[p_u] == rank[p_v]` add any to any as parent and inc rank of parent by `1`
+- union by size, add to lesser size and increment size of parent accordingly, on equal condition too
+
+Rank is upper-bound of the height of Disjoint-set forest (tree). Keep the height of the tree small, which is crucial for maintaining the efficiency of operations.
+
+Applications - isConnected, Kruskal MST, etc
