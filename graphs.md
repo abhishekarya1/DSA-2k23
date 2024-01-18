@@ -320,6 +320,7 @@ E * log E
 - find is `findUltimateParent(u)` and union is `union(u, v)` (Union by Rank or Union by Size)
 - Find: we can tell in constant time if two nodes are connected (part of the same component) or not - if they have same ultimate parent or diff ones
 - Union: for an edge `u-v`, we can also add a node `v` to set of node `u` or vice-versa (by Rank or Size), this addition is done by modifying ultimate parent of a node and modifying its rank/size accordingly
+- note that union operation also uses Ultimate Parents of node `u-v` to make decision, we can simply get them using first operation itself - `findUltimateParent(u)`
 
 Implementation - use `rank[n]` or `size[n]` and `parent[n]` where `n` is the total number of nodes (`0` indexed), init as `parent[i] = i`, `rank[i] = 0`
 - on `findUPar(u)` **compress path** using backtracking for all intermediate nodes (avoiding `log N` (height of tree) time each time to find ultimate parent
