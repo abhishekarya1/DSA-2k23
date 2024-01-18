@@ -18,8 +18,8 @@ A graph `G(V,E)` is a non-linear data structure comprised of a set of vertices `
 ## Representations
 Adjacency: two nodes are adjacent only when they are connected by an edge.
 
-- **Adjacency Matrix**: matrix of size `N x N` (`N` is number of nodes). Mark existing edge using `1` in the matrix coordinates. SC = `O(N^2)`.
-- **Adjacency List**: for every node, store all its neighbours in a corresponding list and worst case there can be `V` unconnected components. Use an array of vectors - `vector<int> adjList[n]`. SC = `O(2 * E + V)` for undirected graphs. Much more space efficient than matrix.
+- **Adjacency Matrix**: matrix of size `N x N` (`N` is number of nodes). Mark existing edge using `1` in the matrix coordinates. TC = SC = `O(N^2)`.
+- **Adjacency List**: for every node, store all its neighbours in a corresponding list and worst case there can be `V` unconnected components. Use an array of vectors - `vector<int> adjList[n]`. TC = `O(E + V)`, SC = `O(2 * E + V)` for undirected graphs. Much more space efficient than matrix.
 
 For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in adjacency matrix. In adjacency list, use `vector<pair<int, int>> adjList[n]` wehere pair's second element denotes weight of the edge.
 
