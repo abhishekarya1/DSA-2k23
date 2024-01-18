@@ -330,3 +330,8 @@ Implementation - use `rank[n]` or `size[n]` and `parent[n]` where `n` is the tot
 Rank is upper-bound of the height of Disjoint-set forest (tree). Keep the height of the tree small, which is crucial for maintaining the efficiency of operations.
 
 Applications - isConnected, Kruskal MST, etc
+
+**Kruskal's Algorithm**: find MST sum and/or edges, TC = `O(E*logE + E + 2*4a)` (sorting all edges + each edge is accessed exactly once in Kruskal + disjoint-set check/add)
+- sort edges acc to weight `edge = {wt, {u, v}}`
+- for the first edge - take min weight edge and check if `v` is present in disjoint-set of `u` by `findUPar(u) != findUPar(v)`, add (union) it if not present, do `sum += wt` to add edge weight to MST
+- iterate over each edge and repeat to keep adding to the disjoint set
