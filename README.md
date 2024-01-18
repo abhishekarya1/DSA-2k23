@@ -8,6 +8,8 @@
 
 [Binary Search](/bs.md)
 
+[Strings](/strings.md)
+
 [Linked List](/ll.md)
 
 [Bit Manipulation](/bit.md)
