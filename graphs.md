@@ -11,6 +11,9 @@ A graph `G(V,E)` is a non-linear data structure comprised of a set of vertices `
 - Connected Graph - there is no unreachable vertex. There must be a path between every pair of vertices.
 - Finite Graph - number of nodes are finite.
 
+- Dense Graphs - fully connected "mesh", every node is connected to every other node (`E = n * (n + 1) / 2`), better to store in AM
+- Sparse Graphs - very less edges than nodes, many nodes will have `deg(u) = 0` too, better to store in AL
+
 ## Properties
 - Degree of a graph is twice the number of edges, since each edge connects two nodes: `deg(G) = 2 * E`
 - A Tree is nothing but an directed acyclic graph. Linked List and Heaps are also special cases of a graph.
@@ -19,10 +22,9 @@ A graph `G(V,E)` is a non-linear data structure comprised of a set of vertices `
 Adjacency: two nodes are adjacent only when they are connected by an edge.
 
 - **Adjacency Matrix**: matrix of size `N x N` (`N` is number of nodes). Mark existing edge using `1` in the matrix coordinates. TC = SC = `O(N^2)`.
-- **Adjacency List**: for every node, store all its neighbours in a corresponding list and worst case there can be `V` unconnected components. Use an array of vectors - `vector<int> adjList[n]`. TC = `O(E + V)`, SC = `O(2 * E + V)` for undirected graphs. Much more space efficient than matrix.
+- **Adjacency List**: for every node, store all its neighbours in a corresponding list and worst case there can be `V` unconnected components. Use an array of vectors - `vector<int> adjList[n]`. TC = `O(E + V)`, SC = `O(2 * E + V)` for undirected graphs. Much more space efficient than matrix, but worst case (dense graph) can be as bad as AM.
 
 For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in adjacency matrix. In adjacency list, use `vector<pair<int, int>> adjList[n]` wehere pair's second element denotes weight of the edge.
-
 
 ## Traversals
 - use a visited array with graphs to make sure that already visited nodes aren't visited again, since graphs usually have multiple cycles. This also takes care of traversing any unconnected components.
