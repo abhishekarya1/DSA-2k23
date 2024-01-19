@@ -115,3 +115,4 @@ Can be solved in following ways:
 - `O(n)` time, `O(1)` space approaches
 	- multiply with `-1` (works only with +ve elements)
  	- swapping (simulate 1-based indexing for ease)
+**Find All Numbers Disappeared in an Array**: uses all the same approaches as above - [link](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/)
