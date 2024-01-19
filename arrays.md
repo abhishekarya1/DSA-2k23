@@ -107,3 +107,11 @@ Can be solved in following ways:
 - generate all subarrays (cubic)
 - calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
 - solution involving space like `prefixSum` map (optimal)
+
+### Not From Sheet
+**First Missing Positive**: [video](https://www.youtube.com/watch?v=-lfHWWMmXXM)
+- `O(n logn)` sorting approach
+- `O(n)` time, `O(n)` space hashmap approach
+- `O(n)` time, `O(1)` space approaches
+	- multiply with `-1` (works only with +ve elements)
+ 	- swapping (simulate 1-based indexing for ease)
