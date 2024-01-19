@@ -115,4 +115,9 @@ Can be solved in following ways:
 - `O(n)` time, `O(1)` space approaches
 	- multiply with `-1` (works only with +ve elements)
  	- swapping (simulate 1-based indexing for ease)
-**Find All Numbers Disappeared in an Array**: uses all the same approaches as above - [link](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/)
+**Find All Numbers Disappeared in an Array**: [link](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/)
+- brute-force with linear search (quadratic)
+- sort and brute-force but use binary search (nlogn + nlogn)
+- typical hashmap approach
+- optimal - mark with negative approach; same as above ques
+- optimal - swap approach; same as above ques
