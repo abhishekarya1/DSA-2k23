@@ -340,3 +340,8 @@ Applications - isConnected, Kruskal MST, etc
 - sort edges acc to weight `edge = {wt, {u, v}}`
 - for the first edge - take min weight edge and check if `v` is present in disjoint-set of `u` by `findUPar(u) != findUPar(v)`, add (union) it if not present, do `sum += wt` to add edge weight to MST
 - iterate over each edge and repeat to keep adding to the disjoint set
+
+**Counting number of components**: either use DFS or BFS, to count with Disjoint-set
+- iterate over and put every edge in disjoint-set (union)
+- after disjoint-set(s) are built, check which node has ultimate parent as themselves (`findUPar(u) == u`)
+- the number of those nodes are the total components in the graph (= no. of ultimate parents), rest of the nodes are connected to any of those parents only
