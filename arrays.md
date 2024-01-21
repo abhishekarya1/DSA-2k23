@@ -61,6 +61,7 @@
 - Rotate Matrix by 90 degrees: transpose, and swap cols (aka reverse all rows)
 - Set Matrix Zeros: use variable `col` as indicator for `col0`, start biulding reference matrix from `0, 0` and start building answer matrix from `arr[m-1][n-1]`, treat `col0` separately, both during building reference and answer matrix
 - Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column. Pointers have to be placed very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
+- primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]`
 
 --- 
 
@@ -130,3 +131,10 @@ Can be solved in following ways:
 - optimal - marking with `-1` approach (use `abs()` and 1-based indexing) - if element is already marked, then its a duplicate
 
 PATTERN: If there are multiple elements repeating and missing, sum or xor may not be applicable. We can use indices as hashmap! Since numbers are `[1 - n]` and indices are `[0 - n-1]`, convert to 1-based indexing and if only positives are there use negative marking technique, otherwise use swap technique.
+
+**Count Hills and Valleys in an Array**: [link](https://leetcode.com/problems/count-hills-and-valleys-in-an-array)
+- instead of looking rightwards for next non-equal element to check peak/valley, keep track of leftwards non-equal element in a variable (`left`)
+- compare next elements with this leftwards variable (`left`) instead of element `arr[i - 1]` to check peak/valley
+- the valley/peak count will still remain same since we'll count only once on either side of the equal element occurance chain (smart)
+
+---
