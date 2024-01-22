@@ -71,15 +71,19 @@ Ceil is nothing but Lower Bound, also if element is present then `floor = elemen
 - Find minimum in Rotated Sorted Array: leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum of it, and go to the other part
 - Find out how many times has an array been rotated: answer will be the index of the minimum or maximum element
 - Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), after finding the pivot, check sorted property of left half and right half manually (time = `O(n)`)
+
 ---
+
 - Find peak element: check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end
 - Single element in a Sorted Array: first occurance is supposed to be at even index and other at odd, but after the single element, it will be vice versa. Goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Go in the direction of single element everytime. Handle edge case of array having only 1 element using while loop range `low < high`.
 - Find Kth element of two sorted arrays: 
   - count approach; mimic merge and count till K
-  - cutpoints approach, `k = m + n`, take `m` elements from one and `n` from the other (https://takeuforward.org/data-structure/k-th-element-of-two-sorted-arrays)
+  - cutpoints approach, `k = cut1 + cut2`, take `cut1` elements from one and `cut2` from the other (https://takeuforward.org/data-structure/k-th-element-of-two-sorted-arrays)
     - do BS on the smaller array only, compare `l1 r2 l2 r1`
-- Median of two sorted arrays: use cutpoints approach above, take care of cuts and median condition in case total elements are even or odd
+- Median of two sorted arrays: use cutpoints approach above `left_half = (m + n + 1) / 2`, take care of cuts min/max, and median calc condition(s) in case total elements are even or odd
+
 ---
+
 - Root of any number (can be float) using BS: Time = `O(N * log(M x 10^d))`
 ```cpp
 double eps = 1e-5;   // upto 5 digits after decimal
