@@ -4,6 +4,7 @@
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
   - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
+  - mark with `-1` approach - optimal linear TC
 
 - Kadane's Algorithm (subarray having max sum): make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
 	- Modify kadane's algo to keep track of start and end of max sum subarray
