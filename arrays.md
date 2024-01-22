@@ -2,7 +2,7 @@
 
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
-  - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve
+  - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve, overflow issue may happen tho 
   - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
   - mark with `-1` approach - optimal linear TC
 
