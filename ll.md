@@ -5,7 +5,7 @@
 - Deleting a node in a SLL: use 2 pointers, `prev curr`
 - Delete node to which pointer is given: copy data of next node to current
 - Reverse a SLL: Iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
-  - Recursive way: propagates returned `head` from the base case
+  - Recursive way: go till end and while coming back with recursion, change and break link, and propagate returned `newHead` from the base case
 - Reverse a DLL: swap links and return new head at the end i.e. `prev`
 - Find middle of a LL: Hare & Tortoise approach
   - `while(fast && fast->next)`
