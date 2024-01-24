@@ -118,6 +118,6 @@ return low;
 
 **Median of Row-wise Sorted Matrix**: points to note - matrix is sorted only rowwise, not column wise, and `r*c` is given to be odd
 - find min and max elements of matrix from `0`th column and `c-1`th column respectively - this is our median search space
-- perform binary search on this median space (calc `mid`) and for each row too use binary search to find numbers `<= mid` (i.e. calc uppper bound of `mid` for each row) - **Nested Binary Search**
+- perform binary search on this median space (calc `mid`) and for each row too use binary search to find numbers `<= mid` (i.e. calc upper bound of `mid` for each row) - **Nested Binary Search**
 - use property that for an element `mid` to be median it needs to have `r*c/2` elements to the left of itself. If number of elements aren't sufficient or are excess, move left or right accordingly
-- on equality condition `countSmallEqual(mid) == r*c/2`, our ans is first element having `countSmallEqual(mid) > r*c/2` (upper bound), so we move rightwards
+- on equality condition `countSmallEqual(mid) == r*c/2`, our ans is first element having `countSmallEqual(mid) > r*c/2` (upper bound), so we move rightwards, `low` will eventually converge to UB
