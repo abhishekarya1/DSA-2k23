@@ -108,3 +108,16 @@ return low;
 **Split Array into K Subarrays**: aka painter's partition, book allocation, capacity to ship packages
 - `low = max_element_of_array` and `high = sum_of_all_elements_of_array` and keep searching for lower value that can accomodate `k` max partitions (simulate) for each `mid`
 - on equal condition, move leftwards to minimize max sum, return `low` at the end
+
+---
+
+**Search in Row and Column Wise Sorted Matrix**:
+- staircase search in `O(m + n)` TC
+- traverse 2D matrix using flattening - for `i` in range `0` to `R * C - 1` (array size if storing), total is `R * C`, access an element `matrix[row][col]` using `mat[i / C][i % C]` (if stored/accessed row-wise)
+- rowwise and columnwise matrix after flattening will be sorted so we can apply binary search - `O(log(m*n))`
+
+**Median of Row-wise Sorted Matrix**: points to note - matrix is sorted only rowwise, not column wise, and `r*c` is given to be odd
+- find min and max elements of matrix from `0`th column and `c-1`th column respectively - this is our median search space
+- perform binary search on this median space (calc `mid`) and for each row too use binary search to find numbers `<= mid` (i.e. calc uppper bound of `mid` for each row) - **Nested Binary Search**
+- use property that for an element `mid` to be median it needs to have `r*c/2` elements to the left of itself. If number of elements aren't sufficient or are excess, move left or right accordingly
+- on equality condition `countSmallEqual(mid) == r*c/2`, our ans is first element having `countSmallEqual(mid) > r*c/2` (upper bound), so we move rightwards
