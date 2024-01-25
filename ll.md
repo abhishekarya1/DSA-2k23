@@ -51,7 +51,8 @@ if(fast == NULL) return head -> next;
 ```
 
 - Find intersection point of two LL:
-  - Naive: for every node in `listA` check every node of `listB` 
+  - Brute: for every node in `listA` check every node of `listB`
+  - Naive: store any one list's elements in `set<Node*>`, for every node in the other list search the `set<>` for a match
   - Better: calc size diff of LL from both heads (`diff`), move by `diff` steps in the longer one, traverse simultaneously in the smaller LL, where they meet is the common point
   - Optimal: start traversing from `h1` and on end circle back to `h2` and vice-versa, after 2 taversals it is guranteed that you will stop at either `NULL` (common point) or the answer node
 
