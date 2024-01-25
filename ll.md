@@ -59,6 +59,7 @@ if(fast == NULL) return head -> next;
 
 - Segragate odd and even nodes & segragate 0s, 1s and 2s - attach nodes like Lego bricks
 - Sort Linked list: use either bubble sort and swap node data, or use merge sort for LL
+- Merge sort for LL - split in the middle and call mergeSortLL on both halves, merge using a dummy node and attach legos
 - Merge two sorted LL - take a dummyHead node and keep pointing it to lesser value node
 - Add 1 to a number represented by LL: reverse LL and while carry is more than 0, keep adding, add node at last if carry remains
 - Reverse LL in groups of k: 
