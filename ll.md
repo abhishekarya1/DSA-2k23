@@ -17,13 +17,39 @@ time = dist / speed, in the same time they cover diff dist and diff speeds
 x = z
 ```
 - Length of the loop: find cycle start point, count till it is encountered again
-- kth node from the last: give headstart of `k-1` or `k` steps (depends upon traversal loop condition) to `ptr2`, move both `ptr1` and `ptr2` one step at a time
+- kth node from the last: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time
+```txt
+// move fast pointer k steps ahead
+Node* slow = head, *fast = head;
+while(k--) fast = fast -> next;
+
+// stop at kth node from the end
+while(fast){
+  slow = slow -> next;
+  fast = fast -> next;
+}
+
+// stop at k+1th node from the end (useful to delete kth node)
+while(fast -> next){
+  slow = slow -> next;
+  fast = fast -> next;
+}
+```
 
 ---
 - Check if LL is palindrome or not: goto mid using rabbit & hare technique, reverse the right half, compare one-by-one till end
 - Segregate odd and even nodes in LL: track `oddHead = head` and `evenHead = head -> next` (and save this `evenStartSave = evenHead` for later) and re-attach nodes from LL like Legos
-- Delete Nth node from the last: offset by `n` nodes and then goto one node previous to `n`th node from the last and change links to nth node, corner case is when n is equal to list's size e.g. `list = [1, 2] and n = 2`, in this case when we goto `n`th node from last, fast pointer will become `NULL` and we can return `head -> next` as new head (meaning deletion of `head`)
+- Delete Nth node from the last: offset by `n` nodes and then goto one node previous to `n`th node from the last and change links to nth node, corner case is when `n` is equal to list's size e.g. `list = [1, 2] and n = 2`, in this case during offsetting fast pointer will become `NULL` and we can return `head -> next` as new head (meaning deletion of `head`)
 - Delete middle element: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this when slow is on mid and `slow -> next == NULL` set `head -> next == NULL` and return head
+```txt
+// edge case - [1], n = 1
+if(head -> next == NULL) return NULL;
+
+// edge case - n = size of array (removing head), ex - [1, 2] (n = 2)
+// offset by n steps and then check if we've reached the end (nth node from the end is head)
+if(fast == NULL) return head -> next;
+```
+
 - Find intersection point of two LL:
   - Naive: for every node in `listA` check every node of `listB` 
   - Better: calc size diff of LL from both heads (`diff`), move by `diff` steps in the longer one, traverse simultaneously in the smaller LL, where they meet is the common point
