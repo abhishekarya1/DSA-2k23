@@ -62,7 +62,10 @@ if(fast == NULL) return head -> next;
 - Sort Linked list: use either bubble sort and swap node data, or use merge sort for LL
 - Merge sort for LL - split in the middle and call mergeSortLL on both halves, merge using a dummy node and attach legos
 - Merge two sorted LL - take a dummyHead node and keep pointing it to lesser value node
-- Add 1 to a number represented by LL: reverse LL and while carry is more than 0, keep adding, add node at last if carry remains
+- Add 1 to a number represented by LL: reverse LL and while carry is more than `0`, keep adding, add node at last if carry remains
+- Add two numbers represented bn LL: LL are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node)
+
+---
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, k-1 links are reversed, use modified iterative 3-pointer reverse and start at `dummyNode` (important)
   - Recursive way: reverse first k nodes and let recursion do for the rest of the list. Base case: `when(lengthOfLL < k)` then no reversal to be done
