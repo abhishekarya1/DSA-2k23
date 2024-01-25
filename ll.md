@@ -18,7 +18,7 @@ x = z
 ```
 - Length of the loop: find cycle start point, count till it is encountered again
 - kth node from the last: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time
-```txt
+```cpp
 // move fast pointer k steps ahead
 Node* slow = head, *fast = head;
 while(k--) fast = fast -> next;
@@ -41,7 +41,7 @@ while(fast -> next){
 - Segregate odd and even nodes in LL: track `oddHead = head` and `evenHead = head -> next` (and save this `evenStartSave = evenHead` for later) and re-attach nodes from LL like Legos
 - Delete Nth node from the last: offset by `n` nodes and then goto one node previous to `n`th node from the last and change links to nth node, corner case is when `n` is equal to list's size e.g. `list = [1, 2] and n = 2`, in this case during offsetting fast pointer will become `NULL` and we can return `head -> next` as new head (meaning deletion of `head`)
 - Delete middle element: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this when slow is on mid and `slow -> next == NULL` set `head -> next == NULL` and return head
-```txt
+```cpp
 // edge case - [1], n = 1
 if(head -> next == NULL) return NULL;
 
@@ -58,8 +58,8 @@ if(fast == NULL) return head -> next;
 ---
 
 - Segragate odd and even nodes & segragate 0s, 1s and 2s - attach nodes like Lego bricks
-- Sort Linked list: use either bubble sort ans swap node data, or use merge sort for LL
-- Merge sorted LL - take a dummyHead node and keep pointing it to lesser value node
+- Sort Linked list: use either bubble sort and swap node data, or use merge sort for LL
+- Merge two sorted LL - take a dummyHead node and keep pointing it to lesser value node
 - Add 1 to a number represented by LL: reverse LL and while carry is more than 0, keep adding, add node at last if carry remains
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, k-1 links are reversed, use modified iterative 3-pointer reverse and start at `dummyNode` (important)
