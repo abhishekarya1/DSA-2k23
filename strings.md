@@ -26,3 +26,31 @@ Generalizing - no. of substrings of length k is (n - k + 1)
 **atoi()** and **Decimal to Roman Numeral**: they are bad questions, lots of edge case handling with `if-else` (time wasters)
 
 **Reverse Vowels in a String**: land pointers on only vowels and swap each time [link](https://leetcode.com/problems/reverse-vowels-of-a-string/submissions/1156476438/)
+
+--- 
+**Extract words from a String**: two ways, best way:
+```cpp
+int i = 0;
+while(i < s.length()){
+  while(i < s.length() && s[i] == ' ') i++;
+  while(i < s.length() && s[i] != ' ') temp += s[i++];
+
+  v.push_back(temp);
+
+  temp = "";
+  i++;
+}
+```
+Slightly naive way, prints `""` unnecessarily on every space, so do a check on `temp` before inserting:
+```cpp
+int i = 0;
+  while(i < s.length()){
+    if(s[i] == ' '){
+      // if(temp.size() > 0)
+      v.push_back(temp);
+      temp = "";    
+    }
+    else temp += s[i];
+    i++;
+}
+```
