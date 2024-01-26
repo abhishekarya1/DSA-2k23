@@ -54,3 +54,5 @@ int i = 0;
     i++;
 }
 ```
+
+**Number of flips to make binary string alternating 0 and 1**: use index even-odd property `0101010...` to count mismatches with the given string, mismatches with `1010101...` will be `n - count`, return minimum of those two
