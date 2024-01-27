@@ -2,7 +2,10 @@
 - Traversal: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element)
 
 ---
-- Deleting a node in a SLL: use 2 pointers, `prev curr`
+- Deleting a node in a SLL: use 2 pointers, `prev curr`, deletion of `head` is always tricky since we can't do `prev -> next = curr -> next` if `curr` is at the head and it is the node to be deleted, `prev` can be set to `NULL` or `head` in that case and we won't be able to delete head (so when deletion criteria is met we perform a check for head then and shift head accordingly)
+- **Delete Linked List Nodes with value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
+  - Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
+  - Dummy Node Approach - create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end
 - Delete node to which pointer is given: copy data of next node to current
 - Reverse a SLL: Iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
   - Recursive way: go till end and while coming back with recursion, change and break link, and propagate returned `newHead` from the base case
@@ -77,7 +80,3 @@ if(fast == NULL) return head -> next;
 - Delete nodes of a DLL: take care of edge cases - deletion of first node, deletion of last node
 
 --- 
-
-**Remove Linked List Elements of Value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
-- Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
-- Dummy Node Approach - create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end
