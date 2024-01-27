@@ -75,3 +75,9 @@ if(fast == NULL) return head -> next;
 --- 
 - Find pairs with given sum in DLL: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
 - Delete nodes of a DLL: take care of edge cases - deletion of first node, deletion of last node
+
+--- 
+
+**Remove Linked List Elements of Value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
+- Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
+- Dummy Node Approach - create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end
