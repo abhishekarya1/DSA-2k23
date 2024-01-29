@@ -21,3 +21,5 @@
 - Shuffle the Array (such that all permutations are equally likely): https://youtu.be/hSZARPLUSDM
   - swap every element `arr[i]` with `arr[rand(i, n-1)]`, `i` is inclusive
   - intuition: at every element prob of that element landing up at that position should be `1/n` which isn't possible if we don't reduce the rand's range
+
+[Bulb Switcher](https://leetcode.com/problems/bulb-switcher/) - no. of odd/even divisors
