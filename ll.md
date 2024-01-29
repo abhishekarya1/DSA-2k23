@@ -78,5 +78,6 @@ if(fast == NULL) return head -> next;
 --- 
 - Find pairs with given sum in DLL: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
 - Delete nodes of a DLL: take care of edge cases - deletion of first node, deletion of last node
-
+- Remove Nodes till next Greater Node - we do it the reverse LL way, and we connect current to next greater and propagate back the greater element between current and greater [link](https://leetcode.com/problems/remove-nodes-from-linked-list/)
+- Split Linked List in Parts - `n/k` element in each part but the first `n%k` parts have `1` extra element each (`n/k + 1`)
 --- 
