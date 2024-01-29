@@ -1,5 +1,7 @@
 ## Topics
 
+[Ad-Hoc/Implementation/Brainteaser](/adhoc.md)
+
 [Basics](/basics.md)
 
 [Sorting](/sorting.md)
