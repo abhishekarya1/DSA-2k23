@@ -1,25 +1,37 @@
 - Base Case: `if(head == NULL || head -> next == NULL)`
 - Traversal: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element)
 
+- Create gap of `k` nodes - useful in many problems
+- Reverse traversal of a LL - useful in many problems
+
 ---
 - Deleting a node in a SLL: use 2 pointers, `prev curr`, deletion of `head` is always tricky since we can't do `prev -> next = curr -> next` if `curr` is at the head and it is the node to be deleted, `prev` can be set to `NULL` or `head` in that case and we won't be able to delete head (so when deletion criteria is met we perform a check for head then and shift head accordingly)
+
 - **Delete Linked List Nodes with value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
   - Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
   - Dummy Node Approach - create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end
+
 - Delete node to which pointer is given: copy data of next node to current
+
 - Reverse a SLL: Iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
   - Recursive way: go till end and while coming back with recursion, change and break link, and propagate returned `newHead` from the base case
+
 - Reverse a DLL: swap links and return new head at the end i.e. `prev`
+
 - Find middle of a LL: Hare & Tortoise approach
   - `while(fast && fast->next)`
+
 - Detect loop (Floyd's cycle): Hare & Tortoise approach with Fast and Slow pointers
+
 - Find the starting point in LL: move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node, algebraic proof below:
 ```txt
 time = dist / speed, in the same time they cover diff dist and diff speeds
 2 (x + y)  = x + y + z + y
 x = z
 ```
+
 - Length of the loop: find cycle start point, count till it is encountered again
+
 - kth node from the last: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time
 ```cpp
 // move fast pointer k steps ahead
@@ -62,22 +74,33 @@ if(fast == NULL) return head -> next;
 ---
 
 - Segragate odd and even nodes & segragate 0s, 1s and 2s - attach nodes like Lego bricks
+
 - Sort Linked list: use either bubble sort and swap node data, or use merge sort for LL
+
 - Merge sort for LL - split in the middle and call mergeSortLL on both halves, merge using a dummy node and attach legos
+
 - Merge two sorted LL - take a dummyHead node and keep pointing it to lesser value node
+
 - Add 1 to a number represented by LL: reverse LL and while carry is more than `0`, keep adding, add node at last if carry remains
+
 - Add two numbers represented bn LL: LL are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node)
 
 ---
+
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, k-1 links are reversed, use modified iterative 3-pointer reverse and start at `dummyNode` (important)
   - Recursive way: reverse first k nodes and let recursion do for the rest of the list. Base case: `when(lengthOfLL < k)` then no reversal to be done
+
 - Rotate a LL: make it circular and break
+
 - Flattenning of a LL: recur till last and when coming back form pairs and merge sorted sublists like normal
 
---- 
+---
+
 - Find pairs with given sum in DLL: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
+
 - Delete nodes of a DLL: take care of edge cases - deletion of first node, deletion of last node
+
 - Remove Nodes till next Greater Node - we do it the reverse LL way, and we connect current to next greater and propagate back the greater element between current and greater [link](https://leetcode.com/problems/remove-nodes-from-linked-list/)
+
 - Split Linked List in Parts - `n/k` element in each part but the first `n%k` parts have `1` extra element each (`n/k + 1`)
---- 
