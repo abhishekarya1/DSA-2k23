@@ -23,7 +23,7 @@
 
 --- 
 ### Randomized Algorithms - Reservior Sampling
-- [LC - Random LL node problem](https://leetcode.com/problems/linked-list-random-node/solutions/4650025/o-n-time-o-1-space-using-reservior-sampling-randomized-algorithm-c/) [video link](https://youtu.be/DWZqBN9efGg)
+- [Random LL Node](https://leetcode.com/problems/linked-list-random-node/solutions/4650025/o-n-time-o-1-space-using-reservior-sampling-randomized-algorithm-c/) and [Random Array Index](https://leetcode.com/problems/random-pick-index/) - [video link](https://youtu.be/DWZqBN9efGg)
 
 - Shuffle the Array (such that all permutations are equally likely): [video link]( https://youtu.be/hSZARPLUSDM)
   - swap every element `arr[i]` with `arr[rand(i, n-1)]`, `i` is inclusive
