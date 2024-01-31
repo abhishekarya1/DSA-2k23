@@ -1,6 +1,6 @@
 ## Topics
 
-[Ad-Hoc / Brainteaser](/adhoc.md)
+[Ad-Hoc](/adhoc.md)
 
 [Basics](/basics.md)
 
