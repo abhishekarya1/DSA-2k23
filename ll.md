@@ -88,7 +88,8 @@ if(fast == NULL) return head -> next;
 ---
 
 - Reverse LL in groups of k: 
-  - Iterative way: to reverse k nodes, k-1 links are reversed, use modified iterative 3-pointer reverse and start at `dummyNode` (important), do this `n/k` times
+  - Iterative way: to reverse k nodes, `k-1` links are reversed, use (iterative 3-pointer link reverse technique) that starts at `dummyNode` (important) and can reverse links without changing `prev` or `curr` and connects segments properly, do this `while(n >= k)`
+  - NOTE that normal reverse appraoch won't work here since we will reverse `1 2 3 4` with `k = 2` as `2 1 3 4` (first link reversal) and then we'll need to attach node `1` to next block's last element which is a hassle since first we'll have to reverse next block and then connect them, dummy node approach is much smarter
   - Recursive way: reverse first k nodes iteratively in method, and let recursion do for the rest of the list and attach to recursive call's return, return (propagate) last node of block back everytime. Base case: `when(lengthOfLL < k)` then no reversal to be done
 
 - Rotate a LL: make it circular and break
