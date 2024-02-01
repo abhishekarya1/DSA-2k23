@@ -83,13 +83,13 @@ if(fast == NULL) return head -> next;
 
 - Add 1 to a number represented by LL: reverse LL and while carry is more than `0`, keep adding, add node at last if carry remains
 
-- Add two numbers represented bn LL: LL are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node)
+- Add two numbers represented by LL: LL are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node)
 
 ---
 
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, `k-1` links are reversed, use (iterative 3-pointer link reverse technique) that starts at `dummyNode` (important) and can reverse links without changing `prev` or `curr` and connects segments properly, do this `while(n >= k)`
-  - NOTE that normal reverse appraoch won't work here since we will reverse `1 2 3 4` with `k = 2` as `2 1 3 4` (first link reversal) and then we'll need to attach node `1` to next block's last element which is a hassle since first we'll have to reverse next block and then connect them, dummy node approach is much smarter
+  - NOTE that normal reverse approach won't work here since we will reverse `1 2 3 4` with `k = 2` as `2 1 3 4` (first link reversal) and then we'll need to attach node `1` to next block's last element which is a hassle since first we'll have to reverse next block and then connect them, dummy node approach is much smarter
   - Recursive way: reverse first k nodes iteratively in method, and let recursion do for the rest of the list and attach to recursive call's return, return (propagate) last node of block back everytime. Base case: `when(lengthOfLL < k)` then no reversal to be done
 
 - Rotate a LL: make it circular and break
