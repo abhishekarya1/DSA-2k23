@@ -5,21 +5,24 @@
 - Sieve of Eratosthenes: Loop `i -> 2 to sqrt(n), i++`, loop `j -> i*i to n, j+=i` and untick elements
   - Time - `O(n log logn)`
 - Divisors: https://hashdefine.netlify.app/maths
-- Binary Power: https://cp-algorithms.com/algebra/binary-exp.html
+- Binary Exponentiation: https://cp-algorithms.com/algebra/binary-exp.html
+  - derived from bitwise observation (iterative; fastest)
   - halving then squaring
-  - squaring then halving
+  - squaring then halving (tail recursive)
   - for floating-point numbers and negative powers  
 - Euclidean Algorithm: https://cp-algorithms.com/algebra/euclid-algorithm.html
   - for floating-point numbers
 - Fibonacci Numbers:
   - Recursion
   - Memoisation using array
-  - Binet's Formula
   - Iterative that keeps track of only last two elements (space optimized)
+  - Binet's Formula
 
 ---
 
 [Bulb Switcher](https://leetcode.com/problems/bulb-switcher/) - no. of odd/even divisors
+
+[Power of Three](https://leetcode.com/problems/power-of-three/) - prime factorization keep divising by 3 until you get `1` or number not div by 3. Edge case is `n = 0` where TLE happens, make `n == 0` also `false`
 
 --- 
 ### Randomized Algorithms - Reservior Sampling
