@@ -1,3 +1,70 @@
+**Reverse a Stack using Recursion** (not using any aux stack, only internal function call stack):
+- store all elements of stack in call stack until stack is empty
+- insert elements one by one in the stack BUT always insert at the bottom
+
+```cpp
+// Template#1 - reverse stack using recursion
+void insertAtBottom(stack<int>& st, int x){
+    if(st.empty()) {
+        st.push(x);
+    }
+
+    else {
+        int e = st.top();
+        st.pop();
+        insertAtBottom(st, x);
+        st.push(e);     // replace existing stack elements (backtracking)
+    }
+}
+
+void reverseStack(stack<int>& st){
+    if(st.empty()) return;
+
+    int e = st.top();
+    st.pop();
+
+    reverseStack(st);
+
+    // access elements in reverse fashion and insert at bottom
+    insertAtBottom(st, e);
+}
+```
+**Sort a Stack using Recursion** (not using any aux stack, only internal function call stack): (just like above reverse stack approach it uses smart positional insert)
+- store all elements of stack in call stack until stack is empty
+- insert elements one by one in the stack BUT always insert in its sorted place (like insertion sort)
+
+```cpp
+// Template#2 - sort stack using recursion (ascending order)
+void insertSorted(stack<int>& st, int x){
+    if(st.empty() || x < st.top()) {
+        st.push(x);
+    }
+
+    else {
+        int e = st.top();
+        st.pop();
+        insertSorted(st, x);
+        st.push(e);     // replace existing stack elements (backtracking)
+    }
+}
+
+void sortStack(stack<int>& st){
+    if(st.empty()) return;
+
+    int e = st.top();
+    st.pop();
+
+    sortStack(st);
+
+    // access elements in reverse fashion and insert at bottom
+    insertSorted(st, e);
+}
+```
+
+---
+
+### Subsequences
+
 - refer Samsung notes
 
 Two templates:
