@@ -56,7 +56,7 @@ void sortStack(stack<int>& st){
 
     sortStack(st);
 
-    // access elements in reverse fashion and insert at bottom
+    // access elements in reverse fashion and insert at correct sorted position
     insertSorted(st, e);
 }
 ```
