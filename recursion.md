@@ -79,6 +79,30 @@ Two templates:
 2. FOR loop - permutations & combinations, there is no base case as such, not-pick step is absent
 
 Base cases: In Pick/NotPick it is `i == arr.size()`. In FOR loop approach base case isn't required since FOR loop range takes care of array traversal bounds
+```cpp
+void genSubseq(int i, string curr, string str){
+    if(i == str.length()) {            // base case
+        cout << curr << "\n";
+        return;
+    }
+
+    genSubseq(i + 1, curr + str[i], str);    // pick
+    genSubseq(i + 1, curr, str);            // not pick
+}
+
+void genSubseqForLoopVersion(int i, string curr, string str){
+    cout << curr << "\n";        // no base case
+    
+    for(int i = 0; i < str.length(); i++){        // for loop
+        genSubseq(i + 1, curr + str[i], str);     // only pick, no not pick step
+    }
+}
+
+// function calls - in main()
+genSubseq(0, "", str);
+genSubseqForLoopVersion(0, "", str);
+```
+
 
 Whenever we require to remove duplicates (uniqueness), we `sort` and then use the FOR loop approach. Ex - ComboSum2, SubsetSum2. 
 
