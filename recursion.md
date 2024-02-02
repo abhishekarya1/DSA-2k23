@@ -67,6 +67,13 @@ void sortStack(stack<int>& st){
 
 - refer Samsung notes
 
+### Subsequences Patterns
+A subsequence is a generalization of substring in which it may not be contiguous but order should be maintained
+- generate all subsequences of size n (`vector<int>`)
+- generate all subsequence with sum k (`vector<int>`)
+- check if a subsequence exists with sum k (`bool`)
+- count all subsequences with sum k (`int`)
+
 Two templates:
 1. Pick/NotPick - subsequences
 2. FOR loop - permutations & combinations, there is no base case as such, not-pick step is absent
