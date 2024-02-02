@@ -93,8 +93,8 @@ void genSubseq(int i, string curr, string str){
 void genSubseqForLoopVersion(int i, string curr, string str){
     cout << curr << "\n";        // no base case
     
-    for(int i = 0; i < str.length(); i++){        // for loop
-        genSubseq(i + 1, curr + str[i], str);     // only pick, no not pick step
+    for(int j = i; j < str.length(); j++){        // for loop; notice start index
+        genSubseq(j + 1, curr + str[j], str);     // only pick, no not pick step
     }
 }
 
