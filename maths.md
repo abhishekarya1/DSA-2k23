@@ -24,7 +24,11 @@
 
 [Power of Three](https://leetcode.com/problems/power-of-three/) - prime factorization keep divising by 3 until you get `1` or number not div by 3. Edge case is `n = 0` where TLE happens, make `n == 0` also `false`
 
---- 
+### Newton-Raphson Method
+[cp-algorithms topic page](https://cp-algorithms.com/num_methods/roots_newton.html)
+
+- [sqrt(x](https://leetcode.com/problems/sqrtx/) - use binary search of Newton-Raphson method, both have `O(log n)` TC
+
 ### Randomized Algorithms - Reservior Sampling
 - [Random LL Node](https://leetcode.com/problems/linked-list-random-node/solutions/4650025/o-n-time-o-1-space-using-reservior-sampling-randomized-algorithm-c/) and [Random Array Index](https://leetcode.com/problems/random-pick-index/) - [video link](https://youtu.be/DWZqBN9efGg)
   - Note that in random array problem, we skip elements not equal to target since probability should be equal among all target value elements (so reservior sampling works here too if we only keep count of the target value elements)
