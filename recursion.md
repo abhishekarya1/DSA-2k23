@@ -76,7 +76,7 @@ A subsequence is a generalization of substring in which it may not be contiguous
 
 Two templates:
 1. Pick/NotPick - subsequences
-2. FOR loop - permutations & combinations, there is no base case as such, not-pick step is absent
+2. FOR loop - permutations & combinations, there is no base case as such, not-pick step is absent (this is used when we want to skip duplicates)
 
 Base cases: In Pick/NotPick it is `i == arr.size()`. In FOR loop approach base case isn't required since FOR loop range takes care of array traversal bounds
 ```cpp
@@ -106,9 +106,32 @@ genSubseqForLoopVersion(0, "", str);
 
 Whenever we require to remove duplicates (uniqueness), we `sort` and then use the FOR loop approach. Ex - ComboSum2, SubsetSum2. 
 
-Sort condition: `if(i > p && arr[i] == arr[i - 1]) continue;`. 
+Skip condition: `if(i > p && arr[i] == arr[i - 1]) continue;`. We can further optimize the FOR loop using `if(arr[i] > target) break;` (if current element can't be part of the answer then remaining array can't be too; since array is sorted).
 
-We can further optimize the FOR loop using `if(arr[i] > target) break;` (if current element can't be part of the answer then remaining array can't be too; since array is sorted).
+### Other Patterns
+[Sequential Digits](https://leetcode.com/problems/sequential-digits/) - `1234`, `2345`, `3456` and so on.
+```cpp
+void helper(int i, int n, int low, int high, vector<int> &ans){
+    if(i >= 10 || n > high) return;
+
+    n = n * 10 + i;
+
+    if(n >= low && n <= high) ans.push_back(n);
+
+    helper(i + 1, n, low, high, ans);
+}
+
+// call in main function
+vector<int> ans;
+int n = 0;
+for(int i = 1; i <= 9; i++)
+    helper(i, n, low, high, ans);
+
+sort(ans.begin(), ans.end());
+return ans;
+```
+
+---
 
 **2-D**: the main string to be traversed is traevsed by recursion calls, other by FOR loop. Ex - in phone keypad problem, we traverse digits by recursion and run FOR loop for "abc" "def" etc... Another example - combination sum problems are also this way only, there we place 1 element of the array using recursion and using FOR loop we traverse the rest of the array to find pairs for it
 
