@@ -75,8 +75,8 @@ A subsequence is a generalization of substring in which it may not be contiguous
 - count all subsequences with sum k (`int`)
 
 Two templates:
-1. Pick/NotPick - subsequences
-2. FOR loop - permutations & combinations, there is no base case as such, not-pick step is absent (this is used when we want to skip duplicates)
+1. Pick/NotPick - subsequences (all tree nodes have 2 children except leaves)
+2. FOR loop - subsequences (tree nodes have atmost `str.size()` children), permutations & combinations, there is no base case as such, not-pick step is absent (this is used when we want to skip duplicates)
 
 Base cases: In Pick/NotPick it is `i == arr.size()`. In FOR loop approach base case isn't required since FOR loop range takes care of array traversal bounds
 ```cpp
