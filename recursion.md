@@ -136,7 +136,7 @@ void genPermutations(int i, string str) {
     
     for(int k = i; k < str.length(); k++){
         swap(str[i], str[k]);            // swap
-        genPermutations(i + 1, str);     // notice here
+        genPermutations(i + 1, str);     // notice first param here
         swap(str[i], str[k]);            // backtrack
     }
 }
@@ -144,6 +144,8 @@ void genPermutations(int i, string str) {
 // call in main
 genPermutations(0, "abc");
 ```
+
+[Link to Recursion Tree Diagram](https://imgur.com/a/6BUdglp)
 
 [Sequential Digits](https://leetcode.com/problems/sequential-digits/) - `1234`, `2345`, `3456` and so on.
 ```cpp
