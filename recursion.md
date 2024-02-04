@@ -64,8 +64,7 @@ void sortStack(stack<int>& st){
 ---
 
 ### Subsequences
-
-- refer Samsung notes
+Old Notes - refer Samsung Notes PDF
 
 ### Subsequences Patterns
 A subsequence is a generalization of substring in which it may not be contiguous but order should be maintained
@@ -103,12 +102,49 @@ genSubseq(0, "", str);
 genSubseqForLoopVersion(0, "", str);
 ```
 
+[Link to Recursion Tree Diagrams](https://imgur.com/a/02PcLRh)
 
 Whenever we require to remove duplicates (uniqueness), we `sort` and then use the FOR loop approach. Ex - ComboSum2, SubsetSum2. 
 
 Skip condition: `if(i > p && arr[i] == arr[i - 1]) continue;`. We can further optimize the FOR loop using `if(arr[i] > target) break;` (if current element can't be part of the answer then remaining array can't be too; since array is sorted).
 
 ### Other Patterns
+**Generate Combinations** - they are nothing but subsequences of fixed length `len` i.e. in the recursion tree of subsequences don't go all the way to the leaves but `return` when length of curr hits `len` (combination length)
+```cpp
+void genCombinations(int i, string curr, string str, int len) {
+    if(curr.size() == len) {        // only thing diff from above subseq template
+        cout << curr << "\n";
+        return;
+    }
+    
+    for(int k = i; k < str.length(); k++){
+        genCombinations(k + 1, curr + str[k], str, len);
+    }
+}
+
+// call in main
+genCombinations(0, "", "abcde", 4);
+```
+
+**Generate Permutations** - all permutations have equal length, swap characters each time and we don't even need a `curr` to store permutations
+```cpp
+void genPermutations(int i, string str) {
+    if(i == str.size()) {
+        cout << str << "\n";
+        return;
+    }
+    
+    for(int k = i; k < str.length(); k++){
+        swap(str[i], str[k]);            // swap
+        genPermutations(i + 1, str);     // notice here
+        swap(str[i], str[k]);            // backtrack
+    }
+}
+
+// call in main
+genPermutations(0, "abc");
+```
+
 [Sequential Digits](https://leetcode.com/problems/sequential-digits/) - `1234`, `2345`, `3456` and so on.
 ```cpp
 void helper(int i, int n, int low, int high, vector<int> &ans){
