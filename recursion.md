@@ -102,6 +102,8 @@ genSubseq(0, "", str);
 genSubseqForLoopVersion(0, "", str);
 ```
 
+TC = `O(2^n)`
+
 [Link to Recursion Tree Diagrams](https://imgur.com/a/02PcLRh)
 
 Whenever we require to remove duplicates (uniqueness), we `sort` and then use the FOR loop approach. Ex - ComboSum2, SubsetSum2. 
@@ -126,7 +128,7 @@ void genCombinations(int i, string curr, string str, int len) {
 genCombinations(0, "", "abcde", 4);
 ```
 
-**Generate Permutations** - all permutations have equal length, swap characters each time and we don't even need a `curr` to store permutations
+**Generate Permutations** - all permutations have equal length, swap characters each time and we don't even need a `curr` to store permutations. TC = `O(n!)`
 ```cpp
 void genPermutations(int i, string str) {
     if(i == str.size()) {
