@@ -38,6 +38,9 @@
   - intuition: at every element prob of that element landing up at that position should be `1/n` which isn't possible if we don't reduce the rand's range
 
 ## Geometry
+### Coordinate
+[Check If It Is a Straight Line](https://leetcode.com/problems/check-if-it-is-a-straight-line) - use slope `m = y1 - y0 / x1 - x0`, edge case = two points are always trivially on the same line. For the third point, slope should be equal to the first two points. Division by `0` will be an issue so check if `(y2 - y1) * (x1 - x0) != (y1 - y0) * (x2 - x1)`  is true or false.
+
 ### Triangle Inequality Theorem
 ```txt
 Theorem: Sum of any two sides should be strictly greater than the third side inorder to form a triangle with them.
