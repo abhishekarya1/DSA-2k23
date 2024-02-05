@@ -24,11 +24,11 @@
 
 [Bulb Switcher](https://leetcode.com/problems/bulb-switcher/) - no. of odd/even divisors
 
-[Power of Three](https://leetcode.com/problems/power-of-three/) - prime factorization keep divising by 3 until you get `1` or number not div by 3. Edge case is `n = 0` where TLE happens, make `n == 0` also `false`
+[Power of Three](https://leetcode.com/problems/power-of-three/) - prime factorization keep dividing by 3 until you get `1` or number not div by 3. Edge case is `n = 0` where TLE happens, make `n == 0` also `false`
 
 [Factorial Trailing Zeroes](https://leetcode.com/problems/factorial-trailing-zeroes/) - we can calc factorial and keep dividing by `10` to get ans, we can also go to each number in range `1 - n` and calc how many `2` and `5` factors are present, ans will be `min(cntTwo, cntFive)`. This will cause overflow and TLE respectively.
-- Better way without calc factorial is through observation that in the factorial there will be much more `2`s than `5`s because of all the even numbers in the range `[1 - n]`, so we just need to count number of `5`s
-- each `5` will be introduced into the product on every `5`th number in the product i.e. `n/5` is the number of zeroes (product) factorial will have, and we keep dividing the quotient because numbers like `25` can add additional `5` e.g. `25 / 5` + `5 / 5` = `6` fives in factorization
+- Better way without calc factorial is through observation that in the factorial product there will be much more `2`s than `5`s because of all the even numbers in the range `[1 - n]`, so we just need to count number of `5`s
+- one `5` will be introduced into the product on every `5`th number in the product i.e. `n/5` is the number of zeroes (product) factorial `n!` will have, and we keep dividing the quotient until its less than 5 because numbers like `25` can add additional `5` e.g. `25 / 5` + `5 / 5` = `6` fives in factorization
 
 ### Newton-Raphson Method
 [cp-algorithms topic page](https://cp-algorithms.com/num_methods/roots_newton.html)
