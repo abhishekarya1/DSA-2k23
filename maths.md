@@ -14,9 +14,10 @@
   - for floating-point numbers
 - Fibonacci Numbers:
   - Recursion
-  - Memoisation using array
+  - Memoisation on Recursion (Top-Down DP)
+  - Iterative Tabulation using Array (Bottom-Up DP)
   - Iterative that keeps track of only last two elements (space optimized)
-  - Binet's Formula
+  - Binet's Formula (constant time mathematical)
 
 ---
 ### Divisors
