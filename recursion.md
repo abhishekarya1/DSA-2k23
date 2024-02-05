@@ -171,11 +171,17 @@ sort(ans.begin(), ans.end());
 return ans;
 ```
 
-**Letter Combinations of a Phone Number**: normal combination template actually does combination on own `str = "abc"` using FOR loop as `"a"` and `"bc"` producing `"ab"` and `"bc"`. Same way we do for `str = "23"`, but expand str as `"abcdef"` using a disctionary of key-letter maps and produce all `len(str)` sized combinations using the same template [problem](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+**Letter Combinations of a Phone Number**: normal combination template actually does combination on own `str = "abc"` using FOR loop as `"a"` and `"bc"` producing `"ab"` and `"bc"`. Same way we do for `str = "23"`, but expand str as `"abcdef"` using a dictionary of key-letter maps and produce all `len(str)` sized combinations using the same template [problem](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
 
 (Old Explanation) **2-D**: the main string to be traversed is traversed by recursion calls, other by FOR loop. Ex - in phone keypad problem, we traverse digits by recursion and run FOR loop for "abc" "def" etc... Another example - combination sum problems are also this way only, there we place 1 element of the array using recursion and using FOR loop we traverse the rest of the array to find pairs for it
 
 ### Advanced Problems
-**Palindrome Partitioning**: check all partition positions, if a partition's left substring (`place` to `i`) is a palindrome then recur for remaining string, else move ahead `i++` with the same position `place` as partition split position
+**Palindrome Partitioning**: check all partition positions, if a partition's left substring (`start` to `i`) is a palindrome, put it in ans vector and then recur for remaining string moving ahead `i + 1` in recursion call
 
-**Word Search**: recur on string `word` as soon as the first occurance of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid. Make sure to backtrack i.e. unvisit after recursive calls.
+**Word Search**: recur on string `word` as soon as the first occurance of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid. Make sure to backtrack i.e. unvisit after recursive calls. This is nothing but DFS - go and check.
+-  TC = `4 ^ (m*n)` since at each cell we move in 4 directions
+
+**Rat in a Maze**: Nothing but simple DFS - check and go, make sure to backtrack if further movement is not possible. TC = `4 ^ (m*n)`
+
+**N-Queens**: input is `nCol = nRow = nQueens`,  recur on `cols` and FOR loop on `rows`, need to check only three sides (left in the same row, left upper diag, left lower diag) as we're moving from left to right. 
+- TC = `O(N! * N)`. For the first queen, we have `N` choices of squares, for the second queen we have `N-1` choices (since one square is taken by the first queen), for the third queen we have `N-2` choices, and so on till only `1` choice and we explore all choices so we take product (i.e. factorial). In practice, TC is better since we know if we cannot place a queen and we backtrack earlier than reaching `1`
