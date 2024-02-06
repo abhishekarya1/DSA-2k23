@@ -187,7 +187,11 @@ return ans;
 - TC = `O(N! * N)`. For the first queen, we have `N` choices of squares, for the second queen we need to check `N-1` choices (since one square is taken by the first queen), for the third queen we need to check for `N-2` choices, and so on till only `1` choice and we explore all choices so we take product (i.e. factorial). In practice, TC is better since we know if we cannot place a queen and we backtrack earlier than reaching `1`
 
 ```txt
-Template for below problems - returns bool, make a current choice and recur on next items (rest of the data). If true is returned, that means operations were successful till the end and return true from current too, otherwise upon false do backtracking
+Template for below problems - returns bool, make a current choice and recur on next items (rest of the data).
+If true is returned, that means operations were successful till the end and return true from current too, otherwise upon false do backtracking
+
+In short - false means our current choice is not correct and is causing issues in the future so we backtrack,
+true means all is ok in future (all the way till base case) and we return ok back since our current choice is also isValid (ok)
 
 for(i : all choices)
     if(isValid(i, data) == true)
@@ -203,5 +207,5 @@ for(i : all choices)
 
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
-**Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true
+**Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
 
