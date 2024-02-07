@@ -7,13 +7,13 @@
   - Arrays: insertion and deletion at end using `int top;` index
   - Linked List: insertion and deletion at head
 - Queue using: 
-  - Arrays: use circular inserts and deletion (`(rear + 1) % maxSize` and `(front + 1) % maxSize`) to avoid wastage of space, `front` points to the index of element to be deleted next and `rear` points to the last inserted element index. Maintain a `currSize` and do `currSize++` on every push to queue, will need to reset `front = rear = -1` on deletion of last element since pointers get jumbled up during queue operations and they need to be reset to `-1` eventually, upon first element insert do `front = rear = 0`
+  - Arrays: use circular inserts and deletion (`(rear + 1) % maxSize` and `(front + 1) % maxSize`) to avoid wastage of space, `front` points to the index of element to be deleted next and `rear` points to the last inserted element index. Maintain a `currSize` and update it on every push/pull to the queue, will need to reset `front = rear = -1` on deletion of the only remaining element since we point to actual elements with front and rear and none exists in an empty queue, upon first element insert do `front = rear = 0`
   - Linked List: insertion at tail, deletion at head
 
 - Stack using Queue: bring recently added element to front by extracting and pushing front to rear `n-1` times
 - Queue using Stack: have to use 2 stacks. Shift elements between stacks for either push or pull operation:
-  - first approach: push shifts elements and can be `O(1)` or `O(n)` depending on element availability in `input` stack. Size of queue = input stack
-  - second approach: pop shifts elements and can be `O(1)` or `O(n)` depending on element availability in `output` stack. Size of queue = input stack + output stack
+  - first approach: push shifts elements, and can be `O(1)` or `O(n)` depending on element availability in `input` stack. Size of queue = input stack
+  - second approach: pop shifts elements, and can be `O(1)` or `O(n)` depending on element availability in `output` stack. Size of queue = input stack + output stack
 
 ### Classic Problems
 **Check Balanced Parentheses**: push open brackets, pop if stack top matches current. Invalid cases:
