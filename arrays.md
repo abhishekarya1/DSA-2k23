@@ -139,3 +139,4 @@ PATTERN: If there are multiple elements repeating and missing, sum or xor may no
 - the valley/peak count will still remain same since we'll count only once on either side of the equal element occurance chain (smart)
 
 **Sort Characters by Frequency** (VERY IMPORTANT) - bucket sorting, create freq map of all characters and then append characters freq times to the corresponsing bucket in the `buckets` array of size `str.size() + 1` since max no. of times an element can ooccur is `s.size()`, form `ans` string by traversing and appending all non-empty buckets from the back. [problem](https://leetcode.com/problems/sort-characters-by-frequency/)
+- since there is no way to sort freq numbers in map, we have an already sorted space (buckets) where we can attach elements and traverse from its back to get desc order of freq
