@@ -7,12 +7,11 @@
   - Arrays: insertion and deletion at end using ` int top;` index
   - Linked List: insertion and deletion at head
 - Queue using: 
-  - Arrays: use circular inserts to avoid wastage of space. Maintain a `currSize` and do `(rear+1)%arrSize; currSize++` on every push to queue
-  - Linked List: insertion at end, deletion at head
+  - Arrays: use circular inserts and deletion (`(rear + 1) % maxSize` and `(front + 1) % maxSize`) to avoid wastage of space. Maintain a `currSize` and do `currSize++` on every push to queue, will need to reset `front = read = -1` on deletion of last element and `front = read = 0` on insertion of first element to the queue since pointers get jumbled up during queue operations
+  - Linked List: insertion at tail, deletion at head
 
 - Stack using Queue: bring recently added element to front by extracting and pushing front to rear `n-1` times
-- Queue using Stack: have to use 2 stacks. Either make push `O(1)` and pop `O(n)` or vice-versa.
-
+- Queue using Stack: have to use 2 stacks. Either make push `O(1)` and pop `O(n)` or vice-versa dpending on read-write ratio
 
 ### Classic Problems
 **Check Balanced Parentheses**: push open brackets, pop if stack top matches current. Invalid cases:
