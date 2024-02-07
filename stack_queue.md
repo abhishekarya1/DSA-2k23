@@ -11,7 +11,7 @@
   - Linked List: insertion at tail, deletion at head
 
 - Stack using Queue: bring recently added element to front by extracting and pushing front to rear `n-1` times
-- Queue using Stack: have to use 2 stacks. Either make push `O(1)` and pop `O(n)` or vice-versa dpending on read-write ratio
+- Queue using Stack: have to use 2 stacks. Either make push `O(1)` and pop `O(n)` or vice-versa depending on read-write ratio, shift elements between stacks for operations
 
 ### Classic Problems
 **Check Balanced Parentheses**: push open brackets, pop if stack top matches current. Invalid cases:
