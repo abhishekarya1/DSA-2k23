@@ -138,5 +138,10 @@ PATTERN: If there are multiple elements repeating and missing, sum or xor may no
 - compare next elements with this leftwards variable (`left`) instead of element `arr[i - 1]` to check peak/valley
 - the valley/peak count will still remain same since we'll count only once on either side of the equal element occurance chain (smart)
 
+### Frequency Based
+**Unique Number of Occurrences** - create freq map and put all freq in a set and compare set size with map size. [problem](https://leetcode.com/problems/unique-number-of-occurrences/)
+
+**Count Elements With Maximum Frequency** - multiple scans, create freq map and find max freq in it, then scan string and identify what all elements have the max freq (= cnt), ans will be `cnt * maxFreq`. [problem](https://leetcode.com/problems/count-elements-with-maximum-frequency/)
+
 **Sort Characters by Frequency** (VERY IMPORTANT) - bucket sorting, create freq map of all characters and then append characters freq times to the corresponsing bucket in the `buckets` array of size `str.size() + 1` since max no. of times an element can ooccur is `s.size()`, form `ans` string by traversing and appending all non-empty buckets from the back. [problem](https://leetcode.com/problems/sort-characters-by-frequency/)
 - since there is no way to sort freq numbers in map, we have an already sorted space (buckets) where we can attach elements and traverse from its back to get desc order of freq
