@@ -24,6 +24,13 @@
 **Min Stack**: retrieves minimum element in `O(1)` time. If we have a new minimum push `2*element - min` into the stack, it is guaranteed that this value we are pushing is less than element we are pushing (also our new minimum) and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point and then modify minimum accordingly. [link](https://www.baeldung.com/cs/stack-constant-time)
 
 ### Prefix, Infix, Postfix
+```txt
+Infix - (A+B)/C
+Postfix - AB+C/
+
+Infix - A+B/C
+Postfix - ABC/+
+```
 **Postfix to ANY**: scan from left to right, if operand then push onto to stack, if operator then pop 2 elements from stack and form infix/postfix for them and push them back to the stack, at the end there will only be one element in the stack and that is our answer
 
 **Prefix to ANY**: scan from _right to left_ and do the same as above
