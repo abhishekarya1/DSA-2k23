@@ -34,12 +34,18 @@ Postfix - AB+C/
 
 Infix - A+B/C
 Postfix - ABC/+
+
+Infix - A/B+C
+Postfix - AB/C+
 ```
+
 **Postfix to ANY**: scan from left to right, if operand then push onto to stack, if operator then pop 2 elements from stack and form infix/postfix for them and push them back to the stack, at the end there will only be one element in the stack and that is our answer
 
 **Prefix to ANY**: scan from _right to left_ and do the same as above
 
 **Infix to Postfix**: if operand then print it, if operator and its precedence is greater than stack top push it onto the stack, otherwise pop until stack top is of greater precedence than current (i.e. keep stack in order such that high precedence are on top), at the end print all stack elements if expression traversal is finished, always push `(` and on `)` pop all stack elements till `(` and discard both parenthesis
+
+Intuition: Postfix will always have operands in order of appearance from left to right and more importantly operators in the order in which they are applied in Infix are always listed from left to right in Postfix. By maintaining precedence of operations in the stack, we're guaranteeing that property in resulting Postfix expression.
 
 **Infix to Prefix**: reverse prefix expression, we're making it "nearly-postfix" by converting `(` to `)` and vice-versa, convert this using `infixToPostfix()` and store in `resultString`, reverse `resultString` again
 
