@@ -2,6 +2,8 @@
 - Sort stack using recursion
 - Reverse stack using recursion
 
+See [recursion notes](/recursion.md)
+
 ### ADT
 - Stack using:
   - Arrays: insertion and deletion at end using `int top;` index
@@ -21,11 +23,11 @@
   - if we encounter a closing bracket but stack is empty (extra closing bracket)
   - when we've reached till the end and stack is still not empty (extra opening bracket)
 
-Intuition: latest bracket is always on the stack top and we close it as we go, rest are also in order of appearance (i.e. previous latest at top)
+Intuition: latest bracket is always on the stack top and we close inner pairings first as we go, rest are also in order of appearance (i.e. previous latest at top)
   
 **Min Stack**: retrieves minimum element in `O(1)` time. If we have a new minimum push `2*element - min` into the stack, it is guaranteed that this value we are pushing is less than element we are pushing (also our new minimum) and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point and then modify minimum accordingly. [link](https://www.baeldung.com/cs/stack-constant-time)
 
-### Prefix, Infix, Postfix
+### Prefix, Infix, Postfix Expressions
 ```txt
 Infix - (A+B)/C
 Postfix - AB+C/
