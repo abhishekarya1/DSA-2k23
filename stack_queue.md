@@ -17,9 +17,9 @@
 
 ### Classic Problems
 **Check Balanced Parentheses**: push open brackets, pop if stack top matches current. Invalid cases:
-  - when brackets at stack top and current don't match
-  - if we encounter a closing bracket but stack is empty
-  - when we've reached till the end and stack is still not empty
+  - when brackets at stack top and current don't match (bracket pairing mismatch)
+  - if we encounter a closing bracket but stack is empty (extra closing bracket)
+  - when we've reached till the end and stack is still not empty (extra opening bracket)
   
 **Min Stack**: retrieves minimum element in `O(1)` time. If we have a new minimum push `2*element - min` into the stack, it is guaranteed that this value we are pushing is less than element we are pushing (also our new minimum) and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point and then modify minimum accordingly. [link](https://www.baeldung.com/cs/stack-constant-time)
 
