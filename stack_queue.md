@@ -28,7 +28,7 @@
 
 **Prefix to ANY**: scan from _right to left_ and do the same as above
 
-**Infix to Postfix**: if operand then print it, if operator and its precedence is greater than stack top (perform it now i.e. print it), otherwise push it to stack, at the end print all stack elements if expression traversal is finished
+**Infix to Postfix**: if operand then print it, if operator and its precedence is greater than stack top (perform it now i.e. print it), otherwise push it to stack, at the end print all stack elements if expression traversal is finished, always push `(` and on `)` pop all stack elements till `(`
 
 **Infix to Prefix**: reverse prefix expression, we're making it "nearly-postfix" by converting `(` to `)` and vice-versa, convert this using `infixToPostfix()` and store in `resultString`, reverse `resultString` again
 
