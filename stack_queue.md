@@ -25,7 +25,10 @@ See [recursion notes](/recursion.md)
 
 Intuition: latest bracket is always on the stack top and we close inner pairings first as we go, rest are also in order of appearance (i.e. previous latest at top)
   
-**Min Stack**: retrieves minimum element in `O(1)` time. If we have a new minimum push `2*element - min` into the stack, it is guaranteed that this value we are pushing is less than element we are pushing (also our new minimum) and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point and then modify minimum accordingly. [link](https://www.baeldung.com/cs/stack-constant-time)
+**Min Stack**: retrieves minimum element in `O(1)` time while keeping stack in the order of insertion
+- use two stacks - one main and one that stores all minSoFar encountered during insertions, during push and pop check minStack top and update both accordingly, SC = `O(2N)`
+- use `stack<pair<element, minElementSoFar>>`, this is actually equivalent to the above approach, SC = `O(2N)`
+- math approach (SC = `O(N)`): if we have a new minimum push `2*element - min` into the stack, it is guaranteed that this value we are pushing is less than element we are pushing (also our new minimum) and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point and then modify minimum accordingly. [link](https://www.baeldung.com/cs/stack-constant-time)
 
 ### Prefix, Infix, Postfix Expressions
 ```txt
