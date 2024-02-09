@@ -153,4 +153,4 @@ PATTERN: If there are multiple elements repeating and missing, sum or xor may no
 - calc entire array `prod` and div by `arr[i]` each time (linear time but overflow; div may not be allowed)
 - for each element calc entire array `prod` skipping `arr[i]` in their respective iteration (quadratic time)
 - track `prefixProd` and `suffixProd` (linear time, linear space)
-- directly write to `ans` array in previous approach saving space (linear time, constant space)
+- directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
