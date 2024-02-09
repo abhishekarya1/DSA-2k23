@@ -63,16 +63,30 @@ Intuition: Postfix will always have operands in order of appearance from left to
 ### Monotonic Stack
 **Next Greater Element**: we are creating a monotonic stack here and keep the top as NGE at all times, also the top element will always be the smalllest in the stack. Traverse the array from the right, and if top is greater than current, top is NGE, else pop out elments till we reach NGE (or empty) in the stack (because those elements can never be NGE since we have a bigger number now (current) being pushed into the stack). Popping elements will make sure that current is the smallest in the stack, on pushing it is the top (new NGE) and stack remains monotonic. Keep storing NGEs in a `res`/`ans` array for querying on later.
 
-Smart way to code the same - run while loop for pops first, if stack is not empty we have our NGE otherwise `-1` is the NGE, and push element onto the stack in both cases
+Brute Force Quadratic Way (suitable if we have only one element `n` to find NGE of, in that case its linear): we can traverse from the back and keep track of the latest greater element `if(nums[i] > n) ans = nums[i]`, if we reach `target` in `nums[]` we break and output `ans`. For multiple queries, do this for each element in `nums1[]` and replace in `nums1[]` itself to save space.
 
-Apply to circular array (NGE 2) - do the same and find NGE from i = 2n-1 to 0 and use `i%n` to access elements, put in another `ans` array only when `i<n`
+Apply to circular array (**NGE-II**) - do the same and find NGE from i = 2n-1 to 0 and use `i % n` to access elements, put in another `ans` array only when `i < n`
+
+Smart way to code the same - run while loop for pops first, if stack is not empty we have our NGE otherwise `-1` is the NGE, and push element onto the stack in both cases
+```cpp
+// cleaner monotonic stack template - NGE
+
+for (int i = nums2.size() - 1; i >= 0; i--) {
+  while(!st.empty() && st.top() < nums2[i]) st.pop();
+
+  if(st.empty()) ans[i] = -1;
+  else ans[i] = st.top();
+
+  st.push(nums2[i]);
+}
+```
 
 **Trapping Rain Water**:
   - water at i = minimum of (maximum at left and right) - level of i  --  time = `O(n^2)`
   - we can precompute and store leftMax and rightMax in two separate arrays -- time = `O(n)`, space = `O(2n)`
-  - two pointer approach:
-    - increment left pointer only when there is a greater element on the right pointer, and track leftMax, this way we can find water stored at i only using leftMax since we've reached i only because there is a greater element on the right and we don't even need it to calc water stored at i as `ans += leftMax - arr[i]`. Do the same for right pointer.
-    - if we've reached here that means there is a greater element on the right i.e. `arr[hi]` and we don't need to use it for calc. Also `leftMax >= arr[lo] >= arr[hi]` at this point since all lows below this one had a greater element on the right, that's why `lo++` happened and we've reached this position
+  - two pointer approach (optimal):
+    - increment left pointer only when there is a greater element on the right pointer, and track `leftMax`, this way we can find water stored at `i` only using `leftMax` since we've reached `i` only because there is a greater element on the right and we don't even need it to calc water stored at `i` as `ans += leftMax - arr[i]`. Do the same for right pointer. Not that when we're on a new `leftMax` there is no water accumulated so just update leftMax, no need to calc water level.
+    - how are we sure `leftMax > arr[high]` so much so that we're calc water level without using `arr[high]`? we reached this place `low` because all leftwards elements are smaller than `arr[high]` (this is because of the property of two-pointer approach that keeps array between the two pointers always sorted)
 
 **Subarray minimum and maximum**: find all NGE, PGE, NLE, PLE for an element and store in pre-compute arrays (optimization). Then use combinatorics formual `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min/max. To calc elements on the left/right from/to PLE, etc... requires deatiled and careful index handling.
 
