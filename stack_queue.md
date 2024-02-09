@@ -61,7 +61,7 @@ Intuition: Postfix will always have operands in order of appearance from left to
 **Infix to Prefix**: reverse prefix expression, we're making it "nearly-postfix" by converting `(` to `)` and vice-versa, convert this using `infixToPostfix()` and store in `resultString`, reverse `resultString` again
 
 ### Monotonic Stack
-**Next Greater Element**: we are creating a monotonic stack here and keep the top as NGE at all times, also the top element will always be the smalllest in the stack. Traverse the array from the right, and if top is greater than current, top is NGE, else pop out elments till we reach NGE (or empty) in the stack. Popping elments will make sure that current is the smallest in the stack, on pushing it is the top and stack remains monotonic.
+**Next Greater Element**: we are creating a monotonic stack here and keep the top as NGE at all times, also the top element will always be the smalllest in the stack. Traverse the array from the right, and if top is greater than current, top is NGE, else pop out elments till we reach NGE (or empty) in the stack (because those elements can never be NGE since we have a bigger number now (current) being pushed into the stack). Popping elements will make sure that current is the smallest in the stack, on pushing it is the top (new NGE) and stack remains monotonic.
 
 Smart way to code the same - run while loop for pops first, if stack is not empty we have our NGE otherwise push element onto the stack
 
