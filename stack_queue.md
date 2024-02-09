@@ -63,7 +63,7 @@ Intuition: Postfix will always have operands in order of appearance from left to
 ### Monotonic Stack
 **Next Greater Element**: we are creating a monotonic stack here and keep the top as NGE at all times, also the top element will always be the smalllest in the stack. Traverse the array from the right, and if top is greater than current, top is NGE, else pop out elments till we reach NGE (or empty) in the stack (because those elements can never be NGE since we have a bigger number now (current) being pushed into the stack). Popping elements will make sure that current is the smallest in the stack, on pushing it is the top (new NGE) and stack remains monotonic. Keep storing NGEs in a `res`/`ans` array for querying on later.
 
-Smart way to code the same - run while loop for pops first, if stack is not empty we have our NGE otherwise push element onto the stack
+Smart way to code the same - run while loop for pops first, if stack is not empty we have our NGE otherwise `-1` is the NGE, and push element onto the stack in both cases
 
 Apply to circular array (NGE 2) - do the same and find NGE from i = 2n-1 to 0 and use `i%n` to access elements, put in another `ans` array only when `i<n`
 
