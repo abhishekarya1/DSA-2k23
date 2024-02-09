@@ -146,3 +146,11 @@ PATTERN: If there are multiple elements repeating and missing, sum or xor may no
 
 **Sort Characters by Frequency** (VERY IMPORTANT) - bucket sorting, create freq map of all characters and then append characters freq times to the corresponsing bucket in the `buckets` array of size `str.size() + 1` since max no. of times an element can ooccur is `s.size()`, form `ans` string by traversing and appending all non-empty buckets from the back. [problem](https://leetcode.com/problems/sort-characters-by-frequency/)
 - since there is no way to sort freq numbers in map, we have an already sorted space (buckets) where we can attach elements and traverse from its back to get desc order of freq
+
+---
+
+**Product of Array Except Self**:
+- calc entire array `prod` and div by `arr[i]` each time (linear time but overflow; div may not be allowed)
+- for each element calc entire array `prod` skipping `arr[i]` in their respective iteration (quadratic time)
+- track `prefixProd` and `suffixProd` (linear time, linear space)
+- directly write to `ans` array in previous approach saving space (linear time, constant space)
