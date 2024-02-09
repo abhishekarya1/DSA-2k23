@@ -86,7 +86,7 @@ for (int i = nums2.size() - 1; i >= 0; i--) {
   - we can precompute and store leftMax and rightMax in two separate arrays -- time = `O(n)`, space = `O(2n)`
   - two pointer approach (optimal):
     - increment left pointer only when there is a greater element on the right pointer, and track `leftMax`, this way we can find water stored at `i` only using `leftMax` since we've reached `i` only because there is a greater element on the right and we don't even need it to calc water stored at `i` as `ans += leftMax - arr[i]`. Do the same for right pointer. Not that when we're on a new `leftMax` there is no water accumulated so just update leftMax, no need to calc water level.
-    - how are we sure `leftMax > arr[high]` so much so that we're calc water level without using `arr[high]`? we reached this place `low` because all leftwards elements are smaller than `arr[high]` (this is because of the property of two-pointer approach that keeps array between the two pointers always sorted)
+    - how are we sure `leftMax > arr[high]` so much so that we're calc water level without using `arr[high]`? we reached this place `low` because all leftwards elements are smaller than `arr[high]`, that includes `leftMax` ofc (property of two-pointer approach that keeps array sorted in this way)
 
 **Subarray minimum and maximum**: find all NGE, PGE, NLE, PLE for an element and store in pre-compute arrays (optimization). Then use combinatorics formual `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min/max. To calc elements on the left/right from/to PLE, etc... requires deatiled and careful index handling.
 
