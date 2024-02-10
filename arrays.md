@@ -129,8 +129,8 @@ Can be solved in following ways:
 
 [reference to all approaches above](https://leetcode.com/problems/find-the-duplicate-number/solutions/1892921/9-approaches-count-hash-in-place-marked-sort-binary-search-bit-mask-fast-slow-pointers/)
 
-**First Missing Positive**: this problem has negatives, thats why its tricky [video](https://www.youtube.com/watch?v=-lfHWWMmXXM)
-- `O(n logn)` sorting approach
+**First Missing Positive**: this problem has negatives and larger numbers, thats why its tricky [video](https://www.youtube.com/watch?v=-lfHWWMmXXM)
+- `O(n logn)` sorting approach [link](https://leetcode.com/problems/first-missing-positive/solutions/4426658/best-and-simple-c-approach-by-khubaib-ahmad/)
 - `O(n)` time, `O(n)` space hashmap approach or use set (still needs `O(n)` space)
 - `O(n)` time, `O(1)` space approaches
 	- multiply with `-1` (works only with +ve elements)
