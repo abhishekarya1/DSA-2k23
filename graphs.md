@@ -320,6 +320,8 @@ Multiple MST are possible for a graph and no formula can output number of possib
 
 Since we're not marking nodes visited on touching from neighbour (as done in BFS) but rather on actually visiting, this may cause a case where a node is enqueued multiple times from neighbouring nodes (e.g. three node cycle). This can happen even when we're checking for visited status before enqueuing (since marking is done later). To mitigate this, upon reaching a node we check if it has already been visited and drop it in that case, otherwise process its neighbours and enqueue its neighbours if they're not visited.
 
+They may feel similar, but Prim is different from Dijkstra because here we enqueue all univisted neighbours and goto min edge among neighbours, whereas in Dijkstra for nodes getting edges relaxed updated their shortest dist in `dist[]` (touch) and enqueue only them, then goto min edge in heap (may not be any of current node's neighbours). Ex - `(1,2,2) (1,3,1) (3,4,1) (4,2,1)` in this MST is not equal to the shortest path from node `1` as source. Moreover Prim is for undirected graphs MST and Dijkstra is for directed graphs SSSP.
+
 Time Complexity Analysis:
 ```txt
 explore every edge and for every edge pick minimum among them using PQ
