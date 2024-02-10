@@ -112,6 +112,16 @@ Can be solved in following ways:
 - solution involving space like `prefixSum` map (optimal)
 
 ### Not From Sheet
+**Duplicate Detection Techniques**: [problem1](https://leetcode.com/problems/contains-duplicate/) [problem2](https://leetcode.com/problems/find-the-duplicate-number/) [BEST]
+- if one is missing and/or one is duplicate, use XOR (pairings must exists for XOR, not applicable in multiple missing or multiple duplicates)
+- sort and compare adjacents (works most time xD but modification to input array may not always be allowed)
+- freq count hashmap (naive)
+- mark with negatives or cycle sort approach (won't work if no modifications are allowed to input array)
+- binary search (no sorting required) - TC = `O(nlogn)`
+- floyd's cycle detection algo (two pointers) - TC = `O(n)`
+
+[reference to all approaches above](https://leetcode.com/problems/find-the-duplicate-number/solutions/1892921/9-approaches-count-hash-in-place-marked-sort-binary-search-bit-mask-fast-slow-pointers/)
+
 **First Missing Positive**: [video](https://www.youtube.com/watch?v=-lfHWWMmXXM)
 - `O(n logn)` sorting approach
 - `O(n)` time, `O(n)` space hashmap approach
@@ -127,7 +137,7 @@ Can be solved in following ways:
 - optimal - swap approach; same as above ques
 
 **Contains Duplicate at atmost distance k**: [link](https://leetcode.com/problems/contains-duplicate-ii/)
-- optimal - track last index in `hash[]` and if its the second time we're seeing the element, calc delta and compare with `k`
+- optimal - track last index in `hash[]` and if its the second time we're seeing the element, calc delta and compare with `k` (linear SC)
 
 **Find All Duplicates in an Array**: since multiple are missing, and multiple are repeating, we can't use sum or xor here. [link](https://leetcode.com/problems/find-all-duplicates-in-an-array/solutions/4595812/o-n-time-o-1-space-optimal-approach-using-marking-negative-technique-c/)
 - optimal - marking with `-1` approach (use `abs()` and 1-based indexing) - if element is already marked, then its a duplicate
