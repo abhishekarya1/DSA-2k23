@@ -111,13 +111,17 @@ Can be solved in following ways:
 - calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
 - solution involving space like `prefixSum` map (optimal)
 
-### Not From Sheet
-**Duplicate Detection Techniques**: [problem1](https://leetcode.com/problems/contains-duplicate/) [problem2](https://leetcode.com/problems/find-the-duplicate-number/) [IMPORTANT]
+### Not From Sheet]
+```
+Duplicate/Missing Detection Techniques
 - brute force (quadratic solution)
 - freq count hashmap
-- if one is missing and/or one is duplicate, use Math or XOR (pairings must exists for XOR, not applicable in multiple missing or multiple duplicates)
+- if only one is missing and/or only one is duplicate, use Math or XOR (pairings must exists for XOR, not applicable in more than 2 missing and/or more than 2 duplicates)
 - sort and compare adjacents (works most time xD)
 - mark with negatives and cycle sort approach
+- binary search (on [1-n] search space)
+- floyd's cycle detection algorithm (treat index and addresses and array elements as pointers)
+```
 
 **Find the Duplicate Number**: here the single duplicate number can occur more than 2 times, thats why XOR/Math isn't applicable, other ways are but modifications to input array and extra space isn't allowed [problem](https://leetcode.com/problems/find-the-duplicate-number/)
 - binary search (no sorting required): search on `[1 - n]` space and simulate counting (`if(nums[i] <= mid) cnt++`) for each `mid`, TC = `O(nlogn)` even without sorting [OPTIMAL]
@@ -130,7 +134,7 @@ Can be solved in following ways:
 - `O(n)` time, `O(n)` space hashmap approach
 - `O(n)` time, `O(1)` space approaches
 	- multiply with `-1` (works only with +ve elements)
- 	- swapping (simulate 1-based indexing for ease)
+ 	- cycle sort swapping (simulate 1-based indexing for ease)
 
 **Find All Numbers Disappeared in an Array**: [link](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/)
 - brute-force with linear search (quadratic)
