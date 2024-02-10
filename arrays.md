@@ -118,7 +118,7 @@ Can be solved in following ways:
 - set - put all elements in a set and compare set size with array size to check existence of duplicate(s) (linear time)
 - if only one is missing and/or only one is duplicate, use Math or XOR (pairings must exists for XOR, not applicable in more than 2 missing and/or more than 2 duplicates)
 - sort and compare adjacents (works most time xD)
-- mark with negatives and cycle sort approach
+- mark with negatives and cycle sort approach (treating array indices as hashmap so its equivalent to the above approach)
 - binary search (on [1-n] search space)
 - floyd's cycle detection algorithm (treat index and addresses and array elements as pointers)
 ```
