@@ -111,9 +111,8 @@ Can be solved in following ways:
 - calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
 - solution involving space like `prefixSum` map (optimal)
 
-### Not From Sheet]
+### Duplicate/Missing Detection Techniques
 ```
-Duplicate/Missing Detection Techniques
 - brute force (quadratic solution)
 - freq count hashmap
 - if only one is missing and/or only one is duplicate, use Math or XOR (pairings must exists for XOR, not applicable in more than 2 missing and/or more than 2 duplicates)
@@ -151,10 +150,14 @@ Duplicate/Missing Detection Techniques
 
 PATTERN: If there are multiple elements repeating and missing, sum or xor may not be applicable. We can use indices as hashmap! Since numbers are `[1 - n]` and indices are `[0 - n-1]`, convert to 1-based indexing and if only positives are there use negative marking technique, otherwise use swap technique.
 
+### Two Pointers - Valleys
+
 **Count Hills and Valleys in an Array**: [link](https://leetcode.com/problems/count-hills-and-valleys-in-an-array)
 - instead of looking rightwards for next non-equal element to check peak/valley, keep track of leftwards non-equal element in a variable (`left`)
 - compare next elements with this leftwards variable (`left`) instead of element `arr[i - 1]` to check peak/valley
 - the valley/peak count will still remain same since we'll count only once on either side of the equal element occurance chain (smart)
+
+**Trapping Rainwater Problem**: see [stack and queues notes](/stack_queue.md)
 
 ### Frequency Based
 **Unique Number of Occurrences** - create freq map and put all freq in a set and compare set size with map size, another approach can be to count freq and sort freq array to identify if any duplicates are there by comparing adjacent elements. [problem](https://leetcode.com/problems/unique-number-of-occurrences/)
