@@ -114,7 +114,8 @@ Can be solved in following ways:
 ### Duplicate/Missing Detection Techniques
 ```
 - brute force (quadratic solution)
-- freq count hashmap
+- hashmap - store and check freq count
+- set - put all elements in a set and compare set size with array size to check existence of duplicate(s) (linear time)
 - if only one is missing and/or only one is duplicate, use Math or XOR (pairings must exists for XOR, not applicable in more than 2 missing and/or more than 2 duplicates)
 - sort and compare adjacents (works most time xD)
 - mark with negatives and cycle sort approach
