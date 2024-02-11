@@ -46,15 +46,16 @@ return -1;
 - Lower Bound: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself
 - Upper Bound: upper bound of `x` is the smallest index `i` such that `arr[i] > x`.  Ex - in `[2 4 5]`, upper bound of `3` is `4` and upper bound of `4` is `5`
 
-Note that Lower bound is equal to Upper bound if element `x` is not present in the array.
+Note that Lower bound is equal to Upper bound if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if `low` pointer crosses array bounds
 
-Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In lower bound we move leftwards in duplicates, in upper bound we move rightwards in duplicates. `low` will always end up at the answer.
+Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In lower bound we move leftwards in duplicates, in upper bound we move rightwards in duplicates. `low` will always end up at the answer (rightwards element before condition is broken).
 
-[Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
+[Problem](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
+[Code Templates](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
 LB, UB, floor, ceil - Striver's strategy of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach.
 
-Ceil is nothing but Lower Bound, also if element is present then `floor = element = ceil`
+Ceil value is equal to the Lower Bound value, also if target element is present then `floor = element = ceil`
 
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
 - Search Insert Position: insert position is lower/upper bound only, depends on where question wants us to insert if element is already present in array
