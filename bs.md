@@ -16,24 +16,30 @@ while(low <= high){
   else high = mid - 1;
 }
 
+// low > high here; precisely low = high + 1
+// if method didn't return till now ofc
+
 return -1;
 ```
 
 ```cpp
-int low = 0, high = arr.size();
+int low = 0, high = arr.size();        // notice
 
-while(low < high){
+while(low < high){                    // notice
   int mid = low + (high - low) / 2;
 
   if(k == arr[mid]) return mid;
   else if(k > arr[mid]) low = mid + 1;
-  else high = mid;
+  else high = mid;                    // notice
 }
+
+// low == high here
+// if method didn't return till now ofc
 
 return -1;
 ```
 
-**NOTICE**: after breaking out of the `while` loop, the `low` and `high` values differ, this is important to find lower and upper bounds since we return `low` there.
+**NOTICE**: after breaking out of the `while` loop, the `low` and `high` values differ in these two approaches, this is important to find lower and upper bounds since we return `low` there.
 
 [Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on above two templates of BS.
 
