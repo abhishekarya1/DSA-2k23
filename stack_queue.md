@@ -90,14 +90,14 @@ for (int i = nums2.size() - 1; i >= 0; i--) {
 
 **Subarray minimum and maximum**: find all NGE, PGE, NLE, PLE for an element and store in pre-compute arrays (optimization). Then use combinatorics formual `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min/max. To calc elements on the left/right from/to PLE, etc... requires deatiled and careful index handling.
 
-**Remove k digits to make minimum number**: if the number's digits are monotonic, we can decide which to remove. We always prioritize removing digits on the leftwards (most significant ones) but they have to be greater then elemens on the right too (monotonicity). So we traverse from left to right and remove element from stack if an inversion is encountered (and keep removing atmost `k` times till inversions are present for current digit). Answer number will be stack elements only. Edge cases - duplicate adjacent digits, `01200`, increasing sequence `1234`
+**Remove k digits to make minimum number**: if the number's digits are monotonic, we can decide which to remove. We always prioritize removing digits on the leftwards (most significant ones) but they have to be greater then elemens on the right too (monotonicity). So we traverse from left to right and remove element from stack if an inversion is encountered (and keep removing atmost `k` times till inversions are present for current digit). Answer number will be reverse stack elements only. Edge cases - duplicate adjacent digits, `01200`, increasing sequence `1234`
 
 Intuition - we remove PLE for elements which have a guaranteed PLE and since we're scanning from left to right, PLEs occur on left (more significance than current digit) so we can remove it and expect a smaller final number.
 
 Edge cases handling:
 ```txt
 duplicate adjacent digits - treat duplicates as having no PLE, so we don't pop
-01200 - while stack top has 0s, pop them all as they're leading 0s
+01200 - bottom elements of the stack will be 0s, so we form ans and strip all the leading 0s from it (do a check if ans becomes "" after stripping, ans will be "0" then)
 1234 and 1324 - if traversal of string is done and k isn't 0, pop rest of the elements from stack top
 ```
 
