@@ -132,3 +132,6 @@ return low;
 - perform binary search on this median space (calc `mid`) and for each row too use binary search to find numbers `<= mid` (i.e. calc upper bound of `mid` for each row) - **Nested Binary Search**
 - use property that for an element `mid` to be median it needs to have `r*c/2` elements to the left of itself. If number of elements aren't sufficient or are excess, move left or right accordingly
 - on equality condition `countSmallEqual(mid) == r*c/2`, our ans is first element having `countSmallEqual(mid) > r*c/2` (upper bound), so we move rightwards, `low` will eventually converge to UB
+
+### Not From Sheet
+**Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md)
