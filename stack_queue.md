@@ -88,6 +88,24 @@ for (int i = nums2.size() - 1; i >= 0; i--) {
     - increment left pointer only when there is a greater element on the right pointer, and track `leftMax`, this way we can find water stored at `i` only using `leftMax` since we've reached `i` only because there is a greater element on the right and we don't even need it to calc water stored at `i` as `ans += leftMax - arr[i]`. Do the same for right pointer. Not that when we're on a new `leftMax` there is no water accumulated so just update leftMax, no need to calc water level.
     - how are we sure `leftMax > arr[high]` so much so that we're calc water level without using `arr[high]`? we reached this place `low` because all leftwards elements are smaller than `arr[high]`, that includes `leftMax` ofc (property of two-pointer approach that keeps array sorted in this way)
 
+**Asteroid Collision**: simulation in stack
+Cases:
+```txt
+first asteroid is stable (trivial)
+
+for the nest asteroids, keep comparing and simulating:
+
+both moving in opposite direction (opposite signs)
+  - they never collide (going away from each other) - add asteroid to stack
+  - collision (moving towards each other)
+    - collision and a bigger asteroid is incoming (destory stack top but stay at current asteroid in array; for further collisions)
+    - collision and both are equal - both get obliterated (remove from stack, ignore asteroid from array)
+    - collision and smaller asteroid is incoming - ignore asteroid from array (do nothing)
+
+both moving in the same direction
+  - no collision - add asteroid to stack
+```
+
 **Subarray minimum and maximum**: find all NGE, PGE, NLE, PLE for an element and store in pre-compute arrays (optimization). Then use combinatorics formual `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min/max. To calc elements on the left/right from/to PLE, etc... requires deatiled and careful index handling.
 
 **Remove k digits to make minimum number**: if the number's digits are monotonic, we can decide which to remove. We always prioritize removing digits on the leftwards (most significant ones) but they have to be greater then elemens on the right too (monotonicity). So we traverse from left to right and remove element from stack if an inversion is encountered (and keep removing atmost `k` times till inversions are present for current digit). Answer number will be reverse stack elements only. Edge cases - duplicate adjacent digits, `01200`, increasing sequence `1234`
