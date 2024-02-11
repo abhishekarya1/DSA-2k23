@@ -92,7 +92,7 @@ for (int i = nums2.size() - 1; i >= 0; i--) {
 
 **Remove k digits to make minimum number**: if the number's digits are monotonic, we can decide which to remove. We always prioritize removing digits on the leftwards (most significant ones) but they have to be greater then elemens on the right too (monotonicity). So we traverse from left to right and remove element from stack if an inversion is encountered (and keep removing atmost `k` times till inversions are present for current digit). Answer number will be reverse stack elements only. Edge cases - duplicate adjacent digits, `01200`, increasing sequence `1234`
 
-Intuition - we remove PLE for elements which have a guaranteed PLE and since we're scanning from left to right, PLEs occur on left (more significance than current digit) so we can remove it and expect a smaller final number.
+Intuition - we remove upto k PLEs for elements which have a guaranteed PLEs and since we're scanning from left to right, PLEs occur on left (more significance than current digit) so we can remove it and expect a smaller final number.
 
 Edge cases handling:
 ```txt
