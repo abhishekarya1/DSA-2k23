@@ -110,12 +110,16 @@ return low;
 - `low = max_element_of_array` and `high = sum_of_all_elements_of_array` and keep searching for lower value that can accomodate `k` max partitions (simulate) for each `mid`
 - on equal condition, move leftwards to minimize max sum, return `low` at the end
 
----
+### Row and Column Wise Sorted Matrix
 
 **Search in Row and Column Wise Sorted Matrix**:
 - staircase search in `O(m + n)` TC
-- traverse 2D matrix using flattening - for `i` in range `0` to `R * C - 1` (array size if storing), total is `R * C`, access an element `matrix[row][col]` using `mat[i / C][i % C]` (if stored/accessed row-wise)
-- rowwise and columnwise matrix after flattening will be sorted so we can apply binary search - `O(log(m*n))`
+- rowwise and columnwise matrix after flattening isn't a sorted 1D matrix so that won't work
+- the min in such matrix is `mat[0][0]` and max is `mat[m-1][n-1]` so we can perform bs in that space and search elements in each row (`m * log max(matEle)`)
+
+**Kth Element in Row and Column Wise Sorted Matrix** [problem](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/)
+- same approach as above but count elements in each row using UB, and to find "actual" mid that is present in matrix do LB on search space (`m * log max(matEle)`)
+- LB since we're trying to find smallest element (`mid`) in search space such that it gives us `k` elements in the matrix and actually present in the matrix
 
 **Median of Row-wise Sorted Matrix**: points to note - matrix is sorted only rowwise, not column wise, and `r*c` is given to be odd
 - find min and max elements of matrix from `0`th column and `c-1`th column respectively - this is our median search space
