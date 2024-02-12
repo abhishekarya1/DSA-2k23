@@ -3,6 +3,42 @@
   - better = 2 loops (some logic trimmed)
   - optimal = 1 loop
 
+### Subarray Templates
+```cpp
+/* using 3 for loops */
+
+// start point for subarrays
+for (int i = 0; i < n; i++) {
+	// end point for subarrays
+	for (int j = i; j < n; j++) {
+		// print subarrays between current start and end points
+		for (int k = i; k <= j; k++){
+			cout << arr[k] << " ";
+		}
+		cout << endl;
+	}
+}
+```
+
+```cpp
+/* using 2 for loops - it can't print out all subarrays but can process each subarray at thier respective endpoints i.e. j */
+
+// start point for subarrays
+for (int i = 0; i < n; i++) {
+	// end point for subarrays
+	for (int j = i; j < n; j++) {
+		cout << "Subarray starts at : " << i << " and ends at: " << j;		// we process arr[j] here
+		cout << endl;
+	}
+}
+```
+
+**NOTE**: range `j = [0 - i]` won't work for the second (inner) FOR loop, it has to be combinations of start points (given by `i`) and end points (given by `j`)
+
+Previous Notes:
+- in [Arrays](/arrays.md) - some previously done subarray problems
+- in [Strings](/strings.md) - number of subarrays derivation
+
 1. Window size is fixed `K`: maintain window size by moving 1 step on both `i` and `j`
   - https://leetcode.com/problems/sliding-window-maximum/
   - https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
