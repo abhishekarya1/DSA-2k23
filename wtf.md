@@ -1,4 +1,4 @@
-## Weirdest Questions Encountered
+## Weirdest Problems Encountered
 There is usually some deep observation or trickery involved in these, rest are too dirt ez and intended to be solved esoterically.
 
 ### Tricky
