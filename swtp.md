@@ -1,7 +1,7 @@
 - usually subarray/runlength problems
   - brute = 3 loops or 2 loops
   - better = 2 loops (some logic trimmed)
-  - optimal = 1 loop
+  - optimal = 1 loop (usually needs some extra space like in `prefixSum[]` / SW using Queue / some Algorithm like Kadane)
 
 ### Subarray Templates
 ```cpp
