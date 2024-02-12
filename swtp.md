@@ -35,7 +35,7 @@ for (int i = 0; i < n; i++) {
 
 **NOTE**: range `j = [0 - i]` won't work for the second (inner) FOR loop, it has to be combinations of start points (given by `i`) and end points (given by `j`)
 
-![subarray_2_loop_approach_diagram_hand_drawn](https://imgur.com/a/lT28eJV)
+[Subarray 2 FOR Loop Approach Diagram - Hand Drawn](https://imgur.com/a/lT28eJV)
 
 Previous Notes:
 - in [Arrays](/arrays.md) - some previously done subarray problems
