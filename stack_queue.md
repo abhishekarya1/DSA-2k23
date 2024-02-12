@@ -119,4 +119,9 @@ duplicate adjacent digits - treat duplicates as having no PLE, so we don't pop
 1234 and 1324 - if traversal of string is done and k isn't 0, pop rest of the elements from stack top
 ```
 
+**Largest Rectangle in a Histogram**:
+- brute (2n scans): scan and find NSE and PSE for every arr[i]
+- better (2 scans): find for each index `area = (NSE - PSE -  1) * arr[i]`, stacks stores indices so if there is no PSE/NSE consider it `0` and pre-compute store in `leftSmaller[]` and `rightSmaller[]`, and track `maxArea` throughout the traversal to get ans
+- optimal (1 scan): on every new lesser element we pop out existing elements from the stack since they can't be anyone's PSE/NSE later on. The observation is that the current "lesser" element is someone's NSE (it is stack top's NSE!) and stack top's PSE is actually the second element beneath stack top. This way we can calc area for each on each for future lesser encountered. For ending histogram bars we do perform pop operations for `i == n` calc are for them.
+
 **LRU Cache**: use DLL and `unordered_map<key, Node*>`. Use two dummy nodes `(-1, -1)` as `head` and `tail` and keep queue nodes between them to avoid writing lots of `NULL` check conditions.
