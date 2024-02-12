@@ -126,9 +126,9 @@ duplicate adjacent digits - treat duplicates as having no PLE, so we don't pop
 
 **Online Stock Span**: simple problem of monotonic stack, but notice that we pop off smaller previous elements (and count span++ for each) but if a bigger one comes in future then it will cover all previous lesser's span too so we need to store span along with stack element and add it up in future biggers, thus stack element is of the form `stack<pair<int, int>` i.e. `{price, span}`
 
-**The Celebrity Problem**: use elimination technique (if A knows B, discard A as it can't be the celeb but B maybe and vice-versa), do pairwise comparisons to find the celeb. Need an extra step at last to check if remaining element is actually a celeb.
+**The Celebrity Problem**: use elimination technique (if A knows B, discard A as it can't be the celeb but B maybe and vice-versa), do pairwise comparisons to find the celeb. Need an extra step at last to check if remaining element is actually a celeb
 - use stack: pop two elements from the stack and compare them, push potential celeb back into the stack. Do this till a single element remains in the stack
-- use matrix cell as marker: if `mat[i][i]` is `0` or `1` represents `i` is a celeb of not, start from person `r = 0` and check if he knows person `i` by looping over all its columns (other persons), make `mat[r][r] = 1` and new `r = i` else make `mat[i][i] = 1`
+- use matrix cell as marker: if `mat[i][i]` is `0` or `1` represents `i` is a celeb of not, start from person `r = 0` and check if he knows person `i` by looping over all its columns (other persons), if `mat[r][i] = 1` make `mat[i][i] = 1` (i is potential celeb) and new `r = i` else make `mat[r][r] = 1`. We won't ever reach the celeb's `mat[i][i]` cell, so only one diagonal element should be `1` and do verification for it as the last step
 - two-pointer approach: one at the start one at the end, check if last remaining element `i == j` is a celeb or not
 
 **LRU Cache**: use DLL and `unordered_map<key, Node*>`. Use two dummy nodes `(-1, -1)` as `head` and `tail` and keep queue nodes between them to avoid writing lots of `NULL` check conditions.
