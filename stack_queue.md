@@ -81,6 +81,8 @@ for (int i = nums2.size() - 1; i >= 0; i--) {
 }
 ```
 
+NGE direct application problem - [Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
+
 **Trapping Rain Water**:
   - water at i = minimum of (maximum at left and right) - level of i  --  time = `O(n^2)`
   - we can precompute and store leftMax and rightMax in two separate arrays -- time = `O(n)`, space = `O(2n)`
@@ -106,8 +108,6 @@ both moving in the same direction
   - no collision - add asteroid to stack
 ```
 
-**Subarray minimum and maximum**: find all NGE, PGE, NLE, PLE for an element and store in pre-compute arrays (optimization). Then use combinatorics formual `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min/max. To calc elements on the left/right from/to PLE, etc... requires deatiled and careful index handling.
-
 **Remove k digits to make minimum number**: if the number's digits are monotonic, we can decide which to remove. We always prioritize removing digits on the leftwards (most significant ones) but they have to be greater then elemens on the right too (monotonicity). So we traverse from left to right and remove element from stack if an inversion is encountered (and keep removing atmost `k` times till inversions are present for current digit). Answer number will be reverse stack elements only. Edge cases - duplicate adjacent digits, `01200`, increasing sequence `1234`
 
 Intuition - we remove upto k PLEs for elements which have a guaranteed PLEs and since we're scanning from left to right, PLEs occur on left (more significance than current digit) so we can remove it and expect a smaller final number.
@@ -124,7 +124,9 @@ duplicate adjacent digits - treat duplicates as having no PLE, so we don't pop
 - better (2 scans): find for each index `area = (NSE - PSE -  1) * arr[i]`, stacks stores indices so if there is no PSE/NSE consider it `0` and pre-compute store in `leftSmaller[]` and `rightSmaller[]`, and track `maxArea` throughout the traversal to get ans
 - optimal (1 scan): on every new lesser element we pop out existing elements from the stack since they can't be anyone's PSE/NSE later on. The observation is that the current "lesser" element is someone's NSE (it is stack top's NSE!) and stack top's PSE is actually the second element beneath stack top (if not there, take it as `-1` so `width = 0`). This way we can calc area for each on each for future lesser encountered. For ending histogram bars we do perform pop operations for `i == n` calc are for them.
 
-**Sum Of Subarray Ranges**: we can find contribution of each element as minimum of subarrays using PSE and NSE of that element pre-computed and stored in separate arrays, this element will be minimum in multiple subarrays and its total contrbuted sum will be `arr[i] * (PSE[i] + 1) * (NSE[i] + 1)`, do the same for contribution of element as maximum as `arr[i] * (PLE[i] + 1) * (NLE[i] + 1)`
+**Subarray minimum and maximum**: find all NGE, PGE, NLE, PLE for an element and store in pre-compute arrays (optimization). Then use combinatorics formual `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min/max. To calc elements on the left/right from/to PLE, etc... requires deatiled and careful index handling.
+
+**Sum of Subarray Ranges**: we can find contribution of each element as minimum of subarrays using PSE and NSE of that element pre-computed and stored in separate arrays, this element will be minimum in multiple subarrays and its total contrbuted sum will be `arr[i] * (PSE[i] + 1) * (NSE[i] + 1)`, do the same for contribution of element as maximum as `arr[i] * (PLE[i] + 1) * (NLE[i] + 1)`
 
 **Online Stock Span**: simple problem of monotonic stack, but notice that we pop off smaller previous elements (and count span++ for each) but if a bigger one comes in future then it will cover all previous lesser's span too so we need to store span along with stack element and add it up in future biggers, thus stack element is of the form `stack<pair<int, int>` i.e. `{price, span}`
 
