@@ -33,3 +33,5 @@
 [Graphs](/graphs.md)
 
 [Dynamic Programming](https://hashdefine.netlify.app/dsa/dp/)
+
+[WTF LOL Problems](/wtf.md)
