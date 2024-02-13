@@ -121,8 +121,8 @@ duplicate adjacent digits - treat duplicates as having no PLE, so we don't pop
 
 **Largest Rectangle in a Histogram**:
 - brute (2n scans): scan and find NSE and PSE for every arr[i]
-- better (2 scans): find for each index `area = (NSE - PSE -  1) * arr[i]`, stacks stores indices so if there is no PSE/NSE consider it `0` and pre-compute store in `leftSmaller[]` and `rightSmaller[]`, and track `maxArea` throughout the traversal to get ans
-- optimal (1 scan): on every new lesser element we pop out existing elements from the stack since they can't be anyone's PSE/NSE later on. The observation is that the current "lesser" element is someone's NSE (it is stack top's NSE!) and stack top's PSE is actually the second element beneath stack top (if not there, take it as `-1` so `width = 0`). This way we can calc area for each on each for future lesser encountered. For ending histogram bars we do perform pop operations for `i == n` calc are for them.
+- better (2 scans): find for each index `area = (NSE - PSE +  1) * arr[i]`, stacks stores indices so if there is no PSE/NSE consider it `0` and pre-compute store in `leftSmaller[]` and `rightSmaller[]`, and track `maxArea` throughout the traversal to get ans
+- optimal (1 scan): on every new lesser element we pop out existing elements from the stack since they can't be anyone's PSE/NSE later on. The observation is that the current "lesser" element is someone's NSE (it is stack top's NSE!) and stack top's PSE is actually the second element beneath stack top (if not there, take it as `-1` so `width = 0`). This way we can calc area for each on each for future lesser encountered. For ending histogram bars we do perform pop operations for `i == n` calc are for them
 
 **Sum of Subarray Minimums**: 
 - 3 loops, 2 loops solution to acculmuate min from each subarray
@@ -132,7 +132,7 @@ duplicate adjacent digits - treat duplicates as having no PLE, so we don't pop
 total number of subarray formula derivation:
 
 subarray starting index choices = g1 + 1    :g1 is no. of elements strictly between PSE and curr
-subarray ending index choices = g2 + 1    :g2 is no. of elements strictly between NSE and curr
+subarray ending index choices = g2 + 1      :g2 is no. of elements strictly between NSE and curr
 
 total choices = (g1 + 1) * (g2 + 1)
 ```
