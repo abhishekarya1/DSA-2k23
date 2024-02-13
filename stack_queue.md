@@ -122,7 +122,7 @@ duplicate adjacent digits - treat duplicates as having no PLE, so we don't pop
 **Largest Rectangle in a Histogram**:
 - brute (2n scans): scan and find NSE and PSE for every arr[i]
 - better (2 scans): find for each index `area = (next_boundary - prev_boundary +  1) * arr[i]`, stacks stores boundaries (`0`/`index of PSE+1` or `n-1`/`index of NSE-1`) so if there is no PSE/NSE consider it `0`/`n-1` and pre-compute store in `leftSmaller[]` and `rightSmaller[]`, and track `maxArea` throughout the traversal to get ans
-- optimal (1 scan): on every new lesser element we pop out existing elements from the stack since they can't be anyone's PSE/NSE later on. The observation is that the current "lesser" element is someone's NSE (it is stack top's NSE!) and stack top's PSE is actually the second element beneath stack top (if not there, take it as `-1` so `width = 0`). This way we can calc area for each on each for future lesser encountered. For ending histogram bars we do perform pop operations for `i == n` calc are for them
+- optimal (1 scan): on every new lesser element we pop out existing elements from the stack since they can't be anyone's PSE/NSE later on. The observation is that the current "lesser" element is someone's NSE (it is stack top's NSE!) and stack top's PSE is actually the second element beneath stack top (take `i` or `i - st.top() - 1`). This way we can calc area for each on each for future lesser encountered. For ending histogram bars we do perform pop operations for `i == n` calc are for them.
 
 **Sum of Subarray Minimums**: 
 - 3 loops, 2 loops solution to acculmuate min from each subarray
