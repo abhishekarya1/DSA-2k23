@@ -124,9 +124,20 @@ duplicate adjacent digits - treat duplicates as having no PLE, so we don't pop
 - better (2 scans): find for each index `area = (NSE - PSE -  1) * arr[i]`, stacks stores indices so if there is no PSE/NSE consider it `0` and pre-compute store in `leftSmaller[]` and `rightSmaller[]`, and track `maxArea` throughout the traversal to get ans
 - optimal (1 scan): on every new lesser element we pop out existing elements from the stack since they can't be anyone's PSE/NSE later on. The observation is that the current "lesser" element is someone's NSE (it is stack top's NSE!) and stack top's PSE is actually the second element beneath stack top (if not there, take it as `-1` so `width = 0`). This way we can calc area for each on each for future lesser encountered. For ending histogram bars we do perform pop operations for `i == n` calc are for them.
 
-**Subarray minimum and maximum**: find all NGE, PGE, NLE, PLE for an element and store in pre-compute arrays (optimization). Then use combinatorics formual `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min/max. To calc elements on the left/right from/to PLE, etc... requires deatiled and careful index handling.
+**Sum of Subarray Minimums**: 
+- 3 loops, 2 loops solution to acculmuate min from each subarray
+- optimal: find all NSE and PSE for an element and store in pre-compute arrays. Then use combinatorics formula `(g1 + 1) * (g2 + 1)` to calculate no. of subarrays that have that particular element as min, where `g1` is elements between PSE and current element _excluding both_, same for `g2`. For elements which don't have NSE, use ending "size" index to calc between elements, so do `arr.size() - i - 1`
 
-**Sum of Subarray Ranges**: we can find contribution of each element as minimum of subarrays using PSE and NSE of that element pre-computed and stored in separate arrays, this element will be minimum in multiple subarrays and its total contrbuted sum will be `arr[i] * (PSE[i] + 1) * (NSE[i] + 1)`, do the same for contribution of element as maximum as `arr[i] * (PLE[i] + 1) * (NLE[i] + 1)`
+```txt
+total number of subarray formula derivation:
+
+subarray starting index choices = g1 + 1    :g1 is no. of elements strictly between PSE and curr
+subarray ending index choices = g2 + 1    :g2 is no. of elements strictly between NSE and curr
+
+total choices = (g1 + 1) * (g2 + 1)
+```
+
+**Sum of Subarray Ranges**: same as above but here we use PGE, NGE arrays too.
 
 **Online Stock Span**: simple problem of monotonic stack, but notice that we pop off smaller previous elements (and count span++ for each) but if a bigger one comes in future then it will cover all previous lesser's span too so we need to store span along with stack element and add it up in future biggers, thus stack element is of the form `stack<pair<int, int>` i.e. `{price, span}`
 
