@@ -39,6 +39,13 @@
 
 - Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = 1` (sum 0 seen 1 time even before array traversal starts)
 
+Majority element `> n/2` times approaches:
+- brute force
+- frequency hashmap
+- sorting: sort and check mid (need to verify if its actually a majEle)
+- building majEle with bitwise: count bits at each position (use `&` mask) for all numbers in array and if its `> n/2`, set it in `ans` (use `|` or) and that'll be majEle at the end (`O(n * log C)` where C can be max 32-bits for ints)
+- optimal: boyer-moore voting algo (need to verify if its actually a majEle)
+
 - Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
