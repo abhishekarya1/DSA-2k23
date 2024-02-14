@@ -12,9 +12,10 @@
 
 - Print max sum contiguous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
 
-**Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved in `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me!
+**Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me!
 - using two extra arrays: place positive and negatives in them, put elements back alternatingly in the original array, and after smaller array is copied fully put remaining of the other array (if positives and negatives aren't equal in number)
 - using one extra array: traverse over each element in the original array, place positives and negatives in the `ans` array at `evenIndex` and `oddIndex`, update both by `+= 2`
+- there is a third way that uses `O(1)` space which is good for interviews as it works on small test cases: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign/submissions/1175412097/) 
 
 **Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm)**: take 3 pointers `lo=0` `mid=0` `hi=n-1`, `mid` is our "main" pointer; while `mid <= hi` do
 - on `0` swap `arr[lo]` and `arr[mid]`, increment both (sending `0` to `lo`, it is guranteed that element coming from `lo` will be `1`)
