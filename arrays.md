@@ -76,7 +76,7 @@ Majority element `> n/2` times approaches:
 ### Two ways of two-pointer
 https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is not STABLE though!
 
-- ahead and behind pointers .aka. one pointer always moving trick [MOSTLY STABLE]
+- ahead and behind pointers .aka. one pointer always moving trick [MOSTLY STABLE]. Its not exactly stable but close! Example `{3,1,-2,-5,2,-4}` will get segregated as `{3,1,2,-5,-2,-4}` but a perfect segregation will be `{3,1,2,-2,-5,-4}`
 ```cpp
 int i = 0, j = 0, n = arr.size();
 while(i < n){
