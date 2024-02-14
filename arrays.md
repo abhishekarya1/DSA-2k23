@@ -12,7 +12,7 @@
 
 - Print max sum contiguous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
 
-**Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable)
+**Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable) (_see template below_)
 - using two extra arrays: place positive and negatives in them, put elements back alternatingly in the original array, and after smaller array is copied fully put remaining of the other array (if positives and negatives aren't equal in number)
 - using one extra array: traverse over each element in the original array, place positives and negatives in the `ans` array at `evenIndex` and `oddIndex`, update both by `+= 2`
 - there is a third way using two-pointers that uses `O(1)` space which is good for interviews as it works ONLY on smaller test cases: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign/submissions/1175412097/) 
