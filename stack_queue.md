@@ -146,4 +146,4 @@ total choices = (g1 + 1) * (g2 + 1)
 - use matrix cell as marker: if `mat[i][i]` is `0` or `1` represents `i` is a celeb of not, start from person `r = 0` and check if he knows person `i` by looping over all its columns (other persons), if `mat[r][i] = 1` make `mat[i][i] = 1` (i is potential celeb) and new `r = i` else make `mat[r][r] = 1`. We won't ever reach the celeb's `mat[i][i]` cell, so only one diagonal element should be `1` and do verification for it as the last step
 - two-pointer approach: one at the start one at the end, check if last remaining element `i == j` is a celeb or not
 
-**LRU Cache**: use DLL and `unordered_map<key, Node*>`. Use two dummy nodes `(-1, -1)` as `head` and `tail` and keep queue nodes between them to avoid writing lots of `NULL` check conditions.
+**LRU Cache**: use DLL, `unordered_map<key, Node*>`, and a `capacity` variable. Use two dummy nodes with value `-1` as `head` and `tail` and add queue nodes between them to avoid writing lots of `NULL` check conditions. Insert nodes at `head` and delete nodes at `tail`.
