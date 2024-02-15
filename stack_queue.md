@@ -147,4 +147,6 @@ total choices = (g1 + 1) * (g2 + 1)
 - two-pointer approach: one at the start one at the end, check if last remaining element `i == j` is a celeb or not
 
 ### LRU & LFU Cache
-**LRU Cache**: use DLL, `unordered_map<key, Node*>`, and a `capacity` variable. Use two dummy nodes with value `-1` as `head` and `tail` and add queue nodes between them to avoid writing lots of `NULL` check conditions. Insert nodes at `head` and delete nodes at `tail`.
+**LRU Cache**: use DLL, `unordered_map<key, Node*>`, and a `capacity` variable. Use two dummy nodes with value `-1` as `head` and `tail` and add queue nodes between them to avoid writing lots of `NULL` check conditions. Insert nodes at `head` and delete nodes at `tail`
+- on repeated insertion or get operation: check existence and transpose (delete followed by add) to `head -> next`
+- on deletion of non-existent node - check existence and return `-1`
