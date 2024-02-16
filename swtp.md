@@ -61,7 +61,7 @@ TC = `O(n * k)`, SC = `O(n)` (for queue; mandatory)
   
 2. Window size is not fixed (dynamic)
   - https://takeuforward.org/data-structure/longest-subarray-with-given-sum-k/ (Solution 4)
-  - https://leetcode.com/problems/longest-substring-without-repeating-characters/
+  - https://leetcode.com/problems/longest-substring-without-repeating-characters/ - if char is lastSeen before, update `start = lastSeen[i] + 1`; otherwise track max and update length as `i - start + 1`
   - https://leetcode.com/problems/max-consecutive-ones-iii/
   - https://leetcode.com/problems/fruit-into-baskets/
   - https://leetcode.com/problems/longest-repeating-character-replacement/
