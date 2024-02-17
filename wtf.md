@@ -8,6 +8,8 @@ There is usually some deep observation or trickery involved in these, rest are t
 
 [Partitioning Into Minimum Number Of Deci-Binary Numbers](https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/)
 
+[A Number After a Double Reversal](https://leetcode.com/problems/a-number-after-a-double-reversal/)
+
 ### Dirt Ez
 [Add Two Integers](https://leetcode.com/problems/add-two-integers/)
 
