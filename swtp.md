@@ -44,16 +44,7 @@ Previous Notes:
 ---
 
 ### Sliding Window Template
-**Sliding Window Maximum**: find max in each fixed window size of `k`
-```txt
-queue<int> always stores indices of elements in queue, we pop out all the smaller element and keep only max element in the current window (maintaining monotonicity)
-1. pop index older than k (single element removal)
-2. pop all elements in queue less than the current array element (adding element in window; maintaining monotonicity) (we are left with either with elements greater than current or empty queue after this)
-3. push current element index (i) (this is the max element index of current window)
-4. push element at i (arr[i]) (but only on and after the first window is done; i >= k - 1)
-```
-
-TC = `O(n * k)`, SC = `O(n)` (for queue; mandatory)
+0. Sliding Window Maximum - fixed window size of `k`
 
 1. Window size is fixed `K`: maintain window size by moving 1 step on both `i` and `j`
   - https://leetcode.com/problems/sliding-window-maximum/
@@ -183,7 +174,18 @@ int totalFruit(vector<int> &fruits){
 ```
 
 ### Fixed Size Window Templates
-**Template#1**: Loop till `k` elements from the start and go from there one step at a time
+**Template#1**:
+
+**Sliding Window Maximum**: find max in each fixed window size of `k`
+```txt
+queue<int> always stores indices of elements in queue, we pop out all the smaller element and keep only max element in the current window (maintaining monotonicity)
+1. pop index older than k (single element removal)
+2. pop all elements in queue less than the current array element (adding element in window; maintaining monotonicity) (we are left with either with elements greater than current or empty queue after this)
+3. push current element index (i) (this is the max element index of current window)
+4. push element at i (arr[i]) (but only on and after the first window is done; i >= k - 1)
+```
+
+TC = `O(n * k)`, SC = `O(n)` (for queue; mandatory)
 
 **Template#2**:
 ```cpp
