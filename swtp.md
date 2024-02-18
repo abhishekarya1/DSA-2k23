@@ -174,7 +174,7 @@ int totalFruit(vector<int> &fruits){
 ```
 
 ### Fixed Size Window Templates
-**Template#1**:
+**Template#1**: using a `queue<>` data structure
 
 **Sliding Window Maximum**: find max in each fixed window size of `k`
 ```txt
