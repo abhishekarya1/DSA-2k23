@@ -74,7 +74,7 @@ we need only 2 types of fruit in our SW (all templates are equivalent)
 
 In `while` loop templates, `j` can go out of bounds in some problems where we it might not be straightforward to calculate loop variable (like in Longest Repeating Character Replacement). So `if-else` template is suited better. USE THIS WHEN ANSWER CAN BE EVENTUALLY REACHED (MAXIMUM TRACKING PROBLEMS), and needn't be immediate. 
 
-> We never need to shrink the window size because even if a valid smaller window is found, it doesn't change the max window size. So we can just move left pointer by 1 step if window is invalid (thus next window is still the same length).
+> We never need to shrink the window size (instantly to a valid one; using while loop) because even if a valid smaller window is found, it doesn't change the max window size. So we can just move left pointer by 1 step if window is invalid (thus next window is still the same length).
 
 For subarray problems where we need to count no. of valid subarrays for every step, `while` loop template is better. USE THIS WHEN WE NEED TO MAKE VALID ANSWER ON EVERY STEP. We can also use this always.
 
