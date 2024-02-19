@@ -55,7 +55,7 @@ Previous Notes:
   - https://leetcode.com/problems/longest-substring-without-repeating-characters/ - if char is lastSeen before, update `start = lastSeen[i] + 1`; otherwise track max and update length as `i - start + 1`
   - https://leetcode.com/problems/max-consecutive-ones-iii/
   - https://leetcode.com/problems/fruit-into-baskets/
-  - https://leetcode.com/problems/longest-repeating-character-replacement/
+  - https://leetcode.com/problems/longest-repeating-character-replacement/ - `char to be replaced = windowSize - mostFreqLetterOccurance` i.e. `(r - l + 1) - mostFreqLetter` at each new element addition to the window
 
 3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K, exclusively use `while` loop templates in this type of problems. Sliding window approach gives AT MOST answers. We calc for every step wheather or not ans is `< k` or `= k` since it is needed for correct ans of no. of subarrays.
 - https://www.geeksforgeeks.org/count-number-of-substrings-with-exactly-k-distinct-characters/
