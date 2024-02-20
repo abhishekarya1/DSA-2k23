@@ -57,7 +57,7 @@ Previous Notes:
   - https://leetcode.com/problems/fruit-into-baskets/
   - https://leetcode.com/problems/longest-repeating-character-replacement/ - `chars to be replaced = windowSize - mostFreqLetterOccurance` i.e. `(r - l + 1) - mostFreqLetter` at each new element addition to the window, no need to decrease `mostFreqLetterOccurance` (and find actual max occurance in the current window) as it won't affect the final answer [ref video with timestamp](https://youtu.be/gqXU1UyA8pk?t=840)
 
-3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K, exclusively use `while` loop templates in this type of problems as we only want valid subarray boundaries for proper calc. Sliding window approach gives AT MOST answers. We calc for every step weather or not ans is `< k` or `= k` since it is needed for correct ans of no. of subarrays.
+3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K, exclusively use `while` loop templates in this type of problems as we only want valid subarray boundaries for proper calc. Sliding window approach gives AT MOST answers. We calc all valid subarrays `<=k` at every step using the formula below.
 
 ```txt
 no. of subarrays = n * (n + 1) / 2
