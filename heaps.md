@@ -1,4 +1,4 @@
-### Priority Queues
+## Priority Queue
 Each element has a priority value attached to it that is used to determine access order of the elements. On a tie, insertion order FIFO is followed.
 
 Represented by:
@@ -16,7 +16,7 @@ Standard Operations:
 
 _Ref_: https://www.geeksforgeeks.org/priority-queue-set-1-introduction/
 
-### Heaps
+## Heap
 Must be Complete Binary Tree (to represent using Arrays and not to waste space) and follow heap property (see below).
 
 Types: 
@@ -99,12 +99,20 @@ Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries s
 ### C++ STL
 Top element is greatest by default in the Max Heap in C++.
 ```cpp
-priority_queue <int> pq;       // Max Heap
+priority_queue <int> pq;       // Max-Heap
 
-priority_queue <int, vector<int>, greater<int>> pq;       // Min Heap
+priority_queue <int, vector<int>, greater<int>> pq;       // Min-Heap
 ```
 
-In Java, collection Priority Queue is by default a Min Heap.
+In Java Collection, class `PriorityQueue` implements `Queue` interface, and is by default a Min-Heap.
+
+### Usage of PQ
+- Kth Order Statistics
+- Heap Sort - comparison based sorting algorithm
+- BFS Traversal of Graphs and Trees (level-order traversal)
+- Dijkstra's Algorithm
+- Prim's Algorithm
+- Huffman Coding
 
 ## Problems
 - Kth Largest/Smallest: for Kth largest use maxHeap and remove top `k-1` elements, vice-versa for Kth smallest. TC = `O(n logn + (k-1) log n)`
