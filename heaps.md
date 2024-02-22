@@ -1,5 +1,5 @@
 ### Priority Queues
-Each element has a priority value attached to it that is used to determine access order of the elements.
+Each element has a priority value attached to it that is used to determine access order of the elements. On a tie, insertion order FIFO is followed.
 
 Represented by:
 - array of `pair<element, priority>`
