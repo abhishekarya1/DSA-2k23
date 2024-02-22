@@ -43,9 +43,9 @@ right(i) = heapArr[(2 * i) + 2]
 - Sift Up / Bubble Up / Bottom Up - used in `insertion`
 - Sift Down / Bubble Down / Top Down - used in `deletion`, building Min-Heap from Max-Heap (re-structuring)
 
-Both are NOT equivalent as they don't result in the same output as Sift Up only considers path from a newly inserted node to entire heap's root. Both have TC = `O(log n)`
+Both are NOT equivalent as they don't result in the same output as Sift Up only considers path from a newly inserted node to entire heap's root as we aer inerting in an already existing Heap. Both have TC = `O(log n)`
 
-Upon insertion, new node is inserted at the end of CBT. Travel upwards (**Sift Up**) to verify if heap property is satisfied for each parent node, otherwise swap to make it so
+Upon insertion, new node is inserted at the end of CBT. Travel upwards (**Sift Up**) to verify if heap property is satisfied for each parent node, otherwise swap to make it so; assumes that the subtrees already satisfy heap property
 ```cpp
 // min-heap - iterative sift up heapify
 
@@ -66,7 +66,7 @@ def siftUp(heapArr, i):
         siftUp(heapArr, parent)                                      # sift up to the parent
 ```
 
-Upon deletion, root node (min/max) is removed by replacing it with the last element of CBT (rightmost leaf) and heapify-ing. Use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves) (**Sift Down**); this method assumes that the subtrees are already satisfy heap property
+Upon deletion, root node (min/max) is removed by replacing it with the last element of CBT (rightmost leaf) and heapify-ing (**Sift Down**). Use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves); comparison here happens among all 3 nodes of the smallest unit subtree so this is more widely used than Sift Up heapify
 ```cpp
 void minHeapify(int i){
     int l = left(i);
