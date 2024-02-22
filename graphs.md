@@ -29,6 +29,11 @@ For weighted graphs, we can store weight `W` of an edge as `adj[u][v] = W` in ad
 
 We're often given a set of edges and TC of building both AM and AL will be `O(E)`, and the worst case is when every node is connected to every other node (dense graph/mesh), such graphs have `E = V * (V - 1) / 2`, so TC for building both is `O(V^2)` in such graphs.
 
+### Problems
+Adjacency List can be used to solve relationship problems like:
+- [Find the Town Judge](https://leetcode.com/problems/find-the-town-judge/submissions/) - using adjList (outgoing) with map (incoming), using two arrays (indeg[] & outdeg[]), one array (score[]) (optimal)
+- [Destination City](https://leetcode.com/problems/destination-city/) - insert dest city in map using `mp[e[1]] = mp[e[1]]`
+
 ## Traversals
 - use a visited array with graphs to make sure that already visited nodes aren't visited again, since graphs usually have multiple cycles. This also takes care of traversing any unconnected components.
 ```cpp
