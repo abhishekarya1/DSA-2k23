@@ -78,20 +78,20 @@ Summary of Heap Operations:
 _Ref_: https://www.geeksforgeeks.org/binary-heap/
 
 ### Time Complexity
-```cpp
+```txt
 Get - O(1); constant time access
 
 Heapify - O(log n); traverses entire height of the tree which is log n
 
 Extract - O(log n); calls heapify afterwards
 
-Insertion - O(log n)
+Insertion - O(log n); calls heapify afterwards
 
 Deletion - O(log n); calls heapify afterwards
 
 DecreaseKey - O(log n); calls heapify afterwards
 
-Build a heap with n elements: O(n log n); on every element insertion there will be a heapify
+Build a heap with n elements: O(n * log n); on every element insertion there will be a heapify
 ```
 
 Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`.
