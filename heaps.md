@@ -61,7 +61,7 @@ def siftUp(heapArr, i):
     parent = (i - 1) // 2
     if parent < 0:
         return
-    if heap[i] > heap[parent]:
+    if heap[i] < heap[parent]:
         heapArr[i], heapArr[parent] = heapArr[parent], heapArr[i]    # swap
         siftUp(heapArr, parent)                                      # sift up to the parent
 ```
