@@ -39,7 +39,13 @@ left(i) = heapArr[(2 * i) + 1]
 right(i) = heapArr[(2 * i) + 2]
 ```
 
-Upon insertion, new node is inserted at the end of CBT. Travel upwards to verify if heap property is satisfied for each parent node, otherwise swap to make it so
+### Two Equivalent Kinds of Heapify
+- Sift Up / Bubble Up / Bottom Up - used in `insertion`
+- Sift Down / Bubble Down / Top Down - used in `deletion`
+
+Both are equivalent and have TC = `O(n log n)`
+
+Upon insertion, new node is inserted at the end of CBT. Travel upwards (**Sift Up**) to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
 // min-heap - satisfy heap property recursively at i
 while (i != 0 && heapArr[parent(i)] > heapArr[i]){
@@ -48,7 +54,7 @@ while (i != 0 && heapArr[parent(i)] > heapArr[i]){
 }
 ```
 
-Upon deletion, root node (min/max) is removed by replacing it with the last element of CBT (rightmost leaf) and heapify-ing. Use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves); this method assumes that the subtrees are already satisfy heap property
+Upon deletion, root node (min/max) is removed by replacing it with the last element of CBT (rightmost leaf) and heapify-ing. Use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves) (**Sift Down**); this method assumes that the subtrees are already satisfy heap property
 ```cpp
 void minHeapify(int i){
     int l = left(i);
