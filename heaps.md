@@ -115,7 +115,7 @@ In Java Collection, class `PriorityQueue` implements `Queue` interface, and is b
 - Huffman Coding
 
 ## Problems
-Build Max-Heap from Min-Heap: heapify all root nodes (subtrees) starting from rightmost bottom root node (`(n - 1) - 1 / 2`) and go till top root
+Build Max-Heap from Min-Heap: heapify all root nodes (subtrees) starting from rightmost bottom root node (`(n - 1) - 1 / 2`) and go till top for each root
 
 Kth Largest/Smallest: for Kth largest use maxHeap and remove top `k-1` elements, vice-versa for Kth smallest. TC = `O(n logn + (k-1) log n)`
   - alternatively, we can use Min Heap for the Kth largest element, push elements into it, and never let it become size `> k`. TC = `O(k + (n-k) log k)`
