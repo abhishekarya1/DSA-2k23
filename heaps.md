@@ -32,7 +32,7 @@ right(i) = heapArr[(2 * i) + 2]
 
 Upon insertion, new node is inserted at the end of CBT. Travel upwards to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
-// min-heap
+// min-heap - satisfy heap property recursively from i
 while (i != 0 && heapArr[parent(i)] > heapArr[i]){
        swap(heapArr[i], heapArr[parent(i)]);
        i = parent(i);
@@ -54,6 +54,21 @@ void minHeapify(int i){
         minHeapify(smallest);
     }
 }
+```
+
+```txt
+MinHeap::MinHeap(int cap) { 
+    heap_size = 0; 
+    capacity = cap; 
+    heapArr = new int[cap]; 
+}
+
+Summary of Heap Operations:
+1) getMin - return heapArr[0]
+2) insert(k) - check overflow, insert at end, satisfy heap property recursively at i
+3) extractMin - return heapArr[0], replace heapArr[0] = heapArr[heap_size-1], satisfy heap property recursively at i
+4) decreaseKey(i, k) - heapArr[i] = k, satisfy heap property recursively at i
+5) delete(i) - decreaseKey(i, INT_MIN), and then do extractMin
 ```
 
 _Ref_: https://www.geeksforgeeks.org/binary-heap/
