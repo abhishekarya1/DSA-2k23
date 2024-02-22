@@ -87,7 +87,7 @@ Extract - O(log n); calls heapify afterwards
 
 Insertion - O(log n); satisfy heap property recursively
 
-Deletion - O(log n); calls Exteract afterwards which calls heapify
+Deletion - O(log n); calls Extract afterwards which calls heapify
 
 DecreaseKey - O(log n); satisfy heap property recursively
 
