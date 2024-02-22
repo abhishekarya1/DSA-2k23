@@ -97,7 +97,7 @@ Build a heap with n elements: O(n * log n); on every element insertion there wil
 Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`.
 
 ### C++ STL
-Top element is greatest by default in the Max Heap in C++.
+Top element is greatest by default in the Max-Heap in C++
 ```cpp
 priority_queue <int> pq;       // Max-Heap
 
@@ -115,7 +115,7 @@ In Java Collection, class `PriorityQueue` implements `Queue` interface, and is b
 - Huffman Coding
 
 ## Problems
-**Build Max-Heap from Min-Heap**: call maxHeapify for all nodes starting from rightmost bottom node doing reverse traversal of the heap array. Start from the last root (`(n - 1) - 1 / 2`) or we can start with node `n-1` too and conditions in the heapify method will take care of bounds
+**Build Max-Heap from Min-Heap**: call maxHeapify for all nodes starting from rightmost bottom node doing reverse traversal of the heap array. Start from the last root (`(n-1)-1/2`) or we can start with node `n-1` too and conditions in the heapify method will take care of bounds
 
 **Kth Largest/Smallest Element**: for Kth largest use maxHeap and remove top `k-1` elements, vice-versa for Kth smallest. TC = `O(n logn + (k-1) log n)`
   - alternatively, we can use Min Heap for the Kth largest element, push elements into it, and never let it become size `> k`. TC = `O(k + (n-k) log k)`
