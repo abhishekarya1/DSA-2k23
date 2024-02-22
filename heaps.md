@@ -3,8 +3,8 @@ Each element has a priority value attached to it that is used to determine acces
 
 Represented by:
 - array of `pair<element, priority>`
-- LL of `pair<element, priority>` (when there are more writes)
-- heap
+- LL of `pair<element, priority>` (for write-heavy)
+- Binary Heap (a Complete BT stored in Array)
 - BST
 
 Standard Operations:
