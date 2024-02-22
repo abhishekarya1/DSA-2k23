@@ -2,17 +2,17 @@
 Each element has a priority value attached to it that is used to determine access order of the elements. On a tie, insertion order FIFO is followed.
 
 Represented by:
-- array of `pair<element, priority>`
+- Array of `pair<element, priority>`
 - LL of `pair<element, priority>` (for write-heavy)
-- Binary Heap (a Complete BT stored in Array)
+- Binary Heap (a complete BT stored in array)
 - BST
 
 Standard Operations:
 - getMax/getMin (equivalent to peek)
 - extractMax/extractMin
-- insert
-- delete (make it `INT_MIN` using decrease and extractMin)
-- decrease (modify a key's value in-place)
+- insert(k)
+- delete(i) (make it `INT_MIN` using decrease and extractMin)
+- decreaseKey(i,k) (modify a key's value in-place)
 
 _Ref_: https://www.geeksforgeeks.org/priority-queue-set-1-introduction/
 
@@ -23,6 +23,15 @@ Types:
 - Max Heap (root is greater than both left and right; recursively)
 - Min Heap (root is lesser than both left and right; recursively)
 
+```cpp
+// Heap ADT class and constructor
+MinHeap::MinHeap(int cap) { 
+    heap_size = 0; 
+    capacity = cap; 
+    heapArr = new int[cap]; 
+}
+```
+
 ```txt
 root = heapArr[0]
 parent(i) = heapArr[(i - 1) / 2]
@@ -32,7 +41,7 @@ right(i) = heapArr[(2 * i) + 2]
 
 Upon insertion, new node is inserted at the end of CBT. Travel upwards to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
-// min-heap - satisfy heap property recursively from i
+// min-heap - satisfy heap property recursively at i (heapify)
 while (i != 0 && heapArr[parent(i)] > heapArr[i]){
        swap(heapArr[i], heapArr[parent(i)]);
        i = parent(i);
@@ -57,13 +66,8 @@ void minHeapify(int i){
 ```
 
 ```txt
-MinHeap::MinHeap(int cap) { 
-    heap_size = 0; 
-    capacity = cap; 
-    heapArr = new int[cap]; 
-}
-
 Summary of Heap Operations:
+
 1) getMin - return heapArr[0]
 2) insert(k) - check overflow, insert at end, satisfy heap property recursively at i
 3) extractMin - return heapArr[0], replace heapArr[0] = heapArr[heap_size-1], satisfy heap property recursively at i
@@ -85,7 +89,7 @@ Insertion - O(log n)
 
 Deletion - O(log n); calls heapify afterwards
 
-Decrease - O(log n); calls heapify afterwards
+DecreaseKey - O(log n); calls heapify afterwards
 
 Build a heap with n elements: O(n log n); on every element insertion there will be a heapify
 ```
