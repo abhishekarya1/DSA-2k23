@@ -43,7 +43,7 @@ right(i) = heapArr[(2 * i) + 2]
 - Sift Up / Bubble Up / Bottom Up - used in `insertion`
 - Sift Down / Bubble Down / Top Down - used in `deletion`, building Min-Heap from Max-Heap (re-structuring)
 
-Both are NOT equivalent as they don't result in the same output as Sift Up only considers path from a newly inserted node to entire heap's root as we aer inerting in an already existing Heap. Both have TC = `O(log n)`
+Both are NOT equivalent as they don't result in the same output as Sift Up only considers path from a newly inserted node to entire heap's root as we are inerting in an already existing Heap, so third element needn't be compared as it already is lesser than its root. Both have TC = `O(log n)`
 
 Upon insertion, new node is inserted at the end of CBT. Travel upwards (**Sift Up**) to verify if heap property is satisfied for each parent node, otherwise swap to make it so; assumes that the subtrees already satisfy heap property
 ```cpp
