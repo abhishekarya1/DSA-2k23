@@ -48,7 +48,7 @@ while (i != 0 && heapArr[parent(i)] > heapArr[i]){
 }
 ```
 
-Upon deletion, use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves); this method assumes that the subtrees are already heapified
+Upon deletion, use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves); this method assumes that the subtrees are already satisfy heap property
 ```cpp
 void minHeapify(int i){
     int l = left(i);
@@ -70,7 +70,7 @@ Summary of Heap Operations:
 
 1) getMin - return heapArr[0]
 2) insert(k) - check overflow, insert at end, satisfy heap property recursively at i
-3) extractMin - return heapArr[0], replace heapArr[0] = heapArr[heap_size-1], heapify at 0
+3) extractMin - return heapArr[0], replace heapArr[0] = heapArr[heap_size - 1], heapify at 0
 4) decreaseKey(i, k) - heapArr[i] = k, satisfy heap property recursively at i
 5) delete(i) - decreaseKey(i, INT_MIN), and then do extractMin
 ```
@@ -87,9 +87,9 @@ Extract - O(log n); calls heapify afterwards
 
 Insertion - O(log n); satisfy heap property recursively
 
-Deletion - O(log n); satisfy heap property recursively
+Deletion - O(log n); calls Exteract afterwards which calls heapify
 
-DecreaseKey - O(log n); calls Exteract afterwards which calls heapify
+DecreaseKey - O(log n); satisfy heap property recursively
 
 Build a heap with n elements: O(n * log n); on every element insertion there will be a heapify
 ```
