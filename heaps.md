@@ -48,7 +48,7 @@ while (i != 0 && heapArr[parent(i)] > heapArr[i]){
 }
 ```
 
-Upon deletion, use recursive **heapify** `O(log n)` method to satisfy heap property; this method assumes that the subtrees are already heapified
+Upon deletion, use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves); this method assumes that the subtrees are already heapified
 ```cpp
 void minHeapify(int i){
     int l = left(i);
