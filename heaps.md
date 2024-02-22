@@ -43,7 +43,7 @@ right(i) = heapArr[(2 * i) + 2]
 - Sift Up / Bubble Up / Bottom Up - used in `insertion`
 - Sift Down / Bubble Down / Top Down - used in `deletion`, building Min-Heap from Max-Heap (re-structuring)
 
-Both are NOT equivalent as they don't result in the same output as Sift Up only considers path from a newly inserted node to entire heap's root. Both have TC = `O(n log n)`
+Both are NOT equivalent as they don't result in the same output as Sift Up only considers path from a newly inserted node to entire heap's root. Both have TC = `O(log n)`
 
 Upon insertion, new node is inserted at the end of CBT. Travel upwards (**Sift Up**) to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
@@ -112,7 +112,7 @@ DecreaseKey - O(log n); satisfy heap property recursively
 Build a heap with n elements: O(n * log n); on every element insertion there will be a heapify
 ```
 
-Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`.
+Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`
 
 ### C++ STL
 Top element is greatest by default in the Max-Heap in C++
@@ -122,7 +122,7 @@ priority_queue <int> pq;       // Max-Heap
 priority_queue <int, vector<int>, greater<int>> pq;       // Min-Heap
 ```
 
-In Java Collection, class `PriorityQueue` implements `Queue` interface, and is by default a Min-Heap.
+In Java Collection, class `PriorityQueue` implements `Queue` interface, and is by default a Min-Heap
 
 ### Usage of PQ
 - Kth Order Statistics
