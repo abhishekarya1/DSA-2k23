@@ -39,11 +39,11 @@ left(i) = heapArr[(2 * i) + 1]
 right(i) = heapArr[(2 * i) + 2]
 ```
 
-### Two Equivalent Kinds of Heapify
+### Two Kinds of Heapify
 - Sift Up / Bubble Up / Bottom Up - used in `insertion`
-- Sift Down / Bubble Down / Top Down - used in `deletion`
+- Sift Down / Bubble Down / Top Down - used in `deletion`, building Min-Heap from Max-Heap (re-structuring)
 
-Both are equivalent and have TC = `O(n log n)`
+Both are NOT equivalent as they don't result in the same output as Sift Up only considers path from a newly inserted node to entire heap's root. Both have TC = `O(n log n)`
 
 Upon insertion, new node is inserted at the end of CBT. Travel upwards (**Sift Up**) to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
