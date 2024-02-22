@@ -41,7 +41,7 @@ right(i) = heapArr[(2 * i) + 2]
 
 Upon insertion, new node is inserted at the end of CBT. Travel upwards to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
-// min-heap - satisfy heap property recursively at i (heapify)
+// min-heap - satisfy heap property recursively at i
 while (i != 0 && heapArr[parent(i)] > heapArr[i]){
        swap(heapArr[i], heapArr[parent(i)]);
        i = parent(i);
@@ -69,9 +69,9 @@ void minHeapify(int i){
 Summary of Heap Operations:
 
 1) getMin - return heapArr[0]
-2) insert(k) - check overflow, insert at end, heapify at i
+2) insert(k) - check overflow, insert at end, satisfy heap property recursively at i
 3) extractMin - return heapArr[0], replace heapArr[0] = heapArr[heap_size-1], heapify at 0
-4) decreaseKey(i, k) - heapArr[i] = k, heapify at i
+4) decreaseKey(i, k) - heapArr[i] = k, satisfy heap property recursively at i
 5) delete(i) - decreaseKey(i, INT_MIN), and then do extractMin
 ```
 
@@ -85,11 +85,11 @@ Heapify - O(log n); traverses entire height of the tree which is log n
 
 Extract - O(log n); calls heapify afterwards
 
-Insertion - O(log n); calls heapify afterwards
+Insertion - O(log n); satisfy heap property recursively
 
-Deletion - O(log n); calls heapify afterwards
+Deletion - O(log n); satisfy heap property recursively
 
-DecreaseKey - O(log n); calls heapify afterwards
+DecreaseKey - O(log n); calls Exteract afterwards which calls heapify
 
 Build a heap with n elements: O(n * log n); on every element insertion there will be a heapify
 ```
