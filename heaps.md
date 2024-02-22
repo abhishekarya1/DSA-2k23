@@ -48,7 +48,7 @@ while (i != 0 && heapArr[parent(i)] > heapArr[i]){
 }
 ```
 
-Upon deletion, use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves); this method assumes that the subtrees are already satisfy heap property
+Upon deletion, root node (min/max) is removed by replacing it with the last element of CBT (rightmost leaf) and heapify-ing. Use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves); this method assumes that the subtrees are already satisfy heap property
 ```cpp
 void minHeapify(int i){
     int l = left(i);
