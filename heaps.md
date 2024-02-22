@@ -70,7 +70,7 @@ Summary of Heap Operations:
 
 1) getMin - return heapArr[0]
 2) insert(k) - check overflow, insert at end, heapify at i
-3) extractMin - return heapArr[0], replace heapArr[0] = heapArr[heap_size-1], heapify at i
+3) extractMin - return heapArr[0], replace heapArr[0] = heapArr[heap_size-1], heapify at 0
 4) decreaseKey(i, k) - heapArr[i] = k, heapify at i
 5) delete(i) - decreaseKey(i, INT_MIN), and then do extractMin
 ```
