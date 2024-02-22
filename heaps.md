@@ -11,7 +11,7 @@ Standard Operations:
 - getMax/getMin (equivalent to peek)
 - extractMax/extractMin
 - insert
-- delete (make it INT_MIN using decrease and extractMin)
+- delete (make it `INT_MIN` using decrease and extractMin)
 - decrease (modify a key's value in-place)
 
 _Ref_: https://www.geeksforgeeks.org/priority-queue-set-1-introduction/
@@ -20,14 +20,14 @@ _Ref_: https://www.geeksforgeeks.org/priority-queue-set-1-introduction/
 Must be Complete Binary Tree (to represent using Arrays and not to waste space) and follow heap property (see below).
 
 Types: 
-- Max Heap (root is greater than both left and right)
-- Min Heap (root is lesser than both left and right)
+- Max Heap (root is greater than both left and right; recursively)
+- Min Heap (root is lesser than both left and right; recursively)
 
-```cpp
+```txt
 root = heapArr[0]
 parent(i) = heapArr[(i - 1) / 2]
-left(i) = heapArr[2 * i + 1]
-right(i) = heapArr[2 * i + 2]
+left(i) = heapArr[(2 * i) + 1]
+right(i) = heapArr[(2 * i) + 2]
 ```
 
 Upon insertion, new node is inserted at the end of CBT. Travel upwards to verify if heap property is satisfied for each parent node, otherwise swap to make it so
