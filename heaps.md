@@ -23,6 +23,13 @@ Types:
 - Max Heap (root is greater than both left and right)
 - Min Heap (root is lesser than both left and right)
 
+```cpp
+root = heapArr[0]
+parent(i) = heapArr[(i - 1) / 2]
+left(i) = heapArr[2 * i + 1]
+right(i) = heapArr[2 * i + 2]
+```
+
 Upon insertion, new node is inserted at the end of CBT. Travel upwards to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
 // min-heap
