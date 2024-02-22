@@ -47,11 +47,23 @@ Both are equivalent and have TC = `O(n log n)`
 
 Upon insertion, new node is inserted at the end of CBT. Travel upwards (**Sift Up**) to verify if heap property is satisfied for each parent node, otherwise swap to make it so
 ```cpp
-// min-heap - satisfy heap property recursively at i
+// min-heap - iterative sift up heapify
+
 while (i != 0 && heapArr[parent(i)] > heapArr[i]){
        swap(heapArr[i], heapArr[parent(i)]);
        i = parent(i);
 }
+```
+```py
+# min-heap - recursive sift up heapify
+
+def siftUp(heapArr, i):
+    parent = (i - 1) // 2
+    if parent < 0:
+        return
+    if heap[i] > heap[parent]:
+        heapArr[i], heapArr[parent] = heapArr[parent], heapArr[i]    # swap
+        siftUp(heapArr, parent)                                      # sift up to the parent
 ```
 
 Upon deletion, root node (min/max) is removed by replacing it with the last element of CBT (rightmost leaf) and heapify-ing. Use recursive **heapify** `O(log n)` method to satisfy heap property from top to bottom (node `i` to leaves) (**Sift Down**); this method assumes that the subtrees are already satisfy heap property
