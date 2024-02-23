@@ -281,6 +281,8 @@ Remember Dijkstra is just optimized BFS so doing BFS when we don't have monotoni
 
 LIMITATION of Dijkstra: Why didn't we use Dijkstra with `node = {costSoFar, {currNode, stops}}`? Since we're minimizing on distance, whenever we visit intermediate nodes (non-dest) we try to store minimum distance for it but optimal path may not be miminum till that point, we want overall distance till `dest` node as shortest but optimizing distance for intermediate path nodes can be wrongful as we can exhaust `k` paths trying to chase mins on every neighbour and not reach `dest` at all. And alternate routes with more weight (but maybe lesser than `k` stops) leading to those intermediate nodes won't be considered (enqueued) and we won't traverse such paths. We take parameter as `k` and try to minimize distance within it.
 
+SUMMARY: Greedy doesn't work in the above problem and we need to take `stops` into account (primary param) and then minimize on distance (relax edges)
+
 **Number Of Ways To Reach End With Shortest Distance**: use Dijkstra with `ways[]` array with `ways[src] = 1`, on finding a new min while doing edge relaxation `ways[nNode] = ways[curNode]`, and on finding equal edge `ways[nNode] = ways[nNode] + ways[curNode]`. This works out because on a new min we replace `ways[nNode]` and then increment from there.
 
 **Bellman-Ford Algorithm**: 
