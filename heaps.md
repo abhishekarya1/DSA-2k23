@@ -136,7 +136,7 @@ In Java Collection, class `PriorityQueue` implements `Queue` interface, and is b
 **Build Max-Heap from Min-Heap**: call maxHeapify (Sift Down - 3 node comparison) for all nodes starting from rightmost bottom node doing reverse traversal of the heap array. Start from the last root (`(n-1)-1/2`) or we can start with node `n-1` too and conditions in the heapify method will take care of bounds
 
 **Kth Largest/Smallest Element**: for Kth largest build Max-Heap from all elements and remove top `k-1` elements, vice-versa for Kth smallest. TC = `O(n logn + (k-1) log n)`
-  - alternatively (better TC and SC), we can use Min-Heap for the Kth largest element, keep pushing elements into it and if heap size becomes `> k` pop the top to make size `== k`. At the end, Min-Heap's top will be the ans. TC = `O(n log k + log k)`
+  - alternatively (better TC and SC), we can use Min-Heap for the Kth largest element, keep pushing elements into it and if heap size becomes `> k` pop the top to make size `== k`. At the end, Min-Heap's top will be the ans. TC = `O(k + (n-k) log k)`
 
 **Sort K (nearly sorted) Sorted Array**: `O(n log k)`; sort only k elements from i (till `i + k`th position) to get element at `i`, use Min Heap and get top (min element) for every `i`, and move window by one to the right each step
 
