@@ -140,6 +140,6 @@ In Java Collection, class `PriorityQueue` implements `Queue` interface, and is b
 - Better Approach (better TC and SC): we can use Min-Heap for the Kth largest element, keep pushing elements into it and if heap size becomes `> k` pop the top to make size `== k`. At the end, Min-Heap's top will be the ans. TC = `O(k + (n-k) log k)`
     - summary: add `k+1`th element to heap and pop top to maintain `k` sized heap
 
-**Sort K (nearly sorted) Sorted Array**: `O(n log k)`; sort only k elements from i (till `i + k`th position) to get element at `i`, use Min Heap and get top (min element) for every `i`, and move window by one to the right each step
+**Sort K (nearly sorted) Sorted Array**: `O(n log k)`; sort only k elements from i (till `i + k`th position) to get element at `i`, use Min Heap and get top (min element) for every `i`, do this for every `i < n`
 
 **Merge K Sorted Lists**: Brute = sort `O(n log n)`, Optimized = use Min Heap to sort only k heads of all LL at a time `O(n log k)`
