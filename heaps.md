@@ -142,4 +142,8 @@ In Java Collection, class `PriorityQueue` implements `Queue` interface, and is b
 
 **Sort K (nearly sorted) Sorted Array**: `O(n log k)`; use Min Heap and get top (min element) for every `i` from among its next `k` elements, do this for every `i < n`, start with a heap built from the first `k + 1` elements of the array (to find correct element for `i = 0`), then pop one from heap and insert one from array, when array traversal is done, copy elements to array from heap until heap becomes empty
 
-**Merge K Sorted Lists**: Brute = sort `O(n log n)`, Optimized = use Min Heap to sort only k heads of all LL at a time `O(n log k)`
+**Merge K Sorted Lists**: 
+- Brute Force - put nodes in array and sort them by data (using comparator) and attach adjacent nodes in array. TC = `O(n log n)`, SC = `O(n)` where `n` is the total nodes in all `k` LLs
+- Better#1 - merge LLs in pairs of two, a total of `k-1` merges are required. TC = `O(k-1 * n*k)` where `n` is avg node per LL
+- Better#2 - merge LLs using `k` pointers, like above approach but in one go. TC = `O(k * n*k)`, SC = `O(k)` where `n` is avg node per LL
+- Optimal-  use Min-Heap `pq<int, Node*>` to get min among all current nodes of LLs at a time and move ahead in the same LL (insert min node's next) from which min is extracted to maintain heap size as `k`. TC = `O(n log k)`, SC = `O(k)` where `n` is total nodes in all LLs
