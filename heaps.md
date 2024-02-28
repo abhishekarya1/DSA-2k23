@@ -148,8 +148,8 @@ In Java Collection, class `PriorityQueue` implements `Queue` interface, and is b
 - Better#2 - merge LLs using `k` pointers, like above approach but in one go. TC = `O(k * n*k)`, SC = `O(k)` where `n` is avg node per LL
 - Optimal-  use Min-Heap `pq<int, Node*>` to get min among all current nodes of LLs at a time and move ahead in the same LL (insert min node's next) from which min is extracted to maintain heap size as `k`. TC = `O(n log k)`, SC = `O(k)` where `n` is total nodes in all LLs
 
-**Replace Array Element with its Rank in Sorted Array**: be careful of duplicated distorting rank, because of them index in sorted array + 1 isn't equal to the rank! Ex - `[2, 2, 2, 3]` ans is `[1, 1, 1, 2]`
-- Brute Force#0 (_works only if no duplicates are present_) - create another duplicate array and sort it, use linear search to find rank of elements in the original array. TC = `O(n + n log n + n*n)`, SC = `O(n)`
+**Replace Array Element with its Rank in Sorted Array**: be careful of duplicates distorting rank, because for them index of element in sorted array + 1 will not give their rank! Ex - `[2, 2, 2, 3]` ans is `[1, 1, 1, 2]`
+- Brute Force#0 (_naive thinking; works only if no duplicates are present_) - create another duplicate array and sort it, use linear search to find rank of elements in the original array. TC = `O(n + n log n + n*n)`, SC = `O(n)`
 - Brute Force - store all elements smaller than current in a `set` and set size + 1 is current's rank, store in `ans` array. TC = `O(n*n)`, SC = `O(n + n)`
 - Better - do the same as the above approach but store element to its rank (track using a `rank` variable) mapping in an `unordered_map` only if not seen previously `== 0`, TC = `O(n + n log n + n*1)`, SC = `O(n + n)`
 - Optimal - use heap
