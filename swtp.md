@@ -216,6 +216,7 @@ int maxScore(vector<int>& cardPoints, int k) {
 ```
 
 ## Two Pointers
-Many approaches are discussed in Array notes.
+**TP in-place**: many approaches are discussed in Array notes using swaps
 
-[Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/) - two-pointer approach works for sorting here because the input array `nums` is sorted (in increasing order) and the first and last elements' squares will be biggest elements in the ans array (if negatives are present), smaller squares are towards the middle. Start populating `ans` array from the end.
+**TP with Linear Space**: a `for` loop is used to populate `ans` array, with `low` and `high` pointers on the input array
+- [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/) - two-pointer approach works for sorting here because the input array `nums` is sorted (in increasing order) and the first and last elements' squares will be biggest elements in the ans array (if negatives are present), smaller squares are towards the middle. Start populating `ans` array from the end.
