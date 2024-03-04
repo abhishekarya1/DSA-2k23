@@ -220,3 +220,4 @@ int maxScore(vector<int>& cardPoints, int k) {
 
 **TP with Linear Space**: a `for` loop is used to populate `ans` array, with `low` and `high` pointers on the input array
 - [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/) - two-pointer approach works for sorting here because the input array `nums` is sorted (in increasing order) and the first and last elements' squares will be biggest elements in the ans array (if negatives are present), smaller squares are towards the middle. Start populating `ans` array from the end.
+- [Bag of Tokens](https://leetcode.com/problems/bag-of-tokens/) - greedy (sorting) and two start and end pointers (has own sol post)
