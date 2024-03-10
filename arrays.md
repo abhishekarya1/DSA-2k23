@@ -1,4 +1,11 @@
-- Union of two sorted arrays: always take minimum of the two and check with equality with the last inserted element so that we don't insert duplicates `O(m+n)`
+Duplicates and non-sorted are the problematic elements in the union and intersection appraoches below.
+
+- Union of two sorted arrays (sorted; duplicates present): always take minimum of the two and check with equality with the last inserted element so that we don't insert duplicates `O(m+n)`
+- Intersection of two arrays (unsorted; duplicates present): [link](https://leetcode.com/problems/intersection-of-two-arrays/)
+	- sort and do two-pointer approach like the Union approach above, to avoid duplicates check the last inserted element in `ans` array with the element to be inserted (skip if same)
+	- sort and remove duplicates from each array using sets early on and do simple two-pointer approach
+	- sort and do two-pointer and remove duplicates from `ans` array using a set at the end
+ 	- store all elmeents of `nums2` in a freq map (acts as a set since it keeps unique elements only as keys), then traverse `nums1` and erase when an element is found in both (is intersection) to avoid duplicates
 
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
