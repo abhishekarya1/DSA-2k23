@@ -5,7 +5,7 @@ Duplicates and non-sorted are the problematic elements in the union and intersec
 	- sort and do two-pointer approach like the Union approach above, to avoid duplicates check the last inserted element in `ans` array with the element to be inserted (skip if same)
 	- sort and remove duplicates from each array using sets early on and do simple two-pointer approach
 	- sort and do two-pointer and remove duplicates from `ans` array using a set at the end
- 	- store all elmeents of `nums2` in a freq map (acts as a set since it keeps unique elements only as keys), then traverse `nums1` and erase when an element is found in both (is intersection) to avoid duplicates
+ 	- store all elments of `nums2` in a freq map (acts as a set since it keeps unique elements only as keys), then traverse `nums1` and erase when an element is found in both (is intersection) to avoid duplicates; no sorting was required here because of map lookups (finds)
 
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
