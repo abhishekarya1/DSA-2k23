@@ -59,4 +59,4 @@ int i = 0;
 
 ---
 
-**Custom Sort String** [link](https://leetcode.com/problems/custom-sort-string/): duplicates in `s` cause issue here in valid ordering. Instead of looking for `s` in `order` dict (first approach; more natural but fails). Create a map of `s` freqCount and build string by iterating on `order` dict and at the end append the remaining chars in `s` not present in `order` dict
+**Custom Sort String** [link](https://leetcode.com/problems/custom-sort-string/): duplicates in `s` cause issue here in valid ordering. Instead of looking for `s` in map built from `order` dict (first approach; more natural but fails). Create a map of `s` freqCount and build string by iterating on `order` dict and at the end append the remaining chars in `s` not present in `order` dict
