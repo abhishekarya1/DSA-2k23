@@ -62,7 +62,8 @@ Previous Notes:
 ```txt
 total no. of subarrays of all sizes = n * (n + 1) / 2
 
-but here we calc no. of subarrays on every step by summation of = (r - l + 1) at every valid window boundaries, this formula gives the no. of subarrays ending at index r
+but here we calc no. of subarrays on every step by summation of = (r - l + 1) at every valid window boundaries
+this formula gives the no. of subarrays ending at index r, since we accept counting of < goal subarrays (as well as == goal)
 
 the same formula was used to calc and track max subarray size in problems of above type so don't get confused
 ```
