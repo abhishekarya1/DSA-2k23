@@ -60,9 +60,9 @@ Previous Notes:
 3. Count number of subarrays/substrings with exactly K: use `func(arr, k) - func(arr, k - 1)` to get for "exactly" K, exclusively use `while` loop templates in this type of problems as we only want valid subarray boundaries for proper calc. Sliding window approach gives AT MOST answers. We end up with a valid subarray that is either less than or equal to (`<= k`) at every step and we can sum them all up as shown below.
 
 ```txt
-no. of subarrays = n * (n + 1) / 2
+total no. of subarrays of all sizes = n * (n + 1) / 2
 
-but here we calc no. of subarrays on every step by summation of = (r - l + 1) at every valid window boundaries
+but here we calc no. of subarrays on every step by summation of = (r - l + 1) at every valid window boundaries, this formula gives the no. of subarrays ending at index r
 
 the same formula was used to calc and track max subarray size in problems of above type so don't get confused
 ```
