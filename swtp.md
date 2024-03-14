@@ -66,6 +66,7 @@ but here we calc no. of subarrays on every step by summation of = (r - l + 1) at
 
 the same formula was used to calc and track max subarray size in problems of above type so don't get confused
 ```
+Handle `goal < 0` cases in this ATMOST kind of problems, `return 0` in that case.
 
 - https://www.geeksforgeeks.org/count-number-of-substrings-with-exactly-k-distinct-characters/
 - https://leetcode.com/problems/binary-subarrays-with-sum/
