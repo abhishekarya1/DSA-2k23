@@ -46,7 +46,7 @@ Duplicates and non-sorted are the problematic elements in the union and intersec
 	- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
  	- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
 
-- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = 1` (sum 0 seen 1 time even before array traversal starts)
+- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = -1` (sum 0 seen once even before array traversal starts on index -1)
 
 Majority element `> n/2` times approaches:
 - brute force
