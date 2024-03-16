@@ -193,6 +193,6 @@ PATTERN: If there are multiple elements repeating and missing, sum or xor may no
 - directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
 
 **Find subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
-- SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too]\
-- use two FOR loop apprach and calc size using `j - i + 1` on each valid subarray, internal loop is from `j = i to n` as usual
+- SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too]
+- use two FOR loop apprach and calc size using `j - i + 1` on each valid subarray, internal loop is from `j = i to n-1` as usual
 - use prefixSum map approach - use `cnt` to track sum, init `lastSeen[0] = -1` is important here, length calc is `i - lastSeen[cnt]`
