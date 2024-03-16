@@ -191,3 +191,7 @@ PATTERN: If there are multiple elements repeating and missing, sum or xor may no
 - for each element calc entire array `prod` skipping `arr[i]` in their respective iteration (quadratic time)
 - track `prefixProd` and `suffixProd` (linear time, linear space)
 - directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
+
+**Find subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
+- SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too.
+- use prefixSum map approach - use `cnt` to track sum, init `lastSeen[0] = -1` is important here, length calc is `i - lastSeen[cnt]`
