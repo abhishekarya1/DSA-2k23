@@ -39,7 +39,8 @@ Duplicates and non-sorted are the problematic elements in the union and intersec
 - Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`
 	- **LOGIC**: split will have smaller elements on left side and greater on right side (find counter-inversion), bring smallest from right half to left side (find greater and swap), need smallest possible permutation as next so we sort (reverse)
 
-- Longest subarray with given sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two pointer approach (only this approach won't work if negatives are present in the array), if negatives aren't present optimal approach will be a sliding window
+- Longest subarray with given sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal
+  
 - Count subarrays with given sum K (or xor K): brute force cubic approach, better qudratic approach, `prefixSum[sum] = count` map approach (optimal)
 - Longest consecutive sequence in an array: array can be unsorted
 	- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
