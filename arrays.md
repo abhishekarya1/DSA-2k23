@@ -127,6 +127,8 @@ Can be solved in following ways:
 - calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
 - solution involving space like `prefixSum` map (optimal)
 
+Detailed observations and templates in [SWTP Notes](/swtp.md)
+
 ### Duplicate/Missing Detection Techniques
 ```
 - brute force (quadratic solution)
