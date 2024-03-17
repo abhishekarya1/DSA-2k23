@@ -59,7 +59,7 @@ return ans;
 ```
 
 Related Problems:
-- longest subarray with sum k (even if negatives are present)
+- longest subarray with sum k (works even if negatives are present)
 - longest subarray with 0 sum
 - longest subarray with equal no. of 0s and 1s
 
