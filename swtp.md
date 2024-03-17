@@ -1,7 +1,8 @@
 - usually subarray/runlength problems
   - brute = 3 loops or 2 loops
   - better = 2 loops (some logic trimmed)
-  - optimal = 1 loop (usually needs some extra space like in `prefixSum[]` / SW using Queue / some Algorithm like Kadane)
+  - optimal#1 = `prefixSum[]` approach (only when subarray sum is increasing. Ex - no negatives etc.)
+  - optimal#2 = simple dynamic SW with two-pointers / fixed-sized SW using Queue / some smart algorithm like Kadane
 
 ### Subarray Templates
 ```cpp
@@ -21,7 +22,7 @@ for (int i = 0; i < n; i++) {
 ```
 
 ```cpp
-/* using 2 for loops - it can't print out all subarrays but can process each subarray at thier respective endpoints i.e. j */
+/* using 2 for loops - it can't print out all subarrays end-to-end but can process each subarray at thier respective endpoints i.e. j */
 
 // start point for subarrays
 for (int i = 0; i < n; i++) {
@@ -36,6 +37,31 @@ for (int i = 0; i < n; i++) {
 **NOTE**: range `j = [0 - i]` won't work for the second (inner) FOR loop, it has to be combinations of start points (given by `i`) and end points (given by `j`)
 
 [Subarray 2 FOR Loop Approach Diagram - Hand Drawn](https://imgur.com/a/lT28eJV)
+
+```cpp
+/* PrefixSum approach using a map to track lastSeen sum's index */
+
+unordered_map<int, int> lastSeen;
+lastSeen[0] = -1;	// important initialization
+
+int ans = 0, sum = 0,;
+for (int i = 0; i < arr.size(); i++) {
+
+	sum += arr[i];
+
+	if(lastSeen.find(sum) != lastSeen.end())
+		ans = max(ans, i - mp[sum]);
+	else 
+		mp[sum] = i;
+}
+
+return ans;
+```
+
+Related Problems:
+- longest subarray with sum k (even if negatives are present)
+- longest subarray with 0 sum
+- longest subarray with equal no. of 0s and 1s
 
 Previous Notes:
 - in [Arrays](/arrays.md) - some previously done subarray problems
