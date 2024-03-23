@@ -56,6 +56,8 @@ Note that Lower bound is equal to Upper bound if element `x` is not present in t
 
 Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In lower bound we move leftwards in duplicates, in upper bound we move rightwards in duplicates. `low` will always end up at the answer (rightwards element before condition is broken).
 
+`UB(e) - LB(e)` gives count of element (`e`) in a sorted array. [problem](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/)
+
 [Problem](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
 [Code Templates](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
