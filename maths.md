@@ -86,6 +86,6 @@ nPr = n!/(n-r)!*r!
 Ex - ways of forming two letter words from string "ABC" will be just 3 - "AB", "AC", "BC". Since order doesn't matter, "AB" and "BA" are equivalent here.
 ```
 
-Find count of all full length permutations of the string `NUMBER` where letter `N` occurs to the left of letter `U`:  the count of occuring on right = count of occuring on left is symmetrical. So answer is `n!/2`. Another approach to this can be that the block `N ... U` always remains fixed in every valid permuatation so `n - r = 2` i.e. we are picking only `r` elements for the permutation.
+Find count of all full length permutations of the string `NUMBER` where letter `N` occurs to the left of letter `U`:  the count of occuring on right = count of occuring on left is symmetrical. So answer is `n!/2`. Another approach to this can be that any two places always remain fixed i.e. `6C2` and we permute the rest `4` places i.e. `4!`, so answer is `6C2 * 4!` that is equal to `6! / 2!`.
 
 Find count of all permutations of the string `NUMBER` where letter `N` occurs to the left of letter `U` and `NU` always occur together: treat `NU` as a single unit since they always occur together, hence answer becomes `(n-1)!` 
