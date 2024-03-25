@@ -70,10 +70,10 @@ Usage in Chess: Rooks and Bishops use MD, Kings and Queens use CD
 
 ### Combinatorics
 ```txt
-Permutation: ways of arranging elements where order matters (aka Subsequences)
+Permutation: ways of arranging elements where order matters
 nPr = n!/(n-r)!
 
-Ex - ways of forming two letter words from string "ABC" will be 6 - "AB", "AC", "BA", "CA", "BC", "CB"
+Ex - ways of forming two letter words from string "ABC" will be 6 - "AB", "AC", "BA", "BC", "CA", "CB"
 
 Re-arrangent/Factorial: ways of arranging all elements where order matters (generalized form of permuation where r = n)
 nPn = n!
