@@ -67,3 +67,25 @@ x + z > y
 Usage in Chess: Rooks and Bishops use MD, Kings and Queens use CD
 
 [Minimum Time Visiting All Points](https://leetcode.com/problems/minimum-time-visiting-all-points/) - answer is sum of chebyshev's distance (since diagonal dist is `1`) between each pair of points
+
+### Combinatorics
+```txt
+Permutation: ways of arranging elements where order matters (aka Subsequences)
+nPr = n!/(n-r)!
+
+Ex - ways of forming two letter words from string "ABC" will be 6 - "AB", "AC", "BA", "CA", "BC", "CB"
+
+Re-arrangent/Factorial: ways of arranging all elements where order matters (generalized form of permuation where r = n)
+nPn = n!
+
+Ex - ways of rearranging string "ABC" will be 6 - "ABC", "ACB", "BAC", "BCA", "CAB", "CBA"
+
+Combinations: ways of arranging elements where order doesn't matter
+nPr = n!/(n-r)!*r!
+
+Ex - ways of forming two letter words from string "ABC" will be just 3 - "AB", "AC", "BC". Since order doesn't matter, "AB" and "BA" are equivalent here.
+```
+
+Find count of all full length permutations of the string `NUMBER` where letter `N` occurs to the left of letter `U`:  the count of occuring on right = count of occuring on left is symmetrical. So answer is `n!/2`. Another approach to this can be that the block `N ... U` always remains fixed in every valid permuatation so `n - r = 2` i.e. we are picking only `r` elements for the permutation.
+
+Find count of all permutations of the string `NUMBER` where letter `N` occurs to the left of letter `U` and `NU` always occur together: treat `NU` as a single unit since they always occur together, hence answer becomes `(n-1)!` 
