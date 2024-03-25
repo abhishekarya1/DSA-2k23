@@ -70,7 +70,7 @@ Usage in Chess: Rooks and Bishops use MD, Kings and Queens use CD
 
 ### Combinatorics
 ```txt
-Permutation: ways of arranging elements where order matters
+Permutation: ways of arranging elements where ordering matters (distinct ordering of same content is counted multiple times)
 nPr = n!/(n-r)!
 
 Ex - ways of forming two letter words from string "ABC" will be 6 - "AB", "AC", "BA", "BC", "CA", "CB"
@@ -80,7 +80,7 @@ nPn = n!
 
 Ex - ways of rearranging string "ABC" will be 6 - "ABC", "ACB", "BAC", "BCA", "CAB", "CBA"
 
-Combinations: ways of arranging elements where order doesn't matter
+Combinations: ways of arranging elements where ordering doesn't matter
 nPr = n!/(n-r)!*r!
 
 Ex - ways of forming two letter words from string "ABC" will be just 3 - "AB", "AC", "BC". Since order doesn't matter, "AB" and "BA" are equivalent here.
