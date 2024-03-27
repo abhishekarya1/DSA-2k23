@@ -106,6 +106,9 @@ Handle `goal < 0` cases in this ATMOST kind of problems, `return 0` in that case
 
 Since we're tracking maxLen, why should it even matter that we are skipping calc for `< k` cases? It mattered in subarray number calculation, but here we're supposed to find the maximum length of the subarray. There can be a case when there are never k (say `k = 3`) distinct characters in the whole array `str = [aaabbaaa]` in which case the final ans (`maxLen`) will be `len(str)` which is not correct.
 
+ATLEAST kind of problems can also be solved using the same template as above:
+- [Subarray Product Strictly Less Than K](https://leetcode.com/problems/subarray-product-less-than-k/): modify condition as `while(j <= i && prod >= k)` to count less and equal subarrays, the first part of condition `j <= i` is added for edge case `k = 0` as we start with `prod = 1` and it will always trigger while loop and move `j` to the right of `i`
+
 ### Dynamic Sliding Window Templates
 we need only 2 types of fruit in our SW (all templates are equivalent)
 
