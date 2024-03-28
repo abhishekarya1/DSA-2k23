@@ -99,6 +99,7 @@ Handle `goal < 0` cases in this ATMOST kind of problems, `return 0` in that case
 - https://leetcode.com/problems/binary-subarrays-with-sum/
 - https://takeuforward.org/arrays/count-subarray-sum-equals-k/ (can be solved with preSum map of counts too if no negatives are present)
 - https://leetcode.com/problems/count-number-of-nice-subarrays/
+- https://leetcode.com/problems/length-of-longest-subarray-with-at-most-k-frequency/
 - https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/: we do `n - i` here because consider `abc|bca`, valid substring is on the left of `|` and substrings possible with that (atleast) are `abc`, `abcb`, `abcbc`, `abcbca` i.e. `1 + remaining chars in string` a.k.a `n - i`.
 
 4. Longest subarray/substring with exactly K: we can use the AT MOST template used to count subarrays above, but only track max when condition is `== k`.
