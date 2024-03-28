@@ -193,7 +193,10 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
-Template#3: **BEST** using if instead of while loop, calc ans in same step (eventually gets the ans, may not be in current step)
+Template#3: **BEST** using IF instead of WHILE loop, calc ans in same step (eventually gets the ans, may not be in current step)
+
+**NOTE**: this template is equivalent to WHILE loop template only when condition is not dependent on `arr[i]`, thats why both templates work for "Fruits into Baskets" problem but not for "Length of Longest Subarray With at Most K Frequency" problem (only WHILE loop template works there).
+
 ```cpp
 int totalFruit(vector<int> &fruits){
 
