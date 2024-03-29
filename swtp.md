@@ -219,6 +219,28 @@ int totalFruit(vector<int> &fruits){
 }
 ```
 
+Template#4: for **ATLEAST** problem like [Count Subarrays Where Max Element Appears at Least K Times](https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times), differs in just window size calculation step after WHILE loop
+```cpp
+int count(vector<int>& nums, int e, int k) {
+	int j = 0, cnt = 0, ans = 0;
+	for (int i = 0; i < nums.size(); i++) {
+		if (nums[i] == e)
+			cnt++;
+
+		while (cnt >= k) {
+			if (nums[j] == e)
+				cnt--;
+			j++;
+		}
+
+		// between j and i is atmost k
+		// so before j will be atleast k
+		ans += j;
+	}
+	return ans;
+}
+```
+
 ### Fixed Size Window Templates
 **Template#1**: using a `queue<>` data structure
 
