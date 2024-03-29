@@ -233,8 +233,8 @@ int count(vector<int>& nums, int e, int k) {
 			j++;
 		}
 
-		// between j and i is atmost k
-		// so before j will be atleast k
+		// between j and i (both inclusive) is atmost k and exactly k
+		// so before j (exclusive) will be atleast k
 		ans += j;
 	}
 	return ans;
