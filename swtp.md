@@ -241,6 +241,28 @@ int count(vector<int>& nums, int e, int k) {
 }
 ```
 
+Alternatively, we can count `>= k` subarrays and subtract from total subarrays to get count of ATLEAST k subarrays:
+```cpp
+int count(vector<int>& nums, int e, int k) {
+	int j = 0, cnt = 0, ans = 0;
+	for (int i = 0; i < nums.size(); i++) {
+		if (nums[i] == e)
+			cnt++;
+
+		while (cnt >= k) {
+			if (nums[j] == e)
+				cnt--;
+			j++;
+		}
+		ans += i - j + 1;
+	}
+
+	// count of atleast k subarrays
+	int totalSubArr = (nums.size() * (nums.size() + 1)) / 2;
+	return totalSubArr - ans;
+}
+```
+
 ### Fixed Size Window Templates
 **Template#1**: using a `queue<>` data structure
 
