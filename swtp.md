@@ -233,8 +233,8 @@ int count(vector<int>& nums, int e, int k) {
 			j++;
 		}
 
-		// between j and i (both inclusive) is atmost k and exactly k
-		// so before j (exclusive) will be atleast k
+		// between j and i (both inclusive) is less than k subarray (since we remmoved exactly k and greater than k subarrays using WHILE loop condition)
+		// so remaining part i.e. before j (exclusive) will be atleast k (exactly k and greater than k) subarray
 		ans += j;
 	}
 	return ans;
