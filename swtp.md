@@ -10,14 +10,14 @@
 
 // start point for subarrays
 for (int i = 0; i < n; i++) {
-	// end point for subarrays
-	for (int j = i; j < n; j++) {
-		// print subarrays between current start and end points
-		for (int k = i; k <= j; k++){
-			cout << arr[k] << " ";
-		}
-		cout << endl;
-	}
+    // end point for subarrays
+    for (int j = i; j < n; j++) {
+        // print subarrays between current start and end points
+        for (int k = i; k <= j; k++){
+            cout << arr[k] << " ";
+        }
+        cout << endl;
+    }
 }
 ```
 
@@ -26,11 +26,11 @@ for (int i = 0; i < n; i++) {
 
 // start point for subarrays
 for (int i = 0; i < n; i++) {
-	// end point for subarrays
-	for (int j = i; j < n; j++) {
-		cout << "Subarray starts at : " << i << " and ends at: " << j;		// we process arr[j] here
-		cout << endl;
-	}
+    // end point for subarrays
+    for (int j = i; j < n; j++) {
+        cout << "Subarray starts at : " << i << " and ends at: " << j;		// we process arr[j] here
+        cout << endl;
+    }
 }
 ```
 
@@ -47,12 +47,12 @@ lastSeen[0] = -1;	// important initialization
 int ans = 0, sum = 0,;
 for (int i = 0; i < arr.size(); i++) {
 
-	sum += arr[i];
+    sum += arr[i];
 
-	if(lastSeen.find(sum) != lastSeen.end())
-		ans = max(ans, i - mp[sum]);
-	else 
-		mp[sum] = i;
+    if(lastSeen.find(sum) != lastSeen.end())
+        ans = max(ans, i - mp[sum]);
+    else
+        mp[sum] = i;
 }
 
 return ans;
@@ -222,44 +222,44 @@ int totalFruit(vector<int> &fruits){
 Template#4: for **ATLEAST** problem like [Count Subarrays Where Max Element Appears at Least K Times](https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times), differs in just window size calculation step after WHILE loop
 ```cpp
 int count(vector<int>& nums, int e, int k) {
-	int j = 0, cnt = 0, ans = 0;
-	for (int i = 0; i < nums.size(); i++) {
-		if (nums[i] == e)
-			cnt++;
+    int j = 0, cnt = 0, ans = 0;
+    for (int i = 0; i < nums.size(); i++) {
+        if (nums[i] == e)
+            cnt++;
 
-		while (cnt >= k) {
-			if (nums[j] == e)
-				cnt--;
-			j++;
-		}
+        while (cnt >= k) {
+            if (nums[j] == e)
+                cnt--;
+            j++;
+        }
 
-		// between j and i (both inclusive) is less than k subarray (since we remmoved exactly k and greater than k subarrays using WHILE loop condition)
-		// so remaining part i.e. before j (exclusive) will be atleast k (exactly k and greater than k) subarray
-		ans += j;
-	}
-	return ans;
+        // between j and i (both inclusive) is less than k subarray (since we remmoved exactly k and greater than k subarrays using WHILE loop condition)
+        // so remaining part i.e. before j (exclusive) will be atleast k (exactly k and greater than k) subarray
+        ans += j;
+    }
+    return ans;
 }
 ```
 
 Alternatively, we can count `>= k` subarrays and subtract from total subarrays to get count of ATLEAST k subarrays:
 ```cpp
 int count(vector<int>& nums, int e, int k) {
-	int j = 0, cnt = 0, ans = 0;
-	for (int i = 0; i < nums.size(); i++) {
-		if (nums[i] == e)
-			cnt++;
+    int j = 0, cnt = 0, ans = 0;
+    for (int i = 0; i < nums.size(); i++) {
+        if (nums[i] == e)
+            cnt++;
 
-		while (cnt >= k) {
-			if (nums[j] == e)
-				cnt--;
-			j++;
-		}
-		ans += i - j + 1;
-	}
+        while (cnt >= k) {
+            if (nums[j] == e)
+                cnt--;
+            j++;
+        }
+        ans += i - j + 1;
+    }
 
-	// count of atleast k subarrays
-	int totalSubArr = (nums.size() * (nums.size() + 1)) / 2;
-	return totalSubArr - ans;
+    // count of atleast k subarrays
+    int totalSubArr = (nums.size() * (nums.size() + 1)) / 2;
+    return totalSubArr - ans;
 }
 ```
 
