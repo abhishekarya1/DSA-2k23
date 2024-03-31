@@ -113,7 +113,9 @@ Since we're tracking maxLen, why should it even matter that we are skipping calc
 **NOTE**: `j` can cross `i` if sum/prod remains `<= k` at every step, ex `arr = [1,1,1] with prodK = 1`, so we place the condition `j <= i` to have valid `i` and `j` for calc after the loop.
 
 6. OTHER kind of problems of SW
-- https://leetcode.com/problems/count-subarrays-with-fixed-bounds: init all 3 idx with `-1`, this is solved by fixing `i` pointer on `minK` or `maxK` and calc length of valid subarrays from a violating index `j` (exclusive) to least recently seen `minK` or `maxK` index (for longer length subarray), if length of subarray is valid (`>= 0`) then add subarray length to `ans` (to count number of valid subarrays ending at that index)
+- https://leetcode.com/problems/count-subarrays-with-fixed-bounds: init all 3 idx with `-1`, this is solved by fixing `i` pointer on `minK` or `maxK` and calc count of valid subarrays as length between latest violating index `j` (exclusive) to least recently seen `minK` or `maxK` index, if length is valid (`>= 0`) then add length to `ans` (to count number of valid subarrays ending at current index)
+
+**NOTE**: the code `max(0, min(minIdx, maxIdx) - j)` is small at first glance but actually goes much deeper (ofc as its a LC Hard!). The `min(minIdx, maxIdx)` ensures that we have both the `minK` and `maxK` elements in subarray till current element `i` and subtraction with `j` and subsquent length `>= 0` (or `max()`) check ensures that `minIdx`/`maxIdx` appears to the right of `j` (bad index). The actual valid subarray is from `minIdx`/`maxIdx` to current index! But count of elements between them is added because they each form a unique subarray with current valid subarray.
 
 ### Dynamic Sliding Window Templates
 we need only 2 types of fruit in our SW (all templates are equivalent)
