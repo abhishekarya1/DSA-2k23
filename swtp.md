@@ -112,6 +112,9 @@ Since we're tracking maxLen, why should it even matter that we are skipping calc
 
 **NOTE**: `j` can cross `i` if sum/prod remains `<= k` at every step, ex `arr = [1,1,1] with prodK = 1`, so we place the condition `j <= i` to have valid `i` and `j` for calc after the loop.
 
+6. OTHER kind of problems of SW
+- https://leetcode.com/problems/count-subarrays-with-fixed-bounds: this is solved by fixing `i` pointer on `minK` and `maxK` and calc length of valid subarrays from a violating index `j` (exclusive) to least recently seen `minK` or `maxK` index (for longer length subarray), if length of subarray is valid (`>= 0`) then add whole subarray length to `ans` (for total count)
+
 ### Dynamic Sliding Window Templates
 we need only 2 types of fruit in our SW (all templates are equivalent)
 
