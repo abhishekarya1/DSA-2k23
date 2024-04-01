@@ -173,7 +173,7 @@ sort(ans.begin(), ans.end());
 return ans;
 ```
 
-**Letter Combinations of a Phone Number**: normal combination template actually does combination on own `str = "abc"` using FOR loop as `"a"` and `"bc"` producing `"ab"` and `"bc"`. Same way we do for `str = "23"`, but expand str as `"abcdef"` using a dictionary of key-letter maps and produce all `len(str)` sized combinations using the same template [problem](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+**Letter Combinations of a Phone Number**: normal combination template actually does combination on own `str = "abc"` using FOR loop as `"a"` and `"bc"` producing `"ab"` and `"bc"`. Same way we do for `str = "23"`, but expand str as `"abc"` and `"def"` using a dictionary of key-letter maps and produce all `len(str)` sized combinations using the same template [problem](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
 
 (Old Explanation) **2-D**: the main string to be traversed is traversed by recursion calls, other by FOR loop. Ex - in phone keypad problem, we traverse digits by recursion and run FOR loop for "abc" "def" etc... Another example - combination sum problems are also this way only, there we place 1 element of the array using recursion and using FOR loop we traverse the rest of the array to find pairs for it
 
