@@ -84,6 +84,11 @@ Combinations: ways of arranging elements where ordering doesn't matter
 nPr = n!/(n-r)!*r!
 
 Ex - ways of forming two letter words from string "ABC" will be just 3 - "AB", "AC", "BC". Since order doesn't matter, "AB" and "BA" are equivalent here.
+
+Subsequences: they are nothing but Power Set (order doesn't matter; only content does in a set)
+Each elements has two choices (pick/not-pick) = 2^n
+Alternatively, all possible combination sizes = nCn + nCn-1 ... + nC0
+Both of the above are equivalent!
 ```
 
 Find count of all full length permutations of the string `NUMBER` where letter `N` occurs to the left of letter `U`:  the count of occuring on right = count of occuring on left is symmetrical. So answer is `n!/2`. Another approach to this can be that pick any two places and they always remain fixed i.e. `6C2` and we permute the rest `4` places i.e. `4!`, so answer is `6C2 * 4!` that is equal to `6! / 2!`.
