@@ -66,6 +66,8 @@ void sortStack(stack<int>& st){
 ### Subsequences
 Old Notes - refer Samsung Notes PDF
 
+The math of it: https://github.com/abhishekarya1/DSA-2k23/blob/master/maths.md#combinatorics
+
 ### Subsequences Patterns
 A subsequence is a generalization of substring in which it may not be contiguous but order should be maintained
 - generate all subsequences of size n (`vector<int>`)
@@ -104,7 +106,7 @@ genSubseqForLoopVersion(0, "", str);
 
 TC = `O(2^n)`
 
-[Link to Recursion Tree Diagrams](https://imgur.com/a/02PcLRh)
+[Link to Recursion Tree Diagrams](https://imgur.com/a/U34VdR5)
 
 Whenever we require to remove duplicates (uniqueness), we `sort` and then use the FOR loop approach. Ex - ComboSum2, SubsetSum2. 
 
