@@ -1,6 +1,6 @@
 **Isomorphic Strings**: 
 - using one map, two scans - scan both strings and look for previous occurance of char `s[i]` and its corresponding mapping `t[i]`, if seen previously and mapping doesn't match, return false, else if not seen previously then store mapping. Do this again for string `t`.
-- using one map, one scan: check map keys for existance of `s[i]`, if present value must be same as `t[i]`, if not present check if `t[i]` present in map values (map values contain all chars from `t` so far), if present that means it already corresponds to some other char and not isomorphic (return false), if not present then that means both `s[i]` and `t[i]` are occuring for the first time (create mapping)
+- using one map, one scan: check map keys for existence of `s[i]`, if present (i.e. seen before) its value must be same as `t[i]`, if not present check if `t[i]` present in map values (map values contain all chars from `t` so far), if present that means it already corresponds to some other char (since `s[i]` is first occurance) and not string are not isomorphic (return false), if not present then that means both `s[i]` and `t[i]` are occuring for the first time (create a mapping)
 - using two hashes of size 256: track last occured index in 2 hashes each of a string and they should be same, if not same then not isomorphic
 
 **Longest Common Prefix**: multiple approaches
