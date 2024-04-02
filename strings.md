@@ -1,5 +1,5 @@
 **Isomorphic Strings**: 
-- one map, two scans - scan both strings and look for previous occurance of char `s[i]` and its corresponding mapping `t[i]`, if seen previously and mapping doesn't match, return false, else if not seen previously then store mapping
+- one map, two scans - scan both strings and look for previous occurance of char `s[i]` and its corresponding mapping `t[i]`, if seen previously and mapping doesn't match, return false, else if not seen previously then store mapping. Do this again for string `t`.
 - using a single map: check map keys for existance of `s[i]`, if present value must be same as `t[i]`, if not present check if `t[i]` present in map values, if present that means it already corresponds to some other char and not isomorphic (return false), if not present then that means both `s[i]` and `t[i]` are occuring for the first time (create mapping)
 - using two hashes of size 256: track last occured index in 2 hashes each of a string and they should be same, if not same then not isomorphic
 
