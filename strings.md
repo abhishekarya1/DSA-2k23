@@ -66,8 +66,8 @@ int i = 0;
 
 **Make The String Great** ([link](https://leetcode.com/problems/make-the-string-great/description/)): the challenge here is that when an invalid pair is detected and removed, how do we go back and check if removal has caused another pair to form at our current pointer's left hand side
 - Make multiple passes using `while(1)` and skip invalid pairs in each iteration until such pass it done in which there is no skip/fix done in that pass (use boolean `flag`)
-- Use a stack and keep comparing everytime to stack top if a invalid pair is forming
+- Use a stack and keep comparing everytime to stack top if an invalid pair is forming
 
-**Minimum Remove to Make Valid Parentheses** ([link](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)): here we are trying not to remove the valid pairings but excessive parentheses. The standard trick to solve this is to scan the string twice (once form left to right and one the other way). The expected order is `(`s and then `)`s to form valid pairs, any closing char that leads to violation of count `openCnt < 0` is an excessive closing char. After the first scan we're supposed to get `openCnt = 0` if eveything is valid and there are no excess opening chars. In second scan we mark excessive opening chars.
-- Mark excessive chars with `*`: when copying over to `ans` string, skip `*` chars
-- Use stack and skip pushing excessive chars: the reverse of stack ordering eventually is the final ans
+**Minimum Remove to Make Valid Parentheses** ([link](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)): here we are trying not to remove the valid pairings but excessive parentheses. The standard trick to solve this is to scan the string twice (once form left to right and once the other way). The expected order is `(`s and then `)`s to form valid pairs, any closing char that leads to violation of count `openCnt < 0` is an excessive closing char. After the first scan we're supposed to get `openCnt = 0` if eveything is valid and there are no excess opening chars. In second scan we mark excessive opening chars if there are any.
+- Mark excessive chars with `*` in both scans: when copying over to `ans` string, skip `*` chars (don't copy them)
+- Use stack and skip pushing excessive chars into it: put stack contents in ans string and skip opening chars (this is the equivalent to scan from right to left), the reverse of stack ordering (`rev(ans)`) eventually is the final ans
