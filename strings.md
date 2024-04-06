@@ -61,3 +61,13 @@ int i = 0;
 ---
 
 **Custom Sort String** ([link](https://leetcode.com/problems/custom-sort-string/)): duplicates in `s` cause issue here in valid ordering. Instead of looking for `s` in map built from `order` dict (first approach; more natural but fails). Create a map of `s` freqCount and build string by iterating on `order` dict and at the end append the remaining chars in `s` not present in `order` dict. Hint is that `order` can be of max length 26, while `s` can be much larger so we its better if we choose to primarily traverse on `order` dict.
+
+### Stack and Parentheses Problems
+
+**Make The String Great** ([link](https://leetcode.com/problems/make-the-string-great/description/)): the challenge here is that when an invalid pair is detected
+- make multiple passes using `while(1)` and skip invalid pairs in each iteration until a pass it done and there is no fix done inside that pass (use `flag` to check)
+- use a stack and compare everytime to stack top
+
+**Minimum Remove to Make Valid Parentheses** ([link](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)): here we are trying not to remove the valid pairings but excessive parentheses. The standard trick to solve this is to scan the string twice (once form left to right and one the other way). The expected order is `(`s and then `)`s to form valid pairs, any closing char that leads to violation of count `openCnt < 0` is an excessive closing char. After the first scan we're supposed to get `openCnt = 0` if eveything is valid and there are no excess opening chars. In second scan we mark excessive opening chars.
+- Mark excessive chars with `*`: when copying over to `ans` string, skip `*` chars
+- Use stack and skip pushing excessive chars: the reverse of stack ordering eventually is the final ans
