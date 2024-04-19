@@ -180,10 +180,10 @@ return ans;
 ### Advanced Problems
 **Palindrome Partitioning**: check all partition positions, if a partition's left substring (`start` to `i`) is a palindrome, put it in ans vector and then recur for remaining string moving ahead `i + 1` in recursion call
 
-**Word Search**: recur on string `word` as soon as the first occurance of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid. Make sure to backtrack i.e. unvisit after recursive calls. This is nothing but DFS - go and check.
+**Word Search**: recur on string `word` as soon as the first occurance of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid. Make sure to backtrack i.e. unvisit after recursive calls. This is nothing but DFS + Backtracking - go and check.
 -  TC = `4 ^ (m*n)` since at each cell we move in 4 directions
 
-**Rat in a Maze**: Nothing but simple DFS - check and go, make sure to backtrack if further movement is not possible. TC = `4 ^ (m*n)`
+**Rat in a Maze**: Nothing but simple DFS + Backtracking - check and go, make sure to backtrack if further movement is not possible. TC = `4 ^ (m*n)`
 
 **N-Queens**: input is `nCol = nRow = nQueens`,  recur on `cols` and FOR loop on `rows`, need to check only three sides (left in the same row, left upper diag, left lower diag) as we're moving from left to right. 
 - TC = `O(N! * N)`. For the first queen, we have `N` choices of squares, for the second queen we need to check `N-1` choices (since one square is taken by the first queen), for the third queen we need to check for `N-2` choices, and so on till only `1` choice and we explore all choices so we take product (i.e. factorial). In practice, TC is better since we know if we cannot place a queen and we backtrack earlier than reaching `1`
