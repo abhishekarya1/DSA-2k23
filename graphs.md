@@ -105,7 +105,7 @@ _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-o
 ### Paths
 [All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/description/) - use DFS with backtracking current path list
 
-[Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/) - use simple DFS (backtracking on `visted[]` is optional (causes TLE) since all edges are bi-directional)
+[Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/) - use simple DFS (backtracking on `visted[]` is optional (causes TLE) since we don't care WHICH path lands us at the node, but only IF it does land us)
 
 ### BFS/DFS and Cycle Detection
 **Flood Fill**: in a 2D matrix traverse all neighbours in 4 or 8 directions and traverse entire island (connected component), use a visited 2D matrix of the same size, node will be represented as coordinate `{1, 2}` of type `pair<int, int>`, recolor and enqueue neighbours
