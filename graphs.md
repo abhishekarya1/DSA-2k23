@@ -103,7 +103,7 @@ _Ref_: https://www.geeksforgeeks.org/why-is-the-complexity-of-both-bfs-and-dfs-o
 
 ## Techniques
 ### Paths
-[All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/description/) - use DFS with backtracking current path list
+[All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/description/) - use DFS with backtracking current path list. `visted[]` isn't required for DAG since we can never visit an already visited node again on a same path twice (cycle detected).
 
 [Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/) - use simple DFS (backtracking on `visted[]` is optional (causes TLE) since we don't care WHICH path lands us at the node, but only IF it does land us)
 
