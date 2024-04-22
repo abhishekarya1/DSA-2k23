@@ -1,4 +1,4 @@
-## Ad-Hoc / Implementation
+## Ad-Hoc / Implementation / Simulation
 [Tic-tac-Toe](https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/solutions/441422/java-python-c-0ms-short-and-simple-all-8-ways-to-win-in-one-array/) in two arrays (one for each player) without saving board state
 
 [Robot Return to Origin](https://leetcode.com/problems/robot-return-to-origin/) - direction change is not from POV of the robot, and moves aren't repeating after one scan, so we can just calcuate vertical and horizontal displacements and they both should be zero
