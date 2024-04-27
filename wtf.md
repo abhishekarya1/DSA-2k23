@@ -15,5 +15,5 @@ There is usually some deep observation or trickery involved in these, rest are t
 
 [Number of Employees Who Met the Target](https://leetcode.com/problems/number-of-employees-who-met-the-target/)
 
-### Mid (Smort
+### Mid (Smort)
 [Partitioning Into Minimum Number Of Deci-Binary Numbers](https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/)
