@@ -17,3 +17,5 @@ There is usually some deep observation or trickery involved in these, rest are t
 
 ### Mid (Smort)
 [Partitioning Into Minimum Number Of Deci-Binary Numbers](https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/)
+
+[Delete Node in a Linked List](https://leetcode.com/problems/delete-node-in-a-linked-list/) (pointer to the node to be deleted is given, not the head of LL)
