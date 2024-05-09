@@ -112,7 +112,9 @@ DecreaseKey - O(log n); satisfy heap property recursively
 Build a heap with n elements: O(n * log n); on every element insertion there will be a heapify
 ```
 
-Using Binary Heaps reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`
+The time complexity of the `Extract` operation is `O(log n)`, but `n` is the size of the heap and it keeps on decreasing as we keep on extracting elements from the heap. We consider the asymptotic upper-bound so we consider it `log(n)` but the actual runtime is potentially lower that than.
+
+Using Binary Heaps (atmost 2 children of each node) reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`
 
 ### C++ STL
 Top element is greatest by default in the Max-Heap in C++
