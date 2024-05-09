@@ -112,7 +112,7 @@ DecreaseKey - O(log n); satisfy heap property recursively
 Build a heap with n elements: O(n * log n); on every element insertion there will be a heapify
 ```
 
-The time complexity of the `Extract` operation is `O(log n)`, but `n` is the size of the heap and it keeps on decreasing as we keep on extracting elements from the heap. We consider the asymptotic upper-bound so we consider it `log(n)` but the actual runtime is potentially lower that than.
+The time complexity of the `Extract` operation is `O(log n)`, but `n` is the size of the heap and it keeps on decreasing as we keep on extracting elements from the heap. We consider the asymptotic upper-bound so we consider time for eacg operation as `log(n)` but the actual runtime of the operation is potentially lower than that.
 
 Using Binary Heaps (atmost 2 children of each node) reduces time to `O(n * log k)` for Order Statistics queries since we sort only till the required part (`k` elements) and not the whole array `O(n * log n)`
 
@@ -127,7 +127,7 @@ priority_queue <int, vector<int>, greater<int>> pq;       // Min-Heap
 In Java Collection, class `PriorityQueue` implements `Queue` interface, and is by default a Min-Heap
 
 ### Usage of PQ
-- Kth Order Statistics
+- Kth Order Statistics - find top/bottom `k` elements
 - Heap Sort - comparison based sorting algorithm
 - BFS Traversal of Graphs and Trees (level-order traversal)
 - Dijkstra's Algorithm
@@ -138,8 +138,8 @@ In Java Collection, class `PriorityQueue` implements `Queue` interface, and is b
 **Build Max-Heap from Min-Heap**: call maxHeapify (Sift Down - 3 node comparison) for all nodes starting from rightmost bottom node doing reverse traversal of the heap array. Start from the last root (`(n-1)-1/2`) or we can start with node `n-1` too and conditions in the heapify method will take care of bounds
 
 **Kth Largest/Smallest Element**: 
-- Intuitive Approach: for Kth largest build Max-Heap from all elements and remove top `k-1` elements, vice-versa for Kth smallest. TC = `O(n logn + (k-1) log n)`
-- Better Approach (better TC and SC): we can use Min-Heap for the Kth largest element, keep pushing elements into it and if heap size becomes `> k` pop the top to make size `== k`. At the end, Min-Heap's top will be the ans. TC = `O(k + (n-k) log k)`
+- Intuitive Approach: for Kth largest build Max-Heap from all elements and remove top `k-1` elements, vice-versa for Kth smallest. TC = `O(n logn + (k-1) log n)`, SC = `O(n)`
+- Better Approach (better TC and SC): we can use Min-Heap for the Kth largest element, keep pushing elements into it and if heap size becomes `> k` pop the top to make size `== k`. At the end, Min-Heap's top will be the ans. TC = `O(n log k + log k)`, SC = `O(k)`
     - summary: add `k+1`th element to heap and pop top to maintain `k` sized heap
 
 **Sort K (nearly sorted) Sorted Array**: `O(n log k)`; use Min Heap and get top (min element) for every `i` from among its next `k` elements, do this for every `i < n`, start with a heap built from the first `k + 1` elements of the array (to find correct element for `i = 0`), then pop one from heap and insert one from array, when array traversal is done, copy elements to array from heap until heap becomes empty
