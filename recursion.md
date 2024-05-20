@@ -74,6 +74,7 @@ A subsequence is a generalization of substring in which it may not be contiguous
 - generate all subsequence with sum k (`vector<int>`)
 - check if a subsequence exists with sum k (`bool`)
 - count all subsequences with sum k (`int`)
+- sum of xor of all subsets (subseq) [link](https://leetcode.com/problems/sum-of-all-subset-xor-totals/)
 
 Two templates:
 1. Pick/NotPick - subsequences (all tree nodes have 2 children except leaves)
