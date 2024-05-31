@@ -137,17 +137,20 @@ Detailed observations and templates in [SWTP Notes](/swtp.md)
 ```
 - brute force (quadratic solution)
 - hashmap - store and check freq count
-- set - put all elements in a set and compare set size with array size to check existence of duplicate(s) (linear time)
-- if only one is missing and/or only one is duplicate, use Math or XOR (pairings must exists for XOR, not applicable in more than 2 missing and/or more than 2 duplicates)
+- set - put all elements in a set and compare set size with array size to check existence of duplicate(s)
 - sort and compare adjacents (works most time xD)
-- mark with negatives and cycle sort approach (treating array indices as hashmap so its equivalent to the above approach)
+- if only one is missing and/or only one is duplicate, use Math (only applicable if range is fixed like `[1 - n]` or `[m - n]`)
+- form XOR buckets based on a single bit in XOR result of all elements (some sort of pairings must exists for XOR to work) (it works even if elements aren't in a fixed range)
+- mark with negatives and cycle sort approach (treating array indices as hashmap so its equivalent to the above dedicated hashmap approach)
 - binary search (on [1-n] search space)
 - floyd's cycle detection algorithm (treat index and addresses and array elements as pointers)
 ```
 
+**Find 2 numbers which appear once and others appear twice**: [link](https://leetcode.com/problems/single-number-iii/) we can't apply maths approach here as the input range is not `[1 - n]`. Hence, we apply XOR bit buckets technique here. 
+
 **Find the Duplicate Number**: here the single duplicate number can occur more than 2 times, thats why XOR/Math isn't applicable, other ways are but modifications to input array and extra space isn't allowed [problem](https://leetcode.com/problems/find-the-duplicate-number/)
 - binary search (no sorting required): search on `[1 - n]` space and simulate counting (`if(nums[i] <= mid) cnt++`) for each `mid`, TC = `O(nlogn)` even without sorting [OPTIMAL]
-- floyd's cycle detection algorithm (Hare and Tortoise Two Pointers): elements of the array can be considered as pointers that points to the address (index) of next element, cycle is guaranteed because of pigeonhole principal and we can apply LL cycle starting point logic here, TC = `O(n)` [OPTIMAL] [video](https://www.youtube.com/watch?v=wjYnzkAhcNk)
+- floyd's cycle detection algorithm (Hare and Tortoise Two Pointers): elements of the array can be considered as pointers that points to the address (index) of next element, cycle is guaranteed because of pigeonhole principle and we can apply LL cycle starting point logic here, TC = `O(n)` [OPTIMAL] [video](https://www.youtube.com/watch?v=wjYnzkAhcNk)
 
 [reference to all approaches above](https://leetcode.com/problems/find-the-duplicate-number/solutions/1892921/9-approaches-count-hash-in-place-marked-sort-binary-search-bit-mask-fast-slow-pointers/)
 
