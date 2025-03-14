@@ -2,3 +2,4 @@ remote_theme: jekyll/minima
 minima:
   skin: auto
   nav_pages:
+  - README.md
