@@ -5,4 +5,4 @@
 
 ## Tips
 
-XOR can't always be used to detect duplicate pairs, as `[1, 2, 4, 7]` has a XOR value of `0`, but there are no duplicates present! So its not a universal solution to detect pair duplicates. [Problem](https://leetcode.com/problems/divide-array-into-equal-pairs)
+XOR can't always be used to detect duplicate pairs, as `[1, 2, 4, 7]` has a XOR value of `0`, but there are no duplicates present! So its not a universal solution to detect if multiple single elements exist among pair duplicates. [Problem](https://leetcode.com/problems/divide-array-into-equal-pairs). It works best when there is exactly one single element among pair duplicates.
