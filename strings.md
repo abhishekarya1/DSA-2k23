@@ -14,7 +14,7 @@ no. of substrings of length 1 + no. of substrings of length 2 + ... + no. of sub
 =>  n + (n - 1) + ... + 1 (sum of first n natural numbers)
 => n * (n + 1) / 2
 
-Generalizing - no. of substrings of length k is (n - k + 1)
+Generalizing - no. of substrings of length k is = n - (k - 1) = n - k + 1
 ```
 
 **Operations on Substrings**: substring with a particular property like a certain sum, pattern, etc.
