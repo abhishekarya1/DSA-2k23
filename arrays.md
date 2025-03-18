@@ -13,7 +13,8 @@ while(i < n){
 	i++;	// always increment i
 }
 ```
-- low and high pointer trick \[NOT STABLE\]
+- low and high pointer trick [NOT STABLE]
+
 ```cpp
 int low = 0, high = nums.size() - 1;
 
