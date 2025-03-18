@@ -42,7 +42,7 @@ for (int i = 0; i < n; i++) {
 /* PrefixSum approach using a map to track lastSeen sum's index */
 
 unordered_map<int, int> lastSeen;
-lastSeen[0] = -1;	// important initialization
+lastSeen[0] = -1;	// important initialization; if we sum nothing, we have sum as 0 by default
 
 int ans = 0, sum = 0,;
 for (int i = 0; i < arr.size(); i++) {
