@@ -49,7 +49,7 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 	- sort and remove duplicates from each array using sets early on and do simple two-pointer approach
 	- sort and do two-pointer and remove duplicates from `ans` array using a set at the end
  	- store all elments of `nums2` in a freq map (acts as a set since it keeps unique elements only as keys), then traverse `nums1` and erase when an element is found in both (is intersection) to avoid duplicates; no sorting was required here because of map lookups (finds)
-- Set difference of two sorted arrays: similar code as above, always take element from smaller one and skip both on equal elements. Copy remaining but only from the `A` if calculating `A - B` set diff.
+- Set difference of two sorted arrays: similar code as above, take smaller element but only if its in `A` and skip both on equal elements. Copy remaining but only from the `A` if calculating `A - B` set diff.
     
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
