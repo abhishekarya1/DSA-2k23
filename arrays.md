@@ -1,4 +1,46 @@
-Duplicates and non-sorted are the problematic elements in the union and intersection appraoches below.
+### Two ways of two-pointer
+https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is not STABLE though!
+
+- ahead and behind pointers .aka. one pointer always moving (_probe_) trick [MOSTLY STABLE]. Its not exactly stable but close! Example `{3,1,-2,-5,2,-4}` will get segregated as `{3,1,2,-5,-2,-4}` but a perfect segregation will be `{3,1,2,-2,-5,-4}`
+```cpp
+int i = 0, j = 0, n = arr.size();
+while(i < n){
+	if(arr[i] != 0){	// moving 0s to end
+		swap(arr[i], arr[j]);
+		j++;		// increment j only on insert
+	}
+	
+	i++;	// always increment i
+}
+```
+- low and high pointer trick \[NOT STABLE\]
+```cpp
+int low = 0, high = nums.size() - 1;
+
+while(low < high){
+
+        // we need to move 0 to high
+        if(nums[low] == 0){
+        	swap(nums[low], nums[high]);
+        	high--;
+	}
+
+        // else just move ahead, we don't have a 0 at low
+        else
+        	low++;
+}
+```
+
+Related Questions:
+- https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+- Segragate 0s and 1s
+- https://leetcode.com/problems/move-zeroes/ (LC sol requires stable way)
+
+### Set operations (union, intersection, set diff)
+- Non-Sorted: use ordered `map` or ordered `set`
+- Sorted: use two-pointer technique discussed below
+   
+Duplicates within an array are problematic for two-pointer approach. Check last element of result array at each write to detect and eliminate duplicates.
 
 - Union of two sorted arrays (sorted; duplicates present): always take minimum of the two and check with equality with the last inserted element so that we don't insert duplicates `O(m+n)`
 - Intersection of two arrays (unsorted; duplicates present): [link](https://leetcode.com/problems/intersection-of-two-arrays/)
@@ -6,7 +48,8 @@ Duplicates and non-sorted are the problematic elements in the union and intersec
 	- sort and remove duplicates from each array using sets early on and do simple two-pointer approach
 	- sort and do two-pointer and remove duplicates from `ans` array using a set at the end
  	- store all elments of `nums2` in a freq map (acts as a set since it keeps unique elements only as keys), then traverse `nums1` and erase when an element is found in both (is intersection) to avoid duplicates; no sorting was required here because of map lookups (finds)
-
+- Set difference of two sorted arrays: similar code as above, always take element from smaller one and skip both on equal elements. Copy remaining but only from the `A` if calculating `A - B` set diff.
+    
 - Find one missing and one repeated numbers in an array:
   - Hashtable approach
   - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve, overflow issue may happen tho 
@@ -86,44 +129,6 @@ Majority element `> n/2` times approaches:
 - convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
 
 --- 
-
-### Two ways of two-pointer
-https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is not STABLE though!
-
-- ahead and behind pointers .aka. one pointer always moving trick [MOSTLY STABLE]. Its not exactly stable but close! Example `{3,1,-2,-5,2,-4}` will get segregated as `{3,1,2,-5,-2,-4}` but a perfect segregation will be `{3,1,2,-2,-5,-4}`
-```cpp
-int i = 0, j = 0, n = arr.size();
-while(i < n){
-	if(arr[i] != 0){	// moving 0s to end
-		swap(arr[i], arr[j]);
-		j++;		// increment j only on insert
-	}
-	
-	i++;	// always increment i
-}
-```
-- low and high pointer trick [NOT STABLE]
-```cpp
-int low = 0, high = nums.size() - 1;
-
-while(low < high){
-
-        // we need to move 0 to high
-        if(nums[low] == 0){
-        	swap(nums[low], nums[high]);
-        	high--;
-	}
-
-        // else just move ahead, we don't have a 0 at low
-        else
-        	low++;
-}
-```
-
-Related Questions:
-- https://leetcode.com/problems/remove-duplicates-from-sorted-array/
-- Segragate 0s and 1s
-- https://leetcode.com/problems/move-zeroes/ (LC sol requires stable way)
 
 ### Subarray problems 
 Can be solved in following ways:
