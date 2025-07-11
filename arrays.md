@@ -119,7 +119,7 @@ Majority element `> n/2` times approaches:
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
-- Count Inversions / Reverse Pairs - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them and return at the end
+- Count Inversions / Reverse Pairs - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays (with no duplicates) only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them and return at the end
 
 ### 2-D Matrix
 - Search an element in 2D matrix: start from top-right or bottom-left corner
