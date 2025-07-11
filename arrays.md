@@ -94,9 +94,9 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 - Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = -1` (sum 0 seen once even before array traversal starts on index -1)
 
 Majority element `> n/2` times approaches:
-- brute force
+- brute force quadratic
 - frequency hashmap
-- sorting: sort and check mid (need to verify if its actually a majEle)
+- sorting: sort and check mid (index `n/2`) (need to verify if its actually a majEle)
 - building majEle with bitwise: count bits at each position (use `&` mask) for all numbers in array and if its `> n/2`, set it in `ans` (use `|` or) and that'll be majEle at the end (`O(n * log C)` where C can be max 32-bits for ints)
 - optimal: boyer-moore voting algo (need to verify if its actually a majEle)
 
@@ -104,9 +104,9 @@ Majority element `> n/2` times approaches:
 	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
 	- scan again to verify majority status
-	- incase of two elements (`n/3`), check numbers before count zero condition, also use `else if` to avoid updation of both `count1` and `count2` simultaneously on `count = 0`, else in decrement case, decrement both
+	- incase of two elements (`n/3`): two zero conditions and they have to check if currEle is not the other majEle as well, use `else if` to avoid updation of both `count1` and `count2` simultaneously on `countN = 0`, else in decrement case, decrement both
 
-- Single element occuring more than `n/4` times (`25%`)[link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
+- Single element occuring more than `n/4` times (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
 
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
 	- incase duplicates are there, only consider first/last among the chain
