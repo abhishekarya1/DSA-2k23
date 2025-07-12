@@ -66,7 +66,7 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 **Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable) (_see template below_)
 - using two extra arrays: place positive and negatives in them, put elements back alternatingly in the original array, and after smaller array is copied fully put remaining of the other array (if positives and negatives aren't equal in number)
 - using one extra array: traverse over each element in the original array, place positives and negatives in the `ans` array at `evenIndex` and `oddIndex`, update both by `+= 2`
-- if the number of positives and negatives are equal then segregate them and perform swap on the first half of array with the second half (mirror) indices 
+- if preserving order isn't required and the number of positives and negatives are equal then segregate them and perform swap on the first half of array with the second half (mirror) indices 
 - there is a third way using two-pointers that uses `O(1)` space which is good for interviews as it works ONLY on smaller test cases: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign/submissions/1175412097/)
 
 **Odd element at odd index, Even at even index**: use last way above for constant space solution [problem](https://leetcode.com/problems/sort-array-by-parity-ii)
@@ -120,7 +120,7 @@ Majority element `> n/2` times approaches:
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
-- Count Inversions / Reverse Pairs - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays (with no duplicates) only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them and return at the end
+- Count Inversions / Reverse Pairs - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays (with no duplicates) only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them from every recurive call and return cumulative count at the end. Counting inversions can be done with modified condition body in the merge method, but counting reversals needs separate logic since we can't modify merge condition itself (we need scanning for reversals unlike inversions).
 
 ### 2-D Matrix
 - Search an element in 2D matrix: start from top-right or bottom-left corner
