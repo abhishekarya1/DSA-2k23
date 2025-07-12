@@ -38,7 +38,7 @@ Related Questions:
 - https://leetcode.com/problems/move-zeroes/ (LC sol requires stable way)
 
 ### Set operations (union, intersection, set diff)
-- Non-Sorted: use ordered `map` or ordered `set`
+- Non-Sorted: use ordered `map` or ordered `set` to sort and remove duplicates, or unordered ones for constant time lookups for unsorted arrays
 - Sorted: use two-pointer technique discussed below
    
 Duplicates within an array are problematic for two-pointer approach. Check last element of result array at each write to detect and eliminate duplicates.
