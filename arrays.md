@@ -116,10 +116,17 @@ Majority element `> n/2` times approaches:
 	- incase duplicates are there, only consider first/last among the chain using `if` (skip each step) or `while` loop (fast forwarding all steps)
 	- TC = `O(n^2)` (_optimal_); map approach isn't possible here
 - 4-Sum Problem:
-	- strategy-1: fix two pointers `i = 0` and `j = n - 1` and search for `target-arr[i]` in the rest of the array (till `j > i`) using another two pointers, nested loops to inc `i` and dec `j`
-	- strategy-2: fix two pointers `i = 0` and `j = i + 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j`
+	- fix two pointers `i = 0` and `j = i + 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j`
   	- incase duplicates are there, only consider first/last among the chain
 	- time complexity: `O(n^3)`
+
+```txt
+2Sum → 2-pointer
+3Sum → fix one, use 2-pointer
+4Sum → fix two, use 2-pointer
+and so on...
+```
+
 - Merge two sorted arrays in O(1) space:
 	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
