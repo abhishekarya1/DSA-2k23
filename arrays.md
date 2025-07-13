@@ -125,7 +125,8 @@ To summarize:
 and so on...
 ```
 
-## Duplicate/Missing Detection Techniques
+## Duplicates / Missing
+**Techniques**:
 ```
 - brute force (quadratic solution)
 - hashmap - store and check freq count
@@ -191,6 +192,9 @@ and so on...
 - the valley/peak count will still remain same since we'll count only once on either side of the equal element occurance chain (smart)
 
 **Trapping Rainwater Problem**: see [stack and queues notes](/stack_queue.md)
+
+## Intervals
+Merge Overlapping Intervals - https://leetcode.com/problems/merge-intervals
 
 ## Prefix Sum
 **Longest subarray with given sum K** - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal
