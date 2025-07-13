@@ -1,7 +1,11 @@
-remote_theme: jekyll/minima@0b7ca6b
+remote_theme: jekyll/minima
+
 minima:
   skin: auto
   nav_pages:
-  - README.md
-  
-hide_site_feed_link: true
+    - README.md
+  social_links:
+    - title: Notes repository at GitHub
+      icon: github
+      url: "https://github.com/abhishekarya1/DSA-2k23"
+  hide_site_feed_link: true
