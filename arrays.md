@@ -1,5 +1,28 @@
+## General
+Majority element `> n/2` times approaches:
+- brute force quadratic
+- frequency hashmap
+- sorting: sort and check mid (index `n/2`) (need to verify if its actually a majEle)
+- building majEle with bitwise: count bits at each position (use `&` mask) for all numbers in array and if its `> n/2`, set it in `ans` (use `|` or) and that'll be majEle at the end (`O(n * log C)` where C can be max 32-bits for ints)
+- optimal: boyer-moore voting algo (need to verify if its actually a majEle)
+
+- Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
+	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
+	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
+	- scan again to verify majority status
+	- incase of two elements (`n/3`): two zero conditions and they have to check if currEle is not the other majEle as well, use `else if` to avoid updation of both `count1` and `count2` simultaneously on `countN = 0`, else in decrement case, decrement both
+
+- Single element occuring more than `n/4` times (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
+
+- Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`
+	- **LOGIC**: split will have smaller elements on left side and greater on right side (find counter-inversion), bring smallest from right half to left side (find greater and swap), need smallest possible permutation as next so we sort (reverse)
+
+## Two Pointers
+### Rotation and Reversal
+[Reversal Algorithm](https://en.wikipedia.org/wiki/Block_swap_algorithms) to implement rotation
+
 ### Two ways of two-pointer
-https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is not STABLE though!
+https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is too unstable though!
 
 - ahead and behind pointers .aka. one pointer always moving (_probe_) trick [MOSTLY STABLE]. Its not exactly stable but close! Example `{3,1,-2,-5,2,-4}` will get segregated as `{3,1,2,-5,-2,-4}` but a perfect segregation will be `{3,1,2,-2,-5,-4}`
 ```cpp
@@ -13,7 +36,7 @@ while(i < n){
 	i++;	// always increment i
 }
 ```
-- low and high pointer trick [NOT STABLE]
+- low and high pointer trick
 
 ```cpp
 int low = 0, high = nums.size() - 1;
@@ -32,12 +55,35 @@ while(low < high){
 }
 ```
 
-Related Questions:
+Related Problems:
 - https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 - Segragate 0s and 1s
 - https://leetcode.com/problems/move-zeroes/ (LC sol requires stable way)
 
-### Set operations (union, intersection, set diff)
+### Segregating / Rearranging
+**Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable) (_see template below_)
+- using two extra arrays: place positive and negatives in them, put elements back alternatingly in the original array, and after smaller array is copied fully put remaining of the other array (if positives and negatives aren't equal in number)
+- using one extra array: traverse over each element in the original array, place positives and negatives in the `ans` array at `evenIndex` and `oddIndex`, update both by `+= 2`
+- if preserving order isn't required and the number of positives and negatives are equal then segregate them and perform swap on the first half of array with the second half (mirror) indices 
+- there is a third way using two-pointers that uses `O(1)` space which is good for interviews as it works ONLY on smaller test cases: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign/submissions/1175412097/)
+
+**Odd element at odd index, Even at even index**: use last way above for constant space solution [problem](https://leetcode.com/problems/sort-array-by-parity-ii)
+
+**Sort an array of 0s, 1s, and 2s (Dutch Flag Algorithm)**: take 3 pointers `lo=0` `mid=0` `hi=n-1`, `mid` is our "main" pointer; while `mid <= hi` do
+- on `0` swap `arr[lo]` and `arr[mid]`, increment both (sending `0` to `lo`, it is guranteed that element coming from `lo` will be `1`)
+- on `1` increment `mid` (not touching `1`)
+- on `2` swap `arr[mid]` and `arr[hi]`, only decrement `hi` (bcoz no guarantee that element coming from `arr[hi]` isn't `2`) (sending `2` to `hi`)
+   
+**NOTE**: Two pointer approach with `low` and `high` had condition `while(low < high)` but Dutch-National Algo has `while(mid <= high)`, why the `<=`? Because value of the last element of the separation (`low == high`) won't matter, it can be either of `0` or `1` and separation will still be valid. But with three-partitions, it can be `0` in cases like `[1, 0, 2]` (`mid = high = 1`) and we do need to process `0` and place it appropriately.
+
+- Merge two sorted arrays in O(1) space:
+	- Merging arrays approach: using two pointers, traverse both arrays and swap the smaller element from the second array to the first array, this fixes one element in the first (larger) array at appropriate position, re-sort the smaller array after every swap; sorting is necessary since we don't know what kind of elements are coming from first array upon swap.
+	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
+
+### Merging two arrays
+Merging can be done on sorted arrays in `O(m+n)` time and constant space with two pointers. Tip - always copy smaller element and move its pointer.
+
+Set operations (merge, union, intersection, set diff)
 - Non-Sorted: use ordered `map` or ordered `set` to sort and remove duplicates, or unordered ones for constant time lookups for unsorted arrays
 - Sorted: use two-pointer technique discussed below
    
@@ -50,65 +96,11 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 	- sort and do two-pointer and remove duplicates from `ans` array using a set at the end
  	- store all elments of `nums2` in a freq map (acts as a set since it keeps unique elements only as keys), then traverse `nums1` and erase when an element is found in both (is intersection) to avoid duplicates; no sorting was required here because of map lookups (finds)
 - Set difference of two sorted arrays: similar code as above, take smaller element but only if its in `A` and skip both on equal elements. Copy remaining but only from the `A` if calculating `A - B` set diff.
-    
-- Find one missing and one repeated numbers in an array:
-  - Hashtable approach
-  - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve, overflow issue may happen tho 
-  - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
-  - mark with `-1` approach - optimal linear TC
 
-- Kadane's Algorithm (subarray having max sum): make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
-	- Modify kadane's algo to keep track of start and end of max sum subarray
-   	- brute force (cubic) approach, better (qudratic) approach, kadane's algo (linear)
+### Divide and Conquer (Merge Sort based)
+- Count Inversions / Reverse Pairs - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays (with no duplicates) only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them from every recurive call and return cumulative count at the end. Counting inversions can be done with modified condition body in the merge method, but counting reversals needs separate logic since we can't modify merge condition itself (we need scanning for reversals unlike inversions).
 
-- Print max sum contiguous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
-
-**Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable) (_see template below_)
-- using two extra arrays: place positive and negatives in them, put elements back alternatingly in the original array, and after smaller array is copied fully put remaining of the other array (if positives and negatives aren't equal in number)
-- using one extra array: traverse over each element in the original array, place positives and negatives in the `ans` array at `evenIndex` and `oddIndex`, update both by `+= 2`
-- if preserving order isn't required and the number of positives and negatives are equal then segregate them and perform swap on the first half of array with the second half (mirror) indices 
-- there is a third way using two-pointers that uses `O(1)` space which is good for interviews as it works ONLY on smaller test cases: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign/submissions/1175412097/)
-
-**Odd element at odd index, Even at even index**: use last way above for constant space solution [problem](https://leetcode.com/problems/sort-array-by-parity-ii)
-
-**Sort an array of 0s, 1s, and 2s (Dutch-Flag Algorithm)**: take 3 pointers `lo=0` `mid=0` `hi=n-1`, `mid` is our "main" pointer; while `mid <= hi` do
-- on `0` swap `arr[lo]` and `arr[mid]`, increment both (sending `0` to `lo`, it is guranteed that element coming from `lo` will be `1`)
-- on `1` increment `mid` (not touching `1`)
-- on `2` swap `arr[mid]` and `arr[hi]`, only decrement `hi` (bcoz no guarantee that element coming from `arr[hi]` isn't `2`) (sending `2` to `hi`)
-   
-**NOTE**: Two pointer approach with `low` and `high` had condition `while(low < high)` but Dutch-National Algo has `while(mid <= high)`, why the `<=`? Because value of the last element of the separation (`low == high`) won't matter, it can be either of `0` or `1` and separation will still be valid. But with three-partitions, it can be `0` in cases like `[1, 0, 2]` (`mid = high = 1`) and we do need to process `0` and place it appropriately.
-- Stock Buy and Sell:
-  - Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
-  - Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. Use valley-peak approach: calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
-
-- Next Permutation: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`
-	- **LOGIC**: split will have smaller elements on left side and greater on right side (find counter-inversion), bring smallest from right half to left side (find greater and swap), need smallest possible permutation as next so we sort (reverse)
-
-- Longest subarray with given sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal
-  
-- Count subarrays with given sum K (or xor K): brute force cubic approach, better qudratic approach, `prefixSum[sum] = count` map approach (optimal)
-- Longest consecutive sequence in an array: array can be unsorted
-	- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
-	- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
- 	- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
-
-- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = -1` (sum 0 seen once even before array traversal starts on index -1)
-
-Majority element `> n/2` times approaches:
-- brute force quadratic
-- frequency hashmap
-- sorting: sort and check mid (index `n/2`) (need to verify if its actually a majEle)
-- building majEle with bitwise: count bits at each position (use `&` mask) for all numbers in array and if its `> n/2`, set it in `ans` (use `|` or) and that'll be majEle at the end (`O(n * log C)` where C can be max 32-bits for ints)
-- optimal: boyer-moore voting algo (need to verify if its actually a majEle)
-
-- Boyer-Moore Majority Voting Algorithm: Find majority element occuring `n/k` times
-	- only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
-	- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
-	- scan again to verify majority status
-	- incase of two elements (`n/3`): two zero conditions and they have to check if currEle is not the other majEle as well, use `else if` to avoid updation of both `count1` and `count2` simultaneously on `countN = 0`, else in decrement case, decrement both
-
-- Single element occuring more than `n/4` times (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
-
+### Finding a target (2-Sum)
 - 2-Sum Problem:
 	- naive quadratic solution: pick one element and brute force search its other half (_addend_), use nested loops. Interseting observation is that we don't need to look backwards in the inner loop since pairing for those are already covered when outer loop were at previous indices.
 	- for unsorted: optimal approach is to find `target - arr[i]` while storing elements in a map/set.
@@ -129,31 +121,7 @@ Majority element `> n/2` times approaches:
 and so on...
 ```
 
-- Merge two sorted arrays in O(1) space:
-	- Merging arrays approach: using two pointers, traverse both arrays and swap the smaller element from the second array to the first array, this fixes one element in the first (larger) array at appropriate position, re-sort the smaller array after every swap; sorting is necessary since we don't know what kind of elements are coming from first array upon swap.
-	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
-
-- Count Inversions / Reverse Pairs - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays (with no duplicates) only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them from every recurive call and return cumulative count at the end. Counting inversions can be done with modified condition body in the merge method, but counting reversals needs separate logic since we can't modify merge condition itself (we need scanning for reversals unlike inversions).
-
-### 2-D Matrix
-- Search an element in 2D matrix: start from top-right or bottom-left corner
-- Rotate Matrix by 90 degrees: transpose, and swap cols (aka reverse all rows)
-- Set Matrix Zeros: use variable `col` as indicator for `col0`, start biulding reference matrix from `0, 0` and start building answer matrix from `arr[m-1][n-1]`, treat `col0` separately, both during building reference and answer matrix
-- Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column. Pointers have to be placed very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
-- primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
-- convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
-
---- 
-
-### Subarray problems 
-Can be solved in following ways:
-- generate all subarrays (cubic)
-- calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
-- solution involving space like `prefixSum` map (optimal)
-
-Detailed observations and templates in [SWTP Notes](/swtp.md)
-
-### Duplicate/Missing Detection Techniques
+## Duplicate/Missing Detection Techniques
 ```
 - brute force (quadratic solution)
 - hashmap - store and check freq count
@@ -196,8 +164,18 @@ Detailed observations and templates in [SWTP Notes](/swtp.md)
 
 PATTERN: If there are multiple elements repeating and missing, sum or xor may not be applicable. We can use indices as hashmap! Since numbers are `[1 - n]` and indices are `[0 - n-1]`, convert to 1-based indexing and if only positives are there use negative marking technique, otherwise use swap technique.
 
-### Two Pointers - Valleys
+- Find one missing and one repeated numbers in an array:
+  - Hashtable approach
+  - `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve, overflow issue may happen tho 
+  - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
+  - mark with `-1` approach - optimal linear TC
 
+
+## Leaders
+- Stock Buy and Sell:
+  - Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
+  - Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. Use valley-peak approach: calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
+ 
 **Count Hills and Valleys in an Array**: [link](https://leetcode.com/problems/count-hills-and-valleys-in-an-array)
 - instead of looking rightwards for next non-equal element to check peak/valley, keep track of leftwards non-equal element in a variable (`left`)
 - compare next elements with this leftwards variable (`left`) instead of element `arr[i - 1]` to check peak/valley
@@ -205,7 +183,38 @@ PATTERN: If there are multiple elements repeating and missing, sum or xor may no
 
 **Trapping Rainwater Problem**: see [stack and queues notes](/stack_queue.md)
 
-### Frequency Based
+## Prefix Sum
+- Longest subarray with given sum K - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal
+  
+- Count subarrays with given sum K (or xor K): brute force cubic approach, better qudratic approach, `prefixSum[sum] = count` map approach (optimal)
+- Longest consecutive sequence in an array: array can be unsorted
+	- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
+	- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
+ 	- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
+
+- Longest subarray with 0 sum: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = -1` (sum 0 seen once even before array traversal starts on index -1)
+
+**Product of Array Except Self**:
+- calc entire array `prod` and div by `arr[i]` each time (linear time but overflow; div may not be allowed)
+- for each element calc entire array `prod` skipping `arr[i]` in their respective iteration (quadratic time)
+- track `prefixProd` and `suffixProd` (linear time, linear space)
+- directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
+
+## Subarrays
+Can be solved in following ways:
+- generate all subarrays (cubic)
+- calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
+- solution involving space like `prefixSum` map (optimal)
+
+Detailed observations and templates in [SWTP Notes](/swtp.md)
+
+- Kadane's Algorithm (subarray having max sum): make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
+	- Modify kadane's algo to keep track of start and end of max sum subarray
+   	- brute force (cubic) approach, better (qudratic) approach, kadane's algo (linear)
+
+- Print max sum contiguous subarray: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
+
+## Hashing / Frequency Based
 **Unique Number of Occurrences** - create freq map and put all freq in a set and compare set size with map size, another approach can be to count freq and sort freq array to identify if any duplicates are there by comparing adjacent elements. [problem](https://leetcode.com/problems/unique-number-of-occurrences/)
 
 **Count Elements with Maximum Frequency** - multiple scans, create freq map and find max freq in it, then scan string and identify what all elements have the max freq (= cnt), ans will be `cnt * maxFreq`. [problem](https://leetcode.com/problems/count-elements-with-maximum-frequency/)
@@ -213,13 +222,15 @@ PATTERN: If there are multiple elements repeating and missing, sum or xor may no
 **Sort Characters by Frequency** (VERY IMPORTANT) - bucket sorting, create freq map of all characters and then append characters freq times to the corresponsing bucket in the `buckets` array of size `str.size() + 1` since max no. of times an element can ooccur is `s.size()`, form `ans` string by traversing and appending all non-empty buckets from the back. [problem](https://leetcode.com/problems/sort-characters-by-frequency/)
 - since there is no way to sort freq numbers in map, we have an already sorted space (buckets) where we can attach elements and traverse from its back to get desc order of freq
 
----
+## 2-D Matrix
+- Search an element in 2D matrix: start from top-right or bottom-left corner
+- Rotate Matrix by 90 degrees: transpose, and swap cols (aka reverse all rows)
+- Set Matrix Zeros: use variable `col` as indicator for `col0`, start biulding reference matrix from `0, 0` and start building answer matrix from `arr[m-1][n-1]`, treat `col0` separately, both during building reference and answer matrix
+- Spiral Traversal of Matrix: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column. Pointers have to be placed very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
+- primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
+- convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
 
-**Product of Array Except Self**:
-- calc entire array `prod` and div by `arr[i]` each time (linear time but overflow; div may not be allowed)
-- for each element calc entire array `prod` skipping `arr[i]` in their respective iteration (quadratic time)
-- track `prefixProd` and `suffixProd` (linear time, linear space)
-- directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
+
 
 **Find subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
 - SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too
