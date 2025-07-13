@@ -1,6 +1,6 @@
-remote_theme: jekyll/minima
+remote_theme: jekyll/minima@v2.5.2
 minima:
-  skin: auto
+  skin: classic
   nav_pages:
   - README.md
 
