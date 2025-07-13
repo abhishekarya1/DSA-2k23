@@ -1,13 +1,12 @@
 remote_theme: jekyll/minima@v2.5.2
 minima:
-  skin: classic
+  skin: auto
   nav_pages:
   - README.md
 
 social_links:
-    - title: Notes repository at GitHub
-      icon: github
-      url: "https://github.com/abhishekarya1/DSA-2k23"
-      
-show_excerpts: true
+  - title: Notes repository at GitHub
+    icon: github
+    url: "https://github.com/abhishekarya1/DSA-2k23"
+
 hide_site_feed_link: false
