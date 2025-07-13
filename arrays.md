@@ -110,15 +110,17 @@ Majority element `> n/2` times approaches:
 - Single element occuring more than `n/4` times (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
 
 - 2-Sum Problem:
+	- naive quadratic solution: pick one element and brute force search its other half (_addend_), use nested loops. Interseting observation is that we don't need to look backwards in the inner loop since pairing for those are already covered when outer loop were at previous indices.
 	- for unsorted: optimal approach is to find `target - arr[i]` while storing elements in a map/set.
 	- if sorted: fix `i = 0, j = n - 1` and do 2-pointer search for `target`.
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
-	- incase duplicates are there, only consider first/last among the chain using `if` (skip each step) or `while` loop (fast forwarding all steps)
-	- TC = `O(n^2)` (_optimal_); map approach isn't possible here
+	- low and high technique won't work as previously believed by me! naive solution is `O(n^3)` here and will work the same as 2-Sum's naive sol (no need to scan previous indices).
+  	- incase duplicates are there, only consider first/last among the chain using `if` (skip each step) or `while` loop (fast forwarding all steps)
+	- TC = `O(n^2)` (_optimal_); map approach isn't possible here.
 - 4-Sum Problem:
-	- fix two pointers `i = 0` and `j = i + 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j`
-  	- incase duplicates are there, only consider first/last among the chain
-	- time complexity: `O(n^3)`
+	- fix two pointers `i = 0` and `j = i + 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j` to handle duplicates since it considers only the first/last among the chain.
+  	- taking search space from `j` till end works since we don't need to look at previous indices as they're already covered when we go left to right (with `i`) (as explained in 2-Sum above). 
+	- TC: `O(n^3)` (_optimal_)
 
 ```txt
 2Sum → 2-pointer
