@@ -138,6 +138,17 @@ and so on...
 - floyd's cycle detection algorithm (treat index and addresses and array elements as pointers)
 ```
 
+**Some Simple Problems**:
+- **Single missing number in range `[0 - n]`**: https://leetcode.com/problems/missing-number
+- **Single number apprearing once and others exactly twice**: https://leetcode.com/problems/single-number
+- **Tell if any value appears atleast twice**: https://leetcode.com/problems/contains-duplicate
+
+**Find one missing and one repeated numbers in an array**:
+- Hashtable approach
+- `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve, overflow issue may happen tho 
+- XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
+- mark with `-1` approach - optimal linear TC
+
 **Find 2 numbers which appear once and others appear twice**: [link](https://leetcode.com/problems/single-number-iii/) we can't apply maths approach here as the input range is not `[1 - n]`. Hence, we apply XOR bit buckets technique here. 
 
 **Find the Duplicate Number**: here the single duplicate number can occur more than 2 times, thats why XOR/Math isn't applicable, other ways are but modifications to input array and extra space isn't allowed [problem](https://leetcode.com/problems/find-the-duplicate-number/)
@@ -167,12 +178,6 @@ and so on...
 - optimal - marking with `-1` approach (use `abs()` and 1-based indexing) - if element is already marked, then its a duplicate
 
 **PATTERN**: If there are multiple elements repeating and missing, sum or xor may not be applicable. We can use indices as hashmap! Since numbers are `[1 - n]` and indices are `[0 - n-1]`, convert to 1-based indexing and if only positives are there use negative marking technique, otherwise use swap technique.
-
-**Find one missing and one repeated numbers** in an array:
-- Hashtable approach
-- `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve, overflow issue may happen tho 
-- XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
-- mark with `-1` approach - optimal linear TC
 
 ## Leaders
 **Stock Buy and Sell**:
