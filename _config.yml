@@ -3,3 +3,5 @@ minima:
   skin: auto
   nav_pages:
   - README.md
+  
+hide_site_feed_link: true
