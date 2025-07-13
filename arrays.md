@@ -130,8 +130,9 @@ and so on...
 ```
 
 - Merge two sorted arrays in O(1) space:
-	- Insertion sort approach: traverse larger array and swap the smaller one from then other array, resort the smaller array after every swap
+	- Merging arrays approach: using two pointers, traverse both arrays and swap the smaller element from the second array to the first array, this fixes one element in the first (larger) array at appropriate position, re-sort the smaller array after every swap; sorting is necessary since we don't know what kind of elements are coming from first array upon swap.
 	- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
+
 - Count Inversions / Reverse Pairs - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays (with no duplicates) only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them from every recurive call and return cumulative count at the end. Counting inversions can be done with modified condition body in the merge method, but counting reversals needs separate logic since we can't modify merge condition itself (we need scanning for reversals unlike inversions).
 
 ### 2-D Matrix
