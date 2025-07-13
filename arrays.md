@@ -139,9 +139,10 @@ and so on...
 ```
 
 **Some Simple Problems**:
-- **Single missing number in range `[0 - n]`**: https://leetcode.com/problems/missing-number
-- **Single number apprearing once and others exactly twice**: https://leetcode.com/problems/single-number
-- **Tell if any value appears atleast twice**: https://leetcode.com/problems/contains-duplicate
+- **Single missing number in range `[0 - n]`** (_math_): https://leetcode.com/problems/missing-number
+- **Single number appearing once and others exactly twice** (_xor_): https://leetcode.com/problems/single-number
+- **Tell if any number appears atleast twice (Contains Duplicate)** (_set_): https://leetcode.com/problems/contains-duplicate
+- **Find duplicate when all other numbers appear exactly once**: use _map_ or _sorting_
 
 **Find one missing and one repeated numbers in an array**:
 - Hashtable approach
