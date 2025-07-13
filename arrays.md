@@ -179,7 +179,9 @@ and so on...
 **Find All Duplicates in an Array**: since multiple are missing, and multiple are repeating, we can't use sum or xor here. [link](https://leetcode.com/problems/find-all-duplicates-in-an-array/solutions/4595812/o-n-time-o-1-space-optimal-approach-using-marking-negative-technique-c/)
 - optimal - marking with `-1` approach (use `abs()` and 1-based indexing) - if element is already marked, then its a duplicate
 
-**PATTERN**: If there are multiple elements repeating and missing, sum or xor may not be applicable. We can use indices as hashmap! Since numbers are `[1 - n]` and indices are `[0 - n-1]`, convert to 1-based indexing and if only positives are there use negative marking technique, otherwise use swap technique.
+**PATTERN**: If there are multiple elements repeating and missing in a range, sum or xor may not be applicable. We can use indices as hashmap! Since numbers are `[1 - n]` and indices are `[0 - n-1]`, convert to 1-based indexing and if only positives are there use negative marking technique, otherwise use swap technique. 
+
+If there in no range, then XOR buckets technique is the best approach most times if we have amalgamation of two numbers after doing XOR on whole array.
 
 ## Leaders
 **Stock Buy and Sell**:
