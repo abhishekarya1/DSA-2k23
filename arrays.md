@@ -130,7 +130,7 @@ and so on...
 - brute force (quadratic solution)
 - hashmap - store and check freq count
 - set - put all elements in a set and compare set size with array size to check existence of duplicate(s)
-- sort and compare adjacents (works most time xD)
+- sort and compare adjacents (works most times xD)
 - if only one is missing and/or only one is duplicate, use Math (only applicable if range is fixed like `[1 - n]` or `[m - n]`)
 - form XOR buckets based on a single bit in XOR result of all elements (some sort of pairings must exists for XOR to work) (it works even if elements aren't in a fixed range)
 - mark with negatives and cycle sort approach (treating array indices as hashmap so its equivalent to the above dedicated hashmap approach)
@@ -139,14 +139,14 @@ and so on...
 ```
 
 **Some Simple Problems**:
-- **Single missing number in range `[0 - n]`** (_math_): https://leetcode.com/problems/missing-number
+- **Single missing number in range `[0 - n]`** (_math_ or _xor_): https://leetcode.com/problems/missing-number
 - **Single number appearing once and others exactly twice** (_xor_): https://leetcode.com/problems/single-number
 - **Tell if any number appears atleast twice (Contains Duplicate)** (_set_): https://leetcode.com/problems/contains-duplicate
-- **Find duplicate when all other numbers appear exactly once**: use _map_ or _sorting_
+- **Find duplicate when all other numbers appear exactly once**: use map or sort and compare adjacents
 
 **Find one missing and one repeated numbers in an array**:
-- Hashtable approach
-- `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve, overflow issue may happen tho 
+- using Map to store freq counts
+- `S = {1 + ... + n}` and `P = {1^2 + ... + n^2}` approach: form two equations and solve, overflow issue may happen though
 - XOR approach - `n & ~(n-1)` to keep only the rightmost set bit, `n` is XOR of whole array, form two buckets that have `0` and `1` at that position from `1 ... n` and given array
 - mark with `-1` approach - optimal linear TC
 
