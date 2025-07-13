@@ -109,9 +109,12 @@ Majority element `> n/2` times approaches:
 
 - Single element occuring more than `n/4` times (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
 
+- 2-Sum Problem:
+	- for unsorted: optimal approach is to find `target - arr[i]` while storing elements in a map/set.
+	- if sorted: fix `i = 0, j = n - 1` and do 2-pointer search for `target`.
 - 3-Sum Problem: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
-	- incase duplicates are there, only consider first/last among the chain
-	- time complexity: `O(n^2)`
+	- incase duplicates are there, only consider first/last among the chain using `if` (skip each step) or `while` loop (fast forwarding all steps)
+	- TC = `O(n^2)` (_optimal_); map approach isn't possible here
 - 4-Sum Problem:
 	- strategy-1: fix two pointers `i = 0` and `j = n - 1` and search for `target-arr[i]` in the rest of the array (till `j > i`) using another two pointers, nested loops to inc `i` and dec `j`
 	- strategy-2: fix two pointers `i = 0` and `j = i + 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j`
