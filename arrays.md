@@ -162,7 +162,7 @@ and so on...
 **First Missing Positive**: this problem has negatives and larger numbers, thats why its tricky [video](https://www.youtube.com/watch?v=-lfHWWMmXXM)
 - `O(n logn)` sorting approach [link](https://leetcode.com/problems/first-missing-positive/solutions/4426658/best-and-simple-c-approach-by-khubaib-ahmad/)
 - `O(n)` time, `O(n)` space separate array as hashmap/unordered_map approach or use set (still needs `O(n)` space)
-- `O(n)` time, `O(1)` space approaches (marking indices approach - must utilize 0-based indexing to fit all elements)
+- `O(n)` time, `O(1)` space approaches (marking indices approach - must utilize 0-based indexing to fit all elements) since possible ans is in the range `[1 to n+1]`, thus we need index for `n` in the worst case (if all in range `1-n` are present and `n+1` is the missing one)
 	- mark by multiplying with `-1` (works only if +ve elements are guaranteed)
 	- cycle sort swapping (works all the time)
 
