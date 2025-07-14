@@ -63,6 +63,7 @@ Related Problems:
 ### Segregating / Rearranging
 - https://leetcode.com/problems/remove-element
 - https://leetcode.com/problems/squares-of-a-sorted-array
+- https://leetcode.com/problems/is-subsequence
 
 **Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable) (_see template below_)
 - using two extra arrays: place positive and negatives in them, put elements back alternatingly in the original array, and after smaller array is copied fully put remaining of the other array (if positives and negatives aren't equal in number)
