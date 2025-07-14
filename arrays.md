@@ -131,7 +131,7 @@ and so on...
 - brute force (quadratic solution)
 - hashmap - store and check freq count
 - set - put all elements in a set and compare set size with array size to check existence of duplicate(s)
-- sort and compare adjacents, skip by i+=2 (works xD)
+- sort and compare adjacents (works xD)
 - if only one is missing and/or only one is duplicate, use Math (only applicable if range is fixed like `[1 - n]` or `[m - n]`)
 - form XOR buckets based on a single bit in XOR result of all elements (some sort of pairings must exists for XOR to work) (it works even if elements aren't in a fixed range)
 - mark with negatives and cycle sort approach (treating array indices as hashmap so its equivalent to the above dedicated hashmap approach)
