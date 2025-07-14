@@ -106,6 +106,8 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 **Count Inversions / Reverse Pairs** - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays (with no duplicates) only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them from every recurive call and return cumulative count at the end. Counting inversions can be done with modified condition body in the merge method, but counting reversals needs separate logic since we can't modify merge condition itself (we need scanning for reversals unlike inversions).
 
 ### Finding a target (2-Sum)
+- https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
+
 **2-Sum Problem**:
 - naive quadratic solution: pick one element and brute force search its other half (_addend_), use nested loops. Interseting observation is that we don't need to look backwards in the inner loop since pairing for those are already covered when outer loop were at previous indices.
 - for unsorted: optimal approach is to find `target - arr[i]` while storing elements in a map/set.
