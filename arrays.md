@@ -125,7 +125,7 @@ To summarize:
 and so on...
 ```
 
-## Duplicates / Missing
+## Missing / Single / Duplicates
 **Techniques**:
 ```
 - brute force (quadratic solution)
