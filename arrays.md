@@ -114,6 +114,10 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 - incase duplicates are there, only consider first/last among the chain using `if` (skip each step) or `while` loop (fast forwarding all steps)
 - TC = `O(n^2)` (_optimal_); map approach isn't possible here.
 
+Related Problems: 
+- https://leetcode.com/problems/3sum-closest
+- https://leetcode.com/problems/3sum-smaller
+
 **4-Sum Problem**:
 - fix two pointers `i = 0` and `j = i + 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j` to handle duplicates since it considers only the first/last among the chain.
   - taking search space from `j` till end works since we don't need to look at previous indices as they're already covered when we go left to right (with `i`) (as explained in 2-Sum above). 
