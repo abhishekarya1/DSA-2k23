@@ -105,13 +105,13 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 - https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
 
 **2-Sum Problem**:
-- naive quadratic solution: pick one element and brute force search its other half (_addend_), use nested loops. Interseting observation is that we don't need to look backwards in the inner loop since pairing for those are already covered when outer loop were at previous indices.
+- naive quadratic solution: pick one element and brute force search its other half (_addend_), use nested loops. Interseting observation is that we don't need to look backwards in the inner loop since pairing for those are already covered when outer loop was at previous indices.
 - for unsorted: optimal approach is to find `target - arr[i]` while storing elements in a map/set.
 - if sorted: fix `i = 0, j = n - 1` and do 2-pointer search for `target`.
 
-**3-Sum Problem**: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rest of the array. Do this for all elements. 
+**3-Sum Problem**: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rightwards part of the array from `i+1` to `n-1`. Do this for all elements.
 - low and high technique won't work as previously believed by me! naive solution is `O(n^3)` here and will work the same as 2-Sum's naive sol (no need to scan previous indices).
-- incase duplicates are there, only consider first/last among the chain using `if` (skip each step) or `while` loop (fast forwarding all steps)
+- incase duplicates are there, only consider first/last among the chain using `while` loop in `i`'s loop and also inside 2-pointers loop but only on `== target` condition.
 - TC = `O(n^2)` (_optimal_); map approach isn't possible here.
 
 Related Problems: 
