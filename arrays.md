@@ -193,9 +193,6 @@ and so on...
 - optimal - mark with negative approach; same as above ques
 - optimal - swap approach; same as above ques
 
-**Contains Duplicate at atmost distance k**: [link](https://leetcode.com/problems/contains-duplicate-ii/)
-- optimal - track last index in `hash[]` and if its the second time we're seeing the element, calc delta and compare with `k` (linear SC)
-
 **Find All Duplicates in an Array**: since multiple are missing, and multiple are repeating, we can't use sum or xor here. [link](https://leetcode.com/problems/find-all-duplicates-in-an-array/solutions/4595812/o-n-time-o-1-space-optimal-approach-using-marking-negative-technique-c/)
 - optimal - marking with `-1` approach (use `abs()` and 1-based indexing) - if element is already marked, then its a duplicate
 
@@ -226,6 +223,9 @@ If there in no range, then XOR buckets technique is the best approach most times
 - track `prefixProd` and `suffixProd` (linear time, linear space)
 - directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
 
+**Contains Duplicate at atmost distance K**: [link](https://leetcode.com/problems/contains-duplicate-ii/)
+- optimal - track last index in `hash[]` and if its the second time we're seeing the element, calc delta and compare with `k` (linear SC)
+
 Related Problems:
 - https://leetcode.com/problems/range-sum-query-immutable
 
@@ -238,7 +238,7 @@ Related Problems:
 
 **Stock Buy and Sell**:
 - Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
-- Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. Use valley-peak approach: calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
+- Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. To maximize profit, sell on the peak that immediately follows a valley i.e. calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
  
 **Trapping Rainwater Problem**: see [stack and queues notes](/stack_queue.md)
 
