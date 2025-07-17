@@ -219,10 +219,13 @@ Since we're finding "longest" subarray in above problems, don't update hashmap e
 - use prefixSum map approach - use `cnt` to track sum, init `lastSeen[0] = -1` is important here, length calc is `i - lastSeen[cnt]`
 
 **Product of Array Except Self**:
-- calc entire array `prod` and div by `arr[i]` each time (linear time but overflow; div may not be allowed)
+- calc entire array `prod` and div by `arr[i]` each time (linear time but may cause numeric overflow; division operation may not be allowed)
 - for each element calc entire array `prod` skipping `arr[i]` in their respective iteration (quadratic time)
 - track `prefixProd` and `suffixProd` (linear time, linear space)
 - directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
+
+Related Problems:
+- https://leetcode.com/problems/range-sum-query-immutable
 
 ## Leaders
 **Stock Buy and Sell**:
