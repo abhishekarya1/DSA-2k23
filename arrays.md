@@ -239,7 +239,7 @@ Related Problems:
 **Stock Buy and Sell**:
 - Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
 - Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one stock at a time. To maximize profit, sell on the peak that immediately follows a valley i.e. calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
-	- Intuition - we can only keep one stock at a given time, so we sell immediately as soon as we see a profit to prepare for future price that maybe even lower than what we bought it for. If the price keeps increasing `[10, 20, 30]` then profit will still be `20` no matter if we buy once-sell once or multiple times. But it makes a diff in `[10, 20, 15, 30]` where a profit of `25` can be made by selling multiple times as opposed to single time profit of `20`.
+	- _Intuition_ - we can only keep one stock at a given time, so we sell immediately as soon as we see a profit to be able to buy stock for a future price that maybe even lower than what we bought it for previously. If the price keeps increasing `[10, 20, 30]` then profit will still be `20` no matter if we buy once-sell once or multiple times. But it makes a diff in `[10, 20, 15, 30]` where a profit of `25` can be made by selling multiple times as opposed to single time profit of `20`.
  
 **Trapping Rainwater Problem**: see [stack and queues notes](/stack_queue.md)
 
