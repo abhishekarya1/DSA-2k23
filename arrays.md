@@ -213,7 +213,7 @@ If there in no range, then XOR buckets technique is the best approach most times
 - `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
 - use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
 
-**Find subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
+**Longest subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
 - SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too
 - use two FOR loop apprach and calc size using `j - i + 1` on each valid subarray, internal loop is from `j = i to n-1` as usual
 - use prefixSum map approach - use `cnt` to track sum (occurances), init `lastSeen[0] = -1` is important here, length calc is `i - lastSeen[cnt]`
