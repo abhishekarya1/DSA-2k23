@@ -197,11 +197,16 @@ and so on...
 If there in no range, then XOR buckets technique is the best approach most times if we have amalgamation of two numbers after doing XOR on whole array.
 
 ## Prefix Sum
-**Longest subarray with 0 sum**: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = -1` (sum 0 seen once even before array traversal starts on index -1)
+**Longest subarray with 0 sum**: maintain a prefix sum map `prefixSum[sum] = i`, if we see a sum again, that means the subarray between previous occurance till current occurance is the `0` sum subarray (calculate its length and track max for it), remember to init `mp[0] = -1` (i.e. sum `0` is always seen once even before array traversal starts on index `-1`), alt we can add condition `if(sum == 0) lenSub = i+1` too if we don't want to init map with `mp[0] = -1`.
 
-**Longest subarray with given sum K** - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal
-  
+**Longest subarray with given sum K** - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal. Condition `if (sum == k) lenSub = i+1` is mandatory here (unlike above problem).
+
+Since we're finding "longest" subarray in above problems, don't update hashmap entry upon re-occurance of a prefix sum value.
+
 **Count subarrays with given sum K** (or xor K): brute force cubic approach, better qudratic approach, `prefixSum[sum] = count` map approach (optimal)
+- the count of sum `K` subarrays till the current element will be subarrays from all previously seen `target = sum - k` sums till now, the prefix sum array stores their counts
+- init `mp[0] = 1` or alt `if(sum == k) cnt++` to include the subarray from `0` till current as well in count
+- update `mp[sum]++` on every step to maintain counts for seen sums
 
 **Longest consecutive sequence in an array**: array can be unsorted
 - `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
