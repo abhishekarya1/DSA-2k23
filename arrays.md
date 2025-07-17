@@ -199,9 +199,9 @@ If there in no range, then XOR buckets technique is the best approach most times
 ## Prefix Sum
 **Longest subarray with 0 sum**: maintain a prefix sum map `prefixSum[sum] = i`, if we see a sum again, that means the subarray between previous occurance till current occurance is the `0` sum subarray (calculate its length and track max for it), remember to init `mp[0] = -1` (i.e. sum `0` is always seen once even before array traversal starts on index `-1`), alt we can add condition `if(sum == 0) lenSub = i+1` too if we don't want to init map with `mp[0] = -1`.
 
-**Longest subarray with given sum K** - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal. Condition `if (sum == k) lenSub = i+1` is mandatory here (unlike above problem).
+**Longest subarray with given sum K** - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal.
 
-Since we're finding "longest" subarray in above problems, don't update hashmap entry upon re-occurance of a prefix sum value.
+**Tip**: In these problems, we can either keep map init `mp[0] = -1` (since at index `-1`, sum is `0`) or condition `if(sum == k) lenSub = i+1` just after calc current sum. Also, since we're finding "longest" subarray in above problems, don't update hashmap entry upon re-occurance of a prefix sum value.
 
 **Count subarrays with given sum K** (or xor K): brute force cubic approach, better qudratic approach, `prefixSum[sum] = count` map approach (optimal)
 - the count of sum `K` subarrays till the current element will be subarrays from all previously seen `target = sum - k` sums till now, the prefix sum array stores their counts
@@ -216,7 +216,7 @@ Since we're finding "longest" subarray in above problems, don't update hashmap e
 **Find subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
 - SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too
 - use two FOR loop apprach and calc size using `j - i + 1` on each valid subarray, internal loop is from `j = i to n-1` as usual
-- use prefixSum map approach - use `cnt` to track sum, init `lastSeen[0] = -1` is important here, length calc is `i - lastSeen[cnt]`
+- use prefixSum map approach - use `cnt` to track sum (occurances), init `lastSeen[0] = -1` is important here, length calc is `i - lastSeen[cnt]`
 
 **Product of Array Except Self**:
 - calc entire array `prod` and div by `arr[i]` each time (linear time but may cause numeric overflow; division operation may not be allowed)
