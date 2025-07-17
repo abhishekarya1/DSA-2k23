@@ -196,6 +196,29 @@ and so on...
 
 If there in no range, then XOR buckets technique is the best approach most times if we have amalgamation of two numbers after doing XOR on whole array.
 
+## Prefix Sum
+**Longest subarray with 0 sum**: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = -1` (sum 0 seen once even before array traversal starts on index -1)
+
+**Longest subarray with given sum K** - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal
+  
+**Count subarrays with given sum K** (or xor K): brute force cubic approach, better qudratic approach, `prefixSum[sum] = count` map approach (optimal)
+
+**Longest consecutive sequence in an array**: array can be unsorted
+- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
+- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
+- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
+
+**Find subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
+- SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too
+- use two FOR loop apprach and calc size using `j - i + 1` on each valid subarray, internal loop is from `j = i to n-1` as usual
+- use prefixSum map approach - use `cnt` to track sum, init `lastSeen[0] = -1` is important here, length calc is `i - lastSeen[cnt]`
+
+**Product of Array Except Self**:
+- calc entire array `prod` and div by `arr[i]` each time (linear time but overflow; div may not be allowed)
+- for each element calc entire array `prod` skipping `arr[i]` in their respective iteration (quadratic time)
+- track `prefixProd` and `suffixProd` (linear time, linear space)
+- directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
+
 ## Leaders
 **Stock Buy and Sell**:
 - Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
@@ -210,29 +233,6 @@ If there in no range, then XOR buckets technique is the best approach most times
 
 ## Intervals
 Merge Overlapping Intervals - https://leetcode.com/problems/merge-intervals
-
-## Prefix Sum
-**Longest subarray with given sum K** - generate all subarrays (3 loops), using 2 loops, maintain a prefix sum map `prefixSum[sum] = i` approach (hashing), two-pointer fixed SW approach (this approach won't work if negatives are present in the array), if negatives aren't present it will be the optimal approach otherwise prefix sum approach is optimal
-  
-**Count subarrays with given sum K** (or xor K): brute force cubic approach, better qudratic approach, `prefixSum[sum] = count` map approach (optimal)
-
-**Longest consecutive sequence in an array**: array can be unsorted
-- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
-- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
-- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
-
-**Longest subarray with 0 sum**: same as above, but we don't see the same `sum` ever again (if we see it, we calculate length, not store it back) so we need not check existance before storing in `prefixSum` map unlike above approach, remember to initialize `mp[0] = -1` (sum 0 seen once even before array traversal starts on index -1)
-
-**Find subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
-- SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too
-- use two FOR loop apprach and calc size using `j - i + 1` on each valid subarray, internal loop is from `j = i to n-1` as usual
-- use prefixSum map approach - use `cnt` to track sum, init `lastSeen[0] = -1` is important here, length calc is `i - lastSeen[cnt]`
-
-**Product of Array Except Self**:
-- calc entire array `prod` and div by `arr[i]` each time (linear time but overflow; div may not be allowed)
-- for each element calc entire array `prod` skipping `arr[i]` in their respective iteration (quadratic time)
-- track `prefixProd` and `suffixProd` (linear time, linear space)
-- directly multiply preProd (first scan) and suffProd (second scan) to `ans` array in previous approach saving space (linear time, constant space)
 
 ## Subarrays
 Can be solved in following ways:
