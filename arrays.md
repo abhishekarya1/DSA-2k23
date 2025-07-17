@@ -14,6 +14,8 @@
 
 **Single element occuring more than `n/4` times** (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
 
+**Max Consecutive Ones**: ([link](https://leetcode.com/problems/max-consecutive-ones)) just keep counter inc for `1` and dec for others (`0` here), and track max on break points only (better than tracking on each step!). 
+
 **Longest consecutive sequence in an array**: array can be unsorted
 - `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
 - `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
