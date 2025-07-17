@@ -230,7 +230,6 @@ Related Problems:
 - https://leetcode.com/problems/range-sum-query-immutable
 
 ## Leaders
-
 **Count Hills and Valleys in an Array**: [link](https://leetcode.com/problems/count-hills-and-valleys-in-an-array)
 - instead of looking rightwards for next non-equal element to check peak/valley, keep track of leftwards non-equal element in a variable (`left`)
 - compare next elements with this leftwards variable (`left`) instead of element `arr[i - 1]` to check peak/valley
@@ -246,7 +245,7 @@ Related Problems:
 ## Intervals
 Merge Overlapping Intervals - https://leetcode.com/problems/merge-intervals
 
-## Subarrays
+## Subarrays (Sliding Window)
 Can be solved in following ways:
 - generate all subarrays (cubic)
 - calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
