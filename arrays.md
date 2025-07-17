@@ -14,6 +14,11 @@
 
 **Single element occuring more than `n/4` times** (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
 
+**Longest consecutive sequence in an array**: array can be unsorted
+- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
+- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
+- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
+
 **Next Permutation**: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`
 - **LOGIC**: split will have smaller elements on left side and greater on right side (find counter-inversion), bring smallest from right half to left side (find greater and swap), need smallest possible permutation as next so we sort (reverse)
 
@@ -208,11 +213,6 @@ If there in no range, then XOR buckets technique is the best approach most times
 - init `mp[0] = 1` or alt `if(sum == k) cnt++` to include the subarray from `0` till current as well in count
 - update `mp[sum]++` on every step to maintain counts for seen sums
 
-**Longest consecutive sequence in an array**: array can be unsorted
-- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
-- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
-- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
-
 **Longest subarray with equal number of 0s and 1s** [link](https://leetcode.com/problems/contiguous-array):
 - SW won't work here since its required that sum is always increasing in order to apply that (since once window left pointer is moved, it can't go back). It doesn't work in presence of negatives in sum k subarray problem too
 - use two FOR loop apprach and calc size using `j - i + 1` on each valid subarray, internal loop is from `j = i to n-1` as usual
@@ -228,15 +228,16 @@ Related Problems:
 - https://leetcode.com/problems/range-sum-query-immutable
 
 ## Leaders
-**Stock Buy and Sell**:
-- Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
-- Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. Use valley-peak approach: calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
- 
+
 **Count Hills and Valleys in an Array**: [link](https://leetcode.com/problems/count-hills-and-valleys-in-an-array)
 - instead of looking rightwards for next non-equal element to check peak/valley, keep track of leftwards non-equal element in a variable (`left`)
 - compare next elements with this leftwards variable (`left`) instead of element `arr[i - 1]` to check peak/valley
 - the valley/peak count will still remain same since we'll count only once on either side of the equal element occurance chain (smart)
 
+**Stock Buy and Sell**:
+- Buy on one day, sell on another (single transaction): Maintain minimum so far (local minima), calculate profit on each day, and track maxProfit
+- Stock Buy and Sell-II: in this we can buy and sell multiple times a week but only one at a time. Use valley-peak approach: calc and add to profit on valley to peak but skip on peak to valley (as its a loss).
+ 
 **Trapping Rainwater Problem**: see [stack and queues notes](/stack_queue.md)
 
 ## Intervals
