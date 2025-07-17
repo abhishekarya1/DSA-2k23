@@ -17,7 +17,7 @@
 **Max Consecutive Ones**: ([link](https://leetcode.com/problems/max-consecutive-ones)) just keep counter inc for `1` and dec for others (`0` here), and track max on break points only (better than tracking on each step; needs edge case handling where sequence doesn't end with a breakage but the loop reaches the end of array). 
 
 **Longest consecutive sequence in an array**: array can be unsorted
-- `O(n^3)` approach with a loop and a while loop to iterate till we keep finding `element + 1` for each element, find using linear search
+- `O(n^2)` approach with two nested loops to iterate and keep finding `element + 1` for each element, find using linear search
 - `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
 - use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
 
