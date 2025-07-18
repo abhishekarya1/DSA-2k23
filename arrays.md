@@ -243,7 +243,15 @@ Related Problems:
 **Trapping Rainwater Problem**: see [stack and queues notes](/stack_queue.md)
 
 ## Intervals
-Merge Overlapping Intervals - https://leetcode.com/problems/merge-intervals
+**Merge Overlapping Intervals**: ([link](https://leetcode.com/problems/merge-intervals)) 
+- use two pointers, one in a separate `ans` array and one in current (starting from index `1`) and merge into `ans.back()`
+- in-place - use two pointer technique just like "remove duplicate from sorted array" problem (i.e. init `i = 0, j = 0`, probe with `i` and insertion at index `j + 1`). At the end ans is all elements in range `[0 = j]`.
+
+**Insert Ineterval**: ([link](https://leetcode.com/problems/merge-intervals)) add all non-overlapping array intervals to `ans` array till `newInterval` overlaps with anyone, then keep widening the `newInterval` based on overlaps with subsequent array intervals, insert the widened `newInterval` and then rest of non-overlapping array intervals.
+
+**Non-overlapping Intervals**: ([link](https://leetcode.com/problems/non-overlapping-intervals)) use the classic greedy approach with scheduling problems: always pick the interval with the earliest end time. Because if we choose the interval that ends earlier, then there is more space for other intervals i.e. you can get the maximal number of non-overlapping intervals (or minimal number to remove). Thus sort by end time is important here, then count non-overlapping intervals using a leader `end` value which has the end value of the last non-overlapping interval. Subtract with `intervals.size() - cnt` to get ans.
+- _What gives min number of intervals you need to remove?_ Max number of intervals you need to keep. And if one interval comes and deletes 3 of them (by merging), then its better to delete that one instead of those 3 i.e. keep interval deletion minimal. ([ref](https://leetcode.com/problems/non-overlapping-intervals/solutions/91713/java-least-is-most/comments/96271/))
+- _Why sort by end time?_ This strategy ensures that the number of non-overlapping intervals is max because by always picking the interval that ends earliest, we leave as much room as possible for the remaining intervals.
 
 ## Subarrays (Sliding Window)
 Can be solved in following ways:
