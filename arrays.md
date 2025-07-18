@@ -255,6 +255,12 @@ Related Problems:
 
 **Interval List Intersections**: ([link](https://leetcode.com/problems/interval-list-intersections)) we're comparing two intervals here which aren't even sorted unlike the merge intervals problem. 6 possible cases, out of which 4 are overlapping ([diagram](https://github.com/Chanda-Abdul/Several-Coding-Patterns-for-Solving-Data-Structures-and-Algorithms-Problems-during-Interviews/blob/main/%E2%9C%85%20%20Pattern%2004%20%3A%20Merge%20Intervals.md#intervals-intersection-medium)). Use two pointers and check overlapping cases with 2 conditions and calc intersections with max and min and store them, move ahead from interval which finishes first.
 
+To summarize, this are the general conditions to detect and merge overlaps (if `==` is also considered overlap):
+
+![](https://i.imgur.com/sQaa1sN.png)
+
+We don't need to calc `startMerged` using `min` in Merge Intervals problem, because intervals are already sorted such that `startA <= startB` is always true so only above overlap condition is possible and no need to calc `startMerged` as it will always be `startA`. This wasn't the case with Interval Instersections problem so we checked everything there.
+
 ## Subarrays / Sliding Window
 Can be solved in following ways:
 - generate all subarrays (cubic)
