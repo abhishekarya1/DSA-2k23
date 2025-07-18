@@ -251,7 +251,7 @@ Related Problems:
 
 **Non-overlapping Intervals**: ([link](https://leetcode.com/problems/non-overlapping-intervals)) sort by end time, then count non-overlapping intervals using a leader `end` value which has the end value of the last non-overlapping interval. Subtract with `intervals.size() - cnt` to get ans.
 - _What gives min number of intervals we need to remove?_ Max number of intervals we need to keep. Suppose if one interval overlaps and deletes 3 of them (by merging), then its better to delete that one instead of those 3 i.e. keep interval deletion minimal. ([ref](https://leetcode.com/problems/non-overlapping-intervals/solutions/91713/java-least-is-most/comments/96271/))
-- _Why sort by end time?_ This strategy is the classic greedy approach with scheduling problems. It ensures that the number of non-overlapping intervals is max because by always picking the interval that ends earliest, we leave as much room as possible for the remaining intervals.
+- _Why sort by end time?_ This strategy is the classic greedy approach with scheduling problems. It ensures that the number of non-overlapping intervals is max because by always picking the interval that ends earliest, we leave as much room as possible for the remaining intervals. Consider the case `[[2,3], [1,4], [3,4]]`, if we pick `[1,4]` first (if sorted normally) then we lose out on both the others.
 
 ## Subarrays / Sliding Window
 Can be solved in following ways:
