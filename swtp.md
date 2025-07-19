@@ -1,3 +1,21 @@
+```txt
+Subarray: contiguous part of an array, must have atleast one element.
+
+total no. of subarrays of all sizes = total no. of subarrays of size n + total no. of subarrays of size n-1 + ... + total no. of subarrays of size 1
+  => 1 + 2 + ... + n
+  => n * (n + 1) / 2
+
+By convention, we don't consider empty subarray [] in total subarrays count.
+
+---
+
+Subsequence: sequence derived from the array by deleting zero or more elements, without changing the relative order of remaining elements.
+ 
+total no. of possible subsequences of all sizes = 2^n
+
+By convention,, empty subsequence is counted in this.
+```
+
 - usually subarray/runlength problems
   - brute = 3 loops or 2 loops
   - better = 2 loops (some logic trimmed)
