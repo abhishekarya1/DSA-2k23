@@ -270,10 +270,10 @@ Can be solved in following ways:
 Detailed observations and templates in [SWTP Notes](/swtp.md)
 
 **Kadane's Algorithm** (subarray having max sum): make sure to take `maxSum = INT_MIN` and not `0` since if all elements are negative in the array, it will print max sum as `0` incorrectly
-	- Modify kadane's algo to keep track of start and end of max sum subarray
-   	- brute force (cubic) approach, better (qudratic) approach, kadane's algo (linear)
+- brute force (cubic) approach, better (qudratic) approach, kadane's algo (linear; optimal; DP)
+- _Intuition_: we keep summing and if we get a negative sum, the effect it will have when we sum further is net negative (reduction) and it will hurt max sum chances so we make it zero (`currSum = 0`) and start afresh from next element to continue looking for max subarray sum. If array has all negatives, `currSum = 0` happens at all indices and we only get max negative number in the end due to max tracking at each step.
 
-**Print max sum contiguous subarray**: Modified Kadane's algorithm - update `start_index = i + 1` on negative sum case, on new maxSum case update `end_index = i`, and print start and end, and return
+**Print max sum contiguous subarray**: modified Kadane's algorithm; update `startIndex = i + 1` on negative sum case, on new maxSum case update `endIndex = i`, the max sum subarray is in range `[statIndex, endIndex]`
 
 ## Hashing / Frequency Based
 **Unique Number of Occurrences** - create freq map and put all freq in a set and compare set size with map size, another approach can be to count freq and sort freq array to identify if any duplicates are there by comparing adjacent elements. [problem](https://leetcode.com/problems/unique-number-of-occurrences/)
