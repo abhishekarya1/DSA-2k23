@@ -11,7 +11,7 @@ By convention, we don't consider empty subarray [] in total subarrays count.
 
 Subsequence: sequence derived from the array by deleting zero or more elements, without changing the relative order of remaining elements. Also known as a "subset".
  
-total no. of possible subsequences of all sizes = 2^n
+total no. of possible subsequences of all sizes = 2^n (power set)
 
 By convention,, empty subsequence is counted in this.
 ```
