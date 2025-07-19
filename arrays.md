@@ -292,12 +292,12 @@ maxProd = max(maxProd, posProd);
 **Sort Characters by Frequency** (VERY IMPORTANT) - bucket sorting, create freq map of all characters and then append characters freq times to the corresponsing bucket in the `buckets` array of size `str.size() + 1` since max no. of times an element can ooccur is `s.size()`, form `ans` string by traversing and appending all non-empty buckets from the back. [problem](https://leetcode.com/problems/sort-characters-by-frequency/)
 - since there is no way to sort freq numbers in map, we have an already sorted space (buckets) where we can attach elements and traverse from its back to get desc order of freq
 
-## 2-D Matrix
-**Search an element in 2D matrix**: start from top-right or bottom-left corner
+## 2D Matrix
+**Search an element in 2D matrix**: matrix has to be both row-wise and column-wise sorted; start from top-right or bottom-left corner (staircase search). TC = `O(m + n)`.
 
-**Rotate Matrix by 90 degrees**: transpose, and swap cols (aka reverse all rows)
+**Rotate matrix by 90 degrees**: transpose (swap elements till `j < i`) and swap cols (or reverse all rows).
 
-**Set Matrix Zeroes**: use variable `col` as indicator for `col0`, start biulding reference matrix from `0, 0` and start building answer matrix from `arr[m-1][n-1]`, treat `col0` separately, both during building reference and answer matrix
+**Set Matrix Zeroes**: ([link](https://leetcode.com/problems/set-matrix-zeroes)) in-place solution; use variable `col` as indicator for `col0`, start building reference matrix from `(0, 0)` and start building answer matrix from `arr[m-1][n-1]`, treat `col0` separately, both during building reference and answer matrix.
 
 **Spiral Traversal of Matrix**: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column. Pointers have to be placed very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
 
