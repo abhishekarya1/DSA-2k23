@@ -275,7 +275,7 @@ Detailed observations and templates in [SWTP Notes](/swtp.md)
 
 **Print max sum contiguous subarray**: modified Kadane's algorithm; update `startIndex = i + 1` on negative sum case, on new maxSum case update `endIndex = i`, the max sum subarray is in range `[startIndex, endIndex]`
 
-**Maximum Product Subarray**: ([link](https://leetcode.com/problems/maximum-product-subarray)) there are two ways to get max product, unlike max sum. If we're going too negative, that can also give us a big product later apart from the usual way of considering only positive sum in Kadane's algo. So track both `posProd` and `negProd` and update them both by multiplying with current array element.
+**Maximum Product Subarray**: ([link](https://leetcode.com/problems/maximum-product-subarray)) there are two ways to get max product, unlike max sum. If we're going too negative, that can also give us a big product later (on multiplying with a negative number) apart from the usual way of considering only positive sum in Kadane's algo. So track both max prod in `posProd` and min prod in `negProd` and update them both by multiplying with current array element, track `maxProd` too on each step.
 
 ```cpp
 temp = negProd;
