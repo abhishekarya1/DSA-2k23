@@ -293,7 +293,7 @@ maxProd = max(maxProd, posProd);
 - since there is no way to sort freq numbers in map, we have an already sorted space (buckets) where we can attach elements and traverse from its back to get desc order of freq
 
 ## 2D Matrix
-**Search an element in 2D matrix**: matrix has to be both row-wise and column-wise sorted; start from top-right or bottom-left corner (staircase search). TC = `O(m + n)`.
+**Search an element in 2D matrix**: matrix has to be both row-wise and column-wise sorted; start from top-right or bottom-left corner (staircase search). TC = `O(m + n)`. We choose those corners because we want clear distinction between the directions we want to move in after comparison with current element, it should be one smaller and one larger adjacent to current element always.
 
 **Rotate matrix by 90 degrees**: transpose (swap elements till `j < i`) and swap cols (or reverse all rows).
 
