@@ -1,3 +1,4 @@
+## Subarrays vs Subsequences
 ```txt
 Subarray: contiguous part of an array, must have atleast one element. Also known as a "substring".
 
@@ -22,7 +23,7 @@ Usually subarray/runlength problems can be solved with:
 - optimal#1 = `prefixSum[]` approach (only when subarray sum is increasing. Ex - no negatives etc.)
 - optimal#2 = simple dynamic SW with two-pointers / fixed-sized SW using Queue / some smart algorithm like Kadane
 
-### Subarray Templates
+## Subarray Templates
 ```cpp
 /* using 3 for loops */
 
@@ -83,11 +84,11 @@ Related Problems:
 
 Previous Notes:
 - in [Arrays](/arrays.md) - some previously done subarray problems
-- in [Strings](/strings.md) - number of subarrays derivation
+- in [Strings](/strings.md) - substrings problems
 
 ---
 
-### Sliding Window Template
+## Sliding Window Template
 0. Sliding Window Maximum - fixed window size of `k`
 
 1. Window size is fixed `K`: maintain window size by moving 1 step on both `i` and `j`
@@ -135,7 +136,7 @@ Since we're tracking maxLen, why should it even matter that we are skipping calc
 
 **NOTE**: the code `max(0, min(minIdx, maxIdx) - j)` is small at first glance but actually goes much deeper (ofc as its a LC Hard!). The `min(minIdx, maxIdx)` ensures that we have both the `minK` and `maxK` elements in subarray till current element `i` and subtraction with `j` and subsquent length `>= 0` (or `max()`) check ensures that `minIdx`/`maxIdx` appears to the right of `j` (bad index). The actual valid subarray is from `minIdx`/`maxIdx` to current index! But count of elements between them is added because they each form a unique subarray with current valid subarray ending at current element `i`.
 
-### Dynamic Sliding Window Templates
+## Dynamic Sliding Window Templates
 we need only 2 types of fruit in our SW (all templates are equivalent)
 
 In `while` loop templates, `j` can go out of bounds in some problems where we it might not be straightforward to calculate loop variable (like in Longest Repeating Character Replacement). So `if-else` template is suited better. USE THIS WHEN ANSWER CAN BE EVENTUALLY REACHED (MAXIMUM TRACKING PROBLEMS), and needn't be immediate. 
@@ -286,7 +287,7 @@ int count(vector<int>& nums, int e, int k) {
 }
 ```
 
-### Fixed Size Window Templates
+## Fixed Size Window Templates
 **Template#1**: using a `queue<>` data structure
 
 **Sliding Window Maximum**: find max in each fixed window size of `k`
