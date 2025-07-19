@@ -261,7 +261,7 @@ To summarize, this are the general conditions to detect and merge overlaps (if `
 
 We don't need to calc `startMerged` using `min` in Merge Intervals problem, because intervals are already sorted such that `startA <= startB` is always true so only above overlap condition is possible and no need to calc `startMerged` as it will always be `startA`. This wasn't the case with Interval Instersections problem so we checked everything there.
 
-## Subarrays / Sliding Window
+## Subarrays
 Can be solved in following ways:
 - generate all subarrays (cubic)
 - calc subarray starting at `i` and ending at each position `j` with two loops (qudratic)
@@ -274,6 +274,15 @@ Detailed observations and templates in [SWTP Notes](/swtp.md)
 - _Intuition_: we keep summing and if we get a negative sum, the effect it will have when we sum further is net negative (reduction) and it will hurt max sum chances so we make it zero (`currSum = 0`) and start afresh from next element to continue looking for max subarray sum. If array has all negatives, `currSum = 0` happens at all indices and we only get max negative number in the end due to max tracking at each step.
 
 **Print max sum contiguous subarray**: modified Kadane's algorithm; update `startIndex = i + 1` on negative sum case, on new maxSum case update `endIndex = i`, the max sum subarray is in range `[startIndex, endIndex]`
+
+**Maximum Product Subarray**: ([link](https://leetcode.com/problems/maximum-product-subarray)) there are two ways to get max product, unlike max sum. If we're going too negative, that can also give us a big product later apart from the usual way of considering only positive sum in Kadane's algo. So track both `posProd` and `negProd` and update them both by multiplying with current array element.
+
+```cpp
+temp = negProd;
+negProd = min({negProd * nums[i], nums[i], posProd * nums[i]});
+posProd = max({temp * nums[i], nums[i], posProd * nums[i]});
+maxProd = max(maxProd, posProd);
+```
 
 ## Hashing / Frequency Based
 **Unique Number of Occurrences** - create freq map and put all freq in a set and compare set size with map size, another approach can be to count freq and sort freq array to identify if any duplicates are there by comparing adjacent elements. [problem](https://leetcode.com/problems/unique-number-of-occurrences/)
