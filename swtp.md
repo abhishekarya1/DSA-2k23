@@ -16,11 +16,11 @@ total no. of possible subsequences of all sizes = 2^n (power set)
 By convention,, empty subsequence is counted in this.
 ```
 
-- usually subarray/runlength problems
-  - brute = 3 loops or 2 loops
-  - better = 2 loops (some logic trimmed)
-  - optimal#1 = `prefixSum[]` approach (only when subarray sum is increasing. Ex - no negatives etc.)
-  - optimal#2 = simple dynamic SW with two-pointers / fixed-sized SW using Queue / some smart algorithm like Kadane
+Usually subarray/runlength problems can be solved with:
+- brute = 3 loops or 2 loops
+- better = 2 loops (some logic trimmed)
+- optimal#1 = `prefixSum[]` approach (only when subarray sum is increasing. Ex - no negatives etc.)
+- optimal#2 = simple dynamic SW with two-pointers / fixed-sized SW using Queue / some smart algorithm like Kadane
 
 ### Subarray Templates
 ```cpp
