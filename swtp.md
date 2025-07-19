@@ -1,5 +1,5 @@
 ```txt
-Subarray: contiguous part of an array, must have atleast one element.
+Subarray: contiguous part of an array, must have atleast one element. Also known as a "substring".
 
 total no. of subarrays of all sizes = total no. of subarrays of size n + total no. of subarrays of size n-1 + ... + total no. of subarrays of size 1
   => 1 + 2 + ... + n
@@ -9,7 +9,7 @@ By convention, we don't consider empty subarray [] in total subarrays count.
 
 ---
 
-Subsequence: sequence derived from the array by deleting zero or more elements, without changing the relative order of remaining elements.
+Subsequence: sequence derived from the array by deleting zero or more elements, without changing the relative order of remaining elements. Also known as a "subset".
  
 total no. of possible subsequences of all sizes = 2^n
 
