@@ -118,7 +118,7 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 
 **3-Sum Problem**: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rightwards part of the array from `i+1` to `n-1`. Do this for all elements.
 - low and high technique won't work as previously believed by me! naive solution is `O(n^3)` here and will work the same as 2-Sum's naive sol (no need to scan previous indices).
-- incase duplicates are there, only consider first among the chain for `i` using `if` condition, and last among sequence for `j` and `k` using `while` loops but only on `== target` condition (i.e. when we find a valid triplet and we don't wanna repeat it for the same `i`).
+- incase duplicates are there, only consider first among the chain for `i` using `if` condition, and same for `j` and `k` using `while` loops but only on `== target` condition (i.e. when we find a valid triplet and we don't wanna repeat it for the same `i`).
 - TC = `O(n^2)` (_optimal_); map approach isn't possible here.
 
 Related Problems: 
