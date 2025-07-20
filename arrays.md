@@ -307,7 +307,13 @@ maxProd = max(maxProd, posProd);
 
 **Rotate matrix by 90 degrees**: transpose (swap elements till `j < i`) and swap cols (or reverse all rows).
 
-**Set Matrix Zeroes**: ([link](https://leetcode.com/problems/set-matrix-zeroes)) in-place solution; use variable `col` as indicator for `col0`, start building reference matrix from `(0, 0)` and start building answer matrix from `arr[m-1][n-1]`, treat `col0` separately, both during building reference and answer matrix.
+**Set Matrix Zeroes**: ([link](https://leetcode.com/problems/set-matrix-zeroes)) 
+- create a diff ans matrix. SC = `O(n)`.
+- create `rowIndicators` and `colIndicators` arrays. SC = `O(m + n)`.
+- in-place solution: use variable `col` as indicator for col `0`, start building reference matrix from `(0, 0)` and start building answer matrix from `arr[m-1][n-1]`, treat col `0` separately, both during building reference and answer matrix.
+	- we use an extra variable `col` because `(0,0)` will be used for both row `0` and col `0` but we need separate locations to store indicators for both row `0` and col `0`, so row `0` can be stored in `(0,0)` and col `0` indicator is in this extra variable `col`.
+	- while building answer matrix, row `0`  and col `0` (except `(0,0)`) values itself act as indicators for cols and rows respectively, thus no additional logic is required to handle these at all, just process them like any other matrix cell.
+	- just handle col `0` case: indicator for col `0` is `col` variable, both during building reference and answer matrix.
 
 **Spiral Traversal of Matrix**: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column. Pointers have to be placed very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
 
