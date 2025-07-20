@@ -261,6 +261,14 @@ To summarize, this are the general conditions to detect and merge overlaps (if `
 
 We don't need to calc `startMerged` using `min` in Merge Intervals problem, because intervals are already sorted such that `startA <= startB` is always true so only above overlap condition is possible and no need to calc `startMerged` as it will always be `startA`. This wasn't the case with Interval Instersections problem so we checked everything there.
 
+**Meeting Rooms**: determine if a person could add all meetings to their schedule without any conflicts. Sol: just detect any overlap; sort by start time and check existence of atleast one overlap.
+
+**Meeting Rooms II**: find the minimum number of rooms required to schedule all meetings without any conflicts. Sol: store start times and end times in seperate arrays and sort each of them in asc order, then use two pointers to calc rooms required based on current start time and latest end time. Probe the start time array and look for end times lesser than it, on each lesser do `cntRooms--` (i.e. reuse a room) and then do `cntRooms++` (coz we still need a room for current meet).
+
+_When to sort by start time and when by end time?_: sort by end time when we need to choose the max number of non-overlapping intervals (Greedy selection; as finishing intervals early gives us more room to pick others), and sort by start time when detecting overlaps or simulating a timeline.
+- _Start time sort_: Merge Intervals, Meeting Rooms I (Check for overlaps), Meeting Rooms II (Find min number of rooms).
+- _End time sort_: Non-overlapping Intervals (max NOI; Leetcode 435), Interval Scheduling / Activity Selection, Find max number of meetings one person can attend (its nothing but max NOI).
+
 ## Subarrays
 Can be solved in following ways:
 - generate all subarrays (cubic)
