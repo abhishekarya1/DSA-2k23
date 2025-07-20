@@ -265,7 +265,7 @@ We don't need to calc `startMerged` using `min` in Merge Intervals problem, beca
 
 **Meeting Rooms II**: find the minimum number of rooms required to schedule all meetings without any conflicts. Sol: store start times and end times in seperate arrays and sort each of them in asc order, then use two pointers to calc rooms required based on current start time and latest end time. Probe the start time array and look for end times lesser than it, on each lesser do `j++` and don't change `cntRooms` (i.e. reuse a room), and on each greater do `cntRooms++` (i.e. need a new room).
 
-![](https://cdn.imgchest.com/files/yq9c3vmwqo4.png)
+![](https://cdn.imgchest.com/files/7bwck2wlkr7.png)
 
 _When to sort by start time and when by end time?_: sort by end time when we need to choose the max number of non-overlapping intervals (Greedy selection; as finishing intervals early gives us more room to pick others), and sort by start time when detecting overlaps or simulating a timeline.
 - _Start time sort_: Merge Intervals, Meeting Rooms I (Check for overlaps), Meeting Rooms II (Find min number of rooms).
