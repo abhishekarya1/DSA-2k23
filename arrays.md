@@ -17,12 +17,12 @@
 **Max Consecutive Ones**: ([link](https://leetcode.com/problems/max-consecutive-ones)) just keep counter inc for `1` and dec for others (`0` here), and track max on break points only (better than tracking on each step; needs edge case handling where sequence doesn't end with a breakage but the loop reaches the end of array). 
 
 **Longest consecutive sequence in an array**: array can be unsorted
-- `O(n^2)` approach with two nested loops to iterate and keep finding `element + 1` for each element, find using linear search
-- `Onlogn` sort and do pairwise adjacent comparison and calc run length max for consecutives
-- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing
+- `O(n^2)` approach with two nested loops to iterate and keep finding `element + 1` for each element, find using linear search.
+- `O(nlogn)` sort and do pairwise adjacent comparison and calc run length max for consecutives.
+- use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing.
 
-**Next Permutation**: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`
-- **LOGIC**: split will have smaller elements on left side and greater on right side (find counter-inversion), bring smallest from right half to left side (find greater and swap), need smallest possible permutation as next so we sort (reverse)
+**Next Permutation**: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`.
+- _Intuition_: (find counter-inversion) split will have descending order of elements on its right side i.e. maximum permutation possible for that half, (find greater and swap) bring smallest from right half to left side of pivot to make overall permutation slightly bigger, (reverse right half) we need smallest possible permutation for the right half so we sort it in increasing fashion.
 
 ## Two Pointers
 ### Rotation and Reversal
