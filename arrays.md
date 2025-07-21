@@ -112,7 +112,7 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 - https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
 
 **2-Sum Problem**:
-- naive quadratic solution: pick one element and brute force search its other half (_addend_), use nested loops. Interseting observation is that we don't need to look backwards in the inner loop since pairing for those are already covered when outer loop was at previous indices.
+- naive quadratic solution: pick one element and brute force search its other half (_addend_), use nested loops. Interesting observation is that we don't need to look backwards in the inner loop since pairing for those are already covered when outer loop was at previous indices.
 - for unsorted: optimal approach is to find `target - arr[i]` while storing elements in a map/set.
 - if sorted: fix `i = 0, j = n - 1` and do 2-pointer search for `target`.
 
