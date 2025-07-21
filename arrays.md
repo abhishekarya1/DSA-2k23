@@ -315,7 +315,7 @@ maxProd = max(maxProd, posProd);
 	- while building answer matrix, row `0` and col `0` values itself act as indicators for cols and rows respectively, thus no additional logic is required to handle these at all, just process them like any other matrix cell. Also, just an observation that cells with value `0` anywhere in the matrix don't matter (as they won't change in ans matrix too), only non-zero ones need to be checked and changed based on indicators. We can shorten the condition for col `0` indicator check and update using these two observations.
 	- just handle col `0` case: indicator for col `0` is `col` variable, both during building reference and answer matrix.
 
-**Spiral Traversal of Matrix**: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column. Pointers have to be placed very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
+**Spiral Traversal of Matrix**: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column. Pointers have to be moved very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
 
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
