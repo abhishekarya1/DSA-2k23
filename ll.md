@@ -24,7 +24,7 @@ Create gap of `k` nodes - useful in many problems
 Reverse traversal of a LL - useful in many problems
 
 ## Basics
-**Delete a node in SLL**: use 2 pointers, `prev curr`, deletion of `head` is always tricky since we need to move the `head` pointer itseld and also we can't do `prev -> next = curr -> next` if `curr` is at the head and it is the node to be deleted, `prev` is set to `NULL` or `head` and we won't be able to delete head (so when deletion criteria is met we perform a check for head then and shift head accordingly).
+**Delete a node in SLL**: use 2 pointers, `prev curr`, deletion of `head` is always tricky since we need to move the `head` pointer itseld and also we can't do `prev -> next = curr -> next` if `curr` is at the head and it is the node to be deleted, `prev` is set to `NULL` or `head` and we won't be able to delete head (so when deletion range criteria is met we perform a check for head then and shift head accordingly if its to be deleted).
 - for all other intermediate nodes: we can move `deleteIndex` times and delete normally with 2 pointers, `insertIndex - 1` for insertion.
 
 **Delete Linked List Nodes with value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
