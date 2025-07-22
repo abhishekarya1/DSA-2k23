@@ -25,7 +25,7 @@ Reverse traversal of a LL - useful in many problems
 
 ## Basics
 **Delete a node in SLL**: use 2 pointers, `prev curr`, deletion of `head` is always tricky since we need to move the `head` pointer itseld and also we can't do `prev -> next = curr -> next` if `curr` is at the head and it is the node to be deleted, `prev` is set to `NULL` or `head` and we won't be able to delete head (so when deletion criteria is met we perform a check for head then and shift head accordingly).
-- for all other intermediate nodes: we can move `deleteIndex - 1` times and delete normally with 2 pointers
+- for all other intermediate nodes: we can move `deleteIndex` times and delete normally with 2 pointers, `insertIndex - 1` for insertion.
 
 **Delete Linked List Nodes with value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
 - Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
