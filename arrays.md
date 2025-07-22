@@ -1,3 +1,5 @@
+> Arrays are _contiguous_ sequence of _homogeneous_ elements.
+
 ## General
 **Majority element `> n/2` times** approaches:
 - brute force quadratic
