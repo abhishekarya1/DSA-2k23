@@ -1,5 +1,6 @@
 > Linked Lists are _non-contiguous_ sequence of elements.
-> Elements are accessed sequentially, no random access.
+> 
+> Elements are accessed sequentially, dynamic size, and random access to elements is not possible.
 
 ## Tips
 Definition: 
