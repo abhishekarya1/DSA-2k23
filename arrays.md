@@ -1,4 +1,6 @@
 > Arrays are _contiguous_ sequence of _homogeneous_ elements.
+> 
+> Typically fixed sized and random access in constant time is possible.
 
 ## General
 **Majority element `> n/2` times** approaches:
