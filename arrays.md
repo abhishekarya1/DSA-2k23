@@ -2,6 +2,14 @@
 > 
 > Typically fixed sized and random access in constant time is possible.
 
+**Time Complexities**:
+- Insertion at end: `O(1)`
+- Insertion at start: `O(n)` (due to shifting)
+- Deletion at start: `O(n)` (due to shifting)
+- Deletion at end: `O(1)`
+- Accessing a random element: `O(1)`
+- Searching a key in sorted array: `O(n)` (linear search) or `O(logn)` (binary search)
+
 ## General
 **Majority element `> n/2` times** approaches:
 - brute force quadratic
