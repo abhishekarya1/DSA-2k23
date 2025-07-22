@@ -1,8 +1,16 @@
-- Base Case: `if(head == NULL || head -> next == NULL)`
-- Traversal: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element)
+> Linked Lists are _non-contiguous_ sequence of elements.
+> Elements are accessed sequentially, no random access.
 
-- Create gap of `k` nodes - useful in many problems
-- Reverse traversal of a LL - useful in many problems
+## Tips
+Definition: 
+
+Base Case: `if(head == NULL || head -> next == NULL)`
+
+Traversal: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element)
+
+Create gap of `k` nodes - useful in many problems
+
+Reverse traversal of a LL - useful in many problems
 
 ---
 - Deleting a node in a SLL: use 2 pointers, `prev curr`, deletion of `head` is always tricky since we can't do `prev -> next = curr -> next` if `curr` is at the head and it is the node to be deleted, `prev` can be set to `NULL` or `head` in that case and we won't be able to delete head (so when deletion criteria is met we perform a check for head then and shift head accordingly)
