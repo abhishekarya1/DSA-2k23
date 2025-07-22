@@ -23,36 +23,36 @@ Create gap of `k` nodes - useful in many problems
 
 Reverse traversal of a LL - useful in many problems
 
----
+## Basics
+**Deleting a node in a SLL**: use 2 pointers, `prev curr`, deletion of `head` is always tricky since we can't do `prev -> next = curr -> next` if `curr` is at the head and it is the node to be deleted, `prev` can be set to `NULL` or `head` in that case and we won't be able to delete head (so when deletion criteria is met we perform a check for head then and shift head accordingly)
 
-- Deleting a node in a SLL: use 2 pointers, `prev curr`, deletion of `head` is always tricky since we can't do `prev -> next = curr -> next` if `curr` is at the head and it is the node to be deleted, `prev` can be set to `NULL` or `head` in that case and we won't be able to delete head (so when deletion criteria is met we perform a check for head then and shift head accordingly)
+**Delete Linked List Nodes with value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
+- Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
+- Dummy Node Approach - create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end
 
-- **Delete Linked List Nodes with value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
-  - Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
-  - Dummy Node Approach - create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end
+**Delete node to which pointer is given**: ([link](https://leetcode.com/problems/delete-node-in-a-linked-list)) copy data and pointer of next node to current.
 
-- Delete node to which pointer is given: copy data of next node to current
+**Reverse a SLL**: Iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
+- Recursive way: go till end and while coming back with recursion, change and break link, and propagate returned `newHead` from the base case
 
-- Reverse a SLL: Iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
-  - Recursive way: go till end and while coming back with recursion, change and break link, and propagate returned `newHead` from the base case
+**Reverse a DLL**: swap links and return new head at the end i.e. `prev`
 
-- Reverse a DLL: swap links and return new head at the end i.e. `prev`
+## Fast and Slow Pointers
+**Find middle of a LL**: Hare & Tortoise approach
+- `while(fast && fast->next)`
 
-- Find middle of a LL: Hare & Tortoise approach
-  - `while(fast && fast->next)`
+**Detect loop (Floyd's cycle)**: Hare & Tortoise approach with Fast and Slow pointers
 
-- Detect loop (Floyd's cycle): Hare & Tortoise approach with Fast and Slow pointers
-
-- Find the starting point in LL: move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node, algebraic proof below:
+**Find the starting point in LL**: move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node, algebraic proof below:
 ```txt
 time = dist / speed, in the same time they cover diff dist and diff speeds
 2 (x + y)  = x + y + z + y
 x = z
 ```
 
-- Length of the loop: find cycle start point, count till it is encountered again
+**Length of the loop**: find cycle start point, count till it is encountered again
 
-- kth node from the last: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time
+**Kth node from the last**: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time
 ```cpp
 // move fast pointer k steps ahead
 Node* slow = head, *fast = head;
