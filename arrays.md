@@ -10,6 +10,11 @@
 - Accessing a random element: `O(1)`
 - Searching a key in sorted array: `O(n)` (linear search) or `O(logn)` (binary search)
 
+**Pros**:
+- random access is constant time so reads are fast, writes are slower.
+- better memory footprint (no pointers stored on node).
+- faster iteration due to memory locality (better CPU cache utilization).
+
 ## General
 **Majority element `> n/2` times** approaches:
 - brute force quadratic
