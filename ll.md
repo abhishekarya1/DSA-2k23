@@ -2,6 +2,18 @@
 > 
 > Dynamic size, and elements are accessed sequentially so random access to elements is not possible.
 
+**Time Complexities**:
+- Insertion at end: `O(n)` (due to sequential access traversal)
+- Insertion at start: `O(1)`
+- Deletion at start: `O(1)`
+- Deletion at end: `O(n)` (due to sequential access traversal)
+- Accessing a random element: `O(n)` (due to sequential access traversal)
+
+**Pros**: 
+- fast writes (LRU), slower reads and random access. We can decrease operation times with `tail` pointer or by using DLL.
+- better for systems that may not allocate memory sequentially (fragmented memory)
+- no unused allocated space (unlike arrys that may have gaps)
+
 ## Tips
 Definition: 
 
