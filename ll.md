@@ -61,10 +61,10 @@ so dist covered will also be twice (directly proportional), as time is constant 
 **Length of the cycle**: find cycle start point, count till it is encountered again
 
 **Find intersection point of two LL**:
-- Brute: for every node in `listA` check every node of `listB`
-- Naive: store any one list's elements in `set<Node*>`, for every node in the other list search the `set<>` for a match
-- Better: calc size diff of LL from both heads (`diff`), move by `diff` steps in the longer one, traverse simultaneously in the smaller LL, where they meet is the common point
-- Optimal: start traversing from `h1` and on end circle back to `h2` and vice-versa, after 2 taversals it is guranteed that you will stop at either `NULL` (common point) or the answer node
+- Brute (quadratic): for every node in `listA` check every node of `listB`.
+- Better (linear space): store any one list's elements in `set<Node*>`, for every node in the other list search the `set<>` for a match.
+- Good: calc size diff of LL from both heads (`diff`), move by `diff` steps in the longer one, then start traversal simultaneously in the smaller LL, where they meet is the common point.
+- Optimal (super smart): start traversing from `h1` and on end circle back to `h2` and vice-versa, after/in the second traversal it is guaranteed that you will stop at either `NULL` (trivial common point) or the answer node.
 
 **Kth node from the last**: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time
 ```cpp
