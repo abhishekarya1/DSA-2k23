@@ -89,12 +89,12 @@ while(fast -> next){
 // alternatively we can use a prev pointer and stop normally at kth position
 ```
 
-**Delete Kth node from the end**: 
+**Delete Kth node from the end**: corner case is when `k` is equal to list's size e.g. `list = [1, 2] and k = 2`, in this case during offsetting fast pointer will become `NULL` and we can return `head -> next` as new head
 - offset by `k+1` and we'll land at previous node of the one to be deleted.
-- offset by `k` nodes and track `prev` and repoint upon reaching node to be deleted, corner case is when `k` is equal to list's size e.g. `list = [1, 2] and k = 2`, in this case during offsetting fast pointer will become `NULL` and we can return `head -> next` as new head (meaning deletion of `head`).
-- offset by `k` and reach node to be deleted and then copy data of its next and delete the next one (beware of corner cases).
+- offset by `k` nodes and track `prev` and repoint upon reaching node to be deleted.
+- offset by `k` and reach node to be deleted and then copy data of its next and delete the next one.
 
-**Delete middle element**: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this when slow is on mid and `slow -> next == NULL` set `head -> next == NULL` and return head.
+**Delete middle element**: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
 
 ---
 
