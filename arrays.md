@@ -119,7 +119,8 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 - **Set difference** of two sorted arrays: similar code as above, take smaller element but only if its in `A` and skip both on equal elements. Copy remaining but only from the `A` if calculating `A - B` set diff.
 
 **Merge two sorted arrays in O(1) space**:
-- Merging arrays approach: using two pointers, traverse both arrays and swap the smaller element from the second array to the first array, this fixes one element in the first (larger) array at appropriate position, re-sort the smaller array after every swap; sorting is necessary since we don't know what kind of elements are coming from first array upon swap. Note that `j` always points to `0` (i.e. the smallest number in the second array; for which we're finding location in the first array).
+- Insertion sort approach: using two pointers, traverse both arrays and swap the smaller element from the second array to the first array, this fixes one element in the first (larger) array at appropriate position, re-sort the smaller array after every swap; sorting is necessary since we don't know what kind of elements are coming from first array upon swap. Note that `j` always points to `0` (i.e. the smallest number in the second array; for which we're finding location in the first array). TC = `O(m * nlogn)`.
+- Start from the back approach (_optimal_): place `i=n-1` and `j=0`, keep swapping until inversion and move both pointers everytime, otherwise break. Sort both arrays individually. TC = `O(min(m, n) + mlogm + nlogn)`.
 - Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
 
 ### Divide and Conquer (Merge Sort based)
