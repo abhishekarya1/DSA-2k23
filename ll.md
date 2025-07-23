@@ -1,4 +1,4 @@
-> Linked Lists are _non-contiguous_ sequence of elements.
+> Linked Lists are _non-contiguous_ sequence of elements (called _nodes_ here).
 > 
 > Dynamic size, and elements are accessed sequentially so random access to elements is not possible.
 
@@ -17,7 +17,7 @@
 ## Tips
 Base Case / Edge Case is if LL has no nodes or only one node: `if(head == NULL || head -> next == NULL)`.
 
-Traversal Conditions: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element).
+Traversal Conditions: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last node).
 
 _Note_: NULL checks are always done for nodes on which we're performing `-> next` operation e.g. `fast && fast -> next` in Hare & Tortoise technique.
 
@@ -65,7 +65,7 @@ so dist covered will also be twice (directly proportional), as time is constant 
 
 **Find intersection point of two LL**:
 - Brute (quadratic): for every node in `listA` check every node of `listB`.
-- Better (linear space): store any one list's elements in `set<Node*>`, for every node in the other list search the `set<>` for a match.
+- Better (linear space): store any one list's nodes in `set<Node*>`, for every node in the other list search the `set<>` for a match.
 - Good: calc size diff of LL from both heads (`diff`), move by `diff` steps in the longer one, then start traversal simultaneously in the smaller LL, where they meet is the common point.
 - Optimal (super smart): start traversing from `h1` and on end circle back to `h2` and vice-versa, after/in the second traversal it is guaranteed that you will stop at either `NULL` (trivial common point) or the answer node.
 
@@ -94,7 +94,7 @@ while(fast -> next){
 - offset by `k` nodes and track `prev` and repoint upon reaching node to be deleted.
 - offset by `k` and reach node to be deleted and then copy data of its next and delete the next one.
 
-**Delete middle element**: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
+**Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
 
 ---
 
@@ -128,7 +128,7 @@ if(fast == NULL) return head -> next;
 
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, `k-1` links are reversed, use (iterative 3-pointer link reverse technique) that starts at `dummyNode` (important) and can reverse links without changing `prev` or `curr` and connects segments properly, do this `while(n >= k)`
-  - NOTE that normal reverse approach won't work here since we will reverse `1 2 3 4` with `k = 2` as `2 1 3 4` (first link reversal) and then we'll need to attach node `1` to next block's last element which is a hassle since first we'll have to reverse next block and then connect them, dummy node approach is much smarter
+  - NOTE that normal reverse approach won't work here since we will reverse `1 2 3 4` with `k = 2` as `2 1 3 4` (first link reversal) and then we'll need to attach node `1` to next block's last node which is a hassle since first we'll have to reverse next block and then connect them, dummy node approach is much smarter
   - Recursive way: reverse first k nodes iteratively in method, and let recursion do for the rest of the list and attach to recursive call's return, return (propagate) last node of block back everytime. Base case: `when(lengthOfLL < k)` then no reversal to be done
 
 - Rotate a LL: make it circular and break
@@ -141,6 +141,6 @@ if(fast == NULL) return head -> next;
 
 - Delete nodes of a DLL: take care of edge cases - deletion of first node, deletion of last node
 
-- Remove Nodes till next Greater Node - we do it the reverse LL way, and we connect current to next greater and propagate back the greater element between current and greater [link](https://leetcode.com/problems/remove-nodes-from-linked-list/)
+- Remove Nodes till next Greater Node - we do it the reverse LL way, and we connect current to next greater and propagate back the greater node between current and greater [link](https://leetcode.com/problems/remove-nodes-from-linked-list/)
 
-- Split Linked List in Parts - `n/k` element in each part but the first `n%k` parts have `1` extra element each (`n/k + 1`)
+- Split Linked List in Parts - `n/k` node in each part but the first `n%k` parts have `1` extra node each (`n/k + 1`)
