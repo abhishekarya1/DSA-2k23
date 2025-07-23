@@ -44,7 +44,7 @@ _Note_: always form link between new node and next node first, before breaking l
 
 **Delete node to which pointer is given**: ([link](https://leetcode.com/problems/delete-node-in-a-linked-list)) copy data and pointer of next node to current.
 
-So basically deletion of a node is possible in two ways - if we know its previous node (actual deletion of memory address), or if we've the node itself (deletion of node data), the latter is useful in deletion of middle node, `k`th node from end etc.
+So basically deletion of a node is possible in two ways - if we know its previous node (actual deletion of memory address), or if we've the node itself (deletion of node data only), the latter is useful in deletion of middle node, `k`th node from end etc but may not be the ask.
 
 ## Fast and Slow Pointers
 **Find middle of a LL**: Hare & Tortoise technique: `while(fast && fast -> next)`
