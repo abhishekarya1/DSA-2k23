@@ -96,8 +96,7 @@ while(fast -> next){
 
 **Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
 
----
-
+## Array-like Problems
 - Check if LL is palindrome or not: goto mid using rabbit & hare technique, reverse the right half, compare one-by-one till end
 - Segregate odd and even nodes in LL: track `oddHead = head` and `evenHead = head -> next` (and save this `evenStartSave = evenHead` for later) and re-attach nodes from LL like Legos
 
@@ -109,8 +108,6 @@ if(head -> next == NULL) return NULL;
 // offset by n steps and then check if we've reached the end (nth node from the end is head)
 if(fast == NULL) return head -> next;
 ```
-
----
 
 - Segragate odd and even nodes & segragate 0s, 1s and 2s - attach nodes like Lego bricks
 
@@ -124,7 +121,7 @@ if(fast == NULL) return head -> next;
 
 - Add two numbers represented by LL: LL are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node)
 
----
+## In-place Reversal
 
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, `k-1` links are reversed, use (iterative 3-pointer link reverse technique) that starts at `dummyNode` (important) and can reverse links without changing `prev` or `curr` and connects segments properly, do this `while(n >= k)`
