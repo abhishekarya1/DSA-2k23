@@ -15,9 +15,11 @@
 - no unused allocated space (unlike arrys that may have gaps).
 
 ## Tips
-Base Case: `if(head == NULL || head -> next == NULL)`
+Base Case / Edge Case is if LL has no nodes or only one node: `if(head == NULL || head -> next == NULL)`.
 
-Traversal Conditions: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element)
+Traversal Conditions: `while(curr != NULL)` or `while(curr -> next != NULL)` (skips last element).
+
+_Note_: NULL checks are always done for nodes on which we're performing `-> next` operation e.g. `fast && fast -> next` in Hare & Tortoise technique.
 
 Create gap of `k` nodes - useful in many problems
 
@@ -30,6 +32,8 @@ Reverse traversal of a LL - useful in many problems
 
 _Note_: always form link between new node and next node first, before breaking link between current and next.
 
+**Reverse a DLL**: swap links and goto `curr->prev` node (next node in original list), place new head at the end (ue a `prev` variable or condition `if(curr->prev == NULL) head = curr;` to place new head).
+
 **Delete Linked List Nodes with value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
 - Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
 - Dummy Node Approach - create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end
@@ -39,22 +43,22 @@ _Note_: always form link between new node and next node first, before breaking l
 **Reverse a SLL**: Iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
 - Recursive way: go till end and while coming back with recursion, change and break link, and propagate returned `newHead` from the base case
 
-**Reverse a DLL**: swap links and return new head at the end i.e. `prev`
-
 ## Fast and Slow Pointers
-**Find middle of a LL**: Hare & Tortoise approach
-- `while(fast && fast->next)`
+**Find middle of a LL**: Hare & Tortoise technique: `while(fast && fast -> next)`
 
-**Detect loop (Floyd's cycle)**: Hare & Tortoise approach with Fast and Slow pointers
+**Detect loop (Floyd's cycle detection)**: use Hare & Tortoise technique. If a cycle is present, then they'll definitely meet after a finite number of steps.
 
-**Find the starting point in LL**: move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node, algebraic proof below:
+**Find the starting point of cycle**: move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node, algebraic proof below:
 ```txt
-time = dist / speed, in the same time they cover diff dist and diff speeds
-2 (x + y)  = x + y + z + y
-x = z
+time = dist / speed, in the same time they cover diff dist since speeds are diff (2 times the other)
+so dist covered will also be twice (directly proportional), as time is constant for both
+
+2 * Ds = Df
+=> 2 (x + y)  = x + y + z + y
+=> x = z
 ```
 
-**Length of the loop**: find cycle start point, count till it is encountered again
+**Length of the cycle**: find cycle start point, count till it is encountered again
 
 **Kth node from the last**: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time
 ```cpp
