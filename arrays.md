@@ -109,19 +109,19 @@ Related Problems:
    
 Duplicates within an array are problematic for two-pointer approach. Check last element of result array at each write to detect and eliminate duplicates.
 
-- **Union** of two sorted arrays (sorted; duplicates present): always take minimum of the two and check with equality with the last inserted element so that we don't insert duplicates `O(m+n)`
+- **Union** of two sorted arrays (sorted; duplicates present): always take minimum of the two and check with equality with the last inserted element so that we don't insert duplicates `O(m+n)`.
 
 - **Intersection** of two arrays (unsorted; duplicates present): [link](https://leetcode.com/problems/intersection-of-two-arrays/)
 	- sort and do two-pointer approach like the Union approach above, to avoid duplicates check the last inserted element in `ans` array with the element to be inserted (skip if same)
 	- sort and remove duplicates from each array using sets early on and do simple two-pointer approach
 	- sort and do two-pointer and remove duplicates from `ans` array using a set at the end
 	- store all elments of `nums2` in a freq map (acts as a set since it keeps unique elements only as keys), then traverse `nums1` and erase when an element is found in both (is intersection) to avoid duplicates; no sorting was required here because of map lookups (finds)
-- **Set difference** of two sorted arrays: similar code as above, take smaller element but only if its in `A` and skip both on equal elements. Copy remaining but only from the `A` if calculating `A - B` set diff.
+- **Set difference** of two sorted arrays: similar code as above, take smaller element but only if its in `A` and skip both on equal elements. Copy remaining but only from the `A` if calculating `A-B` set diff.
 
 **Merge two sorted arrays in O(1) space**:
 - Insertion sort-based approach: using two pointers, traverse both arrays and swap the smaller element from the second array to the first array, this fixes one element in the first (larger) array at appropriate position, re-sort the smaller array after every swap; sorting is necessary since we don't know what kind of elements are coming from first array upon swap. Note that `j` always points to `0` (i.e. the smallest number in the second array; for which we're finding location in the first array). TC = `O(m * nlogn)`.
-- Start from the back approach (_optimal_): place `i=n-1` and `j=0`, keep swapping until inversion and move both pointers everytime, otherwise break. Sort both arrays individually. TC = `O(min(m, n) + mlogm + nlogn)`.
-- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`
+- Start from the back approach (_optimal_): place `i=n-1` and `j=0`, keep swapping until inversion and move both pointers everytime, otherwise break. At last, sort both arrays individually. TC = `O(min(m,n) + mlogm + nlogn)`. This approach is basically swapping top big elements from the first arrray to the second while eligible.
+- Shell sort (Gap) approach: initiate `gap=(m+n)/2` and keep swapping inversions on gap pointers, reduce `gap/=2` every traversal of both arrays (`m+n` length), stop on `gap=0`.
 
 ### Divide and Conquer (Merge Sort based)
 **Count Inversions / Reverse Pairs** - quadratic naive solution, linear solution is applicable to sorted-and-rotated arrays (with no duplicates) only, optimal solution is to do mergeSort (`O(nlogn)`) and during/before merging count pairs for all small sub-partitions and total them from every recurive call and return cumulative count at the end. Counting inversions can be done with modified condition body in the merge method, but counting reversals needs separate logic since we can't modify merge condition itself (we need scanning for reversals unlike inversions).
