@@ -34,15 +34,17 @@ _Note_: always form link between new node and next node first, before breaking l
 
 **Reverse a DLL**: swap links and goto `curr->prev` node (next node in original list), place new head at the end (ue a `prev` variable or condition `if(curr->prev == NULL) head = curr;` to place new head).
 
+**Reverse a SLL**: in-place reversal
+- iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
+- recursive: go till end and while coming back with recursion, update link for current node (`curr->next->next = curr; curr->next=NULL;`), and propagate returned `newHead` from the base case to every recursive call's return.
+
 **Delete Linked List Nodes with value K**: since its deletion we use two pointers `*prev = head` and `*curr = head`, normal case is fine but head deletion is problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` [link](https://leetcode.com/problems/remove-linked-list-elements/)
 - Scan Delete Approach - `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case
 - Dummy Node Approach - create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end
 
 **Delete node to which pointer is given**: ([link](https://leetcode.com/problems/delete-node-in-a-linked-list)) copy data and pointer of next node to current.
 
-**Reverse a SLL**: in-place reversal
-- iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
-- recursive: go till end and while coming back with recursion, update link for current node (`curr->next->next = curr; curr->next=NULL;`), and propagate returned `newHead` from the base case to every recursive call's return.
+So basically deletion of a node is possible in two ways - if we know its previous node (actual deletion of memory address), or if we've the node itself (deletion of node data), the latter is useful in deletion of middle node, `k`th node from end etc.
 
 ## Fast and Slow Pointers
 **Find middle of a LL**: Hare & Tortoise technique: `while(fast && fast -> next)`
@@ -67,7 +69,7 @@ so dist covered will also be twice (directly proportional), as time is constant 
 - Good: calc size diff of LL from both heads (`diff`), move by `diff` steps in the longer one, then start traversal simultaneously in the smaller LL, where they meet is the common point.
 - Optimal (super smart): start traversing from `h1` and on end circle back to `h2` and vice-versa, after/in the second traversal it is guaranteed that you will stop at either `NULL` (trivial common point) or the answer node.
 
-**Kth node from the last**: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time
+**Find the Kth node from the end**: give headstart of `k` steps to `fast`, move both `slow` and `fast` one step at a time until fast reaches the end.
 ```cpp
 // move fast pointer k steps ahead
 Node* slow = head, *fast = head;
@@ -84,13 +86,21 @@ while(fast -> next){
   slow = slow -> next;
   fast = fast -> next;
 }
+// alternatively we can use a prev pointer and stop normally at kth position
 ```
 
+**Delete Kth node from the end**: 
+- offset by `k+1` and we'll land at previous node of the one to be deleted.
+- offset by `k` nodes and track `prev` and repoint upon reaching node to be deleted, corner case is when `k` is equal to list's size e.g. `list = [1, 2] and k = 2`, in this case during offsetting fast pointer will become `NULL` and we can return `head -> next` as new head (meaning deletion of `head`).
+- offset by `k` and reach node to be deleted and then copy data of its next and delete the next one (beware of corner cases).
+
+**Delete middle element**: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this when slow is on mid and `slow -> next == NULL` set `head -> next == NULL` and return head.
+
 ---
+
 - Check if LL is palindrome or not: goto mid using rabbit & hare technique, reverse the right half, compare one-by-one till end
 - Segregate odd and even nodes in LL: track `oddHead = head` and `evenHead = head -> next` (and save this `evenStartSave = evenHead` for later) and re-attach nodes from LL like Legos
-- Delete Nth node from the last: offset by `n` nodes and then goto one node previous to `n`th node from the last and change links to nth node, corner case is when `n` is equal to list's size e.g. `list = [1, 2] and n = 2`, in this case during offsetting fast pointer will become `NULL` and we can return `head -> next` as new head (meaning deletion of `head`)
-- Delete middle element: goto mid element using hare and tortoise, corner case is two element list e.g. `[1, 2]`, mid is `2`, for this when slow is on mid and `slow -> next == NULL` set `head -> next == NULL` and return head
+
 ```cpp
 // edge case - [1], n = 1
 if(head -> next == NULL) return NULL;
