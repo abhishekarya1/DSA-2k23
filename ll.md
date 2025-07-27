@@ -96,11 +96,6 @@ while(fast -> next){
 
 **Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
 
-## Rearrangement
-**Check if LL is palindrome**: go to the middle node using rabbit & hare technique, reverse the right half iniplace, compare one-by-one till end
-
-**Segregate alternate nodes in LL**: track `oddTail = head` and `evenTail = head -> next` (and save it too `evenHead = evenTail` for later) and re-attach nodes from LL like Legos, at the end attach both LLs with `oddTail -> next = evenHead`.
-
 ```cpp
 // edge case: [1], n = 1
 if(head -> next == NULL) return NULL;
@@ -109,6 +104,11 @@ if(head -> next == NULL) return NULL;
 // offset by n steps and then check if we've reached the end (nth node from the end is head)
 if(fast == NULL) return head -> next;
 ```
+
+## Rearrangement
+**Check if LL is palindrome**: go to the middle node using rabbit & hare technique, reverse the right half iniplace, compare one-by-one till end
+
+**Segregate alternate nodes in LL**: track `oddTail = head` and `evenTail = head -> next` (and save it too `evenHead = evenTail` for later) and re-attach nodes from LL like Legos, at the end attach both LLs with `oddTail -> next = evenHead`.
 
 **Segregate odd and even data nodes** and **Segregate nodes with values 0, 1, and 2**: similar to above; use `oddHead`, `oddTail` and `evenHead`, `evenTail` and attach nodes to them like Legos.
 
