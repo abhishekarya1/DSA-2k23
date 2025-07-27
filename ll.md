@@ -36,13 +36,13 @@ _Note_: always form link between new node and next node first, before breaking l
 - iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
 - recursive: go till end and while coming back with recursion, update link for current node (`curr->next->next = curr; curr->next=NULL;`), and propagate returned `newHead` from the base case to every recursive call's return.
 
-**Delete all nodes with value K**: ([link](https://leetcode.com/problems/remove-linked-list-elements/)) normal deletion using two pointers `*prev = head` and `curr = head`, normal case is fine but head deletion is a problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` .
-- Scan Delete Approach: `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case.
-- Dummy Node Approach: create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach and repoint, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end.
-
 **Delete node to which pointer is given**: ([link](https://leetcode.com/problems/delete-node-in-a-linked-list)) copy data and pointer of next node to current.
 
 So basically deletion of a node is possible in two ways - if we know its previous node (actual deletion of memory address), or if we've the node itself (deletion of node data only), the latter is useful in deletion of middle node, `k`th node from end etc but may not be the ask.
+
+**Delete all nodes with value K**: ([link](https://leetcode.com/problems/remove-linked-list-elements/)) normal deletion using two pointers `*prev = head` and `curr = head`, normal case is fine but head deletion is a problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` .
+- Scan Delete Approach: `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case.
+- Dummy Node Approach: create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach and repoint, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end.
 
 ## Fast and Slow Pointers
 **Find middle of a LL**: Hare & Tortoise technique: `while(fast && fast -> next)`
