@@ -94,16 +94,16 @@ while(fast -> next){
 - offset by `k` nodes and track `prev` and repoint upon reaching node to be deleted.
 - offset by `k` and reach node to be deleted and then copy data of its next and delete the next one.
 
-**Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
-
 ```cpp
 // edge case: [1], n = 1
 if(head -> next == NULL) return NULL;
 
-// edge case: n = size of array (removing head), ex - [1, 2] (n = 2)
+// edge case: n = size of array (removing head), ex - [1, 2, 3] (n = 3)
 // offset by n steps and then check if we've reached the end (nth node from the end is head)
 if(fast == NULL) return head -> next;
 ```
+
+**Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
 
 ## Rearrangement
 **Check if LL is palindrome**: go to the middle node using rabbit & hare technique, reverse the right half iniplace, compare one-by-one till end
