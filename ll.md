@@ -125,7 +125,7 @@ if(fast == NULL) return head -> next;
 ## Doubly Linked List (DLL)
 **Reverse a DLL**: swap links and goto `curr->prev` node (next node in original list), place new head at the end (ue a `prev` variable or condition `if(curr->prev == NULL) head = curr;` to place new head).
 
-**Find pairs with given sum in DLL**: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
+**Find pairs with given sum in DLL**: same as array two pointer just condition is diff because there are no numeric indices here to compare. Condition - `while(low != hi && hi -> next ! = low)`.
 
 **Delete nodes of a DLL**: take care of edge cases - deletion of first node, deletion of last node
 
