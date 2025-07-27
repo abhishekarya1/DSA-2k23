@@ -32,8 +32,6 @@ Reverse traversal of a LL - useful in many problems
 
 _Note_: always form link between new node and next node first, before breaking link between current and next.
 
-**Reverse a DLL**: swap links and goto `curr->prev` node (next node in original list), place new head at the end (ue a `prev` variable or condition `if(curr->prev == NULL) head = curr;` to place new head).
-
 **Reverse a SLL**: in-place reversal
 - iterative (uses 3 pointers): save `next` node, update `curr->next = prev`, update `prev` and then `curr`, return the new head i.e. the last `prev` value
 - recursive: go till end and while coming back with recursion, update link for current node (`curr->next->next = curr; curr->next=NULL;`), and propagate returned `newHead` from the base case to every recursive call's return.
@@ -117,10 +115,19 @@ if(fast == NULL) return head -> next;
 **Sort LL**: ([link](https://leetcode.com/problems/sort-list)) use either bubble sort and swap node data, or use merge sort for LL
 - _Merge sort for LL_: split in the middle and call mergeSortLL on both halves, merge using a dummy node and attach Legos technique.
 
+**Remove duplicates from a sorted LL**: ([link](https://leetcode.com/problems/remove-duplicates-from-sorted-list)) same as array problem, using two-pointers, but here we can just re-point instead of swapping. Also seal the end `j -> next = NULL` to handle duplicates at the end e.g. `[1,2,3,3,3]`.
+
 ## Numbers represented by LL
 **Add 1 to a number represented by LL**: reverse LL and while carry is more than `0`, keep adding, add node at last if carry remains. Reverse entire list again to get ans.
 
 **Add two numbers represented by LL**: ([link](https://leetcode.com/problems/add-two-numbers)) lists are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node).
+
+## Doubly Linked List (DLL)
+**Reverse a DLL**: swap links and goto `curr->prev` node (next node in original list), place new head at the end (ue a `prev` variable or condition `if(curr->prev == NULL) head = curr;` to place new head).
+
+**Find pairs with given sum in DLL**: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
+
+**Delete nodes of a DLL**: take care of edge cases - deletion of first node, deletion of last node
 
 ## In-place Reversal
 - Reverse LL in groups of k: 
@@ -133,10 +140,6 @@ if(fast == NULL) return head -> next;
 - Flattenning of a LL: recur till last and when coming back form pairs and merge sorted sublists like normal
 
 ---
-
-- Find pairs with given sum in DLL: same as array two pointer just condition is diff (`while(low != hi && hi -> next ! = low)`)
-
-- Delete nodes of a DLL: take care of edge cases - deletion of first node, deletion of last node
 
 - Remove Nodes till next Greater Node - we do it the reverse LL way, and we connect current to next greater and propagate back the greater node between current and greater [link](https://leetcode.com/problems/remove-nodes-from-linked-list/)
 
