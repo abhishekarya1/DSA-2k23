@@ -123,7 +123,7 @@ if(fast == NULL) return head -> next;
 **Add two numbers represented by LL**: ([link](https://leetcode.com/problems/add-two-numbers)) lists are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node).
 
 ## Doubly Linked List (DLL)
-**Reverse a DLL**: swap links and goto `curr->prev` node (next node in original list), place new head at the end (ue a `prev` variable or condition `if(curr->prev == NULL) head = curr;` to place new head).
+**Reverse a DLL**: swap links and goto `curr->prev` node (next node in original list), place new head at the end (use a `prev` variable or condition `if(curr->prev == NULL) head = curr;` to place new head).
 
 **Find all pairs with given sum in DLL**: same as array two pointer, just the condition is diff because there are no numeric indices here to compare. Condition - `while(low != hi && hi -> next != low)`, the second half is to cover the state `[2, 3]` with `k = 5`, the two pointers will update by `1` position each and will cross each other, that is where we should stop.
 
