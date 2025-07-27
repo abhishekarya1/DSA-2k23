@@ -115,7 +115,7 @@ if(fast == NULL) return head -> next;
 **Merge two sorted LL**: ([link](https://leetcode.com/problems/merge-two-sorted-lists)) create a `dummyHead` node and keep pointing its next to lesser value node (use a `mergeTail` pointer to track last node in merged LL), also attach remaining lists at the end (replacement for `while` loops in array merge technique), at the end return `dummyNode -> next` as the new head of the merged LL.
 
 **Sort LL**: use either bubble sort and swap node data, or use merge sort for LL
-- _Merge sort for LL_: split in the middle and call mergeSortLL on both halves, merge using a dummy node and attach legos
+- _Merge sort for LL_: split in the middle and call mergeSortLL on both halves, merge using a dummy node and attach Legos technique.
 
 ## Numbers represented by LL
 **Add 1 to a number represented by LL**: reverse LL and while carry is more than `0`, keep adding, add node at last if carry remains
