@@ -97,32 +97,32 @@ while(fast -> next){
 **Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
 
 ## Array-like Problems
-- Check if LL is palindrome or not: goto mid using rabbit & hare technique, reverse the right half, compare one-by-one till end
-- Segregate odd and even nodes in LL: track `oddHead = head` and `evenHead = head -> next` (and save this `evenStartSave = evenHead` for later) and re-attach nodes from LL like Legos
+**Check if LL is palindrome**: go to the middle node using rabbit & hare technique, reverse the right half iniplace, compare one-by-one till end
+
+**Segregate alternate nodes in LL**: track `oddTail = head` and `evenTail = head -> next` (and save it too `evenHead = evenTail` for later) and re-attach nodes from LL like Legos, at the end attach both LLs with `oddTail -> next = evenHead`.
 
 ```cpp
-// edge case - [1], n = 1
+// edge case: [1], n = 1
 if(head -> next == NULL) return NULL;
 
-// edge case - n = size of array (removing head), ex - [1, 2] (n = 2)
+// edge case: n = size of array (removing head), ex - [1, 2] (n = 2)
 // offset by n steps and then check if we've reached the end (nth node from the end is head)
 if(fast == NULL) return head -> next;
 ```
 
-- Segragate odd and even nodes & segragate 0s, 1s and 2s - attach nodes like Lego bricks
+**Segregate odd and even data nodes** and **Segregate nodes with values 0, 1, and 2**: similar to above; use `oddHead`, `oddTail` and `evenHead`, `evenTail` and attach nodes to them like Legos.
 
-- Sort Linked list: use either bubble sort and swap node data, or use merge sort for LL
+**Merge two sorted LL**: take a dummyHead node and keep pointing it to lesser value node
 
-- Merge sort for LL - split in the middle and call mergeSortLL on both halves, merge using a dummy node and attach legos
+**Sort LL**: use either bubble sort and swap node data, or use merge sort for LL
+- _Merge sort for LL_: split in the middle and call mergeSortLL on both halves, merge using a dummy node and attach legos
 
-- Merge two sorted LL - take a dummyHead node and keep pointing it to lesser value node
+## Numbers represented by LL
+**Add 1 to a number represented by LL**: reverse LL and while carry is more than `0`, keep adding, add node at last if carry remains
 
-- Add 1 to a number represented by LL: reverse LL and while carry is more than `0`, keep adding, add node at last if carry remains
-
-- Add two numbers represented by LL: LL are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node)
+**Add two numbers represented by LL**: LL are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node)
 
 ## In-place Reversal
-
 - Reverse LL in groups of k: 
   - Iterative way: to reverse k nodes, `k-1` links are reversed, use (iterative 3-pointer link reverse technique) that starts at `dummyNode` (important) and can reverse links without changing `prev` or `curr` and connects segments properly, do this `while(n >= k)`
   - NOTE that normal reverse approach won't work here since we will reverse `1 2 3 4` with `k = 2` as `2 1 3 4` (first link reversal) and then we'll need to attach node `1` to next block's last node which is a hassle since first we'll have to reverse next block and then connect them, dummy node approach is much smarter
