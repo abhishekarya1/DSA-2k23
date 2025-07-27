@@ -104,7 +104,7 @@ if(fast == NULL) return head -> next;
 
 **Segregate alternate nodes in LL**: track `oddTail = head` and `evenTail = head -> next` (and save it too `evenHead = evenTail` for later) and re-attach nodes from LL like Legos, at the end attach both LLs with `oddTail -> next = evenHead`.
 
-**Segregate odd and even data nodes** and **Segregate nodes with values 0, 1, and 2**: similar to above; use `oddHead`, `oddTail` and `evenHead`, `evenTail` and attach nodes to them like Legos.
+**Segregate odd and even value nodes** and **Segregate nodes with values 0, 1, and 2**: similar to above; use `oddHead`, `oddTail` and `evenHead`, `evenTail` and attach nodes to them like Legos.
 
 **Merge two sorted LL**: ([link](https://leetcode.com/problems/merge-two-sorted-lists)) create a `dummyHead` node and keep pointing its next to lesser value node (use a `mergeTail` pointer to track last node in merged LL), also attach remaining lists at the end (replacement for `while` loops in array merge technique), at the end return `dummyNode -> next` as the new head of the merged LL.
 
@@ -113,7 +113,7 @@ if(fast == NULL) return head -> next;
 
 **Remove duplicates from a sorted LL**: ([link](https://leetcode.com/problems/remove-duplicates-from-sorted-list)) same as array problem, using two-pointers, but here we can just re-point instead of swapping. Also seal the end `j -> next = NULL` to handle duplicates at the end e.g. `[1,2,3,3,3]`.
 
-**Delete all nodes with value K**: ([link](https://leetcode.com/problems/remove-linked-list-elements/)) normal deletion using two pointers `*prev = head` and `curr = head`, normal case is fine but head deletion is a problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6` .
+**Delete all nodes with value K**: ([link](https://leetcode.com/problems/remove-linked-list-elements/)) normal deletion using two pointers `prev = head` and `curr = head`, normal case is fine but head deletion is a problem in cases like `[2], k = 2` and `[6, 6, 6, 6], k = 6`.
 - Scan Delete Approach: `prev` won't move on deletion here only `curr` will, both move on non-deletion. `curr == head` case needs to be checked on every step as in that case `head` itself needs to be shifted (`head = head -> next`) unlike the normal case.
 - Dummy Node Approach: create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach and repoint, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end.
 
