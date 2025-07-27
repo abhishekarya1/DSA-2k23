@@ -143,10 +143,10 @@ if(fast == NULL) return head -> next;
 - Split Linked List in Parts - `n/k` node in each part but the first `n%k` parts have `1` extra node each (`n/k + 1`)
 
 ## Additional Topics
-**XOR Linked Lists** - [notes](https://hashdefine.netlify.app/dsa/bit/applications/#xor-linked-lists) space-efficient Linked Lists in which two-way traversal is possible with only one pointer storage per node.
+**XOR Linked Lists** - ([notes](https://hashdefine.netlify.app/dsa/bit/applications/#xor-linked-lists)) space-efficient Linked Lists in which two-way traversal is possible with only one pointer storage per node.
 
-**Reservior Sampling**: Linked Lists are prefect data structure for this kind of Randomized Algorithm - [notes](https://github.com/abhishekarya1/DSA-2k23/blob/main/maths.md#randomized-algorithms---reservior-sampling)
+**Reservior Sampling**: Linked Lists are prefect data structure for this kind of Randomized Algorithm - [notes](https://github.com/abhishekarya1/DSA-2k23/blob/main/maths.md#randomized-algorithms---reservior-sampling).
 
-**Skip Lists**: [link](https://www.geeksforgeeks.org/dsa/skip-list/) time-efficient Linked List. Probabilistic data structure that allows for on average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. We can have multiple layers of skip pointers on top of the base LL. These layers and nodes in each such layer is determined randomly, hence making this data structure "probabilistic".
+**Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient Linked List. Probabilistic data structure that allows for on average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. We can have multiple layers of skip pointers on top of the base LL. These layers and nodes in each such layer is determined randomly, hence making this data structure "probabilistic".
 
-**Multilevel Lists**: [link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists.
+**Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists.
