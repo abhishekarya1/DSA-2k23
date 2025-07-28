@@ -118,6 +118,8 @@ if(fast == NULL) return head -> next;
 - Dummy Node Approach: create a dummy node and attach entire list head to it, init `*prev = dummy` and `*curr = head`, skip `curr -> val == k` nodes in traversal using `prev` and `curr` logic from above approach and repoint, this way we won't have to deal with head check on deletion case, return `dummy -> next` at the end.
 
 ## Numbers represented by LL
+> Reverse the LL first in all problems of this kind.
+
 **Add 1 to a number represented by LL**: reverse LL and while carry is more than `0`, keep adding, add node at last if carry remains. Reverse entire list again to get ans.
 
 **Add two numbers represented by LL**: ([link](https://leetcode.com/problems/add-two-numbers)) lists are already reversed (otherwise reverse), add corresponding node data `while(h1 && h2)` with carry propagation logic, do `while(h1)` and carry prop logic (num1 is longer processing), do `while(h2)` and carry prop logic (num2 is longer processing), carry can still remain after this too so create and add a node with `newNode -> data = carry`, at the end `return dummyNode -> next` (skip dummy node).
