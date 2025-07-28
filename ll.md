@@ -43,7 +43,9 @@ So basically deletion of a node is possible in two ways - if we know its previou
 ## Fast and Slow Pointers
 **Find middle of a LL**: Hare & Tortoise technique: `while(fast && fast -> next)`
 
-**Detect loop (Floyd's cycle detection)**: use Hare & Tortoise technique. If a cycle is present, then they'll definitely meet after a finite number of steps.
+**Detect loop (Floyd's cycle detection algorithm)**: use Hare & Tortoise technique. If a cycle is present, then they'll definitely meet after a finite number of steps.
+- use normal `while` loop with check `slow == fast` right after updating them
+- use `do ... while` loop and no such check is required in loop body
 
 **Find the starting point of cycle**: move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node, algebraic proof below:
 ```txt
@@ -55,7 +57,7 @@ so dist covered will also be twice (directly proportional), as time is constant 
 => x = z
 ```
 
-**Length of the cycle**: find cycle start point, count till it is encountered again
+**Length of the cycle**: find cycle start point, count till it is encountered again.
 
 **Floyd's Cycle Detection Algorithm** can be used for other applications apart from LL loops too:
 - [Happy Number](https://leetcode.com/problems/happy-number)
