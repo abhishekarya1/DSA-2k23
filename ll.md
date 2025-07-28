@@ -58,8 +58,8 @@ so dist covered will also be twice (directly proportional), as time is constant 
 **Length of the cycle**: find cycle start point, count till it is encountered again.
 
 **Floyd's Cycle Detection Algorithm** can be used for other applications apart from LL loops too:
-- [Happy Number](https://leetcode.com/problems/happy-number)
-- [Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number)
+- [Happy Number](https://leetcode.com/problems/happy-number): both pointers are guaranteed to meet. Upon meeting, both will be `1` (happy) or some other value (not happy).
+- [Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number): if elements values represent address then two elements will point to same address (i.e. duplicates), which is possible only if a loop is present.
 
 **Find intersection point of two LL**:
 - Brute (quadratic): for every node in `listA` check every node of `listB`.
