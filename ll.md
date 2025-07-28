@@ -43,7 +43,7 @@ So basically deletion of a node is possible in two ways - if we know its previou
 ## Fast and Slow Pointers
 **Find middle of a LL**: Hare & Tortoise technique: `while(fast && fast -> next)`
 
-**Detect loop (Floyd's cycle detection algorithm)**: ([notes](https://cp-algorithms.com/others/tortoise_and_hare.html)) use Hare & Tortoise technique. If a cycle is present, then they'll definitely meet after a finite number of steps. Otherwise, `fast` will reach the end.
+**Detect loop (Floyd's cycle detection algorithm)**: ([notes](https://cp-algorithms.com/others/tortoise_and_hare.html)) use Hare & Tortoise technique. If a cycle is present, then they'll definitely meet after a finite number of steps. Otherwise, `fast` will reach the end. Note that the meeting point may or may not be the start point of the cycle.
 
 **Find the starting point of cycle**: move simultaneously from meet point of `slow` and `fast` and the head of LL, answer is when they point to the same node, algebraic proof below:
 ```txt
