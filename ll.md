@@ -129,7 +129,7 @@ if(fast == NULL) return head -> next;
 
 **Find all pairs with given sum in DLL**: same as array two pointer, just the condition is diff because there are no numeric indices here to compare. Condition - `while(low != hi && hi -> next != low)`, the second half is for the state `[2, 3]` with `k = 5`, the two pointers will update by `1` position each and will cross each other without ever becoming equal, that is where we should stop.
 
-**Delete all nodes with value K in DLL**: take care of edge cases - deletion of first node, deletion of last node. Rest all same as SLL.
+**Delete all nodes with value K in DLL**: Same as in SLL but re-pointing needs to be done for nodes's `prev` pointer too.
 
 ## In-place Reversal
 - Reverse LL in groups of k: 
@@ -140,6 +140,8 @@ if(fast == NULL) return head -> next;
 - Rotate a LL: make it circular and break
 
 - Flattenning of a LL: recur till last and when coming back form pairs and merge sorted sublists like normal
+
+Clone a LL with random and next pointer
 
 ---
 
