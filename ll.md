@@ -105,8 +105,8 @@ if(fast == NULL) return head -> next;
 
 ## Rearrangement
 **Check if LL is palindrome**: ([link](https://leetcode.com/problems/palindrome-linked-list)) go to the middle node using rabbit & hare technique, reverse the right half in-place, compare one-by-one till end, reverse later to return to original list.
-- if LL has odd no. of elements, then list `[1, 2, 3, 2, 1]` will become `[1 -> 2 -> 3 <- 2 <- 1]` with `3 -> NULL` i.e. `3` becomes the common node, we can come from any side and `3` will be its own counterpart and will always be anyways equal to itself.
-- if LL has even no. of elements, then the rightward list (reverse list) will be slightly shorter (due to mid being the right one of the middle two elements), so always traverse in reverse list to compare.
+- if LL has odd no. of nodes, then list `[1, 2, 3, 2, 1]` will become `[1 -> 2 -> 3 <- 2 <- 1]` with `3 -> NULL` i.e. `3` becomes the common node, we can come from any side and `3` will be its own counterpart and will always be anyways equal to itself.
+- if LL has even no. of nodes, then the rightward list (reverse list) will be slightly shorter (due to mid being the right one of the middle two elements), so always traverse in reverse list to compare.
 - alternatively, just use condition `while (head != NULL && newHead != NULL)` and no need to understand all the above intricacies.
 
 Similar Problem:
