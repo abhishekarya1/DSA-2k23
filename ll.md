@@ -104,7 +104,12 @@ if(fast == NULL) return head -> next;
 **Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
 
 ## Rearrangement
-**Check if LL is palindrome**: go to the middle node using rabbit & hare technique, reverse the right half iniplace, compare one-by-one till end
+**Check if LL is palindrome**: ([link](https://leetcode.com/problems/palindrome-linked-list)) go to the middle node using rabbit & hare technique, reverse the right half in-place, compare one-by-one till end, reverse later to return to original list.
+- if LL has even no. of elements, then its split in exactly the middle and every element has a counterpart,
+- if LL has odd no. of elements, then also it will work! list `[1, 2, 3, 2, 1]` will become `[1 -> 2 -> 3 <- 2 <- 1]` with `3 -> NULL` so going back in the second half will work, alt we can also write a condition `while(head != NULL && newHead != NULL)` which is more explicit.
+
+Similar Problem:
+- [Reorder List](https://leetcode.com/problems/reorder-list): reverse from mid to end just like above and use two head pointers and a `temp` variable to repoint as asked.
 
 **Segregate alternate nodes in LL**: track `oddTail = head` and `evenTail = head -> next` (and save it too `evenHead = evenTail` for later) and re-attach nodes from LL like Legos, at the end attach both LLs with `oddTail -> next = evenHead`.
 
