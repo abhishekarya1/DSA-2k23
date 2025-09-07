@@ -85,7 +85,7 @@ Related Problems:
 - https://leetcode.com/problems/move-zeroes/ (LC sol requires stable way)
 
 ### Segregating / Rearranging
-**Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable) (_see template below_)
+**Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable) (_see template above_)
 - using two extra arrays: place positive and negatives in them, put elements back alternatingly in the original array, and after smaller array is copied fully put remaining of the other array (if positives and negatives aren't equal in number)
 - using one extra array: traverse over each element in the original array, place positives and negatives in the `ans` array at `evenIndex` and `oddIndex`, update both by `+= 2`
 - if preserving order isn't required and the number of positives and negatives are equal then segregate them and perform swap on the first half of array with the second half (mirror) indices 
@@ -338,3 +338,4 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
 - convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
+
