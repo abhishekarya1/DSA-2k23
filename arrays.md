@@ -263,7 +263,7 @@ Related Problems:
 ## Intervals
 **Merge Overlapping Intervals**: ([link](https://leetcode.com/problems/merge-intervals)) 
 - use two pointers, one in a separate `ans` array and one in current (starting from index `1`) and merge into `ans.back()`
-- in-place - use two pointer technique just like "remove duplicate from sorted array" problem (i.e. init `i = 0, j = 0`, probe with `i` and insertion at index `j + 1`). At the end ans is all elements in range `[0 = j]`.
+- in-place - use two pointer technique just like "remove duplicate from sorted array" problem (i.e. init `i = 0, j = 0`, probe with `i` and insertion at index `j + 1`). At the end ans is all elements in range `[0 - j]`.
 
 **Insert Interval**: ([link](https://leetcode.com/problems/merge-intervals)) add all non-overlapping array intervals to `ans` array till `newInterval` overlaps with anyone, then keep widening the `newInterval` based on overlaps with subsequent array intervals, insert the widened `newInterval` and then rest of non-overlapping array intervals. Be careful while merging, in previous problem intervals were in a sorted array, but here we are merging a new interval from outside to array so we need to set `newInterval[start] = min(currInterval[start], newInterval[start])` as well, apart from the usual `newInterval[end] = max(currInterval[end], newInterval[end])`.
 
@@ -338,6 +338,7 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
 - convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
+
 
 
 
