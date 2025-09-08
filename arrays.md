@@ -80,9 +80,9 @@ while(low < high){
 ```
 
 Related Problems:
-- https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+- https://leetcode.com/problems/remove-duplicates-from-sorted-array: `j` points to the last written position rather than next writing position unlike segregation template above.
 - Segragate 0s and 1s
-- https://leetcode.com/problems/move-zeroes/ (LC sol requires stable way)
+- https://leetcode.com/problems/move-zeroes (LC sol requires stable way)
 
 ### Segregating / Rearranging
 **Rearrange alternate positve and negatives**: [link](https://leetcode.com/problems/rearrange-array-elements-by-sign) this problem CAN'T be solved correctly in `O(n)` time and  `O(1)` space by segregation followed by rearrangements in the same array as previously believed by me! The `O(n)` time two-pointer stable algo isn't always truly stable (its nearly stable) (_see template above_)
@@ -129,12 +129,12 @@ Duplicates within an array are problematic for two-pointer approach. Check last 
 ### Finding a target (2-Sum)
 - https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
 
-**2-Sum Problem**:
+**2-Sum Problem**: [link](https://leetcode.com/problems/two-sum)
 - naive quadratic solution: pick one element and brute force search its other half (_addend_), use nested loops. Interesting observation is that we don't need to look backwards in the inner loop since pairing for those are already covered when outer loop was at previous indices.
 - for unsorted: optimal approach is to find `target - arr[i]` while storing elements in a map/set.
 - if sorted: fix `i = 0, j = n - 1` and do 2-pointer search for `target`.
 
-**3-Sum Problem**: fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rightwards part of the array from `i+1` to `n-1`. Do this for all elements.
+**3-Sum Problem**: [link](https://leetcode.com/problems/3sum) fix `i` pointer and do 2-pointer search for `target-arr[i]` in the rightwards part of the array from `i+1` to `n-1`. Do this for all elements.
 - low and high fixing won't work as previously believed by me! naive solution is `O(n^3)` here and will work the same as 2-Sum's naive sol (no need to scan previous indices).
 - incase duplicates are there, only consider first among the chain for `i` using `if` condition, and same for `j` and `k` using `while` loops but only on `== target` condition (i.e. when we find a valid triplet and we don't wanna repeat it for the same `i`).
 - TC = `O(n^2)` (_optimal_); map approach isn't possible here.
@@ -143,7 +143,7 @@ Related Problems:
 - https://leetcode.com/problems/3sum-closest
 - https://leetcode.com/problems/3sum-smaller
 
-**4-Sum Problem**:
+**4-Sum Problem**: [link](https://leetcode.com/problems/4sum)
 - fix two pointers `i = 0` and `j = i + 1` and search for `target-arr[i]` in the rest of the array using another two pointers, nested loops to inc `i` and inc `j` to handle duplicates since it considers only the first/last among the chain.
   - taking search space from `j` till end works since we don't need to look at previous indices as they're already covered when we go left to right (with `i`) (as explained in 2-Sum above). 
 - TC: `O(n^3)` (_optimal_)
@@ -160,7 +160,7 @@ and so on...
 - https://leetcode.com/problems/remove-element
 - https://leetcode.com/problems/squares-of-a-sorted-array
 - https://leetcode.com/problems/is-subsequence
-- https://leetcode.com/problems/container-with-most-water [VERY IMPORTANT]
+- https://leetcode.com/problems/container-with-most-water: start with the widest container (ends of the array) and move the pointer at the shorter line inward, because the area is limited by the shorter height and only moving it can potentially increase the maximum area.
 
 ## Missing / Single / Duplicates
 **Techniques**:
@@ -338,6 +338,7 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
 - convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
+
 
 
 
