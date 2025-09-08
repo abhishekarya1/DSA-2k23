@@ -265,7 +265,7 @@ Related Problems:
 - use two pointers, one in a separate `ans` array and one in current (starting from index `1`) and merge into `ans.back()`
 - in-place - use two pointer technique just like "remove duplicate from sorted array" problem (i.e. init `i = 0, j = 0`, probe with `i` and either merge with interval at `j` or insert a separate one at index `j + 1`). At the end ans is all elements in range `[0 - j]`.
 
-**Insert Interval**: ([link](https://leetcode.com/problems/merge-intervals)) add all non-overlapping array intervals to `ans` array till `newInterval` overlaps with anyone, then keep widening the `newInterval` based on overlaps with subsequent array intervals, insert the widened `newInterval` and then rest of non-overlapping array intervals. Be careful while merging, in previous problem intervals were in a sorted array, but here we are merging a new interval from outside to array so we need to set `newInterval[start] = min(currInterval[start], newInterval[start])` as well, apart from the usual `newInterval[end] = max(currInterval[end], newInterval[end])`.
+**Insert Interval**: ([link](https://leetcode.com/problems/insert-interval)) add all non-overlapping array intervals to `ans` array till `newInterval` overlaps with anyone, then keep widening the `newInterval` based on overlaps with subsequent array intervals, insert the widened `newInterval` and then rest of non-overlapping array intervals. Be careful while merging, in previous problem intervals were in a sorted array, but here we are merging a new interval from outside to array so we need to set `newInterval[start] = min(currInterval[start], newInterval[start])` as well, apart from the usual `newInterval[end] = max(currInterval[end], newInterval[end])`.
 
 **Non-overlapping Intervals**: ([link](https://leetcode.com/problems/non-overlapping-intervals)) sort by end time, then count non-overlapping intervals using a leader `end` value which has the end value of the last non-overlapping interval. Subtract with `intervals.size() - cnt` to get ans. Brute force quadratic comparison of intervals won't really give correct answer here on large test cases! Greedy is the only way to solve.
 - _What gives min number of intervals we need to remove?_ Max number of intervals we need to keep. Suppose if one interval overlaps and deletes 3 of them (by merging), then its better to delete that one instead of those 3 i.e. keep interval deletion minimal. ([ref](https://leetcode.com/problems/non-overlapping-intervals/solutions/91713/java-least-is-most/comments/96271/))
@@ -338,6 +338,7 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
 - convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
+
 
 
 
