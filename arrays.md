@@ -48,7 +48,7 @@
 ### Two ways of two-pointer
 https://leetcode.com/articles/two-pointer-technique (segregating of elements into two halves can be done with both!) - `low` and `high` method is too unstable though!
 
-- ahead and behind pointers .aka. one pointer always moving (_probe_) trick [MOSTLY STABLE]. Its not exactly stable but close! Example `{3,1,-2,-5,2,-4}` will get segregated as `{3,1,2,-5,-2,-4}` but a perfect segregation will be `{3,1,2,-2,-5,-4}`
+- ahead and behind pointers .aka. one pointer always moving (_probe_) trick [MOSTLY STABLE]. Its not exactly stable but close! Example `{-2,-5,2,-4}` will get segregated as `{2,-5,-2,-4}` but a perfect segregation will be `{2,-2,-5,-4}`
 ```cpp
 int i = 0, j = 0, n = arr.size();
 while(i < n){
@@ -338,6 +338,7 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
 - convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
+
 
 
 
