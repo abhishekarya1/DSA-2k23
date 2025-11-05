@@ -301,6 +301,17 @@ Detailed observations and templates in [SWTP Notes](/swtp.md)
 - brute force (cubic) approach, better (qudratic) approach, kadane's algo (linear; optimal; DP)
 - _Intuition_: we keep summing and if we get a negative sum, the effect it will have when we sum further is net negative (reduction) and it will hurt max sum chances so we make it zero (`currSum = 0`) and start afresh from next element to continue looking for max subarray sum. If array has all negatives, `currSum = 0` happens at all indices and we only get max negative number in the end due to max tracking at each step.
 
+```cpp
+// more verbose way
+currSum += nums[i];
+maxSum = max(maxSum, currSum);
+if (currSum < 0) currSum = 0;
+
+// more terse way
+currSum = max(nums[i], currSum + nums[i]);
+maxSum = max(maxSum, currSum);
+```
+
 **Print max sum contiguous subarray**: modified Kadane's algorithm; update `startIndex = i + 1` on negative sum case, on new maxSum case update `endIndex = i`, the max sum subarray is in range `[startIndex, endIndex]`
 
 **Maximum Product Subarray**: ([link](https://leetcode.com/problems/maximum-product-subarray)) there are two ways to get max product, unlike max sum. If we're going too negative, that can also give us a big product later (on multiplying with a negative number) apart from the usual way of considering only positive sum in Kadane's algo. So track both max prod in `posProd` and min prod in `negProd` and update them both by multiplying with current array element, track `maxProd` too on each step.
@@ -338,6 +349,7 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
 - convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
+
 
 
 
