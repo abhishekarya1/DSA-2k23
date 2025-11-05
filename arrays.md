@@ -348,7 +348,8 @@ maxProd = max(maxProd, posProd);
 
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (for square matrices of `n x n` dimensions)
-- convert 1D array into 2D matrix [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/): for row-major way of storing, do `mat[i / rowSize][i % rowSize] = arr[i]`, notice that `rowSize` is nothing but `nCols` here. We can also do this with `colSize` i.e. `mat[i % colSize][i / colSize]` which will be column-major way of storing.
+- convert 1D array into `M x N` 2D matrix ([problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/)): for row-major way of storing, do `mat[i / rowSize][i % rowSize] = arr[i]`, notice that `rowSize` is nothing but `nCols` here. For column-major way, we can do `mat[i % colSize][i / colSize]`.
+
 
 
 
