@@ -347,8 +347,9 @@ maxProd = max(maxProd, posProd);
 **Spiral Traversal of Matrix**: use 4 `for` loops bounded by 4 pointers (`left`, `right`, `down`, `up`), update after every `for` loop, do this while `up <= down && left <= right`, take care of edge case where there is only 1 row or 1 column (either separately or after 2 sides printing with conditions). Pointers have to be placed and moved very strategically (see [this](https://takeuforward.org/data-structure/spiral-traversal-of-matrix/) for a diagram).
 
 **Some Tricks**:
-- primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (square matrix of `n x n` dimensions)
-- convert 1D array into 2D matrix - `mat[i / rowSize][i % rowSize] = arr[i]` [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/) (useful in binary search, matrix problems, etc)
+- primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (for square matrices of `n x n` dimensions)
+- convert 1D array into 2D matrix [problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/): `mat[i / rowSize][i % rowSize] = arr[i]`, notice that `rowSize` is nothing but `nCols` here. We can also do this with `colSize` i.e. `mat[i % colSize][i / colSize]`.
+
 
 
 
