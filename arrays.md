@@ -16,7 +16,7 @@
 - faster iteration due to memory locality (better CPU cache utilization).
 
 ## General
-**Majority element `> n/2` times** approaches:
+**Majority element `> n/2` times** approaches: ([link](https://leetcode.com/problems/majority-element))
 - brute force quadratic
 - frequency hashmap
 - sorting: sort and check mid (index `n/2`) (need to verify if its actually a majEle)
@@ -27,18 +27,18 @@
 - only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
 - in single step: if `count == 0` set `maj_element = curr_element`, if `maj_element == curr_element` then increment `count`, else decrement
 - scan again to verify majority status
-- incase of two elements (`n/3`): two check `count == 0` conditions and they have to check if currEle is not the other majEle as well (because its possible for both to be `0` at a given element and we're only picking one majority candidate in one step), use `else if` to avoid updation of both `count1` and `count2` simultaneously, else in decrement case, decrement both
+- incase of two elements (`n/3`): ([link](https://leetcode.com/problems/majority-element-ii)) two check `count == 0` conditions and they have to check if currEle is not the other majEle as well (because its possible for both to be `0` at a given element and we're only picking one majority candidate in one step), use `else if` to avoid updation of both `count1` and `count2` simultaneously, else in decrement case, decrement both
 
 **Single element occuring more than `n/4` times** (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
 
 **Max Consecutive Ones**: ([link](https://leetcode.com/problems/max-consecutive-ones)) just keep counter inc for `1` and dec for others (`0` here), and track max on break points only (better than tracking on each step; needs edge case handling where sequence doesn't end with a breakage but the loop reaches the end of array). 
 
-**Longest consecutive sequence in an array**: array can be unsorted
+**Longest consecutive sequence in an array**: ([link](https://leetcode.com/problems/longest-consecutive-sequence)) array can be unsorted
 - `O(n^2)` approach with two nested loops to iterate and keep finding `element + 1` for each element, find using linear search.
 - `O(nlogn)` sort and do pairwise adjacent comparison and calc run length max for consecutives.
 - use a populated `set` and do linear traversal on it, if `element - 1` is not present in set, this is where we start run length and set `cnt = 1` and keep checking set for `element + 1` and updating `cnt++`, if `element-1` is present it would've been counted by previous run length so do nothing.
 
-**Next Permutation**: find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`.
+**Next Permutation**: ([link](https://leetcode.com/problems/next-permutation)) find first COUNTER-INVERSION from right, consider element on the left (`i`), find first number from right greater than it, swap them, reverse from `i+1` till the end. Edge case is when no counter-inversion is found, this means array is reverse sorted `3 2 1` and next permutation is reverse sort of it `1 2 3`.
 - _Intuition_: (find counter-inversion) split will have descending order of elements on its right side i.e. maximum permutation possible for that half, (find greater and swap) bring smallest from right half to left side of pivot to make overall permutation slightly bigger, (reverse right half) we need smallest possible permutation for the right half so we sort it in increasing fashion.
 
 ## Two Pointers
@@ -349,6 +349,7 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (for square matrices of `n x n` dimensions)
 - convert 1D array into `M x N` 2D matrix ([problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/)): for row-major way of storing, do `mat[i / rowSize][i % rowSize] = arr[i]`, notice that `rowSize` is nothing but `nCols` here. For column-major way, we can do `mat[i % colSize][i / colSize]`.
+
 
 
 
