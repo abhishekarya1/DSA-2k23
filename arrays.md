@@ -25,9 +25,9 @@
 
 **Boyer-Moore Majority Voting Algorithm**: Find majority element occuring `n/k` times
 - only one element can occur more than `n/2` times, max two elements can occur more than `n/3` times each
-- if `count == 0` set `maj_element = curr_element` and `count = 1`, else if `maj_element == curr_element` increment count, else decrement
+- in single step: if `count == 0` set `maj_element = curr_element`, if `maj_element == curr_element` then increment `count`, else decrement
 - scan again to verify majority status
-- incase of two elements (`n/3`): two zero conditions and they have to check if currEle is not the other majEle as well, use `else if` to avoid updation of both `count1` and `count2` simultaneously on `countN = 0`, else in decrement case, decrement both
+- incase of two elements (`n/3`): two check `count == 0` conditions and they have to check if currEle is not the other majEle as well (because its possible for both to be `0` at a given element and we're only picking one majority candidate in one step), use `else if` to avoid updation of both `count1` and `count2` simultaneously, else in decrement case, decrement both
 
 **Single element occuring more than `n/4` times** (`25%`) [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array) - sort array and check majority count (> n/4) for each quadrant border (n/4, n/2, 3n/4, n-1) using Binary Search (use UB and LB)
 
@@ -349,6 +349,7 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (for square matrices of `n x n` dimensions)
 - convert 1D array into `M x N` 2D matrix ([problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/)): for row-major way of storing, do `mat[i / rowSize][i % rowSize] = arr[i]`, notice that `rowSize` is nothing but `nCols` here. For column-major way, we can do `mat[i % colSize][i / colSize]`.
+
 
 
 
