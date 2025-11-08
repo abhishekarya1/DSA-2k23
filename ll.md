@@ -116,7 +116,7 @@ if(fast == NULL) return head -> next;
 Similar Problem:
 - [Reorder List](https://leetcode.com/problems/reorder-list): reverse from mid to end just like above and use two head pointers and a `temp` variable to repoint as asked.
 
-**Segregate alternate nodes in LL** ([link](https://leetcode.com/problems/odd-even-linked-list/)): track `oddTail = head` and `evenTail = head -> next` (and save it too `evenHead = evenTail` for later) and re-attach nodes from LL like Legos, at the end attach both LLs with `oddTail -> next = evenHead`.
+**Segregate alternate nodes in LL**: ([link](https://leetcode.com/problems/odd-even-linked-list/)) track `oddTail = head` and `evenTail = head -> next` (and save it too `evenHead = evenTail` for later) and re-attach nodes from LL like Legos, at the end attach both LLs with `oddTail -> next = evenHead`.
 
 **Segregate odd and even value nodes** and **Segregate nodes with values 0, 1, and 2**: similar to above; use `oddHead`, `oddTail` and `evenHead`, `evenTail` and attach nodes to them like Legos.
 
@@ -171,6 +171,7 @@ Clone a LL with random and next pointer
 **Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient Linked List. Probabilistic data structure that allows for on average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. We can have multiple layers of skip pointers on top of the base LL. These layers and nodes in each such layer is determined randomly, hence making this data structure "probabilistic".
 
 **Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists.
+
 
 
 
