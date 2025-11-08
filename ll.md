@@ -101,7 +101,8 @@ if(head -> next == NULL) return NULL;
 if(fast == NULL) return head -> next;
 ```
 
-**Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
+**Delete middle node**: go to middle node using hare-and-tortoise and track `prev` of `slow`. Re-point as usual `prev->next = slow->next` and then `delete slow`. This covers case like `[1,2]` where mid is element `2`.
+- if not using `prev` but copying next node to current for deletion (`slow -> val = slow -> next -> val`), `slow -> next` maybe `NULL` after `slow` is at middle node in case `[1,2]`, so we need to check `slow->next == NULL` and modify `head->next = NULL` accordingly.
 
 > [!TIP]
 > When performing insertion or deletion operation of a node, edge case is always performing operation at `head`.
@@ -170,5 +171,6 @@ Clone a LL with random and next pointer
 **Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient Linked List. Probabilistic data structure that allows for on average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. We can have multiple layers of skip pointers on top of the base LL. These layers and nodes in each such layer is determined randomly, hence making this data structure "probabilistic".
 
 **Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists.
+
 
 
