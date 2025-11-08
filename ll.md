@@ -103,6 +103,9 @@ if(fast == NULL) return head -> next;
 
 **Delete middle node**: goto mid node using hare and tortoise, corner case is two node list e.g. `[1, 2]`, mid is `2`, for this when `slow` is on mid and `slow -> next == NULL` set `head -> next == NULL` and return `head`.
 
+> [!TIP]
+> When performing insertion or deletion operation of a node at Kth position, edge case is always performing operation at `head`.
+
 ## Rearrangement
 **Check if LL is palindrome**: ([link](https://leetcode.com/problems/palindrome-linked-list)) go to the middle node using rabbit & hare technique, reverse the right half in-place, compare one-by-one till end, reverse later to return to original list.
 - if LL has odd no. of nodes, then list `[1, 2, 3, 2, 1]` will become `[1 -> 2 -> 3 <- 2 <- 1]` with `3 -> NULL` i.e. `3` becomes the common node, we can come from any side and `3` will be its own counterpart and will always be anyways equal to itself.
@@ -167,3 +170,4 @@ Clone a LL with random and next pointer
 **Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient Linked List. Probabilistic data structure that allows for on average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. We can have multiple layers of skip pointers on top of the base LL. These layers and nodes in each such layer is determined randomly, hence making this data structure "probabilistic".
 
 **Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists.
+
