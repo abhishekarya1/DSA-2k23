@@ -179,7 +179,6 @@ Clone a LL with random and next pointer
 
 **Reservior Sampling**: ([notes](https://github.com/abhishekarya1/DSA-2k23/blob/main/maths.md#randomized-algorithms---reservior-sampling)) Linked Lists are prefect data structure for this kind of Randomized Algorithm.
 
-**Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient Linked List. Probabilistic data structure that allows for on average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. We can have multiple layers of skip pointers in the base LL nodes. The layers a node participates in is determined randomly, hence making this data structure "probabilistic".
+**Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient probabilistic Linked List. On average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. Has multiple layers of skip pointers in the base LL nodes. The no. of layers a node participates in is determined randomly, hence making this data structure "probabilistic" ([clarification](https://chatgpt.com/share/69104dae-6a28-800e-a07e-6029ca231fd4)). Usage - Java's `ConcurrentSkipListMap` and `ConcurrentSkipListSet`, Redis sorted set, LRU/LFU cache design, alt to B-Trees in DB indexing.
 
 **Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists. Ex - DOM trees, Hierarchical Page Tables in OS, Indirect FS blocks (Unix inodes), Multilevel Indexes in DB, etc.
-
