@@ -157,22 +157,22 @@ while (second) {                      // since reversed half is shorter
 **Delete all nodes with value K in DLL**: Same as in SLL but re-pointing needs to be done for nodes's `prev` pointer too.
 
 ## In-place Reversal
-- Reverse LL in groups of k: 
+- **Reverse LL in groups of k**: 
   - Iterative way: to reverse k nodes, `k-1` links are reversed, use (iterative 3-pointer link reverse technique) that starts at `dummyNode` (important) and can reverse links without changing `prev` or `curr` and connects segments properly, do this `while(n >= k)`
   - NOTE that normal reverse approach won't work here since we will reverse `1 2 3 4` with `k = 2` as `2 1 3 4` (first link reversal) and then we'll need to attach node `1` to next block's last node which is a hassle since first we'll have to reverse next block and then connect them, dummy node approach is much smarter
   - Recursive way: reverse first k nodes iteratively in method, and let recursion do for the rest of the list and attach to recursive call's return, return (propagate) last node of block back everytime. Base case: `when(lengthOfLL < k)` then no reversal to be done
 
-- Rotate a LL: make it circular and break
+- **Rotate a LL**: make it circular and break
 
-- Flattenning of a LL: recur till last and when coming back form pairs and merge sorted sublists like normal
+- **Flatten a LL**: recur till last and when coming back form pairs and merge sorted sublists like normal
 
-Clone a LL with random and next pointer
+- **Clone a LL with random and next pointer**
+
+- **Remove node if greater node to the right**: ([link](https://leetcode.com/problems/remove-nodes-from-linked-list/)) connect current node to next greater node (i.e. max so far when traversing from right to left) and propagate back the greater node between current and next greater. Effectively, we're just keeping leaders and removing all other nodes.
 
 ---
 
-- Remove node if greater node to the right: ([link](https://leetcode.com/problems/remove-nodes-from-linked-list/)) we do this with the LL in-place reversal approach. Connect current to next greater and propagate back the greater node between current and greater.
-
-- Split Linked List in Parts: `n/k` node in each part but the first `n%k` parts have `1` extra node each (`n/k + 1`)
+- **Split Linked List in Parts**: `n/k` node in each part but the first `n%k` parts have `1` extra node each (`n/k + 1`)
 
 ## Additional Topics
 **XOR Linked Lists**: ([notes](https://hashdefine.netlify.app/dsa/bit/applications/#xor-linked-lists)) space-efficient Linked Lists in which two-way traversal is possible with only one pointer storage per node.
@@ -182,5 +182,6 @@ Clone a LL with random and next pointer
 **Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient probabilistic Linked List. On average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. Has multiple layers of skip pointers in the base LL nodes. The no. of layers a node participates in is determined randomly, hence making this data structure "probabilistic" ([clarification](https://chatgpt.com/share/69104dae-6a28-800e-a07e-6029ca231fd4)). Usage - Java's `ConcurrentSkipListMap` and `ConcurrentSkipListSet`, Redis sorted set, LRU/LFU cache design, alt to B-Trees in DB indexing.
 
 **Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists. Ex - DOM trees, Hierarchical Page Tables in OS, Indirect FS blocks (Unix inodes), Multilevel Indexes in DB, etc.
+
 
 
