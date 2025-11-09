@@ -40,7 +40,7 @@ while(i < s.length()){
   i++;
 }
 ```
-Slightly naive way, prints `""` unnecessarily on every space, so do a check on `temp` before inserting:
+Slightly naive way, adds `""` to vector unnecessarily on every space, so do a check on `temp` before inserting:
 ```cpp
 int i = 0;
   while(i < s.length()){
