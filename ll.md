@@ -181,14 +181,4 @@ Clone a LL with random and next pointer
 
 **Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient Linked List. Probabilistic data structure that allows for on average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. We can have multiple layers of skip pointers on top of the base LL. These layers and nodes in each such layer is determined randomly, hence making this data structure "probabilistic".
 
-**Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists.
-
-
-
-
-
-
-
-
-
-
+**Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists. Ex - DOM trees, Hierarchical Page Tables in OS, Indirect FS blocks (Unix inodes), Multilevel Indexes in DB, etc.
