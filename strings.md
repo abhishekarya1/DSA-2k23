@@ -45,13 +45,18 @@ Slightly naive way, prints `""` unnecessarily on every space, so do a check on `
 int i = 0;
   while(i < s.length()){
     if(s[i] == ' '){
-      // if(temp.size() > 0)
-      v.push_back(temp);
-      temp = "";    
+      if(temp.size() > 0){
+        v.push_back(temp);
+        temp = "";
+      }
     }
     else temp += s[i];
     i++;
-}
+  }
+
+  // last word of the sentence
+  if(temp.size() > 0)
+    v.push_back(temp);
 ```
 
 Related Problems:
