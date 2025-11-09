@@ -170,9 +170,9 @@ Clone a LL with random and next pointer
 
 ---
 
-- Remove Nodes till next Greater Node - we do it the reverse LL way, and we connect current to next greater and propagate back the greater node between current and greater [link](https://leetcode.com/problems/remove-nodes-from-linked-list/)
+- Remove node if greater node to the right: we do this with the LL in-place reversal approach. Connect current to next greater and propagate back the greater node between current and greater [link](https://leetcode.com/problems/remove-nodes-from-linked-list/)
 
-- Split Linked List in Parts - `n/k` node in each part but the first `n%k` parts have `1` extra node each (`n/k + 1`)
+- Split Linked List in Parts: `n/k` node in each part but the first `n%k` parts have `1` extra node each (`n/k + 1`)
 
 ## Additional Topics
 **XOR Linked Lists**: ([notes](https://hashdefine.netlify.app/dsa/bit/applications/#xor-linked-lists)) space-efficient Linked Lists in which two-way traversal is possible with only one pointer storage per node.
@@ -182,3 +182,4 @@ Clone a LL with random and next pointer
 **Skip Lists**: ([link](https://www.geeksforgeeks.org/dsa/skip-list/)) time-efficient probabilistic Linked List. On average `O(logn)` time operations due to "express lanes" made by "skip" pointers to non-adjacent nodes further in the list. Has multiple layers of skip pointers in the base LL nodes. The no. of layers a node participates in is determined randomly, hence making this data structure "probabilistic" ([clarification](https://chatgpt.com/share/69104dae-6a28-800e-a07e-6029ca231fd4)). Usage - Java's `ConcurrentSkipListMap` and `ConcurrentSkipListSet`, Redis sorted set, LRU/LFU cache design, alt to B-Trees in DB indexing.
 
 **Multilevel Lists**: ([link](https://www.geeksforgeeks.org/dsa/multilevel-linked-list/)) Each node can have child pointers as well allowing for a "mesh-like" structure connecting multiple lists. Ex - DOM trees, Hierarchical Page Tables in OS, Indirect FS blocks (Unix inodes), Multilevel Indexes in DB, etc.
+
