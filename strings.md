@@ -1,4 +1,4 @@
-### Templates
+## Useful Templates
 
 **Extract words from a String**: two ways, best way:
 ```cpp
@@ -35,7 +35,7 @@ int i = 0;
 Related Problems:
 - https://leetcode.com/problems/reverse-words-in-a-string
 
-### Substrings
+## Substrings
 
 **Operations on Substrings**: substring with a particular property like a certain sum, pattern, etc.
 - 3-loops (cubic TC): generating all substrings and traversing each fully
@@ -56,7 +56,7 @@ Generalizing => no. of substrings of length k = n - (k - 1) => n - k + 1
 Related Problems:
 - https://leetcode.com/problems/number-of-wonderful-substrings
 
-### Types of Strings
+## Types of Strings
 
 **Isomorphic Strings**: ([link](https://leetcode.com/problems/isomorphic-strings)) must be "two-sided" i.e. `xxyz` and `aabb` are not isomorphs because `x` maps to `a` but `b` maps to both `y` and `z`! Hence we need to check both strings to confirm.
 - using one map, two scans - scan both strings and look for previous occurance of char `s[i]` and its corresponding mapping `t[i]`, if seen previously and mapping doesn't match, return false, else if not seen previously then store mapping. Do this again for string `t` after clearing map. Basically this approach means both strings should agree to mappings.
@@ -67,7 +67,7 @@ Related Problems:
 
 **String Rotation** ([link](https://leetcode.com/problems/rotate-string)): find `s[0]` in `goal` and match using modulo (`i%n`). Much smarter way is to concat `s+s` and look for `goal` as this concatenation's substring, lookout for edge case where `s.length() != goal.length()`, not possible to be rotation then.
 
-### General
+## General
 
 **Longest Common Prefix** ([link](https://leetcode.com/problems/longest-common-prefix)): multiple approaches, but most basic approach is to compare strings pairwise with `lca` string and track and adjust it after each comparison string.
 
@@ -79,7 +79,7 @@ Related Problems:
 
 **Custom Sort String** ([link](https://leetcode.com/problems/custom-sort-string/)): duplicates in `s` cause issue here in valid ordering. Instead of looking for `s` in map built from `order` dict (first approach; more natural but fails). Create a map of `s` freqCount and build string by iterating on `order` dict and at the end append the remaining chars in `s` not present in `order` dict. Hint is that `order` can be of max length 26, while `s` can be much larger so we its better if we choose to primarily traverse on `order` dict.
 
-### Parentheses
+## Parentheses
 
 **Remove outermost Paranthesis** ([link](https://leetcode.com/problems/remove-outermost-parentheses/)): problem may look daunting at first, but just scan chars from left to right and don't add level `0` parentheses `(` and `)` to answer string, add all other levels chars to answer string. This works without any tricky edge cases because we're given a valid parentheses string already.
 
@@ -94,7 +94,7 @@ Related Problems:
 **Valid Parenthesis String** ([link](https://leetcode.com/problems/valid-parenthesis-string/)): `*` char here is a wildcard char and can be taken as either `(` or `)`
 - Greedy - take `cntMin` and `cntMax` denoting min and max counts of opening parentheses if all `*` chars are taken as `)` and `(` respectively. Update counters for both based on chars encountered. If `maxCnt` becomes `< 0` that means there are more closing parentheses and we can't do anything. If `minCnt < 0` that means we can re-consider some of the previous `*` that were taken as `)` as `(` (relaxation) so we set `minCnt = 0` (1 incremented). At the last we check if `minCnt == 0` because if we do relaxation too much we will end up with `minCnt < 0`. And `minCnt > 0` means there are still opening parentheses to be paired (excessive).
 
-### Unimportant String Problems
+## Unimportant String Problems
 
 **Roman Numeral to Decimal**: create map of known roman numerals, start from the back (`i = n-1`) and on every numeral check if (`num[i-1] < num[i]`) then subtract them (cases like `IV`, `IX`, `CD`) to get digit to add to result, if condition isn't true (normal roman numeral) just convert and add current digit
 
