@@ -67,6 +67,8 @@ Related Problems:
 
 **String Rotation** ([link](https://leetcode.com/problems/rotate-string)): find `s[0]` in `goal` and match using modulo (`i%n`). Much smarter way is to concat `s+s` and look for `goal` as this concatenation's substring, lookout for edge case where `s.length() != goal.length()`, not possible to be rotation then.
 
+### General
+
 **Longest Common Prefix** ([link](https://leetcode.com/problems/longest-common-prefix)): multiple approaches, but most basic approach is to compare strings pairwise with `lca` string and track and adjust it after each comparison string.
 
 **Longest Palindromic Substring**: for every `i`, check for odd length palindromes centered at `str[i]`, then check for even length palindromes centered at `str[i]` & `str[i + 1]` (two centers for even length). Inc-dec in left-right direction and keep matching until there is a match
