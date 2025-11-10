@@ -35,6 +35,8 @@ int i = 0;
 Related Problems:
 - https://leetcode.com/problems/reverse-words-in-a-string
 
+### Substrings
+
 **Operations on Substrings**: substring with a particular property like a certain sum, pattern, etc.
 - 3-loops (cubic TC): generating all substrings and traversing each fully
 - 2-loops (quadratic TC): checking substrings ending at each index
@@ -49,22 +51,25 @@ no. of substrings of length 1 + no. of substrings of length 2 + ... + no. of sub
 Generalizing => no. of substrings of length k = n - (k - 1) => n - k + 1
 ```
 
+**Sum of Beauty of All Substrings** ([link](https://leetcode.com/problems/sum-of-beauty-of-all-substrings)): use 2-loop substrings template and calc max and min freq and calc their diff at every step, track sum of diffs.
+
+Related Problems:
+- https://leetcode.com/problems/number-of-wonderful-substrings
+
+### Types of Strings
+
 **Isomorphic Strings**: ([link](https://leetcode.com/problems/isomorphic-strings)) must be "two-sided" i.e. `xxyz` and `aabb` are not isomorphs because `x` maps to `a` but `b` maps to both `y` and `z`! Hence we need to check both strings to confirm.
 - using one map, two scans - scan both strings and look for previous occurance of char `s[i]` and its corresponding mapping `t[i]`, if seen previously and mapping doesn't match, return false, else if not seen previously then store mapping. Do this again for string `t` after clearing map. Basically this approach means both strings should agree to mappings.
 - using one map, one scan: check map keys for existence of `s[i]`, if present (i.e. seen before) its value must be same as `t[i]`, if not present check if `t[i]` present in map values (i.e. seen before as map values contain all chars from `t` so far), if present that means it already corresponds to some other char (since `s[i]` is first occurance) and strings are not isomorphic (return false), if not present then that means both `s[i]` and `t[i]` are occuring for the first time (create a map entry)
 - using two hashes of size 256: mapping both to a third value trick; track last occured index in 2 hashes each of a string and they should be same, if not same then not isomorphic
 
-**Valid Anagram** ([link](https://leetcode.com/problems/valid-anagram)): build a map from `s` and decrememnt it with `t`, should end up with all `0` values if anagrams, alternatively just build maps and do `map1 == map2` in C++.
+**Valid Anagram** ([link](https://leetcode.com/problems/valid-anagram)): build a map from `s` and decrement it with `t`, should end up with all `0` values if anagrams, alternatively just build maps and do `map1 == map2` in C++.
 
 **String Rotation** ([link](https://leetcode.com/problems/rotate-string)): find `s[0]` in `goal` and match using modulo (`i%n`). Much smarter way is to concat `s+s` and look for `goal` as this concatenation's substring, lookout for edge case where `s.length() != goal.length()`, not possible to be rotation then.
 
 **Longest Common Prefix** ([link](https://leetcode.com/problems/longest-common-prefix)): multiple approaches, but most basic approach is to compare strings pairwise with `lca` string and track and adjust it after each comparison string.
 
 **Longest Palindromic Substring**: for every `i`, check for odd length palindromes centered at `str[i]`, then check for even length palindromes centered at `str[i]` & `str[i + 1]` (two centers for even length). Inc-dec in left-right direction and keep matching until there is a match
-
-**Roman Numeral to Decimal**: create map of known roman numerals, start from the back (`i = n-1`) and on every numeral check if (`num[i-1] < num[i]`) then subtract them (cases like `IV`, `IX`, `CD`) to get digit to add to result, if condition isn't true (normal roman numeral) just convert and add current digit
-
-**atoi()** and **Decimal to Roman Numeral**: they are bad questions, lots of edge case handling with `if-else` (time wasters)
 
 **Reverse Vowels in a String**: land pointers on only vowels and swap each time [link](https://leetcode.com/problems/reverse-vowels-of-a-string/submissions/1156476438/)
 
@@ -86,3 +91,13 @@ Generalizing => no. of substrings of length k = n - (k - 1) => n - k + 1
 
 **Valid Parenthesis String** ([link](https://leetcode.com/problems/valid-parenthesis-string/)): `*` char here is a wildcard char and can be taken as either `(` or `)`
 - Greedy - take `cntMin` and `cntMax` denoting min and max counts of opening parentheses if all `*` chars are taken as `)` and `(` respectively. Update counters for both based on chars encountered. If `maxCnt` becomes `< 0` that means there are more closing parentheses and we can't do anything. If `minCnt < 0` that means we can re-consider some of the previous `*` that were taken as `)` as `(` (relaxation) so we set `minCnt = 0` (1 incremented). At the last we check if `minCnt == 0` because if we do relaxation too much we will end up with `minCnt < 0`. And `minCnt > 0` means there are still opening parentheses to be paired (excessive).
+
+### Unimportant String Problems
+
+**Roman Numeral to Decimal**: create map of known roman numerals, start from the back (`i = n-1`) and on every numeral check if (`num[i-1] < num[i]`) then subtract them (cases like `IV`, `IX`, `CD`) to get digit to add to result, if condition isn't true (normal roman numeral) just convert and add current digit
+
+**atoi()** and **Decimal to Roman Numeral**: they are bad questions, lots of edge case handling with `if-else` (time wasters)
+
+### More Problem List
+
+https://leetcode.com/discuss/post/2001789/collections-of-important-string-question-pc6y/
