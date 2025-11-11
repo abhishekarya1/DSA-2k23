@@ -77,7 +77,7 @@ Related Problems:
 
 **Number of flips to make binary string alternating 0 and 1**: use index even-odd property `0101010...` to count mismatches with the given string, mismatches with `1010101...` will be `n - count`, return minimum of those two
 
-**Custom Sort String** ([link](https://leetcode.com/problems/custom-sort-string/)): duplicates in `s` cause issue here in valid ordering. Instead of looking for `s` in map built from `order` dict (first approach; more natural but fails). Create a map of `s` freqCount and build string by iterating on `order` dict and at the end append the remaining chars in `s` not present in `order` dict. Hint is that `order` can be of max length 26, while `s` can be much larger so we its better if we choose to primarily traverse on `order` dict.
+**Custom Sort String** ([link](https://leetcode.com/problems/custom-sort-string/)): duplicates in `s` cause issue here in valid ordering. Instead of looking for `s` in map built from `order` dict (first approach; more natural but fails). Create a map of `s` freqCount and build string by iterating on `order` dict and at the end append the remaining chars in `s` not present in `order` dict. Hint is that `order` can be of max length 26, while `s` can be much larger so we its better if we choose to primarily traverse on `order` dict. Related Problem: [link](https://leetcode.com/problems/sort-characters-by-frequency), already done in arrays.
 
 ## Parentheses
 
