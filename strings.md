@@ -73,7 +73,7 @@ Related Problems:
 
 **Longest Palindromic Substring**: for every `i`, check for odd length palindromes centered at `str[i]`, then check for even length palindromes centered at `str[i]` & `str[i + 1]` (two centers for even length). Inc-dec in left-right direction and keep matching until there is a match
 
-**Reverse Vowels in a String**: land pointers on only vowels and swap each time [link](https://leetcode.com/problems/reverse-vowels-of-a-string/submissions/1156476438/)
+**Reverse Vowels in a String** ([link](https://leetcode.com/problems/reverse-vowels-of-a-string)): land pointers on only vowels and swap each time, either use 2 `while` loops from each side to find next vowels, or use lockstep `if-else` technique discussed in arrays.
 
 **Number of flips to make binary string alternating 0 and 1**: use index even-odd property `0101010...` to count mismatches with the given string, mismatches with `1010101...` will be `n - count`, return minimum of those two
 
