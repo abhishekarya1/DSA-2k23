@@ -84,8 +84,8 @@ Related Problems:
 **Remove outermost Paranthesis** ([link](https://leetcode.com/problems/remove-outermost-parentheses/)): problem may look daunting at first, but just scan chars from left to right and don't add level `0` parentheses `(` and `)` to answer string, add all other levels chars to answer string. This works without any tricky edge cases because we're given a valid parentheses string already.
 
 **Make the String Great** ([link](https://leetcode.com/problems/make-the-string-great/description/)): the challenge here is that when an invalid pair is detected and removed, how do we go back and check if removal has caused another pair to form at our current pointer's left hand side
-- Make multiple passes using `while(1)` and skip invalid pairs in each iteration until such pass it done in which there is no skip/fix done in that pass (use boolean `flag`)
-- Use a stack and keep comparing everytime to stack top if an invalid pair is forming
+- make multiple passes using `while(1)` and keep saving chars in `temp` string but skip invalid pairs in each iteration until such a pass is done in which there is no fix (use boolean `flag`)
+- alt approach is to use a stack and keep comparing everytime to stack top if an invalid pair is forming, if not then update stack top
 
 **Minimum Remove to Make Valid Parentheses** ([link](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)): here we are trying not to remove the valid pairings but excessive parentheses. The standard trick to solve this is to scan the string twice (once form left to right and once the other way). The expected order is `(`s and then `)`s to form valid pairs, any closing char that leads to violation of count `openCnt < 0` is an excessive closing char. After the first scan we're supposed to get `openCnt = 0` if eveything is valid and there are no excess opening chars. In second scan we mark excessive opening chars if there are any i.e. till `openCnt >= 0`
 - Mark excessive chars with `*` in both scans: when copying over to `ans` string, skip `*` chars (don't copy them)
