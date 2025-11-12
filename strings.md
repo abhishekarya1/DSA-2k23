@@ -71,7 +71,7 @@ Related Problems:
 
 **Longest Common Prefix** ([link](https://leetcode.com/problems/longest-common-prefix)): multiple approaches, but most basic approach is to compare strings pairwise with `lca` string and track and adjust it after each comparison string.
 
-**Longest Palindromic Substring**: for every `i`, check for odd length palindromes centered at `str[i]`, then check for even length palindromes centered at `str[i]` & `str[i + 1]` (two centers for even length). Inc-dec in left-right direction and keep matching until there is a match
+**Longest Palindromic Substring** ([link](https://leetcode.com/problems/longest-palindromic-substring)): for every `i`, check for odd length palindromes centered at `str[i]` (e.g. `aba`), then check for even length palindromes centered at `str[i]` & `str[i + 1]` (two centers for even length e.g. `abba`). Inc-dec in left-right direction and keep matching until they're equal, upon a new max length (`high-low+1 > maxLen`), save `start = low` and `maxLen = high-low+1` of the current valid palindrome because that's whats needed for `str.substr(start, maxLen)` in C++.
 
 **Reverse Vowels in a String** ([link](https://leetcode.com/problems/reverse-vowels-of-a-string)): land pointers on only vowels and swap each time, either use 2 `while` loops from each side to find next vowels, or use lockstep `if-else` technique discussed in arrays.
 
