@@ -1,8 +1,8 @@
-### Intro
+## Intro
 **Joke**: https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch
 > gotcha in the above joke is that Binary Search is only applicable when you're absolutely certain that the target element doesn't lie in the half being discarded. Works for sorted numbers, but not for a pile of books :D
 
-### Templates
+## Templates
 Binary Search impl can be extremely tricky because of checking and updating search space bounds. [Ref](https://stackoverflow.com/questions/504335/what-are-the-pitfalls-in-implementing-binary-search)
 
 ```cpp
@@ -68,8 +68,8 @@ Keep `arr[mid] = k` condition on the direction we want to move in to skip duplic
 
 `UB(e) - LB(e)` gives count of element (`e`) in a sorted array. [problem](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/)
 
-[Problem](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
-[Code Templates](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
+- [Problem](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
+- [Code Templates](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
 LB, UB, floor, ceil - Striver's strategy of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach.
 
@@ -128,7 +128,7 @@ return low;
 - `low = max_element_of_array` and `high = sum_of_all_elements_of_array` and keep searching for lower value that can accomodate `k` max partitions (simulate) for each `mid`
 - on equal condition, move leftwards to minimize max sum, return `low` at the end
 
-### Row and Column Wise Sorted Matrix
+## Row and Column Wise Sorted Matrix
 
 **Search in Row and Column Wise Sorted Matrix**:
 - staircase search in `O(m + n)` TC
@@ -145,7 +145,8 @@ return low;
 - use property that for an element `mid` to be median it needs to have `r*c/2` elements to the left of itself. If number of elements aren't sufficient or are excess, move left or right accordingly
 - on equality condition `countSmallEqual(mid) == r*c/2`, our ans is first element having `countSmallEqual(mid) > r*c/2` (upper bound), so we move rightwards, `low` will eventually converge to UB
 
-### Not From Sheet
+## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
