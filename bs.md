@@ -52,11 +52,13 @@ Notice that after breaking out of the `while` loop, the `low` and `high` values 
 
 [Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on the above two templates.
 
-- Two ways to check value at mid:
-  - when you know what you're looking for: check `mid` and skip it when moving to the other half by add or subtract `1` to `mid (find k, lower_bound, upper_bound, BS on array)
-  - when we aren't looking for a specific value:
-    - set `low` to `mid` to move to one half (e.g. finding float root)
-    - `low` and `high` will converge to the same element eventually
+Two ways to check value at mid:
+- when you know what you're looking for: check `mid` and skip it when moving to the other half by add or subtract `1` to `mid (find k, lower_bound, upper_bound, BS on array)
+- when we aren't looking for a specific value:
+  - set `low` to `mid` to move to one half (e.g. finding float root)
+  - `low` and `high` will converge to the same element eventually
+
+## Bounds
 
 **Lower Bound**: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself.
 
@@ -64,14 +66,14 @@ Notice that after breaking out of the `while` loop, the `low` and `high` values 
 
 Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if `low` pointer crosses array bounds.
 
-Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In lower bound we move leftwards in duplicates, in upper bound we move rightwards in duplicates. `low` will always end up at the answer (rightwards element before condition is broken).
+Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In LB we move leftwards in duplicates, in UB we move rightwards in duplicates. At the end, `low` will always end up at the answer (rightwards element before condition is broken).
 
-`UB(e) - LB(e)` gives count of element (`e`) in a sorted array. [problem](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/)
-
-- [Problem](https://leetcode.com/problems/find-smallest-letter-greater-than-target/)
+Related Problems:
+- https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array (`UB(x) - LB(x)` gives count of element `x` in a sorted array)
+- https://leetcode.com/problems/find-smallest-letter-greater-than-target
 - [Code Templates](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
-LB, UB, floor, ceil - Striver's strategy of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach.
+LB, UB, floor, ceil - Striver's strategy of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach (TEMPLATE#2).
 
 Ceil value is equal to the Lower Bound value, also if target element is present then `floor = element = ceil`
 
@@ -147,6 +149,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
