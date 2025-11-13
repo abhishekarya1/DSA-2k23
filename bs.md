@@ -12,7 +12,7 @@ mid = floor(low+(high-low))/2;   // avoids overflow
 ```
 
 Two templates of writing BS (they differ by interval range `[]` vs `[)`):
-- TEMPLATE#1 - for a target element search:
+- TEMPLATE#1 - for a target element (`k`) search:
 ```cpp
 int low = 0, high = arr.size() - 1;
 
@@ -24,13 +24,13 @@ while(low <= high){
   else high = mid - 1;
 }
 
-// at this point in code, low > high, low = high + 1 to be precise
+// at this point in code, low = high + 1
 // if method didn't return till now ofc
 
 return -1;
 ```
 
-- TEMPLATE#2 - for bounds search:
+- TEMPLATE#2 - "half-open interval" binary search (`[low, high)`):
 ```cpp
 int low = 0, high = arr.size();        // notice
 
@@ -42,13 +42,13 @@ while(low < high){                    // notice
   else high = mid;                    // notice
 }
 
-// at this point in code, low == high
+// at this point in code, low = high
 // if method didn't return till now ofc
 
 return -1;
 ```
 
-Notice that after breaking out of the `while` loop, the `low` and `high` values differ in these two approaches, this is important to find lower and upper bounds since we return `low` there.
+Notice that after breaking out of the `while` loop, the `low` and `high` values differ in these two approaches, this is important to find lower and upper bounds since we can return `low` there.
 
 [Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on the above two templates.
 
@@ -66,14 +66,16 @@ Two ways to check value at mid:
 
 Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if `low` pointer crosses array bounds.
 
-Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In LB we move leftwards in duplicates, in UB we move rightwards in duplicates. At the end, `low` will always end up at the answer (rightwards element before condition is broken).
+Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates (obvious). In LB we move leftwards in duplicates, in UB we move rightwards in duplicates. At the end, `low` will always end up at the answer (as `low == high` when loop condition breaks).
+
+[Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
 Related Problems:
-- https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array (`UB(x) - LB(x)` gives count of element `x` in a sorted array)
+- https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array: `UB(x) - LB(x)` gives count of element `x` in a sorted array
 - https://leetcode.com/problems/find-smallest-letter-greater-than-target
-- [Code Templates](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
-LB, UB, floor, ceil - Striver's strategy of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach (TEMPLATE#2).
+> [!TIP]
+> LB, UB, floor, ceil - Striver's way of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach (TEMPLATE#2).
 
 Ceil value is equal to the Lower Bound value, also if target element is present then `floor = element = ceil`
 
@@ -149,6 +151,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
