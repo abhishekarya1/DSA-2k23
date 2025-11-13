@@ -1,10 +1,18 @@
+### Intro
+**Joke**: https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch
+> gotcha in the above joke is that Binary Search is only applicable when you're absolutely certain that the target element doesn't lie in the half being discarded. Works for sorted numbers, but not for a pile of books :D
+
+### Templates
+Binary Search impl can be extremely tricky because of checking and updating search space bounds. [Ref](https://stackoverflow.com/questions/504335/what-are-the-pitfalls-in-implementing-binary-search)
+
 ```cpp
 mid = floor(low+high)/2;
 
 mid = floor(low+(high-low))/2;   // avoids overflow
 ```
 
-Two templates of writing BS (they output the exact same thing and differ by interval close `[]` vs `[)`):
+Two templates of writing BS (they differ by interval range `[]` vs `[)`):
+- for a target element search:
 ```cpp
 int low = 0, high = arr.size() - 1;
 
@@ -16,12 +24,13 @@ while(low <= high){
   else high = mid - 1;
 }
 
-// low > high here; precisely low = high + 1
+// at this point in code, low > high, low = high + 1 to be precise
 // if method didn't return till now ofc
 
 return -1;
 ```
 
+- for bounds search:
 ```cpp
 int low = 0, high = arr.size();        // notice
 
@@ -33,15 +42,15 @@ while(low < high){                    // notice
   else high = mid;                    // notice
 }
 
-// low == high here
+// at this point in code, low == high
 // if method didn't return till now ofc
 
 return -1;
 ```
 
-**NOTICE**: after breaking out of the `while` loop, the `low` and `high` values differ in these two approaches, this is important to find lower and upper bounds since we return `low` there.
+Notoce that after breaking out of the `while` loop, the `low` and `high` values differ in these two approaches, this is important to find lower and upper bounds since we return `low` there.
 
-[Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on above two templates of BS.
+[Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on the above two templates.
 
 - Two ways to check value at mid:
   - when you know what you're looking for: check `mid` and skip it when moving to the other half by add or subtract `1` to `mid (find k, lower_bound, upper_bound, BS on array)
@@ -137,3 +146,4 @@ return low;
 
 ### Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
