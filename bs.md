@@ -48,8 +48,6 @@ while(low < high){                    // notice
 return -1;
 ```
 
-Notice that after breaking out of the `while` loop, the `low` and `high` values differ in these two approaches, this is important to find lower and upper bounds since we can return `low` there.
-
 [Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on the above two templates.
 
 Two ways to check value at mid:
@@ -64,9 +62,10 @@ Two ways to check value at mid:
 
 **Upper Bound**: upper bound of `x` is the smallest index `i` such that `arr[i] > x`.  Ex - in `[2 4 5]`, upper bound of `3` is `4` and upper bound of `4` is `5`.
 
-Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if `low` pointer crosses array bounds.
+Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if we go out of bounds searching for it.
 
-Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates (obvious). In LB we move leftwards in duplicates, in UB we move rightwards in duplicates. At the end, `low` will always end up at the answer (as `low == high` when loop condition breaks).
+One interesting observation for LB/UB is that when we break out of the `while` loop, the lower or upper bound is at index `low`, no matter whichever template we're using! ([clarification](https://chatgpt.com/share/6916154c-1de4-800e-bc95-9225b8772663))
+- keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates (obvious). In LB we move leftwards in duplicates, in UB we move rightwards in duplicates. At the end, `low` will always end up at the answer.
 
 [Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
@@ -75,7 +74,7 @@ Related Problems:
 - https://leetcode.com/problems/find-smallest-letter-greater-than-target
 
 > [!TIP]
-> LB, UB, floor, ceil - Striver's way of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach (TEMPLATE#2).
+> LB, UB, Floor, Ceil - Striver's way of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach (TEMPLATE#2).
 
 Ceil value is equal to the Lower Bound value, also if target element is present then `floor = element = ceil`
 
@@ -151,6 +150,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
