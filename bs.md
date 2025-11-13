@@ -12,15 +12,16 @@ mid = floor(low+(high-low))/2;   // avoids overflow
 ```
 
 Two templates of writing BS (they differ by interval range `[]` vs `[)`):
-- TEMPLATE#1 - for a target element (`k`) search:
+
+- **TEMPLATE#1** - the "closed interval" binary search (`[low, high]`), the "classic" textbook binary search:
 ```cpp
 int low = 0, high = arr.size() - 1;
 
 while(low <= high){
   int mid = low + (high - low) / 2;
 
-  if(k == arr[mid]) return mid;
-  else if(k > arr[mid]) low = mid + 1;
+  if (k == arr[mid]) return mid;
+  else if (k > arr[mid]) low = mid + 1;
   else high = mid - 1;
 }
 
@@ -30,15 +31,15 @@ while(low <= high){
 return -1;
 ```
 
-- TEMPLATE#2 - "half-open interval" binary search (`[low, high)`):
+- **TEMPLATE#2** - the "half-open interval" binary search (`[low, high)`), C++ STL-like impl:
 ```cpp
 int low = 0, high = arr.size();        // notice
 
 while(low < high){                    // notice
   int mid = low + (high - low) / 2;
 
-  if(k == arr[mid]) return mid;
-  else if(k > arr[mid]) low = mid + 1;
+  if (k == arr[mid]) return mid;
+  else if (k > arr[mid]) low = mid + 1;
   else high = mid;                    // notice
 }
 
@@ -150,6 +151,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
