@@ -49,14 +49,6 @@ while(low < high){                    // notice
 return -1;
 ```
 
-[Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on the above two templates.
-
-Two ways to check value at mid:
-- when you know what you're looking for: check `mid` and skip it when moving to the other half by add or subtract `1` to `mid (find k, lower_bound, upper_bound, BS on array)
-- when we aren't looking for a specific value:
-  - set `low` to `mid` to move to one half (e.g. finding float root)
-  - `low` and `high` will converge to the same element eventually
-
 ## Bounds
 
 **Lower Bound**: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself.
@@ -67,6 +59,7 @@ Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, ther
 
 One interesting observation for LB/UB is that when we break out of the `while` loop, the lower or upper bound is at index `low`, no matter whichever template we're using! ([clarification](https://chatgpt.com/share/6916154c-1de4-800e-bc95-9225b8772663))
 - keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates (obvious). In LB we move leftwards in duplicates, in UB we move rightwards in duplicates. At the end, `low` will always end up at the answer.
+- if the LB or UB for a given `k` does not exist in the array, then after the loop `low == arr.size()`.
 
 [Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
@@ -151,6 +144,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
