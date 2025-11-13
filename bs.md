@@ -12,7 +12,7 @@ mid = floor(low+(high-low))/2;   // avoids overflow
 ```
 
 Two templates of writing BS (they differ by interval range `[]` vs `[)`):
-- for a target element search:
+- TEMPLATE#1 - for a target element search:
 ```cpp
 int low = 0, high = arr.size() - 1;
 
@@ -30,7 +30,7 @@ while(low <= high){
 return -1;
 ```
 
-- for bounds search:
+- TEMPLATE#2 - for bounds search:
 ```cpp
 int low = 0, high = arr.size();        // notice
 
@@ -48,20 +48,21 @@ while(low < high){                    // notice
 return -1;
 ```
 
-Notoce that after breaking out of the `while` loop, the `low` and `high` values differ in these two approaches, this is important to find lower and upper bounds since we return `low` there.
+Notice that after breaking out of the `while` loop, the `low` and `high` values differ in these two approaches, this is important to find lower and upper bounds since we return `low` there.
 
 [Optional Reading](https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/detailedbinarysearch) on the above two templates.
 
 - Two ways to check value at mid:
   - when you know what you're looking for: check `mid` and skip it when moving to the other half by add or subtract `1` to `mid (find k, lower_bound, upper_bound, BS on array)
   - when we aren't looking for a specific value:
-    - set `low` to `mid` to move to one half (ex - finding float root)
-    - `low` and `high` will converge to the same element eventually 
----
-- Lower Bound: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself
-- Upper Bound: upper bound of `x` is the smallest index `i` such that `arr[i] > x`.  Ex - in `[2 4 5]`, upper bound of `3` is `4` and upper bound of `4` is `5`
+    - set `low` to `mid` to move to one half (e.g. finding float root)
+    - `low` and `high` will converge to the same element eventually
 
-Note that Lower bound is equal to Upper bound if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if `low` pointer crosses array bounds
+**Lower Bound**: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself.
+
+**Upper Bound**: upper bound of `x` is the smallest index `i` such that `arr[i] > x`.  Ex - in `[2 4 5]`, upper bound of `3` is `4` and upper bound of `4` is `5`.
+
+Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if `low` pointer crosses array bounds.
 
 Keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates. In lower bound we move leftwards in duplicates, in upper bound we move rightwards in duplicates. `low` will always end up at the answer (rightwards element before condition is broken).
 
@@ -146,4 +147,5 @@ return low;
 
 ### Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
