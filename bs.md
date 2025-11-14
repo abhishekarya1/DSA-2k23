@@ -49,7 +49,7 @@ while(low < high){                    // notice
 return -1;
 ```
 
-## Bounds
+### Bounds
 
 **Lower Bound**: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself.
 
@@ -64,9 +64,9 @@ One interesting observation for LB/UB is that when we break out of the `while` l
 [Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
 Related Problems:
-- **Search Insert Position**: insert position is LB/UB only, depends on where question wants us to insert if element is already present in array.
-- https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array: `UB(x) - LB(x)` gives count of element `x` in a sorted array
 - https://leetcode.com/problems/find-smallest-letter-greater-than-target
+- **Search Insert Position**: ([link](https://leetcode.com/problems/search-insert-position)) insert position is LB/UB only, depends on where question wants us to insert if element is already present in array.
+- Problems on **counting occurances of an element**: [link](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array), [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array)
 
 > [!TIP]
 > LB, UB, Floor, Ceil - Striver's way of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach (TEMPLATE#2).
@@ -79,21 +79,16 @@ Related Problems:
   - First position: on `arr[mid] == k` store `ans = mid` and reduce search space to left array only (`high = mid - 1`), rest is same as in normal BS. Alternatively, first position is LB if number is present, check LB index to detect presence.
   - Last position: on `arr[mid] == k` store `ans = mid` and reduce search space to right array only (`low = mid + 1`), rest is same as in normal BS. Alternatively, first position is UB's index - 1 if number is present, check UB index to detect presence.
 
-**Count occurrences of a number** in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`
-  - use previous approach to find leftmost and righmost indexes
-  - another way but linear TC: find any occurance of it using BS (if not found return `-1`), either check `idx == -1` then occurance is `0`, or if a valid `idx` linearly scan its left half and right half for more occurances (time = `O(n)`)
+**Count occurrences of an element** in a sorted array: count will be `rightmost_index - leftmost_index + 1` 
+  - use previous approach to find leftmost and righmost indices (with or without LB/UB)
+  - another way but linear TC: find any occurance of it using BS (if not found return `-1`), either check `idx == -1` that means occurance is `0`.If a valid `idx`, linearly scan its left half and right half for more occurances (TC = `O(logn) + O(n) => O(n)`)
 
----
-
+## BS on 1D Arrays
 - Search in rotated sorted array (no duplicates) - we can't tell which half to goto only by looking at `arr[mid]` and `target` now, we can only do that in sorted arrays (or sorted half). Check which half is sorted - goto it only if target is in its range, otherwise goto the other half (even if unsorted) - iteratively looking for sorted half
 - Search in rotated sorted array (duplicates present) - if `arr[mid] == k` is true then we've found our element, otherwise check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
---- 
 - Find minimum in Rotated Sorted Array: leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum of it, and go to the other part
 - Find out how many times has an array been rotated: answer will be the index of the minimum or maximum element
 - Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), after finding the pivot, check sorted property of left half and right half manually (time = `O(n)`)
-
----
-
 - Find peak element: check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end
 - Single element in a Sorted Array: first occurance is supposed to be at even index and other at odd, but after the single element, it will be vice versa. Goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Go in the direction of single element everytime. Handle edge case of array having only 1 element using while loop range `low < high`.
 - Find Kth element of two sorted arrays: 
@@ -102,7 +97,7 @@ Related Problems:
     - do BS on the smaller array only, compare `l1 r2 l2 r1`
 - Median of two sorted arrays: use cutpoints approach above `left_half = (m + n + 1) / 2`, take care of cuts min/max, and median calc condition(s) in case total elements are even or odd [link](https://takeuforward.org/data-structure/median-of-two-sorted-arrays-of-different-sizes/)
 
----
+## BS on Space
 
 - Root of any number (can be float) using BS: Time = `O(N * log(M x 10^d))`
 ```cpp
@@ -129,7 +124,7 @@ return low;
 - `low = max_element_of_array` and `high = sum_of_all_elements_of_array` and keep searching for lower value that can accomodate `k` max partitions (simulate) for each `mid`
 - on equal condition, move leftwards to minimize max sum, return `low` at the end
 
-## Row and Column Wise Sorted Matrix
+## BS on Matrix
 
 **Search in Row and Column Wise Sorted Matrix**:
 - staircase search in `O(m + n)` TC
@@ -148,6 +143,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
