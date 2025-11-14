@@ -71,16 +71,20 @@ Related Problems:
 > [!TIP]
 > LB, UB, Floor, Ceil - Striver's way of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach (TEMPLATE#2).
 
-Ceil value is equal to the Lower Bound value, also if target element is present then `floor = element = ceil`
+**Floor and Ceil** of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
+- `ceil(x)` is equal to `LB(x)`, `floor(x)` can be the number smaller than `x` here (unlike `LB`) so its not at `low`, it's at `low - 1` (if `low > 0`) 
+- if element `x` is present in array then `floor = x = ceil` (ofc)
 
-- Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
-- Find the first or last occurrence of a given number in a sorted array: CANNOT be solved using lower/upper bound or floor/ceil bcoz they guarantee a valid index as output and don't return `-1` if element is not found in array
-  - Find first position: on `arr[mid] == k` store `ans = mid` and reduce search space to left array only (`high = mid - 1`), rest is same as in normal BS
-  - Find last position: on `arr[mid] == k` store `ans = mid` and reduce search space to right array only (`low = mid + 1`), rest is same as in normal BS
-- Count occurrences of a number in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`
+**Find the first and last occurrence of a given number** in a sorted array:
+  - First position: on `arr[mid] == k` store `ans = mid` and reduce search space to left array only (`high = mid - 1`), rest is same as in normal BS. Alternatively, first position is LB if number is present, check LB index to detect presence.
+  - Last position: on `arr[mid] == k` store `ans = mid` and reduce search space to right array only (`low = mid + 1`), rest is same as in normal BS. Alternatively, first position is UB's index - 1 if number is present, check UB index to detect presence.
+
+**Count occurrences of a number** in a sorted array with duplicates: count will be `rightmost_index - leftmost_index`
   - use previous approach to find leftmost and righmost indexes
   - another way but linear TC: find any occurance of it using BS (if not found return `-1`), either check `idx == -1` then occurance is `0`, or if a valid `idx` linearly scan its left half and right half for more occurances (time = `O(n)`)
+
 ---
+
 - Search in rotated sorted array (no duplicates) - we can't tell which half to goto only by looking at `arr[mid]` and `target` now, we can only do that in sorted arrays (or sorted half). Check which half is sorted - goto it only if target is in its range, otherwise goto the other half (even if unsorted) - iteratively looking for sorted half
 - Search in rotated sorted array (duplicates present) - if `arr[mid] == k` is true then we've found our element, otherwise check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
 --- 
@@ -144,6 +148,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
