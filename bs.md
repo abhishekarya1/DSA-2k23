@@ -66,7 +66,7 @@ One interesting observation for LB/UB is that when we break out of the `while` l
 Related Problems:
 - https://leetcode.com/problems/find-smallest-letter-greater-than-target
 - **Search Insert Position**: ([link](https://leetcode.com/problems/search-insert-position)) insert position is LB/UB only, depends on where question wants us to insert if element is already present in array.
-- Problems on **counting occurances of an element**: [link](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array), [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array)
+- Problems on **counting occurrences of an element**: [link](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array), [link](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array)
 
 > [!TIP]
 > LB, UB, Floor, Ceil - Striver's way of storing in `ans` on every potential candidate is very simple and intuitive than above `low` pointer approach (TEMPLATE#2).
@@ -81,17 +81,17 @@ Related Problems:
 
 **Count occurrences of an element** in a sorted array: count will be `rightmost_index - leftmost_index + 1` 
   - use previous approach to find leftmost and righmost indices (with or without LB/UB)
-  - another way but linear TC: find any occurance of it using BS (if not found return `-1`), either check `idx == -1` that means occurance is `0`.If a valid `idx`, linearly scan its left half and right half for more occurances (TC = `O(logn) + O(n) => O(n)`)
+  - another way but linear TC: find any occurrence of it using BS (if not found return `-1`), either check `idx == -1` that means occurrence is `0`.If a valid `idx`, linearly scan its left half and right half for more occurrences (TC = `O(logn) + O(n) => O(n)`)
 
 ## BS on 1D Arrays
-**Search in rotated sorted array (no duplicates)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array)) we can't tell which half to goto only by looking at `arr[mid]` and `target` here, we can only do that in sorted arrays (or sorted half). One half will always be sorted, check which one and goto it only if target is in its range, otherwise goto the other half (even if unsorted) i.e. iteratively looking for a sorted half.
+**Search in rotated sorted array (no duplicates)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array)) we can't tell which half to goto only by looking at `arr[mid]` and `target` here, we can only do that in sorted arrays (or sorted half). One half will always be sorted in a rotated array! check which one and goto it only if target is in its range, otherwise goto the other half (even if unsorted) i.e. iteratively looking for a sorted half.
 
 - Search in rotated sorted array (duplicates present) - if `arr[mid] == k` is true then we've found our element, otherwise check condition `arr[mid] == arr[low] && arr[mid] == arr[high]` and if true do `low++; high--; continue;`, rest is the same as above
 - Find minimum in Rotated Sorted Array: leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum of it, and go to the other part
 - Find out how many times has an array been rotated: answer will be the index of the minimum or maximum element
 - Check if array is sorted and rotated: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), after finding the pivot, check sorted property of left half and right half manually (time = `O(n)`)
 - Find peak element: check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end
-- Single element in a Sorted Array: first occurance is supposed to be at even index and other at odd, but after the single element, it will be vice versa. Goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Go in the direction of single element everytime. Handle edge case of array having only 1 element using while loop range `low < high`.
+- Single element in a Sorted Array: first occurrence is supposed to be at even index and other at odd, but after the single element, it will be vice versa. Goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Go in the direction of single element everytime. Handle edge case of array having only 1 element using while loop range `low < high`.
 - Find Kth element of two sorted arrays: 
   - count approach; mimic merge and count till K
   - cutpoints approach, `k = cut1 + cut2`, take `cut1` elements from one and `cut2` from the other [link](https://takeuforward.org/data-structure/k-th-element-of-two-sorted-arrays)
@@ -144,6 +144,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
