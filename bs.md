@@ -64,6 +64,7 @@ One interesting observation for LB/UB is that when we break out of the `while` l
 [Code](https://leetcode.com/discuss/study-guide/1675643/lower-bound-and-upper-bound)
 
 Related Problems:
+- **Search Insert Position**: insert position is LB/UB only, depends on where question wants us to insert if element is already present in array.
 - https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array: `UB(x) - LB(x)` gives count of element `x` in a sorted array
 - https://leetcode.com/problems/find-smallest-letter-greater-than-target
 
@@ -73,7 +74,6 @@ Related Problems:
 Ceil value is equal to the Lower Bound value, also if target element is present then `floor = element = ceil`
 
 - Floor/Ceil of `x`: if target is `4`, `low` and `high` will eventually converge at `[2 5]` and after two more steps, we'll have our **greatest number less than x** at `high` and **lowest number greater than x** at `low`. Take care of equal to cases and duplicates using strategy discussed above (for lower and upper bound)
-- Search Insert Position: insert position is lower/upper bound only, depends on where question wants us to insert if element is already present in array
 - Find the first or last occurrence of a given number in a sorted array: CANNOT be solved using lower/upper bound or floor/ceil bcoz they guarantee a valid index as output and don't return `-1` if element is not found in array
   - Find first position: on `arr[mid] == k` store `ans = mid` and reduce search space to left array only (`high = mid - 1`), rest is same as in normal BS
   - Find last position: on `arr[mid] == k` store `ans = mid` and reduce search space to right array only (`low = mid + 1`), rest is same as in normal BS
@@ -144,6 +144,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
