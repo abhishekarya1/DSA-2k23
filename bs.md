@@ -79,7 +79,7 @@ Related Problems:
   - First position: on `arr[mid] == k` store `ans = mid` and reduce search space to left array only (`high = mid - 1`), rest is same as in normal BS. Alternatively, first position is LB if number is present, check LB index to detect presence.
   - Last position: on `arr[mid] == k` store `ans = mid` and reduce search space to right array only (`low = mid + 1`), rest is same as in normal BS. Alternatively, first position is UB's index - 1 if number is present, check UB index to detect presence.
 
-**Count occurrences of an element** in a sorted array: count will be `rightmost_index - leftmost_index + 1` 
+**Count occurrences of an element** in a sorted array: count will be `rightmost_index - leftmost_index + 1`
   - use previous approach to find leftmost and righmost indices (with or without LB/UB)
   - another way but linear TC: find any occurrence of it using BS (if not found return `-1`), either check `idx == -1` that means occurrence is `0`.If a valid `idx`, linearly scan its left half and right half for more occurrences (TC = `O(logn) + O(n) => O(n)`)
 
@@ -88,11 +88,13 @@ Related Problems:
 
 **Search in rotated sorted array (duplicates present)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array-ii)) same as above but with an additional condition where `arr[mid] == arr[low] && arr[mid] == arr[high]` causing indicision on which side to move to. If this condition is true, then do `low++; high--; continue;`, otherwise proceed just as in the previous problem.
 
-**Find minimum in rotated sorted array**: ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)) leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest, keep going to sorted halves and get minimum of it, and go to the other part
+**Find minimum in rotated sorted array**: ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)) leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest
+- check which half is sorted, get minimum from it either `arr[low]` or `arr[mid]`, and go to the other part.
+- a more terse way is to go to unsorted halves and let `low` converge to global min element eventually (pivot); this is based on observation that if the array was rotated `>=1` times, then min element will always lie in the unsorted half.
 
-**Find out how many times has an array been rotated**: answer will be the index of the minimum or maximum element
+**Find out how many times has an array been rotated**: answer will be the index of the minimum or maximum element; same as above (pivot).
 
-**Check if array is sorted and rotated**: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), after finding the pivot, check sorted property of left half and right half manually (time = `O(n)`)
+**Check if array is sorted and rotated**: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), after finding the pivot, check sorted property of left half and right half manually (time = `O(n)`).
 
 **Find peak element**: check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end
 
@@ -151,6 +153,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
