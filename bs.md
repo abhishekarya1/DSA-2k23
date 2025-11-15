@@ -89,12 +89,12 @@ Related Problems:
 **Search in rotated sorted array (duplicates present)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array-ii)) same as above but with an additional condition where `arr[mid] == arr[low] && arr[mid] == arr[high]` causing indicision on which side to move to. If this condition is true, then do `low++; high--; continue;`, otherwise proceed just as in the previous problem.
 
 **Find minimum in rotated sorted array**: ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)) leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest
-- check which half is sorted, get minimum from it either `arr[low]` or `arr[mid]`, and go to the other part.
-- a more terse way is to go to unsorted halves and let `low` converge to global min element eventually (pivot); this is based on observation that if the array was rotated `>=1` times, then min element will always lie in the unsorted half.
+- check which half is sorted, get minimum so far from it either `arr[low]` or `arr[mid]`, and go to the other part tracking global min at every step.
+- a more terse way is compare `arr[mid] > arr[high]` to detect which side is sorted, discard the sorted side, and keep the unsorted side until `low` reaches the pivot. Avoid comparing `arr[low] <= arr[mid]` as it won't cover the case `[1,2,3,4,5]` where array is sorted but never rotated.
 
-**Find out how many times has an array been rotated**: answer will be the index of the minimum or maximum element; same as above (pivot).
+**Find out how many times has an array been rotated**: answer will be the index of the min or max element; same as above (pivot).
 
-**Check if array is sorted and rotated**: use the property that both halves of the array are sorted (dividing point is the pivot, pivot = largest element), after finding the pivot, check sorted property of left half and right half manually (time = `O(n)`).
+**Check if array is sorted and rotated**: elements leftwards of the pivot will be in desc order and to the rightwards will be in asc order. After finding the pivot, check sorted property of left half and right half manually (TC = `O(n)`).
 
 **Find peak element**: check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end
 
@@ -153,6 +153,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
