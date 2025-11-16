@@ -88,10 +88,10 @@ Related Problems:
 
 **Search in rotated sorted array (duplicates present)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array-ii)) same as above but with an additional condition where `arr[mid] == arr[low] && arr[mid] == arr[high]` causing indicision on which side to move to. If this condition is true, then do `low++; high--; continue;`, otherwise proceed just as in the previous problem.
 
-**Find minimum in rotated sorted array**: ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)) leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest
+**Find minimum in rotated sorted array (no duplicates)**: ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)) leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest
 - check which half is sorted, get minimum so far from it either `arr[low]` or `arr[mid]`, and go to the other part tracking global min at every step.
 - a more terse way is compare `arr[mid] > arr[high]` to detect which side is sorted, discard the sorted side, and keep the unsorted side until `low` reaches the pivot. Avoid comparing `arr[low] <= arr[mid]` as it won't cover the case `[1,2,3,4,5]` where array is sorted but never rotated.
-- if duplicates are present `[2,2,2,0,2]` ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii)): we need to add condition for `arr[mid] == arr[high]` then do `high--` to remove ambiguity on which side to goto. It doesn't harm the search space for min element as `arr[mid]` will still be present in space, we only removed its duplicate.
+- **if duplicates are present** ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii)): like in `[2,2,2,0,2]`, we need to add condition for `arr[mid] == arr[high]` then do `high--` to remove ambiguity on which side to goto. It doesn't harm the search space for min element as `arr[mid]` will still be present in space, we only removed its duplicate.
 
 **Find out how many times has an array been rotated**: answer will be the index of the min or max element; same as above (pivot).
 
@@ -154,6 +154,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
