@@ -85,11 +85,11 @@ Related Problems:
 
 ## BS on 1D Arrays
 
-Observations for sorted and then rotated arrays:
-- there will be a single inflection point (aka pivot)
+Observations for sorted and then rotated arrays e.g. `[4,5,1,2,3]`:
+- there will be a single inflection point (aka pivot) e.g. `5` in the above example
 - elements leftwards of the pivot will be in desc order and to the rightwards will be in asc order
-- if we calc a mid and check edges of halves w.r.t it, then only one half can be sorted and the other is unsorted; we can check which is which and move accordingly in problems below
-- duplicates can mess up edges checking so we need to handle that case separately
+- in the given array (sorted and then rotated i.e. unsorted), if we calc a mid and check edges of halves w.r.t it, then only one half can be sorted and the other has to be unsorted; we can check which is which and move accordingly in problems below. This property holds in all further smaller unsorted halves too.
+- duplicates can mess up edges checking so we need to handle that case separately (if duplicates maybe present)
 
 **Search in rotated sorted array (no duplicates)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array)) we can't tell which half to goto only by looking at `arr[mid]` and `target` here, we can only do that in sorted arrays (or sorted half). One half will always be sorted in a rotated array! check which one and goto it only if target is in its range, otherwise goto the other half (even if unsorted) i.e. iteratively looking for a sorted half.
 
@@ -161,6 +161,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
