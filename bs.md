@@ -13,7 +13,7 @@ mid = floor(low+(high-low))/2;   // avoids overflow
 
 Two templates of writing BS (they differ by interval range `[]` vs `[)`):
 
-- **TEMPLATE#1** - the "closed interval" binary search (`[low, high]`), the "classic" textbook binary search:
+- **TEMPLATE#1** - the "closed interval" binary search (`[low, high]`), the classic textbook binary search:
 ```cpp
 int low = 0, high = arr.size() - 1;    // this makes it closed interval
 
@@ -49,7 +49,10 @@ while(low < high){                    // line 1
 return -1;
 ```
 
-**NOTICE**: `line 1` and `line 2` go hand-in-hand to make sure we don't converge wrongly. Whenever in doubt, test with case `[1 2 3]` with `k = 1`.
+**NOTICE**: `line 1` and `line 2` go hand-in-hand to make sure we don't converge wrongly. Whenever in doubt, dry run the case `[1 2 3]` with `k = 1`.
+
+> [!TIP]
+> Always use closed interval with `while(low < high)` condition especially for more complex problems like convergence search (min element, single element, etc), everything else just causes brain damage, too prone to one-off errors!
 
 ### Bounds
 
@@ -192,6 +195,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
