@@ -15,7 +15,7 @@ Two templates of writing BS (they differ by interval range `[]` vs `[)`):
 
 - **TEMPLATE#1** - the "closed interval" binary search (`[low, high]`), the "classic" textbook binary search:
 ```cpp
-int low = 0, high = arr.size() - 1;
+int low = 0, high = arr.size() - 1;    // this makes it closed interval
 
 while(low <= high){
   int mid = low + (high - low) / 2;
@@ -33,14 +33,14 @@ return -1;
 
 - **TEMPLATE#2** - the "half-open interval" binary search (`[low, high)`), C++ STL-like impl:
 ```cpp
-int low = 0, high = arr.size();        // notice
+int low = 0, high = arr.size();        // this makes it half-open interval
 
-while(low < high){                    // notice
+while(low < high){                    // line 1
   int mid = low + (high - low) / 2;
 
   if (k == arr[mid]) return mid;
   else if (k > arr[mid]) low = mid + 1;
-  else high = mid;                    // notice
+  else high = mid;                    // line 2
 }
 
 // at this point in code, low = high
@@ -49,11 +49,13 @@ while(low < high){                    // notice
 return -1;
 ```
 
+**NOTICE**: `line 1` and `line 2` go hand-in-hand to make sure we don't converge wrongly. Whenever in doubt, test with case `[1 2 3]` with `k = 1`.
+
 ### Bounds
 
-**Lower Bound**: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself.
+**Lower Bound**: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself. Also, observe that LB of `2` in `[1,2,2,3]` is `2` at index `1`.
 
-**Upper Bound**: upper bound of `x` is the smallest index `i` such that `arr[i] > x`.  Ex - in `[2 4 5]`, upper bound of `3` is `4` and upper bound of `4` is `5`.
+**Upper Bound**: upper bound of `x` is the smallest index `i` such that `arr[i] > x`.  Ex - in `[2 4 5]`, upper bound of `3` is `4` and upper bound of `4` is `5`. Also, observe that UB of `2` in `[1,2,2,3]` is `3` at index `3`.
 
 Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if we go out of bounds searching for it.
 
@@ -100,6 +102,14 @@ Observations for sorted and then rotated arrays e.g. `[4,5,1,2,3]`:
 - a more terse way is compare `arr[mid] > arr[high]` to detect which side is sorted, discard the sorted side, and keep the unsorted side until `low` reaches the pivot. Avoid comparing `arr[low] <= arr[mid]` as it won't cover the case `[1,2,3,4,5]` where array is sorted but never rotated.
 - **if duplicates are present** ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii)): like in `[2,2,2,0,2]`, we need to add condition for `arr[mid] == arr[high]` then do `high--` to remove ambiguity on which side to goto. It doesn't harm the search space for min element as `arr[mid]` will still be present in space, we only removed its duplicate.
 
+**TEMPLATE#3** - convergence search, for search on a space and not a target value search for `x`:
+```txt
+closed interval - low = 0, high = n - 1
+use while(low < high) and update with low = mid + 1 or high = mid
+
+this may look like half-open interval template because of the loop condition and high = mid update, but its closed only because high = n - 1
+```
+
 ```cpp
 int findMin(vector<int>& nums) {
     int low = 0, high = nums.size() - 1;    // notice
@@ -107,10 +117,10 @@ int findMin(vector<int>& nums) {
     while (low < high) {
         int mid = low + (high - low) / 2;
 
-        if (nums[mid] > nums[high])      // important
+        if (nums[mid] > nums[high])      // important for min element finding
             low = mid + 1;
         else
-            high = mid;                // looks half-closed, but isn't
+            high = mid;                // looks half-open, but isn't
     }
 
     return nums[low];                // min is at low in the end
@@ -180,6 +190,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
