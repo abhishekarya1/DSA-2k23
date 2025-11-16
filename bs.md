@@ -51,9 +51,6 @@ return -1;
 
 **NOTICE**: `line 1` and `line 2` go hand-in-hand to make sure we don't converge wrongly. Whenever in doubt, dry run the case `[1 2 3]` with `k = 1`.
 
-> [!TIP]
-> Always use closed interval with `while(low < high)` condition especially for more complex problems like convergence search (min element, single element, etc), everything else just causes brain damage, too prone to one-off errors!
-
 ### Bounds
 
 **Lower Bound**: lower bound of `x` is the smallest index `i` such that `arr[i] >= x`. Ex - in `[2 4 5]`, lower bound of `3` is `4` (not `2`) and lower bound of `4` is `4` itself. Also, observe that LB of `2` in `[1,2,2,3]` is `2` at index `1`.
@@ -195,6 +192,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
