@@ -43,7 +43,7 @@ while(low < high){                    // line 1
   else high = mid;                    // line 2
 }
 
-// at this point in code, low = high
+// at this point in code, low = high (because of line 1)
 // if method didn't return till now ofc
 
 return -1;
@@ -59,7 +59,7 @@ return -1;
 
 Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if we go out of bounds searching for it.
 
-One interesting observation for LB/UB is that when we break out of the `while` loop, the lower or upper bound is at index `low`, no matter whichever template we're using! ([clarification](https://chatgpt.com/share/691a0aac-f574-800e-a480-5a22f3dc287c))
+One interesting observation for LB/UB is that when we break out of the `while` loop, the lower or upper bound is at index `low`, no matter whichever template we're using! ([clarification](https://chatgpt.com/share/691a1b12-52f4-800e-9379-36f55c727df1))
 - keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates (obvious). In LB we move leftwards in duplicates, in UB we move rightwards in duplicates. At the end, `low` will always end up at the answer.
 - if the LB or UB for a given `k` does not exist in the array, then after the loop `low == arr.size()`.
 
@@ -102,14 +102,6 @@ Observations for sorted and then rotated arrays e.g. `[4,5,1,2,3]`:
 - a more terse way is compare `arr[mid] > arr[high]` to detect which side is sorted, discard the sorted side, and keep the unsorted side until `low` reaches the pivot. Avoid comparing `arr[low] <= arr[mid]` as it won't cover the case `[1,2,3,4,5]` where array is sorted but never rotated.
 - **if duplicates are present** ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii)): like in `[2,2,2,0,2]`, we need to add condition for `arr[mid] == arr[high]` then do `high--` to remove ambiguity on which side to goto. It doesn't harm the search space for min element as `arr[mid]` will still be present in space, we only removed its duplicate.
 
-**TEMPLATE#3** - convergence search, for search on a space and not a target value search for `x`:
-```txt
-closed interval - low = 0, high = n - 1
-use while(low < high) and update with low = mid + 1 or high = mid
-
-this may look like half-open interval template because of the loop condition and high = mid update, but its closed only because high = n - 1
-```
-
 ```cpp
 int findMin(vector<int>& nums) {
     int low = 0, high = nums.size() - 1;    // notice
@@ -126,15 +118,25 @@ int findMin(vector<int>& nums) {
     return nums[low];                // min is at low in the end
 }
 
+// in short - shrink until one element remains
+```
+
+**TEMPLATE#3** - searching on a space (convergence search) as opposed to a value search (for `k`):
+```txt
+closed interval - low = 0, high = n - 1
+use while(low < high) and update with low = mid + 1 or high = mid
+
+this may look like half-open interval template because of the loop condition and high = mid update, but its closed only because high = n - 1
+remember, we are converging to an element by shrinking the search space here unlike before where we skipped the element at mid by updating high = mid - 1
 ```
 
 **Find out how many times has an array been rotated**: answer will be the index of the min or max element; same as above (pivot).
 
 **Check if array is sorted and rotated**: elements leftwards of the pivot will be in desc order and to the rightwards will be in asc order. After finding the pivot, check sorted property of left half and right half manually (TC = `O(n)`).
 
-**Single element in a sorted array** ([link](https://leetcode.com/problems/single-element-in-a-sorted-array)): first occurrence is supposed to be at even index and other at odd, but after the single element, it will be vice versa. Goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Go in the direction of first single element everytime. Edge case is when array has only 1 element, handled implicitly is using condition as `while(low < high)`.
+**Single element in a sorted array** ([link](https://leetcode.com/problems/single-element-in-a-sorted-array)): first occurrence is supposed to be at even index and other at odd, but after the single element, it will be vice versa. Goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Go in the direction of first single element everytime. Edge case is when array has only 1 element, handled implicitly with condition `while(low < high)`.
 
-**Find peak element** ([link](https://leetcode.com/problems/find-peak-element)): check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end
+**Find peak element** ([link](https://leetcode.com/problems/find-peak-element)): check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end.
 
 ## BS on Space
 
@@ -190,6 +192,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
