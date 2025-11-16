@@ -100,6 +100,24 @@ Observations for sorted and then rotated arrays e.g. `[4,5,1,2,3]`:
 - a more terse way is compare `arr[mid] > arr[high]` to detect which side is sorted, discard the sorted side, and keep the unsorted side until `low` reaches the pivot. Avoid comparing `arr[low] <= arr[mid]` as it won't cover the case `[1,2,3,4,5]` where array is sorted but never rotated.
 - **if duplicates are present** ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii)): like in `[2,2,2,0,2]`, we need to add condition for `arr[mid] == arr[high]` then do `high--` to remove ambiguity on which side to goto. It doesn't harm the search space for min element as `arr[mid]` will still be present in space, we only removed its duplicate.
 
+```cpp
+int findMin(vector<int>& nums) {
+    int low = 0, high = nums.size() - 1;    // notice
+
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+
+        if (nums[mid] > nums[high])      // important
+            low = mid + 1;
+        else
+            high = mid;                // looks half-closed, but isn't
+    }
+
+    return nums[low];                // min is at low in the end
+}
+
+```
+
 **Find out how many times has an array been rotated**: answer will be the index of the min or max element; same as above (pivot).
 
 **Check if array is sorted and rotated**: elements leftwards of the pivot will be in desc order and to the rightwards will be in asc order. After finding the pivot, check sorted property of left half and right half manually (TC = `O(n)`).
@@ -162,6 +180,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
