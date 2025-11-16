@@ -59,7 +59,7 @@ return -1;
 
 Note that `LB(x) = UB(x)` if element `x` is not present in the array. Also, there maybe no LB/UB (`return -1`) if we go out of bounds searching for it.
 
-One interesting observation for LB/UB is that when we break out of the `while` loop, the lower or upper bound is at index `low`, no matter whichever template we're using! ([clarification](https://chatgpt.com/share/691a0aac-f574-800e-a480-5a22f3dc287c)
+One interesting observation for LB/UB is that when we break out of the `while` loop, the lower or upper bound is at index `low`, no matter whichever template we're using! ([clarification](https://chatgpt.com/share/691a0aac-f574-800e-a480-5a22f3dc287c))
 - keep `arr[mid] = k` condition on the direction we want to move in to skip duplicates (obvious). In LB we move leftwards in duplicates, in UB we move rightwards in duplicates. At the end, `low` will always end up at the answer.
 - if the LB or UB for a given `k` does not exist in the array, then after the loop `low == arr.size()`.
 
@@ -132,9 +132,9 @@ int findMin(vector<int>& nums) {
 
 **Check if array is sorted and rotated**: elements leftwards of the pivot will be in desc order and to the rightwards will be in asc order. After finding the pivot, check sorted property of left half and right half manually (TC = `O(n)`).
 
-**Find peak element** ([link](https://leetcode.com/problems/find-peak-element)): check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end
+**Single element in a sorted array** ([link](https://leetcode.com/problems/single-element-in-a-sorted-array)): first occurrence is supposed to be at even index and other at odd, but after the single element, it will be vice versa. Goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Go in the direction of first single element everytime. Edge case is when array has only 1 element, handled implicitly is using condition as `while(low < high)`.
 
-**Single element in a sorted array** ([link](https://leetcode.com/problems/single-element-in-a-sorted-array)): first occurrence is supposed to be at even index and other at odd, but after the single element, it will be vice versa. Goto `mid` and if `mid % 2 == 0` check `mid+1`, if `mid % 2 != 0` check `mid-1`. Go in the direction of single element everytime. Handle edge case of array having only 1 element using while loop range `low < high`.
+**Find peak element** ([link](https://leetcode.com/problems/find-peak-element)): check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, keep moving in the direction of the greater element, if we reach a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself. corner case is when there is just a single element in the array `[2]` or we converged to a single element eventually (which will be one of the peaks), in that case don't go inside loop `while(low < high)` and `return start;` at the end
 
 ## BS on Space
 
@@ -190,6 +190,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
