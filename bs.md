@@ -84,6 +84,13 @@ Related Problems:
   - another way but linear TC: find any occurrence of it using BS (if not found return `-1`), either check `idx == -1` that means occurrence is `0`.If a valid `idx`, linearly scan its left half and right half for more occurrences (TC = `O(logn) + O(n) => O(n)`)
 
 ## BS on 1D Arrays
+
+Observations for sorted and then rotated arrays:
+- there will be a single inflection point (aka pivot)
+- elements leftwards of the pivot will be in desc order and to the rightwards will be in asc order
+- if we calc a mid and check edges of halves w.r.t it, then only one half can be sorted and the other is unsorted; we can check which is which and move accordingly in problems below
+- duplicates can mess up edges checking so we need to handle that case separately
+
 **Search in rotated sorted array (no duplicates)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array)) we can't tell which half to goto only by looking at `arr[mid]` and `target` here, we can only do that in sorted arrays (or sorted half). One half will always be sorted in a rotated array! check which one and goto it only if target is in its range, otherwise goto the other half (even if unsorted) i.e. iteratively looking for a sorted half.
 
 **Search in rotated sorted array (duplicates present)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array-ii)) same as above but with an additional condition where `arr[mid] == arr[low] && arr[mid] == arr[high]` causing indicision on which side to move to. If this condition is true, then do `low++; high--; continue;`, otherwise proceed just as in the previous problem.
@@ -154,6 +161,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
