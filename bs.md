@@ -144,28 +144,23 @@ int findMin(vector<int>& nums) {
 **Find peak element** ([link](https://leetcode.com/problems/find-peak-element)): calc `mid`, if its a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself, return it. Else check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, return if its a peak, else keep moving in the direction of the greater element (as it guarantees at least one peak - either the greater element or an extreme corner eventually). Edge case is when there is just a single element in the array, which is implicitly handled by loop condition `while(low < high)` and then return `low` at the end.
 
 ## BS on Space
-**Sqrt of a number (integer)**: 
+**Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx))
 ```cpp
-// edge case - smaller values
-if (x < 2) return x;
+long long low = 0, high = x;
 
-long long low = 1, high = x / 2;
 while (low <= high) {
   long long mid = low + (high - low) / 2;
 
-    if (mid * mid == x)
-      return mid;
-
-    if (mid * mid < x)
-      low = mid + 1;
-    else
-      high = mid - 1;
+  if (mid * mid <= x)
+    low = mid + 1;
+  else
+    high = mid - 1;
 }
 
 return high;    // notice; because we want floor value
 ```
 
-- for double precision with epsilon: TC = `O(N * log(M x 10^d))`
+- for double precision, use an epsilon: TC = `O(N * log(M x 10^d))`
 ```cpp
 double eps = 1e-5;   // upto 5 digits after decimal
 
@@ -180,7 +175,6 @@ while( (high - low) > eps ){
 
 return low;
 ```
-
 
 **Kth Missing Positive Number**: find out `no. of elements missing till current element = arr[i]-(i+1)`, answer will always be `no. of elements present that are strictly less than arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time
   - Shifting k `O(n)` solution - really smart one liner!
@@ -217,6 +211,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
