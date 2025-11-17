@@ -98,18 +98,28 @@ Observations for sorted and then rotated arrays e.g. `[4,5,1,2,3]`:
 **Search in rotated sorted array (duplicates present)**: ([link](https://leetcode.com/problems/search-in-rotated-sorted-array-ii)) same as above but with an additional condition where `arr[mid] == arr[low] && arr[mid] == arr[high]` causing indicision on which side to move to. If this condition is true, then do `low++; high--; continue;`, otherwise proceed just as in the previous problem.
 
 ### Convergence Search
-
 **TEMPLATE#3** - searching on a space (convergence search) as opposed to a value search (for `k`):
-```txt
-closed interval - low = 0, high = n - 1
-use while(low < high) and update with low = mid + 1 or high = mid
+```cpp
+// first-true / min-feasible goals
 
-this may look like half-open interval template because of the loop condition and high = mid update, but its closed only because high = n - 1
-remember, we are converging to an element by shrinking the search space here unlike before where we skipped the element at mid by updating high = mid - 1
+int low = 0, high = n - 1;    // closed interval
+while(low < high){
+  int mid = low + (high - low) /2;
+
+  if (condition)
+    low = mid + 1;
+  else
+    high = mid;
+}
+
+// this may look like half-open interval template because of the loop condition and high = mid update, but its closed only because high = n - 1
+// remember, we are converging to an element by shrinking the search space here unlike before where we skipped the element at mid by updating high = mid - 1
 ```
 
+> **Uses**: smallest index/value satisfying condition - find exact target / pivot / unique element / minimum element, koko eating bananas, etc.
+
 > [!TIP]
-> Stick to `while(low <= high)` for value search as it checks when `mid = low = high` too (i.e. single element remaining). Use `while(low < high)` for convergence search problems as no such value check is needed and `low` needs to satisfy convergence property at the end.
+> Stick to `while(low <= high)` for value search as it checks when `mid = low = high` too (i.e. single remaining element). Use `while(low < high)` for convergence search problems as no such value check is needed and `low` needs to satisfy convergence property at the end.
 
 **Find minimum in rotated sorted array (no duplicates)**: ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)) leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest
 - check which half is sorted, get minimum so far from it either `arr[low]` or `arr[mid]`, and go to the other part tracking global min at every step.
@@ -144,6 +154,25 @@ int findMin(vector<int>& nums) {
 **Find peak element** ([link](https://leetcode.com/problems/find-peak-element)): calc `mid`, if its a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself, return it. Else check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, return if its a peak, else keep moving in the direction of the greater element (as it guarantees at least one peak - either the greater element or an extreme corner eventually). Edge case is when there is just a single element in the array, which is implicitly handled by loop condition `while(low < high)` and then return `low` at the end.
 
 ## BS on Space
+**TEMPLATE#4** - convergence search only but diff goal:
+```cpp
+// last-true / max-feasible goals
+
+int low = 0, high = n - 1;
+while(low < high){
+  int mid = low + (high - low + 1) /2;    // upper-mid
+
+  if (condition)
+    low = mid;      // notice
+  else
+    high = mid - 1;
+}
+```
+
+**NOTE**`: mid` calc is as such because we will be go in infinite loop in cases like `[2, 5]` as we're updating `low = mid`. So we need to calc mid in the direction we're moving in i.e. rightwards in this case because we want to find last-true or max-feasible.
+
+> **Uses**: largest index/value satisfying condition - floor(sqrt(x)), max ribbon length, max feasible speed/capacity/threshold, aggressive cows, etc.
+
 **Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx)) we can init `low = 1, high = x/2`, but then we'll need to handle smaller values `if(x < 2) return x`.
 ```cpp
 long long low = 0, high = x;      // important
@@ -226,6 +255,7 @@ Tips to identify when BS is an appropriate solution for these kinds of problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
