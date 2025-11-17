@@ -144,14 +144,14 @@ int findMin(vector<int>& nums) {
 **Find peak element** ([link](https://leetcode.com/problems/find-peak-element)): calc `mid`, if its a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself, return it. Else check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, return if its a peak, else keep moving in the direction of the greater element (as it guarantees at least one peak - either the greater element or an extreme corner eventually). Edge case is when there is just a single element in the array, which is implicitly handled by loop condition `while(low < high)` and then return `low` at the end.
 
 ## BS on Space
-**Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx))
+**Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx)) we can init `low = 1, high = x/2`, but then we'll need to handle smaller values `if(x < 2) return x`.
 ```cpp
-long long low = 0, high = x;
+long long low = 0, high = x;      // important
 
 while (low <= high) {
   long long mid = low + (high - low) / 2;
 
-  if (mid * mid <= x)
+  if (mid * mid <= x)      // combined condition; can write == separately too
     low = mid + 1;
   else
     high = mid - 1;
@@ -160,7 +160,7 @@ while (low <= high) {
 return high;    // notice; because we want floor value
 ```
 
-- for double precision, use an epsilon: TC = `O(N * log(M x 10^d))`
+- for double precision: use an epsilon because `low` may never be truly equal to `high`, and updates are such that because we don't know how big a jump to take here (we take `1` in integer sqrt). TC = `O(N * log(M x 10^d))`
 ```cpp
 double eps = 1e-5;   // upto 5 digits after decimal
 
@@ -170,7 +170,7 @@ while( (high - low) > eps ){
   
   // set low = mid
   // or high = mid
-  
+
 }
 
 return low;
@@ -211,6 +211,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
