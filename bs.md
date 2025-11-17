@@ -173,19 +173,16 @@ while(low < high){
 
 > **Uses**: largest index/value satisfying condition - floor(sqrt(x)), max ribbon length, max feasible speed/capacity/threshold, aggressive cows, etc.
 
-**Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx)) we can init `low = 1, high = x/2`, but then we'll need to handle smaller values `if(x < 2) return x`.
+**Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx)) This is basically find max number `n` which satisfies `n*n <= x` (use TEMPLATE#4 above or alt way below). We can init `low = 1, high = x/2`, but then we'll need to handle smaller values `if(x < 2) return x`.
 ```cpp
-long long low = 0, high = x;      // important
-
+int low = 0, high = x;      // important
 while (low <= high) {
-  long long mid = low + (high - low) / 2;
-
+  int mid = low + (high - low) / 2;
   if (mid * mid <= x)      // combined condition; can write == separately too
     low = mid + 1;
   else
     high = mid - 1;
 }
-
 return high;    // notice; because we want floor value
 ```
 
@@ -255,6 +252,7 @@ Tips to identify when BS is an appropriate solution for these kinds of problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
