@@ -178,6 +178,19 @@ return low;
 
 Similar problem: **Nth Root of a Number** using Binary Search
 
+### Simulation
+They are simple, just use convergence search template to find minimum on answer space:
+- [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+- [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
+- [Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/): this is exactly Koko Eating Bananas just diff problem statement
+- [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
+
+Tips to identify when BS is an appropriate solution for these kinds of problems:
+- asked to minimize/maximize some feasible value
+- the feasible value has a fixed but large answer space
+- feasibility behaves monotonically (`true true false false false`)
+- feasibility check for a given guess can replace binary search comparison conditions to navigate in answer space
+
 **Kth Missing Positive Number**: find out `no. of elements missing till current element = arr[i]-(i+1)`, answer will always be `no. of elements present that are strictly less than arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time
   - Shifting k `O(n)` solution - really smart one liner!
   - In BS solution we search on that `arr[i]-(i+1)` space and check it on every `mid` and move accordingly, on `==` condition we have exactly `k` missing elements in left of `mid` and our ans lies just below `arr[mid]` (`ans = i+k`), we want LB (smallest index such that `arr[i]-(i+1) >= k`) so move leftwards!, then return `low + k` after loop break
@@ -213,6 +226,7 @@ Similar problem: **Nth Root of a Number** using Binary Search
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
