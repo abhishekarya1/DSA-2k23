@@ -109,7 +109,7 @@ remember, we are converging to an element by shrinking the search space here unl
 ```
 
 > [!TIP]
-> Stick to `while(low <= high)` for value search as it checks when `mid = low = high` too (i.e. single element remaining). Use `while(low < high)` for convergence search problems as no such value check is needed.
+> Stick to `while(low <= high)` for value search as it checks when `mid = low = high` too (i.e. single element remaining). Use `while(low < high)` for convergence search problems as no such value check is needed and `low` needs to satisfy convergence property at the end.
 
 **Find minimum in rotated sorted array (no duplicates)**: ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)) leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest
 - check which half is sorted, get minimum so far from it either `arr[low]` or `arr[mid]`, and go to the other part tracking global min at every step.
@@ -197,6 +197,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
