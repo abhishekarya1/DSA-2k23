@@ -160,7 +160,7 @@ while (low <= high) {
 return high;    // notice; because we want floor value
 ```
 
-- for double precision: use an epsilon because `low` may never be truly equal to `high`, and updates are such that because we don't know how big a jump to take here (we take `1` in integer sqrt). TC = `O(N * log(M x 10^d))`
+- for double precision: use an epsilon because `low` may never be truly equal to `high`, and updates are such that because we don't know how big a jump to take here (we take `1` in integer sqrt) since its a continuous space search.
 ```cpp
 double eps = 1e-5;   // upto 5 digits after decimal
 
@@ -175,6 +175,8 @@ while( (high - low) > eps ){
 
 return low;
 ```
+
+Similar problem: **Nth Root of a Number** using Binary Search
 
 **Kth Missing Positive Number**: find out `no. of elements missing till current element = arr[i]-(i+1)`, answer will always be `no. of elements present that are strictly less than arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time
   - Shifting k `O(n)` solution - really smart one liner!
@@ -211,6 +213,7 @@ return low;
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
