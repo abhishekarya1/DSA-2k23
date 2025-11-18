@@ -156,10 +156,11 @@ Tips to identify when BS is an appropriate solution for searching on an answer s
 - feasibility behaves monotonically (`true true false false false`)
 - feasibility check for a given guess can replace binary search comparison conditions to navigate in answer space
 
-**TEMPLATES**: min-feasible is exactly equal to LB so both templates work normally for it, wheareas max-feasible is not UB but one index leftwards of UB so we tweak some things. Ex - `[1 2 2 2 3]`.
-```py
-# FIRST-TRUE / MIN-FEASIBLE - return lowest index where check(mid) becomes true. This is nothing but Lower Bound.
+### Universal Templates 
+Min-feasible is exactly equal to LB so both templates work normally for it, wheareas max-feasible is not UB but one index leftwards of UB so we tweak some things. Ex - `[1 2 2 2 3]`.
 
+**FIRST-TRUE / MIN-FEASIBLE**: return lowest index where check(mid) becomes true. This is nothing but Lower Bound.
+```py
 # low < high version
 low = 0, high = n - 1
 while (low < high):
@@ -182,9 +183,8 @@ return low
 ```
 > **Uses**: find exact target / pivot / unique element / minimum element, koko eating bananas, etc.
 
+**LAST-TRUE / MAX-FEASIBLE**: return highest index where check(mid) is true. This isn't Upper Bound but an index lower than it.
 ```py
-# LAST-TRUE / MAX-FEASIBLE - return highest index where check(mid) is true. This isn't Upper Bound but an index lower than it.
-
 # low < high version
 low = 0, high = n - 1
 while (low < high):
@@ -278,6 +278,7 @@ They are simple, just use convergence search templates to find minimum or maximu
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
