@@ -49,7 +49,7 @@ while(low < high){                    // line 1
 return -1;
 ```
 
-**NOTICE**: `line 1` and `line 2` go hand-in-hand to make sure we move correctly. Whenever in doubt, dry run the case `[1 2 3]` with `k = 1`. Half-interval code maybe counter-intuitive at times, so just avoid it!
+**NOTICE**: `line 1` and `line 2` go hand-in-hand to make sure we move correctly. Whenever in doubt, dry run the case `[1 2 3]` with `k = 1`. Half-open interval maybe counter-intuitive at times, so just avoid it completely!
 
 ## Bounds
 
@@ -100,12 +100,9 @@ Observations for sorted and then rotated arrays e.g. `[4,5,1,2,3]`:
 ### Convergence Search
 **TEMPLATE#3** - searching on a space (convergence search) as opposed to a value search (for `k`):
 ```cpp
-// first-true / min-feasible goals
-
 int low = 0, high = n - 1;    // closed interval
 while(low < high){
-  int mid = low + (high - low) /2;
-
+  int mid = low + (high - low) / 2;
   if (condition)
     low = mid + 1;
   else
@@ -114,9 +111,8 @@ while(low < high){
 
 // this may look like half-open interval template because of the loop condition and high = mid update, but its closed only because high = n - 1
 // remember, we are converging to an element by shrinking the search space here unlike before where we skipped the element at mid by updating high = mid - 1
+// also, this is the first-true / min-feasible goals template discussed below
 ```
-
-> **Uses**: smallest index/value satisfying condition - find exact target / pivot / unique element / minimum element, koko eating bananas, etc.
 
 > [!TIP]
 > Stick to `while(low <= high)` for value search as it checks when `mid = low = high` too (i.e. single remaining element). Use `while(low < high)` for convergence search problems as no such value check is needed and `low` needs to satisfy convergence property at the end.
@@ -154,68 +150,98 @@ int findMin(vector<int>& nums) {
 **Find peak element** ([link](https://leetcode.com/problems/find-peak-element)): calc `mid`, if its a corner (`arr[0]` or `arr[n-1]`) then peak is that corner value itself, return it. Else check peaks among `arr[mid-1]`, `arr[mid]` and `arr[mid+1]`, return if its a peak, else keep moving in the direction of the greater element (as it guarantees at least one peak - either the greater element or an extreme corner eventually). Edge case is when there is just a single element in the array, which is implicitly handled by loop condition `while(low < high)` and then return `low` at the end.
 
 ## BS on Space
-**TEMPLATE#4** - convergence search only but diff goal:
-```cpp
-// last-true / max-feasible goals
+Tips to identify when BS is an appropriate solution for searching on an answer space:
+- asked to minimize/maximize some feasible value
+- the feasible value has a fixed but large answer space
+- feasibility behaves monotonically (`true true false false false`)
+- feasibility check for a given guess can replace binary search comparison conditions to navigate in answer space
 
-int low = 0, high = n - 1;
-while(low < high){
-  int mid = low + (high - low + 1) /2;    // upper-mid
+**TEMPLATES**: min-feasible is exactly equal to LB so both templates work normally for it, wheareas max-feasible is not UB but one index leftwards of UB so we tweak some things. Ex - `[1 2 2 2 3]`.
+```py
+# FIRST-TRUE / MIN-FEASIBLE - return lowest index where check(mid) becomes true. This is nothing but Lower Bound.
 
-  if (condition)
-    low = mid;      // notice
-  else
-    high = mid - 1;
-}
+# low < high version
+low = 0, high = n - 1
+while (low < high):
+  mid = (low + high) / 2
+  if (check(mid)):
+    high = mid 
+  else:
+    low = mid + 1
+return low
+
+# low <= high version
+low = 0, high = n - 1
+while (low <= high):
+  mid = (low + high) / 2
+    if (check(mid)):
+      high = mid - 1
+    else:
+      low = mid + 1
+return low
+```
+> **Uses**: find exact target / pivot / unique element / minimum element, koko eating bananas, etc.
+
+```py
+# LAST-TRUE / MAX-FEASIBLE - return highest index where check(mid) is true. This isn't Upper Bound but an index lower than it.
+
+# low < high version
+low = 0, high = n - 1
+while (low < high):
+  mid = (low + high + 1) / 2    # upper mid
+  if (check(mid)):
+    low = mid        # notice
+  else:
+    high = mid - 1
+return low
+
+# low <= high version
+low = 0, high = n - 1
+while (low <= high):
+  mid = (low + high) / 2
+  if (check(mid)):
+    low = mid + 1
+  else:
+    high = mid - 1
+return high          # notice; one index leftwards of UB (which will be at low)
 ```
 
-**NOTE**`: mid` calc is as such because we will be go in infinite loop in cases like `[2, 5]` as we're updating `low = mid`. So we need to calc mid in the direction we're moving in i.e. rightwards in this case because we want to find last-true or max-feasible.
+**NOTE**`: mid` calc is for upper mid because we will be go in infinite loop in cases like `[2, 5]` as we're updating `low = mid`. So we need to calc mid in the direction we're moving in i.e. rightwards in this case because we want to find last-true or max-feasible.
 
-> **Uses**: largest index/value satisfying condition - floor(sqrt(x)), max ribbon length, max feasible speed/capacity/threshold, aggressive cows, etc.
+> **Uses**: floor(sqrt(x)), max ribbon length, max feasible speed / capacity / threshold, aggressive cows, etc.
 
-**Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx)) This is basically find max number `n` which satisfies `n*n <= x` (use TEMPLATE#4 above or alt way below). We can init `low = 1, high = x/2`, but then we'll need to handle smaller values `if(x < 2) return x`.
+**Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx)) This is basically find max number `n` which satisfies `n*n <= x` i.e. `floor(sqrt(x))`. We can init `low = 1, high = x/2`, but then we'll need to handle smaller values `if(x < 2) return x`.
 ```cpp
-int low = 0, high = x;      // important
+int low = 0, high = x;
 while (low <= high) {
   int mid = low + (high - low) / 2;
-  if (mid * mid <= x)      // combined condition; can write == separately too
+  if (mid * mid <= x)
     low = mid + 1;
   else
     high = mid - 1;
 }
-return high;    // notice; because we want floor value
+return high;
 ```
 
 - for double precision: use an epsilon because `low` may never be truly equal to `high`, and updates are such that because we don't know how big a jump to take here (we take `1` in integer sqrt) since its a continuous space search.
 ```cpp
 double eps = 1e-5;   // upto 5 digits after decimal
-
 while( (high - low) > eps ){
-
   double mid = (low + high) / 2.0;
-  
   // set low = mid
   // or high = mid
-
 }
-
 return low;
 ```
 
 Similar problem: **Nth Root of a Number** using Binary Search
 
 ### Simulation
-They are simple, just use convergence search template to find minimum on answer space:
+They are simple, just use convergence search templates to find minimum or maximum feasible in answer space:
 - [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
 - [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
 - [Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/): this is exactly Koko Eating Bananas just diff problem statement
 - [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
-
-Tips to identify when BS is an appropriate solution for these kinds of problems:
-- asked to minimize/maximize some feasible value
-- the feasible value has a fixed but large answer space
-- feasibility behaves monotonically (`true true false false false`)
-- feasibility check for a given guess can replace binary search comparison conditions to navigate in answer space
 
 **Kth Missing Positive Number**: find out `no. of elements missing till current element = arr[i]-(i+1)`, answer will always be `no. of elements present that are strictly less than arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time
   - Shifting k `O(n)` solution - really smart one liner!
@@ -252,6 +278,7 @@ Tips to identify when BS is an appropriate solution for these kinds of problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
