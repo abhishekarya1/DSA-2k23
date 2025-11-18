@@ -210,6 +210,7 @@ return high          # notice; one index leftwards of UB (which will be at low)
 
 > **Uses**: floor(sqrt(x)), max ribbon length, max feasible speed / capacity / threshold, aggressive cows, etc.
 
+### Problems
 **Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx)) This is basically find max number `n` which satisfies `n*n <= x` i.e. `floor(sqrt(x))`. We can init `low = 1, high = x/2`, but then we'll need to handle smaller values `if(x < 2) return x`.
 ```cpp
 int low = 0, high = x;
@@ -236,8 +237,7 @@ return low;
 
 Similar problem: **Nth Root of a Number** using Binary Search
 
-### Simulation
-They are simple, just use convergence search templates to find minimum or maximum feasible in answer space:
+Feasibility simulation problems such as the following are simple, just use convergence search templates to find minimum or maximum feasible in answer space:
 - [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
 - [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
 - [Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/): this is exactly Koko Eating Bananas just diff problem statement
@@ -278,6 +278,7 @@ They are simple, just use convergence search templates to find minimum or maximu
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
