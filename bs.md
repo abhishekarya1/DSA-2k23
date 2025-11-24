@@ -237,17 +237,25 @@ return low;
 
 Similar problem: **Nth Root of a Number** using Binary Search
 
-Feasibility simulation problems such as the following are simple, just use convergence search templates to find minimum or maximum feasible in answer space:
+Feasibility simulation problems such as the following are simple, just use convergence search templates to find minimum or maximum feasible in answer space.
+
+Min-Feasible Problems:
 - [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
 - [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
 - [Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/): this is exactly Koko Eating Bananas just diff problem statement
 - [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
 
-**Kth Missing Positive Number**: find out `no. of elements missing till current element = arr[i]-(i+1)`, answer will always be `no. of elements present that are strictly less than arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time
-  - Shifting k `O(n)` solution - really smart one liner!
-  - In BS solution we search on that `arr[i]-(i+1)` space and check it on every `mid` and move accordingly, on `==` condition we have exactly `k` missing elements in left of `mid` and our ans lies just below `arr[mid]` (`ans = i+k`), we want LB (smallest index such that `arr[i]-(i+1) >= k`) so move leftwards!, then return `low + k` after loop break
+**Kth Missing Positive Number**: ([link](https://leetcode.com/problems/kth-missing-positive-number)) find number of elements missing till current element with `arr[i]-(i+1)`, answer will always be number of elements present that are strictly less than `arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time.
+  - Shift `k++` each time an element `<= k` is encountered in array - really smart one liner! (TC = `O(n)`)
+  - BS solution: we search on space `arr[i]-(i+1)` and check it on every `mid` and move accordingly, on `==` condition we have exactly `k` missing elements in left of `mid` and our ans lies just below `arr[mid]` (i.e. `ans = i+k`), we want LB (smallest index such that `arr[i]-(i+1) >= k`) so move leftwards, finally return `low + k` after loop break.
 
-**Split Array into K Subarrays**: aka painter's partition, book allocation, capacity to ship packages
+Max-Feasible Problems:
+- Aggressive Cows
+- Book Allocation
+- Painter's Partition
+- [Minimize Max Distance to Gas Station](https://leetcode.com/problems/minimize-max-distance-to-gas-station/)
+
+**Split Array Largest Sum**: [link](https://leetcode.com/problems/split-array-largest-sum/) aka painter's partition, book allocation, capacity to ship packages
 - `low = max_element_of_array` and `high = sum_of_all_elements_of_array` and keep searching for lower value that can accomodate `k` max partitions (simulate) for each `mid`
 - on equal condition, move leftwards to minimize max sum, return `low` at the end
 
@@ -278,6 +286,7 @@ Feasibility simulation problems such as the following are simple, just use conve
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
