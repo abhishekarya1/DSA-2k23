@@ -115,7 +115,7 @@ while(low < high){
 ```
 
 > [!TIP]
-> Stick to `while(low <= high)` for value search as it checks when `mid = low = high` too (i.e. single remaining element). Use `while(low < high)` for convergence search problems as no such value check is needed and `low` needs to satisfy convergence property at the end.
+> Stick to `while(low <= high)` for value search as it checks when `mid = low = high` too (i.e. single remaining element). Use `while(low < high)` for convergence search problems as no such value check is needed and `low` needs to satisfy convergence property at the end. Although both styles or writing code can be used for convergence as shown in below section (Universal Templates). 
 
 **Find minimum in rotated sorted array (no duplicates)**: ([link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)) leftmost element (`arr[low]` or `arr[mid]`) in the sorted half will be the lowest
 - check which half is sorted, get minimum so far from it either `arr[low]` or `arr[mid]`, and go to the other part tracking global min at every step.
@@ -210,7 +210,21 @@ return high          # notice; one index leftwards of UB (which will be at low)
 
 > **Uses**: floor(sqrt(x)), max ribbon length, max feasible speed / capacity / threshold, aggressive cows, etc.
 
-### Problems
+### First-true / Min-feasible
+Feasibility simulation problems such as the following are simple, just use convergence search templates to find minimum or maximum feasible in answer space.
+
+Problems:
+- [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+- [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
+- [Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/): this is exactly Koko Eating Bananas just diff problem statement
+- [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
+
+**Kth Missing Positive Number**: ([link](https://leetcode.com/problems/kth-missing-positive-number)) find number of elements missing till current element with `arr[i]-(i+1)`, answer will always be number of elements present that are strictly less than `arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time.
+  - Shift `k++` each time an element `<= k` is encountered in array - really smart one liner! (TC = `O(n)`)
+  - BS solution: we search on space `arr[i]-(i+1)` and check it on every `mid` and move accordingly, on `==` condition we have exactly `k` missing elements in left of `mid` and our ans lies just below `arr[mid]` (i.e. `ans = i+k`), we want LB (smallest index such that `arr[i]-(i+1) >= k`) so move leftwards, finally return `low + k` after loop break.
+
+### Last-true / Max-feasible
+
 **Sqrt of a number (integer)**: ([link](https://leetcode.com/problems/sqrtx)) This is basically find max number `n` which satisfies `n*n <= x` i.e. `floor(sqrt(x))`. We can init `low = 1, high = x/2`, but then we'll need to handle smaller values `if(x < 2) return x`.
 ```cpp
 int low = 0, high = x;
@@ -237,19 +251,7 @@ return low;
 
 Similar problem: **Nth Root of a Number** using Binary Search
 
-Feasibility simulation problems such as the following are simple, just use convergence search templates to find minimum or maximum feasible in answer space.
-
-Min-Feasible Problems:
-- [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
-- [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
-- [Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/): this is exactly Koko Eating Bananas just diff problem statement
-- [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
-
-**Kth Missing Positive Number**: ([link](https://leetcode.com/problems/kth-missing-positive-number)) find number of elements missing till current element with `arr[i]-(i+1)`, answer will always be number of elements present that are strictly less than `arr[i] + k` i.e. `i + k` when `arr[i]-(i+1) >= k` is satisfied for the first time.
-  - Shift `k++` each time an element `<= k` is encountered in array - really smart one liner! (TC = `O(n)`)
-  - BS solution: we search on space `arr[i]-(i+1)` and check it on every `mid` and move accordingly, on `==` condition we have exactly `k` missing elements in left of `mid` and our ans lies just below `arr[mid]` (i.e. `ans = i+k`), we want LB (smallest index such that `arr[i]-(i+1) >= k`) so move leftwards, finally return `low + k` after loop break.
-
-Max-Feasible Problems:
+Problems:
 - Aggressive Cows
 - Book Allocation
 - Painter's Partition
@@ -286,6 +288,7 @@ Max-Feasible Problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
