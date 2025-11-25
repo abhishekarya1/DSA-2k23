@@ -221,6 +221,7 @@ Problems:
 - Book Allocation
 - Painter's Partition
 - [Minimize Max Distance to Gas Station](https://leetcode.com/problems/minimize-max-distance-to-gas-station/)
+- [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/): exactly Book Allocation
 
 **Kth Missing Positive Number**: ([link](https://leetcode.com/problems/kth-missing-positive-number)) for each index `i`, the number of missing positives up to `arr[i]` is `arr[i] - (i + 1)`. The K-th missing number is the first point where this missing count reaches `k`, and at that index the answer is simply `i + k`, because that's how many numbers are present in array which are strictly less than `arr[i]` plus the extra `k` missing ones.
   - shift `k++` each time an element `<= k` is encountered in array - really smart one liner! (TC = `O(n)`)
@@ -257,10 +258,6 @@ Similar problem: **Nth Root of a Number** using Binary Search
 Problems:
 - Aggressive Cows
 
-**Split Array Largest Sum**: ([link](https://leetcode.com/problems/split-array-largest-sum/)) aka painter's partition, book allocation, capacity to ship packages
-- `low = max_element_of_array` and `high = sum_of_all_elements_of_array` and keep searching for lower value that can accomodate `k` max partitions (simulate) for each `mid`
-- on equal condition, move leftwards to minimize max sum, return `low` at the end
-
 ## 2 Sorted Arrays
 **Find Kth element of two sorted arrays**: 
   - count approach; mimic merge and count till K
@@ -288,6 +285,7 @@ Problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
