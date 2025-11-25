@@ -219,7 +219,7 @@ Problems:
 - [Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/): this is exactly Koko Eating Bananas just diff problem statement
 - [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
 
-**Kth Missing Positive Number**: ([link](https://leetcode.com/problems/kth-missing-positive-number)) for each index `i`, the number of missing positives up to `arr[i]` is `arr[i] - (i + 1)`. The K-th missing number is the first point where this missing count reaches `k`, and at that index the answer is simply `i + k`, because that's how many natural numbers are strictly less than `arr[i]` plus the extra `k` missing ones.
+**Kth Missing Positive Number**: ([link](https://leetcode.com/problems/kth-missing-positive-number)) for each index `i`, the number of missing positives up to `arr[i]` is `arr[i] - (i + 1)`. The K-th missing number is the first point where this missing count reaches `k`, and at that index the answer is simply `i + k`, because that's how many numbers are present in array which are strictly less than `arr[i]` plus the extra `k` missing ones.
   - shift `k++` each time an element `<= k` is encountered in array - really smart one liner! (TC = `O(n)`)
   - BS solution: we search based on property `arr[i]-(i+1)` and check it on every `mid` and move accordingly, on `==` condition we have exactly `k` missing elements in left of `mid` and our ans lies just below `arr[mid]` (i.e. `ans = i+k`), we want LB (smallest index such that `arr[i]-(i+1) >= k`) so move leftwards, finally return `low + k` after loop break.
 
@@ -288,6 +288,7 @@ Problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
