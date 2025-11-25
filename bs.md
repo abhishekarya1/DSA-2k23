@@ -151,10 +151,10 @@ int findMin(vector<int>& nums) {
 
 ## BS on Space
 Tips to identify when BS is an appropriate solution for searching on an answer space:
-- asked to minimize/maximize some feasible value
-- the feasible value has a fixed but large answer space
-- feasibility behaves monotonically (`true true false false false`)
-- feasibility check for a given guess can replace binary search comparison conditions to navigate in answer space
+- asked to minimize or maximize some feasible value
+- the feasible value has a fixed but very large answer space
+- feasibility behaves monotonically (e.g. `true true false false false`) and we can check feasibility at a given point and judge in which dir we should navigate based on result of the check.
+- feasibility check for a given guess can replace binary search comparison conditions to navigate in answer space. This check can also use some other quantity like hours to finish all piles at a given eating speed (`mid`). Notice that these two are inversely related to each other.
 
 ### Universal Templates 
 Min-feasible is exactly equal to LB so both templates work normally for it, wheareas max-feasible is not UB but one index leftwards of UB so we tweak some things. Ex - `[1 2 2 2 3]`.
@@ -288,6 +288,7 @@ Problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
