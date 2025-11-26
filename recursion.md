@@ -10,6 +10,21 @@ void print(int n){
 ```
 Instead of using 6 stack frames (from `n=5` to `n=0`), it will use only 1, and keep reusing it by changing value of `n` in it. This reuse is possible if there is nothing more to do in a frame after the recursive function call (i.e. make it the last action using `return`).
 
+**Additional variables**: we need to carry information to next call stack frame using variables for accumulated sum, array size, etc. Often not required for head-recursive functions.
+```cpp
+// tail-recursive sum
+int sum(int n, int acc){
+    if(n == 0) return acc;           // return accumulated sum
+    return sum(n - 1, n + acc);
+}
+
+// head-recursive sum
+int sum(int n){
+    if(n == 0) return 0;
+    return n + sum(n - 1);        // add current element to existing sum
+}
+```
+
 --- 
 
 **Reverse a Stack using Recursion** (not using any aux stack, only internal function call stack):
@@ -225,5 +240,6 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
+
 
 
