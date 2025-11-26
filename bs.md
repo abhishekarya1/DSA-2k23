@@ -242,25 +242,31 @@ return high;
 
 - for double precision: use an epsilon because `low` may never be truly equal to `high`, and updates are such that because we don't know how big a jump to take here (we take `1` in integer sqrt) since its a continuous space search.
 ```cpp
-double eps = 1e-5;   // upto 5 digits after decimal
+double eps = 1e-6;   // upto 6 digits after decimal
 while( (high - low) > eps ){
   double mid = (low + high) / 2.0;
-  // set low = mid
-  // or high = mid
+  if (feasible(mid))
+    high = mid;
+  else
+    low = mid;
 }
-return low;
+return low;  // max-feasible
+
+// return high for min-feasible
 ```
 
-Similar problem: **Nth Root of a Number** using Binary Search
+Epsilon BS problems: **Nth Root of a Number** using Binary Search, Minimize Max Distance to Gas Station
 
-Problems:
+Max-feasible problems:
 - Aggressive Cows
 
-## 2 Sorted Arrays
-**Find Kth element of two sorted arrays**: 
-  - count approach; mimic merge and count till K
-  - cutpoints approach, `k = cut1 + cut2`, take `cut1` elements from one and `cut2` from the other [link](https://takeuforward.org/data-structure/k-th-element-of-two-sorted-arrays)
-    - do BS on the smaller array only, compare `l1 r2 l2 r1`
+## 2 Sorted Arrays - Cutpoint
+**Find Kth element of two sorted arrays**: ([link](https://takeuforward.org/data-structure/k-th-element-of-two-sorted-arrays))
+- merge and count approach: mimic merge and count till `K`
+- BS approach: use BS to find how many elements `i` to take from the smaller array, the remaining `k - i` elements come from the other array, the correct cutpoint satisfies `l1 <= r2 && l2 <= r1`, and the answer is `max(l1, l2)` at the point.
+  - init `low = max(0, k - n)` because the least we can take from smaller array is either `0` or `k - n` (if `k > n`; we must take some elements from smaller array). Similarly `high = min(k, m)` because the most we can take from smaller array is either `k` or `m` (if `k > m`; we must take all elements of smaller array)
+  - `mid` becomes `r1` and `mid - 1` becomes `l1`. check out-of-bounds `l1 l2 r1 r2` with conditional operator and set to `INT_MIN` or `INT_MAX` accordingly
+  - if `l1 > r2` then move leftwards (as we want to decrease `l1`), else if `l2 > r1` then move rightwards (as we want to increase `l2`)
 
 **Median of two sorted arrays**: use cutpoints approach above `left_half = (m + n + 1) / 2`, take care of cuts min/max, and median calc condition(s) in case total elements are even or odd [link](https://takeuforward.org/data-structure/median-of-two-sorted-arrays-of-different-sizes/)
 
@@ -283,6 +289,7 @@ Problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
