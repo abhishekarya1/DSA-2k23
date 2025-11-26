@@ -218,7 +218,7 @@ Problems:
 - [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
 - [Find the Smallest Divisor Given a Threshold](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/): this is exactly Koko Eating Bananas just diff problem statement
 - [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
-- Book Allocation, [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/), Painter's Partition: they're all the exact same problem
+- Book Allocation, [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/), Painter's Partition: they're all the exact same problem; minimizing the maximum effort/time any one person has to put in.
 - Minimize Max Distance to Gas Station
 
 **Kth Missing Positive Number**: ([link](https://leetcode.com/problems/kth-missing-positive-number)) for each index `i`, the number of missing positives up to `arr[i]` is `arr[i] - (i + 1)`. The K-th missing number is the first point where this missing count reaches `k`, and at that index the answer is simply `i + k`, because that's how many numbers are present in array which are strictly less than `arr[i]` plus the extra `k` missing ones.
@@ -283,6 +283,7 @@ Problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
