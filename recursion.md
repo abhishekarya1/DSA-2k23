@@ -5,7 +5,7 @@
 void print(int n){
     if(n == 0) return;
     cout << n << " ";
-    return print(n-1);        // recursive call must be the absolute last action; return is imp here
+    return print(n-1);        // recursive call must be the absolute last action; return is very imp here!
 }
 ```
 Instead of using 6 stack frames (from `n=5` to `n=0`), it will use only 1, and keep reusing it by changing value of `n` in it. This reuse is possible if there is nothing more to do in a frame after the recursive function call (i.e. make it the last action using `return`).
@@ -240,6 +240,7 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
+
 
 
 
