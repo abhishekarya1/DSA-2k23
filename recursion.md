@@ -1,4 +1,4 @@
-### Basics
+## Basics
 **Tail Call Optimization** (TCO): a compiler-level code optimization that reuses the same function call stack frame for tail-recursive functions; not possible for head-recursive code.
 ```cpp
 // print 1 to n
@@ -25,79 +25,18 @@ int sum(int n){
 }
 ```
 
---- 
+### Playing with Stack
+**Reverse a Stack using Recursion**: constraint is to not use any aux stack or data structure, only function call stack
+- store all elements of stack in function call stack (of `revStack()`) until stack is empty
+- when returning, insert elements one-by-one in the stack but always insert at the bottom; use function call stack (of `insert()`) to save intermediary elements while reaching bottom by popping
+**Sort a Stack using Recursion**: just like above reverse stack approach it inserts each element at its sorted position in the stack so far (like insertion sort).
 
-**Reverse a Stack using Recursion** (not using any aux stack, only internal function call stack):
-- store all elements of stack in call stack until stack is empty
-- insert elements one by one in the stack BUT always insert at the bottom
-
-```cpp
-// Template#1 - reverse stack using recursion
-void insertAtBottom(stack<int>& st, int x){
-    if(st.empty()) {
-        st.push(x);
-    }
-
-    else {
-        int e = st.top();
-        st.pop();
-        insertAtBottom(st, x);
-        st.push(e);     // replace existing stack elements (backtracking)
-    }
-}
-
-void reverseStack(stack<int>& st){
-    if(st.empty()) return;
-
-    int e = st.top();
-    st.pop();
-
-    reverseStack(st);
-
-    // access elements in reverse fashion and insert at bottom
-    insertAtBottom(st, e);
-}
-```
-**Sort a Stack using Recursion** (not using any aux stack, only internal function call stack): (just like above reverse stack approach it uses smart positional insert)
-- store all elements of stack in call stack until stack is empty
-- insert elements one by one in the stack BUT always insert in its sorted place (like insertion sort)
-
-```cpp
-// Template#2 - sort stack using recursion (ascending order)
-void insertSorted(stack<int>& st, int x){
-    if(st.empty() || x < st.top()) {
-        st.push(x);
-    }
-
-    else {
-        int e = st.top();
-        st.pop();
-        insertSorted(st, x);
-        st.push(e);     // replace existing stack elements (backtracking)
-    }
-}
-
-void sortStack(stack<int>& st){
-    if(st.empty()) return;
-
-    int e = st.top();
-    st.pop();
-
-    sortStack(st);
-
-    // access elements in reverse fashion and insert at correct sorted position
-    insertSorted(st, e);
-}
-```
-
----
-
-### Subsequences
+## Subsequences
 Old Notes - refer Samsung Notes PDF
 
 The math of it: https://github.com/abhishekarya1/DSA-2k23/blob/master/maths.md#combinatorics
 
-### Subsequences Patterns
+## Subsequences Patterns
 A subsequence is a generalization of substring in which it may not be contiguous but order should be maintained
 - generate all subsequences of size n (`vector<int>`)
 - generate all subsequence with sum k (`vector<int>`)
@@ -142,7 +81,7 @@ Whenever we require to remove duplicates (uniqueness), we `sort` and then use th
 
 Skip condition: `if(i > p && arr[i] == arr[i - 1]) continue;`. We can further optimize the FOR loop using `if(arr[i] > target) break;` (if current element can't be part of the answer then remaining array can't be too; since array is sorted).
 
-### Other Patterns
+## Other Patterns
 **Generate Combinations** - they are nothing but subsequences of fixed length `len` i.e. in the recursion tree of subsequences don't go all the way to the leaves but `return` when length of curr hits `len` (combination length)
 ```cpp
 void genCombinations(int i, string curr, string str, int len) {
@@ -207,7 +146,7 @@ return ans;
 
 (Old Explanation) **2-D**: the main string to be traversed is traversed by recursion calls, other by FOR loop. Ex - in phone keypad problem, we traverse digits by recursion and run FOR loop for "abc" "def" etc... Another example - combination sum problems are also this way only, there we place 1 element of the array using recursion and using FOR loop we traverse the rest of the array to find pairs for it
 
-### Advanced Problems
+## Advanced Problems
 **Palindrome Partitioning**: check all partition positions, if a partition's left substring (`start` to `i`) is a palindrome, put it in ans vector and then recur for remaining string moving ahead `i + 1` in recursion call
 
 **Word Search**: recur on string `word` as soon as the first occurance of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid. Make sure to backtrack i.e. unvisit after recursive calls. This is nothing but DFS + Backtracking - go and check.
@@ -240,8 +179,4 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
-
-
-
-
 
