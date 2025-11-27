@@ -271,11 +271,16 @@ Max-feasible problems:
 - odd - max of left (same as `k`th element)
 
 ## BS on Matrix
+**Find the row with max number of 1s**: 
+- `O(m * n)` scan but if `1`s are a lot lesser than `0`s then checking every row from the right end is a better strategy
+- `O(n * logm)` solution where we use LB search to find leftmost `1` and calc total number of `1`s
 
-**Search in Row and Column Wise Sorted Matrix**:
-- staircase search in `O(m + n)` TC
-- rowwise and columnwise matrix after flattening isn't a sorted 1D matrix so that won't work
-- the min in such matrix is `mat[0][0]` and max is `mat[m-1][n-1]` so we can perform bs in that space and search elements in each row (`m * log max(matEle)`)
+**Search in row and column wise sorted matrix**: ([link](https://leetcode.com/problems/search-a-2d-matrix/))
+- staircase search in `O(m + n)` time
+- two levels of BS (`O(logn + logm)`): use BS to find suitable row where element may lie and then do BS on that particular row to find target element
+- simulate flattening (`O(log (n * m))`; asymptotically identical to above):
+  - row-wise and column-wise sorted matrix after flattening needn't be a sorted 1D array! (but the LC problem's second property eliminates this possibility)
+  - `low = 0` and `high = n*m - 1` so we can perform BS in that space and search target element by calc `row = mid / n` and `col = mid % m` for each `mid` on the way
 
 **Kth Element in Row and Column Wise Sorted Matrix** [problem](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/)
 - same approach as above but count elements in each row using UB, and to find "actual" mid that is present in matrix do LB on search space (`m * log max(matEle)`)
@@ -289,6 +294,7 @@ Max-feasible problems:
 
 ## Not From Sheet
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection [2k23 notes link](/arrays.md#duplicatemissing-detection-techniques)
+
 
 
 
