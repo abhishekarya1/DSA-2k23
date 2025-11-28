@@ -275,15 +275,15 @@ Max-feasible problems:
 - `O(m * n)` scan but if `1`s are a lot lesser than `0`s then checking every row from the right end is a better strategy
 - `O(n * log m)` solution where we use LB search to find leftmost `1` and calc total number of `1`s
 
-**Search in row and column wise sorted matrix** with overlaps among rows: ([link](https://leetcode.com/problems/search-a-2d-matrix-ii/))
-- staircase search in `O(m + n)` time (best solution as it has linear TC and works with both row overlaps and no row overlaps!)
-- go to every row and do BS for target element if its in range of row elements. TC = `O(n * log m)`.
-
 **Search in row and column wise sorted matrix** with no overlaps among rows: ([link](https://leetcode.com/problems/search-a-2d-matrix/))
 - two levels of BS (`O(logn + logm)`): use BS to find suitable row where element may lie and then do BS on that particular row to find target element. Applicable only if no overlaps in rows. 
 - simulate flattening (`O(log (n * m))`; asymptotically identical to above). Applicable only if no overlaps in rows.
   - row-wise and column-wise sorted matrix after flattening needn't be a sorted 1D array! (but the LC problem's second property eliminates this possibility)
   - `low = 0` and `high = n*m - 1` so we can perform BS in that space and search target element by calc `row = mid / n` and `col = mid % m` for each `mid` on the way
+
+**Search in row and column wise sorted matrix** with overlaps among rows: ([link](https://leetcode.com/problems/search-a-2d-matrix-ii/))
+- go to every row and do BS for target element if its in range of row elements. TC = `O(n * log m)`.
+- staircase search in `O(m + n)` time (best solution as it has linear TC and works with both row overlaps and no row overlaps!)
 
 **K-th element in row and column wise sorted matrix**: ([link](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/))
 - consider answer space `mat[0][0]` to `mat[n-1][m-1]` and calc a `mid`, count elements less than `mid` in each row using UB, and to find "actual" mid that is present in matrix do LB on that space. TC = `O(log R * n * log m)` where `R = mat[n-1][m-1] - mat[0][0]`.
@@ -296,3 +296,4 @@ Max-feasible problems:
 - on equality condition `countSmallEqual(mid) == r*c/2`, our ans is first element having `countSmallEqual(mid) > r*c/2` (upper bound), so we move rightwards, `low` will eventually converge to UB
 
 **Find the Duplicate Number**: this can be optimally solved using BS or with Floyd's cycle detection ([notes](/arrays.md#duplicatemissing-detection-techniques))
+
