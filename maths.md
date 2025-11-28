@@ -19,7 +19,7 @@
   - Iterative that keeps track of only last two elements (space optimized)
   - Binet's Formula (constant time mathematical)
 - Mod:
-  - [Smallest Integer Divisible by K](https://leetcode.com/problems/smallest-integer-divisible-by-k/)
+  - [Smallest Integer Divisible by K](https://leetcode.com/problems/smallest-integer-divisible-by-k/): `n = (n * 10 + 1) % k` is like adding another `1` to the end of the number, and the `% k` keeps only the remainder so you never store the big number, just how it would behave when divided by `k`.
 
 ---
 ### Divisors
