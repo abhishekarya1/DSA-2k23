@@ -18,6 +18,8 @@
   - Iterative Tabulation using Array (Bottom-Up DP)
   - Iterative that keeps track of only last two elements (space optimized)
   - Binet's Formula (constant time mathematical)
+- Mod:
+  - [Smallest Integer Divisible by K](https://leetcode.com/problems/smallest-integer-divisible-by-k/)
 
 ---
 ### Divisors
