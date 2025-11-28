@@ -26,6 +26,8 @@ int sum(int n){
 ```
 
 ### Playing with Stack
+TC = `O(n^2)`
+
 **Reverse a Stack using Recursion**: constraint is to not use any aux stack or data structure, only function call stack
 - store all elements of stack in function call stack (of `revStack()`) until stack is empty
 - when returning, insert elements one-by-one in the stack but always insert at the bottom; use function call stack (of `insert()`) to save intermediary elements while reaching bottom by popping
@@ -180,5 +182,6 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
+
 
 
