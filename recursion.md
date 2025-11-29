@@ -37,18 +37,16 @@ TC = `O(n^2)`
 ## Subsequences
 > A subsequence is a sequence formed by deleting zero or more elements from the original string or array without changing the relative order of the remaining elements. Ex - for string `abcd`, some possible valid subsequences are `b`, `ab`, `ac`, `bcd`, `abd`, etc.
 >
-> The total number of subsequences of a string of length `n` is `2^n`, as each character has exactly two choices - either it is included in the subsequence or it is not.
-
-The math of it: https://github.com/abhishekarya1/DSA-2k23/blob/master/maths.md#combinatorics
+> The total number of subsequences of a string of length `n` is `2^n`, as each character has exactly two choices — either it is included in the subsequence or it is not. Alt, the formula can be derived using [combination](https://github.com/abhishekarya1/DSA-2k23/blob/master/maths.md#combinatorics) too.
 
 [PDF Notes](https://drive.google.com/file/d/10LUwk5Mlb-iSN6YqYC9x0PDVGUZxvmLE/view?usp=sharing)
 
-Problem Patterns:
-- generate all subsequences of size `n` (`vector<int>`)
-- generate all subsequence with sum `k` (`vector<int>`)
-- check if a subsequence exists with sum `k` (`bool`)
-- count all subsequences with sum `k` (`int`)
-- sum of xor of all subsets (subseq) [link](https://leetcode.com/problems/sum-of-all-subset-xor-totals/)
+Subsequences problem patterns:
+- generate all subsequences of size `n`
+- generate all subsequence with sum `k`
+- check if a subsequence exists with sum `k`
+- count all subsequences with sum `k`
+- [sum of xor of all subsets](https://leetcode.com/problems/sum-of-all-subset-xor-totals/)
 
 Two templates:
 1. Pick/NotPick - subsequences (all tree nodes have 2 children except leaves)
@@ -185,6 +183,7 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
+
 
 
 
