@@ -41,19 +41,28 @@ TC = `O(n^2)`
 
 [PDF Notes](https://drive.google.com/file/d/10LUwk5Mlb-iSN6YqYC9x0PDVGUZxvmLE/view?usp=sharing)
 
+Generating strings based on certain property: check some condition before making recursive call(s)
+- [Generate Binary Strings Without Adjacent Zeros](https://leetcode.com/problems/generate-binary-strings-without-adjacent-zeros/)
+- [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
+
 Subsequences problem patterns:
+- generate all subsequences (aka Power Set) ([link](https://leetcode.com/problems/subsets/))
 - generate all subsequences of size `n`
 - print subsequences with sum `k`
 - check if any subsequence exists with sum `k`: exit early (prune) by checking if any intermediate call (subseq) has sum `k`. Clarification and alt code ([link](https://chatgpt.com/share/692b4bba-0fd4-800e-b797-1b68b3ac2e86)).
 - count all subsequences with sum `k`: return `1` from the base case and sum intermediate calls' result
 - [sum of xor of all subsets](https://leetcode.com/problems/sum-of-all-subset-xor-totals/)
 
-Two templates:
-1. Pick/NotPick - subsequences (all tree nodes have 2 children except leaves)
-2. FOR loop - subsequences (tree nodes have atmost `str.size()` children), permutations & combinations, there is no base case as such, not-pick recursive call is absent, this is used when we want to skip duplicates
+Two core templates:
+- **Pick/NotPick** approach: subsequences (all tree nodes have 2 children except leaves).
+- **FOR Loop** approach: tree nodes have atmost `str.size()` children, there is no base case as such, not-pick recursive call is absent (since each loop iteration skips intermediate elements). This template is used when we want to skip duplicates. Also used to generate permutations and combinations.
 
-Base cases: In Pick/NotPick it is `i == arr.size()`. In FOR loop approach base case isn't required since FOR loop range takes care of array traversal bounds
+TC for both = `O(2^n)`.
+
+**Base case**: In Pick/NotPick it is `i == arr.size()`. In FOR loop approach base case isn't required since FOR loop range takes care of array traversal bounds.
+
 ```cpp
+// TEMPLATE#1 - Pick/NotPick
 void genSubseq(int i, string curr, string str){
     if(i == str.length()) {            // base case
         cout << curr << "\n";
@@ -64,6 +73,7 @@ void genSubseq(int i, string curr, string str){
     genSubseq(i + 1, curr, str);            // not pick
 }
 
+// TEMPLATE#2 - FOR Loop
 void genSubseqForLoopVersion(int i, string curr, string str){
     cout << curr << "\n";        // no base case
     
@@ -77,13 +87,17 @@ genSubseq(0, "", str);
 genSubseqForLoopVersion(0, "", str);
 ```
 
-TC = `O(2^n)`
-
 [Link to Recursion Tree Diagrams](https://imgur.com/a/U34VdR5)
 
-Whenever we require to remove duplicates (uniqueness), we `sort` and then use the FOR loop approach. Ex - ComboSum2, SubsetSum2. 
+**Removing Duplicates**:
+- whenever we require to remove duplicates (uniqueness), we `sort` and then use the FOR loop approach. Ex - Combination Sum II, Subsets II.
+- skip condition: `if(j > i && arr[j] == arr[j - 1]) continue;`. We can further optimize the FOR loop using `if(arr[j] > target) break;` (if current element can't be part of the answer then remaining array can't be too; since array is sorted).
 
-Skip condition: `if(i > p && arr[i] == arr[i - 1]) continue;`. We can further optimize the FOR loop using `if(arr[i] > target) break;` (if current element can't be part of the answer then remaining array can't be too; since array is sorted).
+Problems:
+- [Combination Sum](https://leetcode.com/problems/combination-sum/): all distinct elements, allowed to pick same element multiple times
+- [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/): may contain duplicates, duplicates not allowed in sum
+- [Subsets II](https://leetcode.com/problems/subsets-ii/): may contain duplicates, duplicates not allowed in subset
+- [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/): find all valid combinations of `k` numbers that sum up to `n`
 
 ## Other Patterns
 **Generate Combinations** - they are nothing but subsequences of fixed length `len` i.e. in the recursion tree of subsequences don't go all the way to the leaves but `return` when length of curr hits `len` (combination length)
@@ -183,6 +197,7 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
+
 
 
 
