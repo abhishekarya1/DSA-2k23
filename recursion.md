@@ -94,10 +94,10 @@ genSubseqForLoopVersion(0, "", str);
 - skip condition: `if(j > i && arr[j] == arr[j - 1]) continue;`. We can further optimize the FOR loop using `if(arr[j] > target) break;` (if current element can't be part of the answer then remaining array can't be too; since array is sorted).
 
 **Problems**:
-- [Combination Sum](https://leetcode.com/problems/combination-sum/): (pick/not pick) all distinct elements, allowed to pick same element multiple times, sorting is optional but it can help in optimization that we can prune not-pick step too if `arr[i] > target`.
-- [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/): (for loop) may contain duplicates, duplicates not allowed in sum.
-- [Subsets II](https://leetcode.com/problems/subsets-ii/): (for loop) may contain duplicates, duplicates not allowed in subset.
-- [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/): (for loop) find all valid combinations of `k` numbers that sum up to `n`.
+- [Combination Sum](https://leetcode.com/problems/combination-sum/): all distinct elements, allowed to pick same element multiple times, sorting is optional but it can help in optimization that we can prune not-pick step too if `arr[i] > target`. (pick/not pick)
+- [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/): may contain duplicates, duplicates not allowed in sum. (for loop)
+- [Subsets II](https://leetcode.com/problems/subsets-ii/): may contain duplicates, duplicates not allowed in subset. (for loop)
+- [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/): find all valid combinations of `k` numbers that sum up to `n`. (for loop)
 
 ## Other Patterns
 **Generate Combinations** - they are nothing but subsequences of fixed length `len` i.e. in the recursion tree of subsequences don't go all the way to the leaves but `return` when length of curr hits `len` (combination length)
@@ -197,6 +197,7 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
+
 
 
 
