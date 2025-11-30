@@ -99,8 +99,7 @@ genSubseqForLoopVersion(0, "", str);
 - [Subsets II](https://leetcode.com/problems/subsets-ii/): may contain duplicates, duplicates not allowed in subset. (for loop)
 - [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/): find all valid combinations of `k` numbers that sum up to `n`. (for loop)
 
-## Other Patterns
-**Generate Combinations** - they are nothing but subsequences of fixed length `len` i.e. in the recursion tree of subsequences don't go all the way to the leaves but `return` when length of curr hits `len` (combination length)
+**Generate Combinations**: ([link](https://leetcode.com/problems/combinations/)) they are nothing but subsequences of fixed length `len` i.e. in the recursion tree of subsequences don't go all the way to the leaves but `return` when length of curr hits `len` (combination length).
 ```cpp
 void genCombinations(int i, string curr, string str, int len) {
     if(curr.size() == len) {        // only thing diff from above subseq template
@@ -108,8 +107,8 @@ void genCombinations(int i, string curr, string str, int len) {
         return;
     }
     
-    for(int k = i; k < str.length(); k++){
-        genCombinations(k + 1, curr + str[k], str, len);
+    for(int j = i; j < str.length(); j++){
+        genCombinations(j + 1, curr + str[j], str, len);
     }
 }
 
@@ -117,7 +116,7 @@ void genCombinations(int i, string curr, string str, int len) {
 genCombinations(0, "", "abcde", 4);
 ```
 
-**Generate Permutations** - all permutations have equal length, swap characters each time and we don't even need a `curr` to store permutations. TC = `O(n!)`
+**Generate Permutations**: ([link](https://leetcode.com/problems/permutations/) all permutations have equal length, swap characters each time and we don't even need a `curr` to store permutations. TC = `O(n!)`.
 ```cpp
 void genPermutations(int i, string str) {
     if(i == str.size()) {
@@ -136,9 +135,9 @@ void genPermutations(int i, string str) {
 genPermutations(0, "abc");
 ```
 
-[Link to Recursion Tree Diagram](https://imgur.com/a/6BUdglp)
+[Permutations Recursion Tree Diagram](https://imgur.com/a/6BUdglp)
 
-[Sequential Digits](https://leetcode.com/problems/sequential-digits/) - `1234`, `2345`, `3456` and so on.
+**Sequential Digits**: ([link](https://leetcode.com/problems/sequential-digits/)) all integers in range that have sequential digits like `1234`, `2345`, `3456`, etc.
 ```cpp
 void helper(int i, int n, int low, int high, vector<int> &ans){
     if(i >= 10 || n > high) return;
@@ -160,7 +159,7 @@ sort(ans.begin(), ans.end());
 return ans;
 ```
 
-**Letter Combinations of a Phone Number**: normal combination template actually does combination on own `str = "abc"` using FOR loop as `"a"` and `"bc"` producing `"ab"` and `"bc"`. Same way we do for `str = "23"`, but expand str as `"abc"` and `"def"` using a dictionary of key-letter maps and produce all `len(str)` sized combinations using the same template [problem](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+**Letter Combinations of a Phone Number**: ([link](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)) normal combination template actually does combination on own `str = "abc"` using FOR loop as `"a"` and `"bc"` producing `"ab"` and `"bc"`. Same way we do for `str = "23"`, but expand str as `"abc"` and `"def"` using a dictionary of key-letter maps and produce all `len(str)` sized combinations using the same template.
 
 (Old Explanation) **2-D**: the main string to be traversed is traversed by recursion calls, other by FOR loop. Ex - in phone keypad problem, we traverse digits by recursion and run FOR loop for "abc" "def" etc... Another example - combination sum problems are also this way only, there we place 1 element of the array using recursion and using FOR loop we traverse the rest of the array to find pairs for it
 
@@ -197,6 +196,7 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
+
 
 
 
