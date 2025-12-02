@@ -137,7 +137,7 @@ genPermutations(0, "abc");
 
 [Permutations Recursion Tree Diagram](https://imgur.com/a/6BUdglp)
 
-**Sequential Digits**: ([link](https://leetcode.com/problems/sequential-digits/)) generate digits sequentially and check if the number formed is in given range, do this till `i > 9` or `n > high` ofc.
+**Sequential Digits**: ([link](https://leetcode.com/problems/sequential-digits/)) generate digits sequentially and check if the number formed is in given range, do this till `i > 9` or `n > high` ofc. TC = `O(1)`, since there are only `45` possible sequential digits and in the worst case we generate all of them.
 
 **Letter Combinations of a Phone Number**: ([link](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)) normal combination template actually does combination on own `str = "abc"` using FOR loop as `"a"` and `"bc"` producing `"ab"` and `"bc"`. Same way we do for `str = "23"`, but expand str as `"abc"` and `"def"` using a dictionary of key-letter maps and produce all `len(str)` sized combinations using the same template.
 
@@ -176,6 +176,7 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
 
 **Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
+
 
 
 
