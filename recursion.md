@@ -137,22 +137,23 @@ genPermutations(0, "abc");
 
 [Permutations Recursion Tree Diagram](https://imgur.com/a/6BUdglp)
 
-**Sequential Digits**: ([link](https://leetcode.com/problems/sequential-digits/)) generate digits sequentially and check if the number formed is in given range, do this till `i > 9` or `n > high` ofc. TC = `O(1)`, since there are only `45` possible sequential digits and in the worst case we generate all of them.
-
 **Letter Combinations of a Phone Number**: ([link](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)) normal combination template actually does combination on own `str = "abc"` using FOR loop as `"a"` and `"bc"` producing `"ab"` and `"bc"`. Same way we do for `str = "23"`, but expand str as `"abc"` and `"def"` using a dictionary of key-letter maps and produce all `len(str)` sized combinations using the same template.
 
-(Old Explanation) **2-D**: the main string to be traversed is traversed by recursion calls, other by FOR loop. Ex - in phone keypad problem, we traverse digits by recursion and run FOR loop for "abc" "def" etc... Another example - combination sum problems are also this way only, there we place 1 element of the array using recursion and using FOR loop we traverse the rest of the array to find pairs for it
+_2-D Recursion Pattern_: the main string to be traversed is traversed by recursion calls, other by FOR loop. Ex - in phone keypad problem, we traverse digits by recursion and run FOR loop for "abc" "def" etc. Another example - combination sum problems are also this way only, there we place one element of the array using recursion and using FOR loop we traverse the rest of the array to find pairs for it.
 
-## Advanced Problems and Backtracking
-**Palindrome Partitioning**: check all partition positions, if a partition's left substring (`start` to `i`) is a palindrome, put it in ans vector and then recur for remaining string moving ahead `i + 1` in recursion call
+## Other Problems
+**Sequential Digits**: ([link](https://leetcode.com/problems/sequential-digits/)) generate digits sequentially and check if the number formed is in given range, do this till `i > 9` or `n > high` ofc. TC = `O(1)`, since there are only `45` possible sequential digits and in the worst case we generate all of them.
 
-**Word Search**: recur on string `word` as soon as the first occurance of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid. Make sure to backtrack i.e. unvisit after recursive calls. This is nothing but DFS + Backtracking - go and check.
--  TC = `4 ^ (m*n)` since at each cell we move in 4 directions
+## Backtracking
+**Palindrome Partitioning**: ([link](https://leetcode.com/problems/palindrome-partitioning/)) check all partition positions, if a partition's left substring (`start` to `i`) is a palindrome, put it in ans vector and then recur for remaining string moving ahead `i + 1` in recursion call.
 
-**Rat in a Maze**: Nothing but simple DFS + Backtracking - check and go, make sure to backtrack if further movement is not possible. TC = `4 ^ (m*n)`
+**Word Search**: ([link](https://leetcode.com/problems/word-search/)) recur on string `word` as soon as the first occurance of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid. Make sure to backtrack i.e. unvisit after recursive calls. This is nothing but DFS + Backtracking - go and check.
+-  TC = `4 ^ (m*n)` since at each cell we move in 4 directions.
 
-**N-Queens**: input is `nCol = nRow = nQueens`,  recur on `cols` and FOR loop on `rows`, need to check only three sides (left in the same row, left upper diag, left lower diag) as we're moving from left to right. 
-- TC = `O(N! * N)`. For the first queen, we have `N` choices of squares, for the second queen we need to check `N-1` choices (since one square is taken by the first queen), for the third queen we need to check for `N-2` choices, and so on till only `1` choice and we explore all choices so we take product (i.e. factorial). In practice, TC is better since we know if we cannot place a queen and we backtrack earlier than reaching `1`
+**Rat in a Maze**: Nothing but simple DFS + Backtracking - check and go, make sure to backtrack if further movement is not possible. TC = `4 ^ (m*n)`.
+
+**N-Queens**: ([link](https://leetcode.com/problems/n-queens/)) input is `nCol = nRow = nQueens`,  recur on `cols` and FOR loop on `rows`, need to check only three sides (left in the same row, left upper diag, left lower diag) as we're moving from left to right. 
+- TC = `O(N! * N)`. For the first queen, we have `N` choices of squares, for the second queen we need to check `N-1` choices (since one square is taken by the first queen), for the third queen we need to check for `N-2` choices, and so on till only `1` choice and we explore all choices so we take product (i.e. factorial). In practice, TC is better since we know if we cannot place a queen and we backtrack earlier than reaching `1`.
 
 ```txt
 Template for below problems - returns bool, make a current choice and recur on next items (rest of the data).
@@ -170,27 +171,9 @@ for(i : all choices)
             remove data_i from ans - backtrack
 ```
 
-**Word Break**: use `substr(0, i+1)` to get left word and do linear search for each left word till current index `i`, once a word is found in dict, recur with right substring (remaining string) as the og string. If right recur call returns `true` (meaning breaking successful till the end; propagated backwards) return `true` from current too, otherwise backtrack if `false` is returned
-- backtracking helps covers cases like `str = "leetacode", dict = {"leet", "leeta", "code"}`, firstly "leet" will be found and we will recur for "acode" returning false after checking, then we come back and backtrack popping "leet" from ans and pushing "leeta" and recur for "code" which gives correct ans
+**Word Break**: use `substr(0, i+1)` to get left word and do linear search for each left word till current index `i`, once a word is found in dict, recur with right substring (remaining string) as the og string. If right recur call returns `true` (meaning breaking successful till the end; propagated backwards) return `true` from current too, otherwise backtrack if `false` is returned.
+- backtracking helps covers cases like `str = "leetacode", dict = {"leet", "leeta", "code"}`, firstly "leet" will be found and we will recur for "acode" returning false after checking, then we come back and backtrack popping "leet" from ans and pushing "leeta" and recur for "code" which gives correct ans.
 
-**M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration)
+**M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration).
 
-**Sudoku Solver**: find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Sudoku Solver**: ([link](https://leetcode.com/problems/sudoku-solver/) find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid.
