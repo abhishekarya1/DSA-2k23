@@ -165,14 +165,16 @@ def backtrack(i, partial):
         backtrack(i + 1, partial + choice)
 ```
 
+**Palindrome Partitioning**: ([link](https://leetcode.com/problems/palindrome-partitioning/)) here we're checking all partition positions from current (`p`) to later positions `i` (use FOR loop), try all and if a partition's left substring (`start` to `i`) is a palindrome, put it in ans vector and then recur for remaining string moving ahead `i + 1` in recursion call.
+
 ## Other Problems
+
 **Sequential Digits**: ([link](https://leetcode.com/problems/sequential-digits/)) generate digits sequentially and check if the number formed is in given range, do this till `i > 9` or `n > high` ofc. TC = `O(1)`, since there are only `45` possible sequential digits and in the worst case we generate all of them.
 
 ## Backtracking
-**Palindrome Partitioning**: ([link](https://leetcode.com/problems/palindrome-partitioning/)) check all partition positions, if a partition's left substring (`start` to `i`) is a palindrome, put it in ans vector and then recur for remaining string moving ahead `i + 1` in recursion call.
 
-**Word Search**: ([link](https://leetcode.com/problems/word-search/)) recur on string `word` as soon as the first occurance of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid. Make sure to backtrack i.e. unvisit after recursive calls. This is nothing but DFS + Backtracking - go and check.
--  TC = `4 ^ (m*n)` since at each cell we move in 4 directions.
+**Word Search**: ([link](https://leetcode.com/problems/word-search/)) start recursion on string `word` as soon as the first occurrence of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case handling - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid e.g. `ABA`, make sure to backtrack i.e. unvisit before returning from a cell. This is nothing but DFS + Backtracking - "go-and-check". TC = `4 ^ (m*n)` since at each cell we move in 4 directions.
+- we can also code it in a "check-and-go" manner, which prunes 3 unnecessary recursive calls. ([code](https://chatgpt.com/s/t_6931cafca9088191b1b294e250896b10))
 
 **Rat in a Maze**: Nothing but simple DFS + Backtracking - check and go, make sure to backtrack if further movement is not possible. TC = `4 ^ (m*n)`.
 
@@ -201,6 +203,7 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration).
 
 **Sudoku Solver**: ([link](https://leetcode.com/problems/sudoku-solver/) find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid.
+
 
 
 
