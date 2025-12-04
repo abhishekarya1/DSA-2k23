@@ -197,12 +197,13 @@ for(i : all choices)
             remove data_i from ans - backtrack
 ```
 
-**Word Break**: use `substr(0, i+1)` to get left word and do linear search for each left word till current index `i`, once a word is found in dict, recur with right substring (remaining string) as the og string. If right recur call returns `true` (meaning breaking successful till the end; propagated backwards) return `true` from current too, otherwise backtrack if `false` is returned.
+**Word Break**: ([link](https://leetcode.com/problems/word-break/)) use `substr(0, i+1)` to get left word and do linear search for each left word till current index `i`, once a word is found in dict, recur with right substring (remaining string) as the og string. If right recur call returns `true` (meaning breaking successful till the end; propagated backwards) return `true` from current too, otherwise backtrack if `false` is returned.
 - backtracking helps covers cases like `str = "leetacode", dict = {"leet", "leeta", "code"}`, firstly "leet" will be found and we will recur for "acode" returning false after checking, then we come back and backtrack popping "leet" from ans and pushing "leeta" and recur for "code" which gives correct ans.
 
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration).
 
-**Sudoku Solver**: ([link](https://leetcode.com/problems/sudoku-solver/) find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid.
+**Sudoku Solver**: ([link](https://leetcode.com/problems/sudoku-solver/)) find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid.
+
 
 
 
