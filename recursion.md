@@ -176,7 +176,7 @@ def backtrack(i, partial):
 **Word Search**: ([link](https://leetcode.com/problems/word-search/)) start recursion on string `word` as soon as the first occurrence of the `word[0]` is found, traverse all four directions matching subsequent characters of `word` and if in any direction we reach a dead end (either grid boundaries, non-matching character, or an already visited cell). Edge case handling - mark visited in grid cell as `!` because we can traverse the grid and loop back to the same element again and use it again which is invalid e.g. `ABA`, make sure to backtrack i.e. unvisit before returning from a cell. This is nothing but DFS + Backtracking - "go-and-check". TC = `4 ^ (m*n)` since at each cell we move in 4 directions.
 - we can also code it in a "check-and-go" manner, which prunes 3 unnecessary recursive calls. ([code](https://chatgpt.com/s/t_6931cafca9088191b1b294e250896b10))
 
-**Rat in a Maze**: Nothing but simple DFS + Backtracking - check and go, make sure to backtrack if further movement is not possible. TC = `4 ^ (m*n)`.
+**Rat in a Maze**: same as above - simple DFS + Backtracking.
 
 **N-Queens**: ([link](https://leetcode.com/problems/n-queens/)) input is `nCol = nRow = nQueens`,  recur on `cols` and FOR loop on `rows`, need to check only three sides (left in the same row, left upper diag, left lower diag) as we're moving from left to right. 
 - TC = `O(N! * N)`. For the first queen, we have `N` choices of squares, for the second queen we need to check `N-1` choices (since one square is taken by the first queen), for the third queen we need to check for `N-2` choices, and so on till only `1` choice and we explore all choices so we take product (i.e. factorial). In practice, TC is better since we know if we cannot place a queen and we backtrack earlier than reaching `1`.
@@ -203,6 +203,7 @@ for(i : all choices)
 **M-Coloring Problem**: try all colors for all nodes checking validity and recur for next node, if any of the next nodes can't be colored - backtrack on current, decolor and recolor (FOR loop's next iteration).
 
 **Sudoku Solver**: ([link](https://leetcode.com/problems/sudoku-solver/)) find an empty cell and try all 9 numbers in it if valid, recur on board. If none of the numbers were placed return false, if all board traversal is done and we didn't return yet, return true. TC = `O(9 ^ (n*n))`, since we've 9 choices for a `n x n` grid.
+
 
 
 
