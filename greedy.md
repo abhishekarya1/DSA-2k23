@@ -8,8 +8,4 @@ Patterns: https://chatgpt.com/share/69335b0d-3150-800e-bf69-3b56c9ac608b
 
 **Minimum Number of Coins**: start from the highest denomination coin and keep adding it to reach amount (or subtract from amount to reach `0`), move to lower denomination and repeat.
 
-
-
-
-
-
+**Lemonade Change**: ([link](https://leetcode.com/problems/lemonade-change/)) keep track of how many `$5` and `$10` bills you have, and for each customer give change using the largest bills possible while ensuring you never go negative. If at any point you cannot provide exact change, return `false`.
