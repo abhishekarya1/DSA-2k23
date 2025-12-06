@@ -1,5 +1,12 @@
 Patterns: https://chatgpt.com/share/69335b0d-3150-800e-bf69-3b56c9ac608b
 
+Greedy Algorithms can be classified broadly among these known patterns:
+- Resource Allocation
+- Change-making
+- Interval-based: merging intervals, activity selection, scheduling
+
+---
+
 **Assign Cookies**: ([link](https://leetcode.com/problems/assign-cookies/)) sort both and then compare from left to right (or right to left). The idea is to satisfy each child with the smallest cookie that can meet their greed. If we assign child `1` to cookie `4` in `2 3 4` instead of `2`, we won't be able to assign child `4` any cookies (if they exist), so that won't be optimal.
 - sorting both and comparing like that works because the problem has a "monotonic" structure — children with higher greed can only be satisfied by cookies that are the same or larger. After sorting, once a cookie fails to satisfy a child, it will fail for all later children; once it succeeds, you safely move on.
 - same problem: [Maximum Matching of Players With Trainers](https://leetcode.com/problems/maximum-matching-of-players-with-trainers/)
@@ -12,3 +19,6 @@ Patterns: https://chatgpt.com/share/69335b0d-3150-800e-bf69-3b56c9ac608b
 
 **Valid Parenthesis String**: ([link](https://leetcode.com/problems/valid-parenthesis-string/)) track `minOpen` and `maxOpen` for all chars, these are basically count of opens if `*` is considered `)` and `(` respectively. At every char check both the counts `< 0` and decide and convert/relax `*`. At the end, check if we've closed all open parenthesis i.e. `minOpen == 0`.
 
+[intervals notes](https://github.com/abhishekarya1/DSA-2k23/blob/main/arrays.md#intervals)
+
+**Number of Meetings Possible to Attend** / **N Meetings in one Room**: the goal is to find out the max number of meetings one person can attend (or max meetings a room can accomodate). This is nothing but finding max NOI.
