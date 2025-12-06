@@ -10,4 +10,5 @@ Patterns: https://chatgpt.com/share/69335b0d-3150-800e-bf69-3b56c9ac608b
 
 **Lemonade Change**: ([link](https://leetcode.com/problems/lemonade-change/)) keep track of how many `$5` and `$10` bills you have, and for each customer give change using the largest bills possible while ensuring you never go negative. If at any point you cannot provide exact change, return `false`.
 
-**Valid Parenthesis String**: ([link](https://leetcode.com/problems/valid-parenthesis-string/)) track `minOpen` and `maxOpen` for all chars, at every step check them `< 0` and decide and convert/relax all `*`. At the end, check if we've closed all open parenthesis.
+**Valid Parenthesis String**: ([link](https://leetcode.com/problems/valid-parenthesis-string/)) track `minOpen` and `maxOpen` for all chars, these are basically counts if `*` is considered `(` or `)`. At every char check both the counts `< 0` and decide and convert/relax `*`. At the end, check if we've closed all open parenthesis i.e. `minOpen == 0`.
+
