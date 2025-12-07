@@ -18,9 +18,10 @@ Greedy Algorithms can be classified broadly among these known patterns:
 
 **Lemonade Change**: ([link](https://leetcode.com/problems/lemonade-change/)) keep track of how many `$5` and `$10` bills you have, and for each customer give change using the largest bills possible while ensuring you never go negative. If at any point you cannot provide exact change, return `false`.
 
-**Valid Parenthesis String**: ([link](https://leetcode.com/problems/valid-parenthesis-string/)) track `minOpen` and `maxOpen` for all chars, these are basically count of opens if `*` is considered `)` and `(` respectively. At every char check both the counts `< 0` and decide and convert/relax `*`. At the end, check if we've closed all open parenthesis i.e. `minOpen == 0`.
+**Valid Parenthesis String**: ([link](https://leetcode.com/problems/valid-parenthesis-string/)) track `minOpen` and `maxOpen` for all chars, these basically denote a range of open counts if `*` is considered `)`, `''`, or `(`. At every char check both the counts `< 0` and decide invalid or convert/relax `*`. At the end, check if we've closed all open parenthesis in atleast one interpretation of `*` i.e. `minOpen == 0`, otherwise even the "most closed" case still leaves you with leftover opens.
 
 [intervals notes](https://github.com/abhishekarya1/DSA-2k23/blob/main/arrays.md#intervals)
 
 **Number of Meetings Possible to Attend** / **N Meetings in one Room**: the goal is to find out the max number of meetings one person can attend (or max meetings a room can accomodate). This is nothing but finding max NOI.
+
 
