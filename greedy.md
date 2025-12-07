@@ -3,6 +3,7 @@ Patterns: https://chatgpt.com/share/69335b0d-3150-800e-bf69-3b56c9ac608b
 Greedy Algorithms can be classified broadly among these known patterns:
 - Resource Allocation
 - Change-making
+- Pick items based on ratio (value/weight, profit/time, etc.)
 - Interval-based: merging intervals, activity selection, scheduling
 
 ---
@@ -22,3 +23,4 @@ Greedy Algorithms can be classified broadly among these known patterns:
 [intervals notes](https://github.com/abhishekarya1/DSA-2k23/blob/main/arrays.md#intervals)
 
 **Number of Meetings Possible to Attend** / **N Meetings in one Room**: the goal is to find out the max number of meetings one person can attend (or max meetings a room can accomodate). This is nothing but finding max NOI.
+
