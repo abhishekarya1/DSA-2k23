@@ -1,3 +1,5 @@
+- Odd/Even:
+  - https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/ 
 - Leap Year:
   - div by `4`, if a `100` year, it should be div by `400`
   - Ex: `1900` isn't leap, despite being div by `4`
