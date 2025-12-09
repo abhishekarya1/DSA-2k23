@@ -281,9 +281,9 @@ We don't need to calc `startMerged` using `min` in Merge Intervals problem, beca
 
 **Meeting Rooms**: determine if a person could add all meetings to their schedule without any conflicts. Sol: just detect any overlap; sort by start time and check existence of atleast one overlap.
 
-**Meeting Rooms II**: find the minimum number of rooms required to schedule all meetings without any conflicts. Sol: store start times and end times in seperate arrays and sort each of them in asc order, then use two pointers to calc rooms required based on current start time and latest end time. Probe the start time array and look for end times lesser than it, on each lesser do `j++` and don't change `cntRooms` (i.e. reuse a room), and on each greater do `cntRooms++` (i.e. need a new room).
+**Meeting Rooms II**: find the minimum number of rooms required to schedule all meetings without any conflicts. Sol: store start times and end times in seperate arrays and sort each of them in asc order, then use two pointers to calc rooms required based on current start time and latest end time. Compare both and look for end times lesser than start time, on each lesser do `j++` and don't change `cntRooms` (i.e. reuse a room), and on each greater do `cntRooms++` (i.e. need a new room).
 
-![](https://cdn.imgchest.com/files/7bwck2wlkr7.png)
+![](https://i.imgur.com/InaZhOz.png)
 
 _When to sort by start time and when by end time?_: sort by end time when we need to choose the max number of non-overlapping intervals (Greedy selection; as finishing intervals early gives us more room to pick others), and sort by start time when detecting overlaps or simulating a timeline.
 - _Start time sort_: Merge Intervals, Meeting Rooms I (Check for overlaps), Meeting Rooms II (Find min number of rooms).
@@ -349,6 +349,7 @@ maxProd = max(maxProd, posProd);
 **Some Tricks**:
 - primary diag = `mat[i][i]`, sec diag = `mat[i][n - 1 - i]` (for square matrices of `n x n` dimensions)
 - convert 1D array into `M x N` 2D matrix ([problem](https://leetcode.com/problems/convert-1d-array-into-2d-array/)): for row-major way of storing, do `mat[i / rowSize][i % rowSize] = arr[i]`, notice that `rowSize` is nothing but `nCols` here. For column-major way, we can do `mat[i % colSize][i / colSize]`.
+
 
 
 
