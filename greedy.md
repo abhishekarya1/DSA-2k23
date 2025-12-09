@@ -22,9 +22,10 @@ Greedy Algorithms can be classified broadly among these known patterns:
 
 [intervals notes](https://github.com/abhishekarya1/DSA-2k23/blob/main/arrays.md#intervals)
 
-**Number of Meetings Possible to Attend** / **N Meetings in one Room**: the goal is to find out the max number of meetings one person can attend (or max meetings a room can accomodate). This is nothing but finding max NOI.
+**Number of Meetings Possible to Attend** / **N Meetings in one Room**: the goal is to find out the max number of meetings one person can attend (or max meetings a room can accomodate). This is nothing but finding [max NOI](https://leetcode.com/problems/non-overlapping-intervals/).
 
 **Jump Game**: ([link](https://leetcode.com/problems/jump-game/)) track `maxReachable` index and update it on every max `i + nums[i]`, if we encounter an index that's greater than it then we can't proceed further (end is unreachable), return `false`.
 
 **Jump Game II**: ([link](https://leetcode.com/problems/jump-game-ii/)) same as above but track the end of the current range and reaching it means we've exhausted every index that can be reached with the current number of jumps, so if we want to move forward at all, we are forced to increase the jump count. Hence track `currentEnd` along with `maxReachable` for this. ([clarification](https://chatgpt.com/s/t_69370638565881918c571011b4d11c88))
 
+**Minimum number of Rooms / Platforms Required** (Meeting Rooms II): ([link](https://takeuforward.org/data-structure/minimum-number-of-platforms-required-for-a-railway/)) sort both start and end times and look for start times `<=` a given end time, update `+1` to room count for each such start time, and update pointer to start time (as it doesn't matter anymore since we added a room for it), otherwise just update pointer to end time (as it doesn't matter anymore since we're already past it).
