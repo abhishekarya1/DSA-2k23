@@ -1,4 +1,4 @@
-Patterns: https://chatgpt.com/share/69335b0d-3150-800e-bf69-3b56c9ac608b
+Patterns: https://chatgpt.com/share/693856bc-ecd8-800e-95d1-ef32cba717ef
 
 Greedy Algorithms can be classified broadly among these known patterns:
 - Resource Allocation
@@ -28,4 +28,5 @@ Greedy Algorithms can be classified broadly among these known patterns:
 
 **Jump Game II**: ([link](https://leetcode.com/problems/jump-game-ii/)) same as above but track the end of the current range and reaching it means we've exhausted every index that can be reached with the current number of jumps, so if we want to move forward at all, we are forced to increase the jump count. Hence track `currentEnd` along with `maxReachable` for this. ([clarification](https://chatgpt.com/s/t_69370638565881918c571011b4d11c88))
 
-**Minimum number of Rooms / Platforms Required** (Meeting Rooms II): ([link](https://takeuforward.org/data-structure/minimum-number-of-platforms-required-for-a-railway/)) sort both start and end times and look for start times `<=` a given end time, update `+1` to room count for each such start time, and update pointer to start time (as it doesn't matter anymore since we added a room for it), otherwise just update pointer to end time (as it doesn't matter anymore since we're already past it).
+**Minimum number of Rooms / Platforms Required** (Meeting Rooms II): ([link](https://takeuforward.org/data-structure/minimum-number-of-platforms-required-for-a-railway/)) sort both start and end times and look for start times `<=` a given end time, update `roomCnt++` for each such start time, and update pointer to start time (as it doesn't matter anymore since we added a room for it), otherwise just update pointer to end time (as it doesn't matter anymore since we're already past it).
+
