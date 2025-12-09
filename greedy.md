@@ -32,4 +32,5 @@ Greedy Algorithms can be classified broadly among these known patterns:
 
 **Job Scheduling** with Deadlines and Profit: simply picking max profits first won't work e.g. `{ (A, 1, 10), (B, 2, 50) }` has max profit as `60` and not `50` (if we pick job `B` first and it takes one time unit). Sort jobs in desc order of profit, then dump each job into the last free slot before its deadline, by doing reverse traversal on a `slots[maxDeadline + 1]` array from its deadline. Update total profit on a new entry and put job id in the slot for getting sequence. ([explanation](https://chatgpt.com/share/6938610b-79c8-800e-afb2-56c86046d753))
 
+**Shortest Job First (SJF)** for CPU Scheduling: sort jobs in asc order, and the total waiting time for a given job will be accumulated time of all jobs executed prior to that job. Total waiting time will be the sum of prefix sums of all elements.
 
