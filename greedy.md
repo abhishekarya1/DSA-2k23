@@ -28,9 +28,10 @@ Greedy Algorithms can be classified broadly among these known patterns:
 
 **Jump Game II**: ([link](https://leetcode.com/problems/jump-game-ii/)) same as above but track the end of the current range and reaching it means we've exhausted every index that can be reached with the current number of jumps, so if we want to move forward at all, we are forced to increase the jump count. Hence track `currentEnd` along with `maxReachable` for this. ([clarification](https://chatgpt.com/s/t_69370638565881918c571011b4d11c88))
 
-**Minimum number of Rooms / Platforms Required** (Meeting Rooms II): ([link](https://takeuforward.org/data-structure/minimum-number-of-platforms-required-for-a-railway/)) sort both start and end times and look for start times `<=` a given end time, update `roomCnt++` for each such start time, and update pointer to start time (as it doesn't matter anymore since we added a room for it), otherwise just update pointer to end time (as it doesn't matter anymore since we're already past it).
+**Minimum number of Rooms / Platforms Required** (Meeting Rooms II): ([link](https://takeuforward.org/data-structure/minimum-number-of-platforms-required-for-a-railway/)) sort both start and end times and look for start times `<=` a given end time, update `roomCnt++` for each such start time, and update pointer to start time (as it doesn't matter anymore since we added a room for it), otherwise just update pointer to end time (as it doesn't matter anymore since we're already past it). This is nothing but max OI.
 
 **Job Scheduling** with Deadlines and Profit: simply picking max profits first won't work e.g. `{ (A, 1, 10), (B, 2, 50) }` has max profit as `60` and not `50` (if we pick job `B` first and it takes one time unit). Sort jobs in desc order of profit, then dump each job into the last free slot before its deadline, by doing reverse traversal on a `slots[maxDeadline + 1]` array from its deadline. Update total profit on a new entry and put job id in the slot for getting sequence. ([explanation](https://chatgpt.com/share/6938610b-79c8-800e-afb2-56c86046d753))
 
 **Shortest Job First (SJF)** for CPU Scheduling: sort jobs in asc order, and the total waiting time for a given job will be accumulated time of all jobs executed prior to that job. Total waiting time will be the sum of prefix sums of all elements.
+
 
