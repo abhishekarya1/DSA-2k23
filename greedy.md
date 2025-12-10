@@ -34,4 +34,4 @@ Greedy Algorithms can be classified broadly among these known patterns:
 
 **Shortest Job First (SJF)** for CPU Scheduling: sort jobs in asc order, and the total waiting time for a given job will be accumulated time of all jobs executed prior to that job. Total waiting time will be the sum of prefix sums of all elements.
 
-
+**Candy**: ([link](https://leetcode.com/problems/candy/)) slope approach with peak and valley counter. Cracked solution, watch Striver's video lol!
