@@ -1,14 +1,16 @@
-No. of nodes on `i`th level, no. of levels if tree has total `n` nodes - work out formulas with `log2` and `2^n` based on indexing of root is 0 or 1
+## Basics
+Below formulae assume 0-based indexing of levels:
+- Max number of nodes on `i`-th level = `2^i`
+- Number of levels if tree has total of `n` nodes = min `floor(log2(n))` (in perfect BT), max `n - 1` (in degenerate tree; equivalent to a LL)
+- Number of nodes in tree of height `h` = `2^(h+1) - 1`
 
-Observation - No. of nodes on each level follow GP - `1 + 2 + 4 + 8 + 16 ...` with common ratio 2
+Observation used to derive last formula - number of nodes on each level follow a GP `2^0 + 2 + 4 + 8 + 16 ... 2^n` with common ratio `2`. Alt, last level has twice the number of nodes than the remaining tree (`2^h * 2^1` = `2^(h+1)`) and we double counted root so we subtract `1`.
 
-Max/Min height possible with `n` nodes - min will always be full BT, max will be degenerate tree (equivalent to a LL)
-
-Representations:
+**Representations**:
 - Sequential using arrays (0-indexed): parent at `p`, left child at `2p+1`, right child at `2p+2`
 - Recursive using struct/class
 
-Types:
+**Types**:
 - Full BT: all nodes have exactly 2 children except leaf nodes
 - Strict BT: all nodes have either 0 or 2 children
 - Complete BT: all nodes have 0 or 2 children and leaf node level has all nodes as left as possible
@@ -42,3 +44,4 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
