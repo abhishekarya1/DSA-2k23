@@ -11,8 +11,8 @@ Observation used to derive last formula - number of nodes on each level follow a
 - Recursive using struct/class
 
 **Types**:
-- Full BT: all nodes have exactly 2 children except leaf nodes
-- Strict BT: all nodes have either 0 or 2 children
+- Perfect BT: all nodes have exactly 2 children except leaf nodes
+- Full BT / Strict BT: all nodes have either 0 or 2 children
 - Complete BT: all nodes have 0 or 2 children and leaf node level has all nodes as left as possible
 
 In a strict binary tree - e = i + 1 where e = leaf nodes, and i = non-leaf nodes
@@ -44,4 +44,5 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
 
