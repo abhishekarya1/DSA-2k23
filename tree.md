@@ -8,11 +8,11 @@ Fundamental formulae:
 
 Ways to derive the last formula: 
 - workout a relation between each level's index and total nodes till that level
-- number of nodes on each level follow a GP `2^0 + 2 + 4 + 8 + 16 ... 2^n` with common ratio `2` so we can find its sum
+- number of nodes on each level follow a GP $`2^0 + 2 + 4 + 8 + 16 + ... + 2^n`$ with common ratio `2` so we can find its sum
 - in a Perfect BT, the `i`-th level has $`2^i`$ nodes and sum of nodes in all prior levels are $`2^i - 1`$ so we can sum them as $`2^i + 2^i - 1`$ which comes out to be $`2^{i+1} - 1`$ after simplification.
 
 **Representations**:
-- **Sequential**: using arrays (0-indexed): parent at index `p`, left child at `2p+1`, right child at `2p+2`
+- **Sequential**: using arrays (0-indexed): parent at index `p`, left child at `2p + 1`, right child at `2p + 2`
 - **Recursive**: using `struct` or `class`
 
 **Types of BT**:
@@ -49,3 +49,4 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
