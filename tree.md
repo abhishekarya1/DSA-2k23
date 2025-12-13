@@ -28,9 +28,9 @@ Ways to derive the last formula:
 **Trick**: reading traversals using finger placement around nodes: left = preOrder, bottom = inOrder, right = postOrder
 
 - preOrder - iterative uses 1 stack (print root and put right then left in stack - strategic)
-- inOrder - iterative uses 1 stack (go as left as possible for non NULL nodes, for NULL nodes (leaf) print top of stack and go rightwards) - `while(true)` way is used here and traversal only by using stack top is not possible here unlike preOrder and postOrder's `while` loop
-- postOrder - iterative uses 2 stack (postOrder is nearly reverse of preOrder, second stack is for reversal) (put root in stack2, then push left then right in stack1)
-  - using 1 stack - similar to inOrder traversal but requires another `while` loop inside logic to print root(s)
+- inOrder - iterative uses 1 stack (go as left as possible for non-NULL nodes, for NULL nodes (leaf) print top of stack and go rightwards), `while(true)` is used here because traversal only by using stack top is not possible here unlike preOrder and postOrder's `while` loop
+- postOrder - iterative uses 2 stack (postOrder is nearly reverse of preOrder, second stack is for reversal) (put root in stack1, then push left then right in stack2)
+  - using 1 stack - similar to inOrder traversal but requires another `while` loop inside logic to print roots
 - levelOrder - uses a queue, put a `for` loop inside to track level
 - preOrder, inOrder, postOrder in a single traversal of a tree - `stack<pair<TreeNode*, int>>` while stack is not empty, on visit 1 (add to preOrder list) and go left, on visit 2 (add to postOrder list and go right), otherwise (visit 3) add to inOrder list and go nowhere
 
@@ -49,5 +49,6 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
 
 
