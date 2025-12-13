@@ -34,7 +34,7 @@ Ways to derive the last formula:
 **Post-Order**: ([link](https://leetcode.com/problems/binary-tree-postorder-traversal/)) iterative uses 2 stacks (post-order is nearly reverse of pre-order, second stack is for reversal), `stack1` is primary and for every node in it, put root in `stack2`, then push left and then right in `stack1`
   - using 1 stack - similar to inOrder traversal but requires another `while` loop inside logic to print roots
 
-**Level-Order**: ([link](https://leetcode.com/problems/binary-tree-level-order-traversal/)) uses a queue, put a `for` loop inside to track level. At the start of each level, the size of queue is the number of nodes in that level so use a `for` loop to limit.
+**Level-Order**: ([link](https://leetcode.com/problems/binary-tree-level-order-traversal/)) use a `queue`, at the start of each level, the size of queue is the number of nodes in that level so use a `for` loop to limit.
 
 **All representations in a single traversal**: `stack<pair<TreeNode*, int>>` while stack is not empty, on visit 1 (add to preOrder list) and go left, on visit 2 (add to postOrder list and go right), otherwise (visit 3) add to inOrder list and go nowhere.
 
@@ -53,6 +53,7 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
 
 
 
