@@ -29,7 +29,7 @@ Ways to derive the last formula:
 
 **Pre-Order**: ([link](https://leetcode.com/problems/binary-tree-preorder-traversal/)) iterative uses 1 stack (print root and put right then left in stack - strategic).
 
-**In-Order**: ([link](https://leetcode.com/problems/binary-tree-inorder-traversal/)) iterative uses 1 stack. Go as left as possible for non-NULL nodes, for NULL nodes (leaf) print and pop top of stack and go rightwards. Do this `while (curr || !st.empty())` which signifies if there are elements left to process.
+**In-Order**: ([link](https://leetcode.com/problems/binary-tree-inorder-traversal/)) iterative uses 1 stack. Go as left as possible until curr node is not `NULL`, then print and pop top of stack and go rightwards. Do this `while (curr || !st.empty())` which signifies if there are elements left to process.
 
 **Post-Order**: ([link](https://leetcode.com/problems/binary-tree-postorder-traversal/)) iterative uses 2 stacks (post-order is nearly reverse of pre-order, second stack is for reversal), `st1` is primary and keep popping nodes and then push thier left and right as usual, on each popped node from `st1`, push it to `st2`.
   - using 1 stack - similar to in-order traversal but requires another `while` loop inside logic to print roots
@@ -56,6 +56,7 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
 
 
 
