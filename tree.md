@@ -6,7 +6,7 @@
 | Levels in tree with `n` nodes | min = $`\lfloor \log_2 n \rfloor`$ <br> max = $`n - 1`$ | min = $`\lfloor \log_2 n \rfloor + 1`$  <br> max = $`n`$ | min makes a perfect BT <br> max makes a degenerate tree; equiv to a LL |
 | Nodes in tree of height `h` | min = $`2^{h+1} - 1`$ <br> max = $`h + 1`$ | min = $`2^h - 1`$ <br> max = $`h`$ | |
 
-Ways to derive the last formula: 
+Ways to derive the last formula:
 - workout a relation between each level's index and total nodes till that level
 - number of nodes on each level follow a GP $`2^0 + 2 + 4 + 8 + 16 + ... + 2^n`$ with common ratio `2` so we can find its sum
 - in a Perfect BT, the `i`-th level has $`2^i`$ nodes and sum of nodes in all prior levels are $`2^i - 1`$ so we can sum them as $`2^i + 2^i - 1`$ which comes out to be $`2^{i+1} - 1`$ after simplification.
@@ -32,7 +32,10 @@ Ways to derive the last formula:
 **In-Order**: ([link](https://leetcode.com/problems/binary-tree-inorder-traversal/)) iterative uses 1 stack (go as left as possible for non-NULL nodes, for NULL nodes (leaf) print top of stack and go rightwards), `while(true)` is used here because traversal only by using stack top is not possible here unlike pre-order and post-order's `while` loop
 
 **Post-Order**: ([link](https://leetcode.com/problems/binary-tree-postorder-traversal/)) iterative uses 2 stacks (post-order is nearly reverse of pre-order, second stack is for reversal), `st1` is primary and keep popping nodes and then push thier left and right as usual, on each popped node from `st1`, push it to `st2`
-  - using 1 stack - similar to inOrder traversal but requires another `while` loop inside logic to print roots
+  - using 1 stack - similar to in-order traversal but requires another `while` loop inside logic to print roots
+
+> [!TIP]
+> Dry run on tree `1 2 3` for quick verification.
 
 **Level-Order**: ([link](https://leetcode.com/problems/binary-tree-level-order-traversal/)) use a `queue`, at the start of each level, the size of queue is the number of nodes in that level so use a `for` loop to limit.
 
@@ -53,6 +56,7 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
 
 
 
