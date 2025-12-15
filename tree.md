@@ -41,9 +41,9 @@ Ways to derive the last formula:
 > [!TIP]
 > Dry run any traversal on tree `1 2 3` to quickly verify.
 
-## Medium Problems
+## Modified Height Method
 
-**Height/Depth of a BT**: ([link](https://leetcode.com/problems/maximum-depth-of-binary-tree/)) `return 1 + max(leftHeight, rightHeight)` for a node
+**Height/Depth of a BT**: ([link](https://leetcode.com/problems/maximum-depth-of-binary-tree/)) `return 1 + max(leftHeight, rightHeight)` for every node.
 
 In below problems we don't use normal height method (that'll increase recursive method call levels) rather we modify height method's return type and/or body.
 
@@ -60,6 +60,7 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
 
 
 
