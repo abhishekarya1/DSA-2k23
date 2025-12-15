@@ -45,10 +45,13 @@ Ways to derive the last formula:
 
 **Height/Depth of a BT**: ([link](https://leetcode.com/problems/maximum-depth-of-binary-tree/)) `return 1 + max(leftHeight, rightHeight)` for a node
 
-In below problems we don't use normal height method (that'll increase recursive method call levels) rather we modify height method to calc:
-- **Check Balanced**: ([link](https://leetcode.com/problems/balanced-binary-tree/)) if `abs(leftHeight - rightHeight) > 1` then `return -1` on any node, use `-1` to cascade failure in a normal height method.
-- **Diameter**: ([link](https://leetcode.com/problems/diameter-of-binary-tree/)) `leftHeight + rightHeight` (notice there is no `+ 1` while calc diameter because its path, not nodes), in normal height method track `maxDiameter` for every node.
-- **Maximum Path Sum**: ([link](https://leetcode.com/problems/binary-tree-maximum-path-sum/)) use Kadane's algorithm, track `max(sum, curr -> val + leftSum + rightSum)`, return value of the modified height method is `curr->val + max(leftSum, rightSum)` i.e. consider only the path with max sum starting from current node (curving point).
+In below problems we don't use normal height method (that'll increase recursive method call levels) rather we modify height method's return type and/or body.
+
+**Check Balanced Tree**: ([link](https://leetcode.com/problems/balanced-binary-tree/)) if `abs(leftHeight - rightHeight) > 1` then `return -1` on any node, use `-1` to cascade failure in a normal height method.
+
+**Diameter of BT**: ([link](https://leetcode.com/problems/diameter-of-binary-tree/)) `leftHeight + rightHeight` (notice there is no `+ 1` while calc diameter because its path, not nodes), in normal height method track `maxDiameter` for every node.
+
+**Maximum Path Sum**: ([link](https://leetcode.com/problems/binary-tree-maximum-path-sum/)) use Kadane's algorithm, track `max(sum, curr -> val + leftSum + rightSum)`, return value of the modified height method is `curr->val + max(leftSum, rightSum)` i.e. consider only the path with max sum starting from current node (curving point).
 
 ## Views and Traversals
 - Zig-Zag Traversal - use modified level-order traversal. `int idx = leftToRightFlag ? i : (queueSize - 1 - i)`
@@ -57,6 +60,7 @@ In below problems we don't use normal height method (that'll increase recursive 
 - Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 - Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
 - Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+
 
 
 
