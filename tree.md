@@ -24,7 +24,7 @@ Ways to derive the last formula:
 
 **Catalan Number** (`C(n)`): gives total no. of unique trees possible for `n` nodes, some are original and others are mirror images. For un-labelled nodes its `C(n)`, and for labelled nodes its `C(n) * n!`. Written in two forms - using combination or as a recurrence relation. It is used in many diff applications, one of which is to calc the number of unique well-formed parentheses combinations if we're given `n` open and `n` closed (total `2n`) parentheses. ([ref](https://en.wikipedia.org/wiki/Catalan_number))
 
-## Traversals
+## 3 Core Traversals
 **Traversal Trick**: reading traversals using finger placement around nodes: `left = pre-order`, `bottom = in-order`, `right = post-order`.
 
 **Pre-Order**: ([link](https://leetcode.com/problems/binary-tree-preorder-traversal/)) iterative uses 1 stack (print root and put right then left in stack - strategic).
@@ -53,31 +53,17 @@ In below problems we don't use the normal height method, rather we modify height
 
 **Maximum Path Sum**: ([link](https://leetcode.com/problems/binary-tree-maximum-path-sum/)) use Kadane's algorithm, track `max(sum, curr -> val + leftSum + rightSum)`, return value of the modified height method is `curr->val + max(leftSum, rightSum)` i.e. consider only the path with max sum starting from current node (curving-point). Basically we are only sending upwards the max positive sum path to be considered for a node for contributing to path sum of a node upwards in the ancestry.
 
-## Views and Traversals
-- Zig-Zag Traversal - use modified level-order traversal. `int idx = leftToRightFlag ? i : (queueSize - 1 - i)`
-- Boundary Traversal - leftSide non-leaves, all leaves, rightSide non-leaves
-- Vertical Order Traversal - `queue<TreeNode*, pair<int, int>>` to store nodes for level order traversal, `map<int, pair<int, multiset<int>>>`. We can use anyOrder traversal to do it.
-- Top View of a BT - store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
-- Bottom View of a BT - same as top view but keep replacing with node on the same vertical level
-- Left/Right View of a BT - `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+## Specific Traversals and Views
 
+**Zig-Zag Traversal**: ([link](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)) use modified level-order traversal, put elements on index as `idx = leftToRightFlag ? i : (queueSize - 1 - i)`.
 
+**Boundary Traversal**: ([link](https://takeuforward.org/data-structure/boundary-traversal-of-a-binary-tree)) three parts by calling 3 functions from the `root` node. Left boundary non-leaves (`addLeftBoundary` function), then all leaves (`addLeaves` function), ant finally right boundary non-leaves but in reverse order (`addRightBoundary` function).
 
+**Vertical Order Traversal**: ([link](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/)) `queue<TreeNode*, pair<int, int>>` to store nodes for level order traversal, `map<int, pair<int, multiset<int>>>`. We can use any of the 3 core traversals to do it.
 
+**Top View**: store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
 
+**Bottom View**: same as top view but keep replacing with node on the same vertical level
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Left / Right View**: `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
 
