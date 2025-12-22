@@ -59,12 +59,11 @@ In below problems we don't use the normal height method, rather we modify height
 
 **Boundary Traversal**: ([link](https://takeuforward.org/data-structure/boundary-traversal-of-a-binary-tree)) three parts by calling 3 functions from the `root` node. Left boundary non-leaves (`addLeftBoundary` function), then all leaves (`addLeaves` function), and finally right boundary non-leaves but in reverse order (`addRightBoundary` function).
 
-**Vertical Order Traversal**: ([link](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/)) `queue<TreeNode*, pair<int, int>>` to store nodes for level order traversal, ordered `map<int, pair<int, multiset<int>>>`. We can use any of the 3 core traversals ot level-order traversal to do it.
+**Vertical Order Traversal**: ([link](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/)) `queue<TreeNode*, pair<int, int>>` to store nodes for level order traversal, ordered `map<int, map<int, multiset<int>>>` for tracking co-ordinates. We can use any of the 3 core traversals or even level order traversal to solve this. The `multiset<int>` is used to deal with overlapping nodes (`2` nodes on the exact same co-ordinate), otherwise we could've used `vector<int>` too.
 
-**Top View**: store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`. Can't use 3 core traversals, use level-order only.
+**Top View**: store one node per vertical level in `map<int, int>`, don't store if a level's node already exists. Use `queue<pair<int, TreeNode*>>`. Can't use 3 core traversals as they may goto level `+1` in left subtree itself first (this limitation can be bypassed by tracking level too), use level-order only for simpler code.
 
-**Bottom View**: same as top view but keep replacing with node on the same vertical level. Can't use 3 core traversals, use level-order only.
+**Bottom View**: exactly the same as top view, but just keep replacing map entry with every new node we encounter on the same vertical level i.e. last node of a vertical level is left in map when we end the entire traversal.
 
-**Left / Right View**: ([link](https://leetcode.com/problems/binary-tree-right-side-view/)) check `if(level == ds.size()` and store node in answer list, subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too. Can use any traversals, but using 3 core ones make the code much terse than level-order.
-
+**Left / Right View**: ([link](https://leetcode.com/problems/binary-tree-right-side-view/)) smarter way by checking `if(level == ds.size())` and store current node in answer list if `true`, subsequently move to `right` for right view and `left` for left view. We can use any traversal, but using 3 core ones make the code much simpler than level order.
 
