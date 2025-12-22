@@ -57,13 +57,14 @@ In below problems we don't use the normal height method, rather we modify height
 
 **Zig-Zag Traversal**: ([link](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)) use modified level-order traversal, put elements on index as `idx = leftToRightFlag ? i : (queueSize - 1 - i)`.
 
-**Boundary Traversal**: ([link](https://takeuforward.org/data-structure/boundary-traversal-of-a-binary-tree)) three parts by calling 3 functions from the `root` node. Left boundary non-leaves (`addLeftBoundary` function), then all leaves (`addLeaves` function), ant finally right boundary non-leaves but in reverse order (`addRightBoundary` function).
+**Boundary Traversal**: ([link](https://takeuforward.org/data-structure/boundary-traversal-of-a-binary-tree)) three parts by calling 3 functions from the `root` node. Left boundary non-leaves (`addLeftBoundary` function), then all leaves (`addLeaves` function), and finally right boundary non-leaves but in reverse order (`addRightBoundary` function).
 
-**Vertical Order Traversal**: ([link](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/)) `queue<TreeNode*, pair<int, int>>` to store nodes for level order traversal, `map<int, pair<int, multiset<int>>>`. We can use any of the 3 core traversals to do it.
+**Vertical Order Traversal**: ([link](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/)) `queue<TreeNode*, pair<int, int>>` to store nodes for level order traversal, ordered `map<int, pair<int, multiset<int>>>`. We can use any of the 3 core traversals ot level-order traversal to do it.
 
-**Top View**: store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`
+**Top View**: store one node per vertical level in `map<int, int>`, don't store if it already exists. Use `queue<pair<int, TreeNode*>>`. Can't use 3 core traversals, use level-order only.
 
-**Bottom View**: same as top view but keep replacing with node on the same vertical level
+**Bottom View**: same as top view but keep replacing with node on the same vertical level. Can't use 3 core traversals, use level-order only.
 
-**Left / Right View**: `if(level == ds.size()` and subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too.
+**Left / Right View**: ([link](https://leetcode.com/problems/binary-tree-right-side-view/)) check `if(level == ds.size()` and store node in answer list, subsequently move to `moveRight` for right view and `moveLeft` for left view. We can use modified level-order traversal too. Can use any traversals, but using 3 core ones make the code much terse than level-order.
+
 
