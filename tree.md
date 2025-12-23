@@ -67,3 +67,6 @@ In below problems we don't use the normal height method, rather we modify height
 
 **Left / Right View**: ([link](https://leetcode.com/problems/binary-tree-right-side-view/)) smarter way by checking `if(level == ds.size())` and store current node in answer list if `true`, subsequently move to `right` for right view and `left` for left view. We can use any traversal, but using 3 core ones make the code much simpler than level order.
 
+### Paths
+
+**Root to Node Path**: DFS + Backtracking, "go and check" way of writing code is a little better as usual.
