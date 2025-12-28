@@ -65,7 +65,7 @@ In below problems we don't use the normal height method, rather we modify height
 
 **Bottom View**: exactly the same as top view, but just keep replacing map entry with every new node we encounter on the same vertical level i.e. last node of a vertical level is left in map when we end the entire traversal.
 
-**Left / Right View**: ([link](https://leetcode.com/problems/binary-tree-right-side-view/)) smarter way by checking `if(level == ds.size())` and store current node in answer list if `true`, subsequently move to `right` for right view and `left` for left view. We can use any traversal, but using 3 core ones make the code much simpler than level order.
+**Left / Right View**: ([link](https://leetcode.com/problems/binary-tree-right-side-view/)) smarter way by checking `if(level == ds.size())` and store current node in answer list if `true`, subsequently move to `right` for right view and `left` for left view, track only horizontal levels for this. We can use any traversal, but using 3 core ones make the code much simpler than level order.
 
 ## Paths
 
@@ -76,3 +76,4 @@ In below problems we don't use the normal height method, rather we modify height
 **Maximum Width of BT**: ([link](https://leetcode.com/problems/maximum-width-of-binary-tree/)) use BFS and track index of nodes in queue as `2*curr + 1` for left and `2*curr + 2` for right. For each level, check min present index `i = 0` and max present index (`i = n-1`), and calc and track max width as `right - left + 1`.
 
 **Satisfy Children Sum Property** with only addition allowed: go downwards and if children sum is greater, then make it current root's val otherwise if children sum is lesser then make either (or both) children val as current root's. This is to ensure that when we come back moving upwards, then sum of children will definitely be greater than their root. Basically, we're propagating bigger values towards the root of the tree (upper portion) towards lower portion because if its vice-versa then the tree could never satisfy the property i.e. lower nodes sum will always be lesser than their respective roots.
+
