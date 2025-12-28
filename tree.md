@@ -72,3 +72,5 @@ In below problems we don't use the normal height method, rather we modify height
 **Root to Node Path**: DFS + Backtracking, "go and check" way of writing code is simpler to understand and cleaner as usual.
 
 **Lowest Common Ancestor (LCA)**: ([link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)) only the LCA node will have target nodes in both its left and right subtree, rest will have them only in one subtree - either left or right. From each node, goto both subtrees and return `NULL`, `p`, or `q` when we encounter them otherwise goto return value from left subtree if right subtree return value is `NULL`, or return value from right subtree if left subtree return value is `NULL`, or return current node (LCA found) if return value from both subtrees are not `NULL`.
+
+**Maximum Width of BT**: ([link](https://leetcode.com/problems/maximum-width-of-binary-tree/) use BFS and consider index of nodes as `2*curr + 1` for left and `2*curr + 2` for right. For each level, track min present index and max present index, and calc and track max width as `right - left + 1`.
