@@ -77,4 +77,7 @@ In below problems we don't use the normal height method, rather we modify height
 
 **Satisfy Children Sum Property** (with only addition allowed): go downwards and if children sum is greater, then make it current root's val otherwise if children sum is lesser then make either (or both) children val as current root's. This is to ensure that when we come back moving upwards, then sum of children will definitely be greater than their root. Basically, we're propagating bigger values towards the root of the tree (upper portion) towards lower portion because if its vice-versa then the tree could never satisfy the property i.e. lower nodes sum will always be lesser than their respective roots.
 
+## Other BTs
+**Count nodes in Complete BT**: for every subtree, if left extreme height and right extreme height are equal then its a full BT (use formula `2^h -1` to count nodes and return it), otherwise recurse and return `1 + lCnt + rCnt`.
 
+**Necessary requirement to construct Unique BT from given traversals**: ([link](https://takeuforward.org/data-structure/requirements-needed-to-construct-a-unique-binary-tree-theory)) Inorder traversal is mandatory for unique construction unless the tree is guaranteed to be full. If full BT, then pre and post order alone can do. Pre/post order gives the root order and inorder splits left/right subtrees, and can find out the tree by doing these two steps recursively ofc.
