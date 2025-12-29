@@ -80,7 +80,7 @@ In below problems we don't use the normal height method, rather we modify height
 ## Other BTs
 **Count nodes in Complete BT**: for every subtree, if left extreme height and right extreme height are equal then its a full BT (use formula `2^h -1` to count nodes and return it), otherwise recurse and return `1 + lCnt + rCnt`.
 
-**Necessary requirement to construct Unique BT from given traversals**: ([link](https://takeuforward.org/data-structure/requirements-needed-to-construct-a-unique-binary-tree-theory)) Inorder traversal is mandatory for unique construction unless the tree is guaranteed to be full. If full BT, then pre and post order alone can do. Pre/post order gives the root order and inorder splits left/right subtrees, and can find out the tree by doing these two steps recursively ofc.
+**Necessary requirement to construct Unique BT from given traversals**: ([link](https://takeuforward.org/data-structure/requirements-needed-to-construct-a-unique-binary-tree-theory)) inorder traversal is mandatory for unique construction unless the tree is guaranteed to be full. If full BT, then preorder + postorder can do as child nodes will always occur in pair (or not exist at all). Pre/post order gives the root order and inorder splits left/right subtrees, and can find out the tree by doing these two steps recursively ofc.
 
 ## Binary Search Tree (BST)
 > A type of BT in which all nodes in the left subtree are smaller than the parent, and all nodes in the right subtree are larger, making it efficient for searching, inserting, and deleting data by maintaining elements in a sorted order.
@@ -88,3 +88,4 @@ In below problems we don't use the normal height method, rather we modify height
 > `left < root < right`, if we've duplicates then we need to define where they go - either right or left. We can also store freq count in the node and keep BST nodes unique.
 
 > Operations especially search is `O(logn)` unlike BT's `O(n)`.
+
