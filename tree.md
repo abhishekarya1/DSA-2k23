@@ -77,10 +77,12 @@ In below problems we don't use the normal height method, rather we modify height
 
 **Satisfy Children Sum Property** (with only addition allowed): go downwards and if children sum is greater, then make it current root's val otherwise if children sum is lesser then make either (or both) children val as current root's. This is to ensure that when we come back moving upwards, then sum of children will definitely be greater than their root. Basically, we're propagating bigger values towards the root of the tree (upper portion) towards lower portion because if its vice-versa then the tree could never satisfy the property i.e. lower nodes sum will always be lesser than their respective roots.
 
-## Other BTs
 **Count nodes in Complete BT**: for every subtree, if left extreme height and right extreme height are equal then its a full BT (use formula `2^h -1` to count nodes and return it), otherwise recurse and return `1 + lCnt + rCnt`.
 
-**Necessary requirement to construct Unique BT from given traversals**: ([link](https://takeuforward.org/data-structure/requirements-needed-to-construct-a-unique-binary-tree-theory)) inorder traversal is mandatory for unique construction unless the tree is guaranteed to be full. If full BT, then preorder + postorder can do as child nodes will always occur in pair (or not exist at all). Pre/post order gives the root order and inorder splits left/right subtrees, and can find out the tree by doing these two steps recursively ofc.
+## Construction
+Inorder traversal is mandatory for unique construction unless the tree is guaranteed to be full. If full BT, then preorder + postorder can do as child nodes will always occur in pair (or not exist at all). Pre/post order gives the root order and inorder splits left/right subtrees, and can find out the tree by doing these two steps recursively. ([link](https://takeuforward.org/data-structure/requirements-needed-to-construct-a-unique-binary-tree-theory))
+
+**Construct using Preorder + Inorder**: ([link](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)) recursively written in a very smart and intuitive way (just like its done with pen and paper).
 
 ## Binary Search Tree (BST)
 > A type of BT in which all nodes in the left subtree are smaller than the parent, and all nodes in the right subtree are larger, making it efficient for searching, inserting, and deleting data by maintaining elements in a sorted order.
@@ -89,5 +91,6 @@ In below problems we don't use the normal height method, rather we modify height
 - Operations especially search is `O(logn)` unlike BT's `O(n)`. Since searching in BST doesn't need to goto all nodes, we just traverse a single path based on conditions and we'll find our target if its there.
 
 **Insert a node in BST**: ([link](https://leetcode.com/problems/insert-into-a-binary-search-tree/)) iterative way is very simple, just traverse a path and insert at last leaf by tracking `prev` node. Recursive is more terse code, works by traversing path using recursion and if-else and inserts the new node using function return. Summary - only one call creates the node; all other returns exist to rebuild the path back to the original root correctly.
+
 
 
