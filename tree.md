@@ -86,6 +86,8 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 
 **Construct using Postorder + Inorder**: ([link](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)) use reverse postorder (`root -> right -> left`) and tweak things a little, rest all is same as above. Alt more cleaner way is to pick `postEnd` always and process bounds from right to left in `postorder` array.
 
+**Serializing / Deserializing BT**: ([link](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)) serialization is just comma-separated BFS order traversal string with '#' in place on `NULL` nodes (do BFS and push `NULL` children of a node too to queue). Deserialization is vary similar using queue - init by putting deserialized root node in queue, take out a node from queue and attach to it its left and right child (non `#` only) and push back child in queue, for `#` attach `nullptr` as child but don't push back into queue, use `stringstream` and `getline` with delimiter to split access string.
+
 ## Binary Search Tree (BST)
 > A type of BT in which all nodes in the left subtree are smaller than the parent, and all nodes in the right subtree are larger, making it efficient for searching, inserting, and deleting data by maintaining elements in a sorted order.
 
@@ -93,6 +95,7 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 - Operations especially search is `O(logn)` unlike BT's `O(n)`. Since searching in BST doesn't need to goto all nodes, we just traverse a single path based on conditions and we'll find our target if its there.
 
 **Insert a node in BST**: ([link](https://leetcode.com/problems/insert-into-a-binary-search-tree/)) iterative way is very simple, just traverse a path and insert at last leaf by tracking `prev` node. Recursive is more terse code, works by traversing path using recursion and if-else and inserts the new node using function return. Summary - only one call creates the node; all other returns exist to rebuild the path back to the original root correctly.
+
 
 
 
