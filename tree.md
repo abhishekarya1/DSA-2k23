@@ -90,6 +90,8 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 
 **Morris Traversal** (Inorder, Preorder): TC = `O(n)`, SC = `O(1)`, no recursion or auxiliary space. Uses Threaded BT with 3 cases based on left subtree's existence and righmost node in it.
 
+**Flatten BT to LL**: ([link](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)) we convert it to a right-skewed tree (LL), do `right -> left -> root` traversal and flatten recursively (or iteratively using stack) by attaching nodes as follows: current root's `right` becomes the `prev` node and `left` becomes `NULL`. `prev` can be tracked globally in recursion and in iterative stack solution, the top node in stack after we pop current root out of it will be the `prev` node (as we put `right` then `left` into the stack). We can also use Morris traversal (no extra space). 
+
 ## Binary Search Tree (BST)
 > A type of BT in which all nodes in the left subtree are smaller than the parent, and all nodes in the right subtree are larger, making it efficient for searching, inserting, and deleting data by maintaining elements in a sorted order.
 
@@ -97,6 +99,7 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 - Operations especially search is `O(logn)` unlike BT's `O(n)`. Since searching in BST doesn't need to goto all nodes, we just traverse a single path based on conditions and we'll find our target if its there.
 
 **Insert a node in BST**: ([link](https://leetcode.com/problems/insert-into-a-binary-search-tree/)) iterative way is very simple, just traverse a path and insert at last leaf by tracking `prev` node. Recursive is more terse code, works by traversing path using recursion and if-else and inserts the new node using function return. Summary - only one call creates the node; all other returns exist to rebuild the path back to the original root correctly.
+
 
 
 
