@@ -98,13 +98,11 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 - `left < root < right`, if we've duplicates then we need to define where they go - either right or left. We can also store freq count in the node and keep BST nodes unique.
 - Operations especially search is `O(logn)` unlike BT's `O(n)`. Since searching in BST doesn't need to goto all nodes, we just traverse a single path based on conditions and we'll find our target if its there.
 
-**Insert a node in BST**: ([link](https://leetcode.com/problems/insert-into-a-binary-search-tree/)) iterative way is very simple, just traverse a path and insert at last leaf by tracking `prev` node. Recursive is more terse code, works by traversing path using recursion and if-else and inserts the new node using function return. Summary - only one call creates the node; all other returns exist to rebuild the path back to the original root correctly.
+**Search**: ([link](https://leetcode.com/problems/search-in-a-binary-search-tree/)) like Binary Search, tail recursion returning a `TreeNode*`.
 
+**Min / Max**: ([link](https://www.geeksforgeeks.org/dsa/find-the-minimum-element-in-a-binary-search-tree/)) the leftmost node while traversing straight from root will be min, and rightmost will be max. It is not possible for a node to be not in leftmost straight path and be lesser than its respective root in that path because all subtree nodes must also follow property in a BST.
 
+**Floor / Ceil**: traverse down iteratively and track a `prev` node. At the end, `prev` node will be the ans.
 
-
-
-
-
-
+**Insert a Node**: ([link](https://leetcode.com/problems/insert-into-a-binary-search-tree/)) iterative way is very simple, just traverse a path and insert at last leaf by tracking `prev` node. Recursive is more terse code, works by traversing path using recursion and if-else and inserts the new node using function return. Summary - only one call creates the node; all other returns exist to rebuild the path back to the original root correctly.
 
