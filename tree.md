@@ -106,5 +106,6 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 
 **Insert a Node**: ([link](https://leetcode.com/problems/insert-into-a-binary-search-tree/)) iterative way is very simple, just traverse a path and insert at last leaf by tracking `prev` node. Recursive is more terse code, works by traversing path using recursion and if-else and inserts the new node using function return. Summary - only one call creates the node; all other returns exist to rebuild the path back to the original root correctly.
 
-**Delete a Node**: ([link](https://leetcode.com/problems/delete-node-in-a-bst/)) recursion code is similar to the insertion code above, just attach entire left subtree as left of the leftmost node in the right subtree (or vice-versa). This works because all nodes in the right subtree are greater than all nodes in left subtree.
+**Delete a Node**: ([link](https://leetcode.com/problems/delete-node-in-a-bst/)) recursion code is similar to the insertion code above, find the inorder successor (smallest node in right subtree), replace the current node's data with the successor's, and recursively delete the successor from the right subtree.
+
 
