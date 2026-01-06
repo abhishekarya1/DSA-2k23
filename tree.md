@@ -96,7 +96,8 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 > A type of BT in which all nodes in the left subtree are smaller than the parent, and all nodes in the right subtree are larger, making it efficient for searching, inserting, and deleting data by maintaining elements in a sorted order.
 
 - `left < root < right`, if we've duplicates then we need to define where they go - either right or left. We can also store freq count in the node and keep BST nodes unique.
-- Operations especially search is `O(logn)` unlike BT's `O(n)`. Since searching in BST doesn't need to goto all nodes, we just traverse a single path based on conditions and we'll find our target if its there.
+- operations especially search is `O(logn)` unlike BT's `O(n)`. Since searching in BST doesn't need to goto all nodes, we just traverse a single path based on conditions and we'll find our target if its there.
+- inorder traversal gives the sorted order `[1,2,3,4,5,6,7]` and reverse-sorted order can be found by doing reverse inorder traversal (right, root, left)
 
 **Search**: ([link](https://leetcode.com/problems/search-in-a-binary-search-tree/)) like Binary Search, tail recursion returning a `TreeNode*`.
 
@@ -108,4 +109,5 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 
 **Delete a Node**: ([link](https://leetcode.com/problems/delete-node-in-a-bst/)) recursion code is similar to the insertion code above, find the inorder successor (smallest node in right subtree), replace the current node's data with the successor's, and recursively delete the successor from the right subtree. This is effectively just moving elements leftwards erasing the element we want to delete in inorder traversal of BST e.g. `[1,2,3,4,5,6,7]` with root `4`.
 
+**`K`th Smallest / Largest Node**: ([link](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)) use BST property that inorder traversal gives sorted order of nodes, just return node value on the `k`th node. Use reverse-inorder to traverse in decreasing order and return the `k`th node's value as its the largest.
 
