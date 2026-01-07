@@ -111,3 +111,6 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 
 **`K`th Smallest / Largest Node**: ([link](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)) use BST property that inorder traversal gives sorted order of nodes, just return node value on the `k`th node. Use reverse-inorder to traverse in decreasing order and return the `k`th node's value as its the largest.
 
+**Validate BST**: ([link](https://leetcode.com/problems/validate-binary-search-tree/)) given a BT, check if its BST. We'll need to check all nodes in left subtree are lesser than a root, and vice-versa. Use a range starting with `[LONG_MIN, LONG_MAX]` and keep checking if a root's val is within its range, reduce range when moving left or right accordingly.
+
+**LCA in BST**: ([link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)) use BST property that if current node is lesser than both target nodes then go right, else if its greater than both then go left, otherwise if it lies in middle of bothm then it is the LCA node.
