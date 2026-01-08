@@ -97,9 +97,10 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 
 - `left < root < right`, if we've duplicates then we need to define where they go - either right or left. We can also store freq count in the node and keep BST nodes unique.
 - operations especially search is `O(logn)` unlike BT's `O(n)`. Since searching in BST doesn't need to goto all nodes, we just traverse a single path based on conditions and we'll find our target if its there.
-- inorder traversal gives the sorted order `[1,2,3,4,5,6,7]` and reverse-sorted order can be found by doing reverse inorder traversal (right, root, left)
+- inorder traversal gives the sorted order `[1,2,3,4,5,6,7]` and reverse-sorted order can be found by doing reverse inorder traversal (right, root, left).
+- constructing a BST with solely the preorder traversal is possible.
 
-**Search**: ([link](https://leetcode.com/problems/search-in-a-binary-search-tree/)) like Binary Search, tail recursion returning a `TreeNode*`.
+**Search a Target Value**: ([link](https://leetcode.com/problems/search-in-a-binary-search-tree/)) like Binary Search, tail recursion returning a `TreeNode*`.
 
 **Min / Max**: ([link](https://www.geeksforgeeks.org/dsa/find-the-minimum-element-in-a-binary-search-tree/)) the leftmost node while traversing straight from root will be min, and rightmost will be max. It is not possible for a node to be not in leftmost straight path and be lesser than its respective root in that path because all subtree nodes must also follow property in a BST.
 
@@ -114,3 +115,8 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 **Validate BST**: ([link](https://leetcode.com/problems/validate-binary-search-tree/)) given a BT, check if its BST. We'll need to check all nodes in left subtree are lesser than a root, and vice-versa. Use a range starting with `[LONG_MIN, LONG_MAX]` and keep checking if a root's val is within its range, reduce range when moving left or right accordingly.
 
 **LCA in BST**: ([link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)) use BST property that if current node is lesser than both target nodes then go right, else if its greater than both then go left, otherwise if it lies in middle of bothm then it is the LCA node.
+
+**Construct BST from Preorder**: ([link](https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/))
+- brute force approach where we attach every node from preorder to tree starting from root, `O(n^2)`
+- sort preorder and get inorder and do as we used to construct BT, `O(nlogn)`
+- use upper-bound and attach nodes acc, `O(n)`. Every root has lesser nodes on its left (recursively too) in preorder array and we'll keep attaching those to its left until we can and keep updating upper-bound as they may also recursively have children, we'll then attach `NULL` when no more left portion remains, and then go right but upper-bound remains the same because we're still under same root finding its right portion in preorder array.
