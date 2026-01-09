@@ -120,3 +120,9 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 - brute force approach where we attach every node from preorder to tree starting from root, `O(n^2)`
 - sort preorder and get inorder and do as we used to construct BT, `O(nlogn)`
 - use upper-bound and attach nodes acc, `O(n)`. Every root has lesser nodes on its left (recursively too) in preorder array and we'll keep attaching those to its left until we can and keep updating upper-bound as they may also recursively have children, we'll then attach `NULL` when no more left portion remains, and then go right but upper-bound remains the same because we're still under same root finding its right portion in preorder array.
+
+**Inorder Successor / Predecessor**: 
+- naive `O(nlogn)`: sort and get inorder array
+- brute force `O(n)`: do inorder traversal and stop at immediate next element greater than target 
+- optimal `O(logn)`: track a variable `successor` and keep updating it while traversing a BST path, at the end we'll get the ans element.
+
