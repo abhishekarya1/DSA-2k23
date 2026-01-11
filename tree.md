@@ -126,3 +126,5 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 - brute force `O(n)`: do inorder traversal and stop at immediate next element greater than target 
 - optimal `O(logn)`: track a variable `successor` and keep updating it while traversing a BST path, at the end we'll get the ans element.
 
+**Merge 2 BSTs**: traverse inorder in both and get sorted order, merge two lists using 2 pointers and then **construct BST from inorder** by recursively finding `mid` and attaching left and right as shown in this [video](https://youtu.be/AiKZjCuy2k4?t=822).
+
