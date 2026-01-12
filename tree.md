@@ -128,4 +128,5 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 
 **Merge 2 BSTs**: traverse inorder in both and get sorted order, merge two lists using 2 pointers and then **construct BST from inorder** by recursively finding `mid` and attaching left and right as shown in this [video](https://youtu.be/AiKZjCuy2k4?t=822).
 
-**BST Iterator**: ([link](https://leetcode.com/problems/binary-search-tree-iterator/)) we're just doing iterative inorder traversal here, goto smallest node by going to extreme left from `root` and push all in the way to a stack, then on every `next()` call print current node's value and keep pushing all the lefts of its right node to the stack such that the next node in inorder traversal becomes the stack top.
+**BST Iterator**: ([link](https://leetcode.com/problems/binary-search-tree-iterator/)) we can store all nodes in inorder seq in an array and do this but to do in `O(h)` space is better, we utilize iterative inorder traversal here, goto smallest node by going to extreme left from `root` and push all in the way to a stack, then on every `next()` call print current node's value and keep pushing all the lefts of its right node to the stack such that the next node in inorder traversal becomes the stack top.
+
