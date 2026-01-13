@@ -130,3 +130,5 @@ Inorder traversal is mandatory for unique construction unless the tree is guaran
 
 **BST Iterator**: ([link](https://leetcode.com/problems/binary-search-tree-iterator/)) we can store all nodes in inorder seq in an array and do this but to do in `O(h)` space is better, we utilize iterative inorder traversal here, goto smallest node by going to extreme left from `root` and push all in the way to a stack, then on every `next()` call print current node's value and keep pushing all the lefts of its right node to the stack such that the next node in inorder traversal becomes the stack top.
 
+**2-Sum in BST** (check if there exists a pair with sum `k`): ([link](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/)) use `next()` iterator technique in previous problem for left to right traversal in inorder seq, for right to left traversal keep going right and pushing to stack, then go and keep pushing all lefts after every pop. Try to use single class and a single `next()` function with instance variable `bool reverse = true` as flag for right iterator logic in the function. Create two instances of `BSTIterator left, right` for tracking left and right pointers.
+
