@@ -1,19 +1,21 @@
 ### Stack and Recursion
-- Sort stack using recursion
-- Reverse stack using recursion
+- Sort a stack using recursion
+- Reverse a stack using recursion
 
 See [recursion notes](/recursion.md)
 
 ### ADT
-- Stack using:
-  - Arrays: insertion and deletion at end using `int top;` index
-  - Linked List: insertion and deletion at head
-- Queue using: 
-  - Arrays: use circular inserts and deletion (`(rear + 1) % maxSize` and `(front + 1) % maxSize`) to avoid wastage of space, `front` points to the index of element to be deleted next and `rear` points to the last inserted element index. Maintain a `currSize` and update it on every push/pull to the queue, will need to reset `front = rear = -1` on deletion of the only remaining element since we point to actual elements with front and rear and none exists in an empty queue, upon first element insert do `front = rear = 0`
-  - Linked List: insertion at tail, deletion at head
+Stack using:
+  - **Arrays**: insertion and deletion at end using a `top` index
+  - **Linked List**: insertion and deletion at `head` node
 
-- Stack using Queue: bring recently added element to front by extracting and pushing front to rear `n-1` times
-- Queue using Stack: have to use 2 stacks. Shift elements between stacks for either push or pull operation:
+Queue using: 
+  - **Arrays**: use circular inserts and deletion (`(rear + 1) % maxSize` and `(front + 1) % maxSize`) to avoid wastage of space, `front` points to the index of element to be deleted next and `rear` points to the last inserted element index. Maintain a `currSize` and update it on every push/pull to the queue, will need to reset `front = rear = -1` on deletion of the only remaining element since we point to actual elements with front and rear and none exists in an empty queue, upon first element insert do `front = rear = 0`
+  - **Linked List**: insertion at tail, deletion at head
+
+**Stack using Queue**: bring recently added element to front by extracting and pushing front to rear `n-1` times
+
+**Queue using Stack**: have to use 2 stacks. Shift elements between stacks for either push or pull operation:
   - first approach: push shifts elements to aux stack and back to main stack (maintains rev order), pop can be `O(1)` or `O(n)` depending on element availability in `input` stack. Size of queue = input stack
   - second approach: pop shifts elements to second stack, no need to move back to second stack here (consequent pop can be constant then), pop can be `O(1)` or `O(n)` depending on element availability in `output` stack. Size of queue = input stack + output stack
 
