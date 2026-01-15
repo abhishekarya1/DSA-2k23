@@ -13,11 +13,11 @@ Queue using:
   - **Arrays**: use circular inserts and deletion (`(rear + 1) % maxSize` and `(front + 1) % maxSize`) to avoid wastage of space, `front` points to the index of element to be deleted next and `rear` points to the last inserted element index. Maintain a `currSize` and update it on every push/pull to the queue, will need to reset `front = rear = -1` on deletion of the only remaining element since we point to actual elements with front and rear and none exists in an empty queue, upon first element insert do `front = rear = 0`
   - **Linked List**: insertion at tail, deletion at head
 
-**Stack using Queue**: bring recently added element to front by extracting and pushing front to rear `n-1` times
+**Stack using Queue**: bring recently added element to front by extracting and pushing front to rear `n-1` times. Do this either on push or pop operation.
 
-**Queue using Stack**: have to use 2 stacks. Shift elements between stacks for either push or pull operation:
-  - first approach: on push shift all elements to `aux` stack, then push to `input` stack, shift all from `aux` back to `input` stack (maintains sorted order from top to bottom in the input stack). Pop operation can be `O(1)` or `O(n)` depending on element availability in `input` stack. Size of queue = input stack.
-  - second approach: on pop shift all elements from `input` to `output` stack (only if `ouptput` stack is empty), no need to move back to input stack here (consequent pops can be `O(1)` time then). Pop operation can be `O(1)` or `O(n)` depending on element availability in `output` stack. Size of queue = input stack + output stack.
+**Queue using Stack**: have to use 2 stacks. Shift elements between stacks for either push or pop operation:
+  - first approach: size of queue = input stack. On push shift all elements to `aux` stack, then push to `input` stack, shift all from `aux` back to `input` stack (maintains sorted order from top to bottom in the input stack). Pop operation can be `O(1)` or `O(n)` depending on element availability in `input` stack. 
+  - second approach: size of queue = input stack + output stack. On pop shift all elements from `input` to `output` stack (only if `output` stack is empty), no need to move back to input stack here (consequent pops can be `O(1)` time then). Pop operation can be `O(1)` or `O(n)` depending on element availability in `output` stack.
 
 ### Classic Problems
 **Check Balanced Parentheses**: push open brackets, pop if stack top is a match of current. Invalid cases:
