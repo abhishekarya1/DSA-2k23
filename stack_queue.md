@@ -16,8 +16,8 @@ Queue using:
 **Stack using Queue**: bring recently added element to front by extracting and pushing front to rear `n-1` times
 
 **Queue using Stack**: have to use 2 stacks. Shift elements between stacks for either push or pull operation:
-  - first approach: push shifts elements to aux stack and back to main stack (maintains rev order), pop can be `O(1)` or `O(n)` depending on element availability in `input` stack. Size of queue = input stack
-  - second approach: pop shifts elements to second stack, no need to move back to second stack here (consequent pop can be constant then), pop can be `O(1)` or `O(n)` depending on element availability in `output` stack. Size of queue = input stack + output stack
+  - first approach: on push shift all elements to `aux` stack, then push to `input` stack, shift all from `aux` back to `input` stack (maintains sorted order from top to bottom in the input stack). Pop operation can be `O(1)` or `O(n)` depending on element availability in `input` stack. Size of queue = input stack.
+  - second approach: on pop shift all elements from `input` to `output` stack (only if `ouptput` stack is empty), no need to move back to input stack here (consequent pops can be `O(1)` time then). Pop operation can be `O(1)` or `O(n)` depending on element availability in `output` stack. Size of queue = input stack + output stack.
 
 ### Classic Problems
 **Check Balanced Parentheses**: push open brackets, pop if stack top is a match of current. Invalid cases:
