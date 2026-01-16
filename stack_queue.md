@@ -20,14 +20,14 @@ Queue using:
   - second approach: size of queue = input stack + output stack. On pop shift all elements from `input` to `output` stack (only if `output` stack is empty), no need to move back to input stack here (consequent pops can be `O(1)` time then). Pop operation can be `O(1)` or `O(n)` depending on element availability in `output` stack.
 
 ### Classic Problems
-**Check Balanced Parentheses**: push open brackets, pop if stack top is a match of current. Invalid cases:
+**Valid Parentheses**: ([link](https://leetcode.com/problems/valid-parentheses/)) push open brackets, for close bracket pop if stack top is a corresponding match. Invalid cases:
   - when brackets at stack top and current don't match (bracket pairing mismatch)
   - if we encounter a closing bracket but stack is empty (extra closing bracket)
   - when we've reached till the end and stack is still not empty (extra opening bracket)
 
-Intuition: latest bracket is always on the stack top and we close inner pairings first as we go, rest are also in order of appearance (i.e. previous latest at top)
+Intuition: latest bracket is always on the stack top and we close inner pairings first as we go, rest are also in order of appearance (i.e. previous latest at top).
   
-**Min Stack**: retrieves minimum element in `O(1)` time while keeping stack in the order of insertion
+**Min Stack**: ([link](https://leetcode.com/problems/min-stack/)) retrieves minimum element in `O(1)` time while keeping stack in the order of insertion
 - use two stacks - one main and one that stores all minSoFar encountered during insertions, during push and pop check minStack top and update both accordingly, SC = `O(2N)`
 - use `stack<pair<element, minElementSoFar>>`, this is actually equivalent to the above approach, SC = `O(2N)`
 - math approach (SC = `O(N)`): if we have a new minimum push `2*newMin - oldMin` into the stack, it is guaranteed that this value we are pushing is less than element we are pushing (also our new minimum) and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point (`stackTop < minSoFar`) and then modify minimum accordingly by the formula used above [link](https://www.baeldung.com/cs/stack-constant-time)
