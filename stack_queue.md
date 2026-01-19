@@ -30,14 +30,20 @@ Intuition: latest bracket is always on the stack top and we close inner pairings
 **Min Stack**: ([link](https://leetcode.com/problems/min-stack/)) retrieves minimum element in `O(1)` time while keeping stack in the order of insertion
 - use two stacks - one main and one that stores all minSoFar encountered during insertions, during push and pop check minStack top and update both accordingly, SC = `O(2N)`
 - use `stack<pair<element, minElementSoFar>>`, this is actually equivalent to the above approach, SC = `O(2N)`
-- math approach (SC = `O(N)`): if we have a new minimum push `2*newMin - oldMin` into the stack, it is guaranteed that this value we are pushing is less than element we are pushing (also our new minimum) and this position is where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point (`stackTop < minSoFar`) and then modify minimum accordingly by the formula used above [link](https://www.baeldung.com/cs/stack-constant-time)
+- math approach (SC = `O(N)`): we can track a current min value and mark points where the min changes by inserting modified elements to stack using math (cracked smart formula)
+  - on a new minimum, push `2*newMin - oldMin` into the stack, it is guaranteed that this value we're pushing is less than element we're supposed to be pushing, also update `newMin`, and this marks the current position as the one where we encountered a new minimum. While popping, we need to make sure that our minimum changes when we are popping the minimum element from the stack so we check for change point (`stackTop < newMin`) and then modify minimum accordingly by the same formula above. [read](https://www.baeldung.com/cs/stack-constant-time)
 
 Mathematical derivation:
 ```txt
-newMin < oldMin                      - changepoint
-newMin + newMin < oldMin + newMin    - add newMin to both sides
-2*newMin - oldMin < newMin           - transposition (for identification of changepoint using minSoFar and stackTop)
-stackTop < newMin                    - push to stack and update minSoFar = newMin
+we want to push a number: x < newMin
+and newMin < oldMin, which means we can push: newMin - oldMin < 0
+this can be problematic when oldMin is negative so multiply newMin by 2
+
+so we push: 2*newMin - oldMin
+
+the inequality still holds:
+2*newMin - oldMin < newMin
+=> newMin < oldMin (by transposing above eq)
 ```
 
 ### Prefix, Infix, Postfix Expressions
