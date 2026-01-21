@@ -66,7 +66,7 @@ Postfix - AB/C+
 
 Intuition: Postfix will always have operands in order of appearance from left to right and more importantly operators in the order in which they are applied in Infix (i.e. precedence) are always listed in that order in Postfix. By maintaining precedence of operations in the stack, we're guaranteeing that property in resulting Postfix expression.
 
-**Infix to Prefix**: reverse given infix expression, then convert `(` to `)` and vice-versa, then convert it to "nearly-postfix" by using slightly modified `infixToPostfix()` and store in `resultStr`, reverse `resultStr`.
+**Infix to Prefix**: reverse given infix expression, then convert `(` to `)` and vice-versa, then convert it to "nearly-postfix" by using slightly modified `infixToPostfix()` and store in `resultStr`, reverse `resultStr`. The slight modification: in the infix-to-postfix step, change the operator pop condition from "pop while precedence(top) ≥ precedence(curr)" to "pop while precedence(top) > precedence(curr)", effectively reversing associativity for equal-precedence operators.
 
 ### Monotonic Stack
 **Next Greater Element**: we are creating a monotonic stack here and keep the top as NGE at all times, also the top element will always be the smalllest in the stack. Traverse the array from the right, and if top is greater than current, top is NGE, else pop out elments till we reach NGE (or empty) in the stack (because those elements can never be NGE since we have a bigger number now (current) being pushed into the stack). Popping elements will make sure that current is the smallest in the stack, on pushing it is the top (new NGE) and stack remains monotonic. Keep storing NGEs in a `res`/`ans` array for querying on later.
