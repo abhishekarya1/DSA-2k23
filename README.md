@@ -34,4 +34,6 @@
 
 [Dynamic Programming](https://hashdefine.netlify.app/dsa/dp/)
 
+[Quant Puzzles](/quant.md)
+
 [WTF LOL Problems](/wtf.md)
