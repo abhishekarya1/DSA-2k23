@@ -17,7 +17,7 @@ My prev notes: https://hashdefine.netlify.app/dsa/dp
 ## DP on Subsequences
 Subset sum equals target
 - Variation when array has `0` e.g. `[0,0,1]` - don't stop in middle and return `1` or `2` in base cases
-- Partition equal subset sum - `S = T/2`
+- [Partition equal subset sum](https://leetcode.com/problems/partition-equal-subset-sum/submissions/) - `S = T/2`
 - Partition a Set into 2 Subsets with Minimum Absolute Sum Difference - calc `S1` as `T - S2` in tabulation's last row
 - Count subsets with sum `k` - return `1` in base cases
 - Count partitions with given difference - `S = (T - D) / 2`
