@@ -32,7 +32,7 @@
 
 [Graphs](/graphs.md)
 
-[Dynamic Programming](https://hashdefine.netlify.app/dsa/dp/)
+[Dynamic Programming](/dp.md)
 
 [Quant Puzzles](/quant.md)
 
