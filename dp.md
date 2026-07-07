@@ -23,3 +23,4 @@ Subset sum equals target
   - variation when array has `0` e.g. `[0,0,1]` - don't stop in middle and return `1` or `2` in base cases
 - Count partitions with given difference - `S = (T - D) / 2`
 - 0/1 Knapsack - ultimate optimization of single array right to left filling
+- [Coin Change](https://leetcode.com/problems/coin-change/submissions/) - interesting base case and pick condition
