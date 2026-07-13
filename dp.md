@@ -25,3 +25,4 @@ Subset sum equals target
 - 0/1 Knapsack - ultimate optimization of single array right to left filling
 - [Coin Change](https://leetcode.com/problems/coin-change/submissions/) - interesting base case and pick condition
 - [Target Sum](https://leetcode.com/problems/target-sum/submissions/) - either solve by plus and minus (additional base case) or using previous problem of `T - D / 2` as this is equivalent to that!
+- [Coin Change II](https://leetcode.com/problems/coin-change-ii/submissions/) - a little change in base case since we're counting ways here and not min no. of coins unlike Coin Change
