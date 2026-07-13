@@ -24,3 +24,4 @@ Subset sum equals target
 - Count partitions with given difference - `S = (T - D) / 2`
 - 0/1 Knapsack - ultimate optimization of single array right to left filling
 - [Coin Change](https://leetcode.com/problems/coin-change/submissions/) - interesting base case and pick condition
+- [Target Sum](https://leetcode.com/problems/target-sum/submissions/) - either solve by plus and minus (additional base case) or using previous problem of `T - D / 2` as this is equivalent to that!
