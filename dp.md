@@ -20,7 +20,7 @@ Subset sum equals target
 - [Partition equal subset sum](https://leetcode.com/problems/partition-equal-subset-sum/submissions/) - `S = T/2`
 - Partition a Set into 2 Subsets with Minimum Absolute Sum Difference - calc `S1` as `T - S2` in tabulation's last row
 - Count subsets with sum `k` - return `1` in base cases
-  - variation when array has `0` e.g. `[0,0,1]` - don't stop in middle and return `1` or `2` in base cases ([video](https://youtu.be/zoilQD1kYSg))
+  - variation when array has `0` e.g. `[0,0,1]` - don't stop in middle and return `2`, `1`, or `0` in base cases ([video](https://youtu.be/zoilQD1kYSg))
 - Count partitions with given difference - `S = (T - D) / 2`
 - 0/1 Knapsack - ultimate optimization of single array right to left filling
 - [Coin Change](https://leetcode.com/problems/coin-change/submissions/) - interesting base case and pick condition
