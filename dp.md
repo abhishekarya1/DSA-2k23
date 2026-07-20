@@ -5,9 +5,9 @@ My prev notes: https://hashdefine.netlify.app/dsa/dp
 ## 1D DP
 - Fibonacci Sequence
 - Climbing Stairs
-- Min Cost Climbing Stairs - interesting state
+- Min Cost Climbing Stairs - interesting alt state where cost is included in current state
 - Frog Jump
-- Frog Jump with K Distance - use `for` loop till `k`
+- Frog Jump with K Distance - use `for` loop till `k` (space optimization in worst case (`k = n`)  becomes optional)
 - House Robber - max sum of non-adjacent elements
 - House Robber II - circular form of the above
 
