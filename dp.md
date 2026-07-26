@@ -28,3 +28,6 @@ Subset sum equals target
 - [Coin Change II](https://leetcode.com/problems/coin-change-ii/submissions/) - a little change in base case since we're counting ways here and not min no. of coins unlike Coin Change
 - Unbounded Knapsack - similar to mininum coins problem where we can steal an item multiple times (base case is no. of times last item can be stolen multiplied by its value)
 - Rod Cutting Problem - similar to unbounded knapsack (in base case rod length is `1` so `N` pieces possible, hence `N * value[0]`)
+
+## DP on Strings
+- [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
