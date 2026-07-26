@@ -30,4 +30,4 @@ Subset sum equals target
 - Rod Cutting Problem - similar to unbounded knapsack (in base case rod length is `1` so `N` pieces possible, hence `N * value[0]`)
 
 ## DP on Strings
-- [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) - shifting `dp` array indices by `+1` to accomodate `-1` as index `0`, but on every string access check original index by doing `-1`
+- [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) - shifting `dp` array indices by `+1` to accomodate `-1` as index `0`, but on every string access check original index by doing `-1`. Also TC and SC are interesting here.
