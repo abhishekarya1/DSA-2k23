@@ -33,3 +33,4 @@ Subset sum equals target
 - [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) - shifting `dp` array indices by `+1` to accomodate `-1` as index `0`, but on every string access check original index by doing `-1`. Also TC and SC are interesting here.
 - Print Longest Common Subsequence - smartly travesing the tabulation matrix backwards from the answer cell
 - [Longest Common Substring](https://leetcode.com/problems/maximum-length-of-repeated-subarray/) - construct tabulation table directly
+- [Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/) - this is nothing but LCS on reverse of string
