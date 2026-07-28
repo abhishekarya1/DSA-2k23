@@ -34,3 +34,4 @@ Subset sum equals target
 - Print Longest Common Subsequence - smartly travesing the tabulation matrix backwards from the answer cell
 - [Longest Common Substring](https://leetcode.com/problems/maximum-length-of-repeated-subarray/) - construct tabulation table directly and while constructing find max
 - [Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/) - this is nothing but LCS on reverse of string
+- [Minimum Insertion Steps to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/) - keep LPS intact and no. of insertions will be whatever chars are left. Same answer for min deletion too!
