@@ -26,7 +26,7 @@ Subset sum equals target
 - [Coin Change](https://leetcode.com/problems/coin-change/submissions/) - interesting base cases and pick condition. TC = `exponential`, SC = `O(target)`
 - [Target Sum](https://leetcode.com/problems/target-sum/submissions/) - either solve by plus and minus (additional base case) or using previous problem of `T - D / 2` as this is equivalent to that!
 - [Coin Change II](https://leetcode.com/problems/coin-change-ii/submissions/) - a little change in base case since we're counting ways here and not min no. of coins unlike Coin Change
-- Unbounded Knapsack - similar to mininum coins problem where we can steal an item multiple times (base case is no. of times last item can be stolen multiplied by its value)
+- Unbounded Knapsack - similar to mininum coins problem where we can steal an item multiple times (base case is no. of times last item can be stolen multiplied by its value). Ultimate 1D array optimization will be from left to right because here we rely on previous values in `curr` itself.
 - Rod Cutting Problem - similar to unbounded knapsack (in base case rod length is `1` so `N` pieces possible, hence `N * value[0]`)
 
 ## DP on Strings
