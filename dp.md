@@ -37,3 +37,4 @@ Subset sum equals target
 - [Minimum Insertion Steps to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/) - keep LPS intact and no. of insertions will be whatever chars are left i.e. `n - LPS`. Same answer for min deletion steps too!
 - [Minimum Operations/Deletions to Make Two Strings Equal](https://leetcode.com/problems/delete-operation-for-two-strings/) - need to keep LPS intact and rest of the chars will have to be all deleted or a combination of inserts and deletions yielding answer in both cases to be `(m - LCS) + (n - LCS)` that is `m + n - 2 * LCS`
 - [Shortest Common Supersequence](https://leetcode.com/problems/shortest-common-supersequence/) - count calc is easy enough `m + n - LCS`. Printing will require tracing back in LCS tabulation matrix. 
+- [Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/) - move and not move (to find another occurance) on match, otherwise move.
