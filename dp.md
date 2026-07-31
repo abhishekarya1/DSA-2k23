@@ -3,13 +3,13 @@
 My prev notes: https://hashdefine.netlify.app/dsa/dp
 
 ## 1D DP
-- Fibonacci Sequence
-- Climbing Stairs
-- Min Cost Climbing Stairs - interesting alt state where cost is included in current state
+- [Fibonacci Sequence](https://leetcode.com/problems/fibonacci-number/)
+- [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+- [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/) - interesting alt state where cost is included in current state
 - Frog Jump
 - Frog Jump with K Distance - use `for` loop till `k` (space optimization in worst case (`k = n`)  becomes optional)
-- House Robber - max sum of non-adjacent elements
-- House Robber II - circular form of the above
+- [House Robber](https://leetcode.com/problems/house-robber/) - max sum of non-adjacent elements
+- [House Robber II](https://leetcode.com/problems/house-robber-ii/) - circular form of the above
 
 ## 2D DP
 - Ninja's Training
