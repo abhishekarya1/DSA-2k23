@@ -38,7 +38,7 @@ Subset sum equals target
 - [Minimum Operations/Deletions to Make Two Strings Equal](https://leetcode.com/problems/delete-operation-for-two-strings/) - need to keep LCS intact and rest of the chars will have to be all deleted or a combination of inserts and deletions (i.e. operations) yielding answer in both cases to be `(m - LCS) + (n - LCS)` that is `m + n - 2 * LCS`
 - [Shortest Common Supersequence](https://leetcode.com/problems/shortest-common-supersequence/) - count calc is easy enough `m + n - LCS`. Printing will require tracing back in LCS tabulation matrix. 
 - [Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/) - move and not move (to find another occurance) on match, otherwise move.
-- [Edit Distance](https://leetcode.com/problems/edit-distance/) - this problem is different from above problems because of the replace operation, make 3 cases, smart base case.
+- [Edit Distance](https://leetcode.com/problems/edit-distance/) - this problem is different from above problems because of the replace operation, we can do 3 cases (insert/delete/replace) and we can do all and keep minimum, smart base case.
 
 ## DP on LIS
 - [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) - carry a `prev` to check if we can pick. In memoization matrix, need to shift for `prev` only becuase it starts at `-1`.
