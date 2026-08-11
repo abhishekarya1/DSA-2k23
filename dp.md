@@ -41,4 +41,4 @@ Subset sum equals target
 - [Edit Distance](https://leetcode.com/problems/edit-distance/) - this problem is different from above problems because of the replace operation, we can do 3 cases (insert/delete/replace) and we can do all and keep minimum, smart base case.
 
 ## DP on LIS
-- [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) - carry a `prev` to check if we can pick. In memoization matrix, need to shift for `prev` only (because it starts at `-1`).
+- [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) - carry a `prev` to check if we can pick. Tabulation can be the usual way reversing ranges or a diff way that simply mimics the recursion traversal order with 1D `dp` array.
